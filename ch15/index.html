@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Qt and C++ &mdash; Qt5 Cadaques Book v2014-12</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2014-12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Qt5 Cadaques Book v2014-12" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          QmlBook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2014-12</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Chapters <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../ch01/index.html">1. Meet Qt 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/index.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/index.html">3. Qt Creator IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04/index.html">4. Quick Starter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/index.html">5. Fluid Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06/index.html">6. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07/index.html">7. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08/index.html">8. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09/index.html">9. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10/index.html">10. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11/index.html">11. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Qt and C++</a><ul>
+<li><a class="reference internal" href="#a-boilerplate-application">A Boilerplate Application</a></li>
+<li><a class="reference internal" href="#the-qobject">The QObject</a></li>
+<li><a class="reference internal" href="#build-systems">Build Systems</a><ul>
+<li><a class="reference internal" href="#qmake">QMake</a></li>
+<li><a class="reference internal" href="#cmake">CMake</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#common-qt-classes">Common Qt Classes</a></li>
+<li><a class="reference internal" href="#models-in-c">Models in C++</a><ul>
+<li><a class="reference internal" href="#asynchronous-data-retrieval">Asynchronous Data Retrieval</a></li>
+<li><a class="reference internal" href="#sql-models">SQL Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Qt and C++</a><ul>
+<li><a class="reference internal" href="#a-boilerplate-application">A Boilerplate Application</a></li>
+<li><a class="reference internal" href="#the-qobject">The QObject</a></li>
+<li><a class="reference internal" href="#build-systems">Build Systems</a><ul>
+<li><a class="reference internal" href="#qmake">QMake</a></li>
+<li><a class="reference internal" href="#cmake">CMake</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#common-qt-classes">Common Qt Classes</a></li>
+<li><a class="reference internal" href="#models-in-c">Models in C++</a><ul>
+<li><a class="reference internal" href="#asynchronous-data-retrieval">Asynchronous Data Retrieval</a></li>
+<li><a class="reference internal" href="#sql-models">SQL Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="qt-and-c">
+<h1>Qt and C++<a class="headerlink" href="#qt-and-c" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qt-and-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Qt is a C++ toolkit. There are many language bindings for Qt, but as Qt is developed in C++, the properties of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.</p>
+<p>This chapter will, just as Qt, require the reader to have some basic knowledge of C++. Qt does not rely on advanced C++ features, and I generally consider the Qt style of C++ to be very readable, so do not worry if you feel that your C++ knowledge is shaky.</p>
+<p>Approaching Qt from a C++ direction, you will find that Qt enrichen C++ with a number of modern language features enabled through making introspection data available. This is made possible through the use of the <tt class="docutils literal"><span class="pre">QObject</span></tt> base class. Introspection data, or meta data, maintains information of the classes at run-time. Something that ordinary C++ does not to. This makes it possible to dynamically probe objects for information about such details as their properties and available methods.</p>
+<p>Qt uses this information to enable a very losely bound callback concept using signals and slots. Each signal can be connected to any number of slots. When a signal is emitted from an object instance, the connected slots are invoked. As the signal emitting object does not need to know anything about the object owning the slot and vise versa, this mechanism can be used to create very reusable components with very few inter-component dependencies.</p>
+<p>The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. This feature is used in the WebKit bindings, making it possible to expose C++ objects to Javascript that are a part of an HTML5 application, but also in the QML bindings.</p>
+<p>In addition to this central concept Qt makes it possible to develop cross platform applications using C++. That is, to recompile the same source code for Windows, OS X and Linux. The end result is natively built applications with the look and feel of the target platform. It is also possible to target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Illustration of basic app on all major platforms.</li>
+</ul>
+</div>
+<p>For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platforms&#8217; main loop, and cross platform threading support.</p>
+<div class="section" id="a-boilerplate-application">
+<h2>A Boilerplate Application<a class="headerlink" href="#a-boilerplate-application" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23a-boilerplate-application&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The best way to understand Qt is to start from a small demonstration application.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>the main loop</li>
+<li>a basic build configuration using qmake</li>
+<li>how to build and run</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-qobject">
+<h2>The QObject<a class="headerlink" href="#the-qobject" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23the-qobject&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>As described in the introduction, the <tt class="docutils literal"><span class="pre">QObject</span></tt> is what enables Qt&#8217;s introspection. Is the base class of almost all classes in Qt. Exceptions are value types such as <tt class="docutils literal"><span class="pre">QColor</span></tt>, <tt class="docutils literal"><span class="pre">QString</span></tt> and <tt class="docutils literal"><span class="pre">QList</span></tt>.</p>
+<p>A Qt object is a standard C++ object, but with more abilities. These can be divided into two groups: introspection and memory management. The first means that a Qt object is aware of its class name, its relationship to other classes, as well as its methods and properties. The memory management concept means that each Qt object can be the parent of child objects. The parent <em>owns</em> the children, and when the parent is destroyed, it is responsible for destroying its children.</p>
+<p>The best way of understanding how the <tt class="docutils literal"><span class="pre">QObject</span></tt> abilities affect a class is to take a standard C++ class and Qt enable it. The class shown below represents an ordinary such class.</p>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>when is it applicable - individuals, not values</li>
+<li>getter, setter, reset method - using enum</li>
+<li>inherit</li>
+<li>Q_OBJECT</li>
+<li>getFoo -&gt; foo()</li>
+<li>Q_PROPERTY, Q_ENUM</li>
+<li>signal</li>
+<li>setter is a natural slot</li>
+<li>Q_INVOKABLE</li>
+</ul>
+</div>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Person</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span>
+<span class="p">{</span>
+    <span class="n">Q_OBJECT</span>
+
+    <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QString</span> <span class="n">name</span> <span class="n">READ</span> <span class="n">name</span> <span class="n">WRITE</span> <span class="n">setName</span> <span class="n">NOTIFY</span> <span class="n">nameChanged</span><span class="p">)</span>
+    <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span> <span class="n">READ</span> <span class="n">gender</span> <span class="n">WRITE</span> <span class="n">setGender</span> <span class="n">NOTIFY</span> <span class="n">genderChanged</span><span class="p">)</span>
+
+    <span class="n">Q_ENUMS</span><span class="p">(</span><span class="n">Gender</span><span class="p">)</span>
+
+<span class="nl">public:</span>
+    <span class="n">Person</span><span class="p">(</span><span class="n">QObject</span> <span class="o">*</span><span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span> <span class="n">Unknown</span><span class="p">,</span> <span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">,</span> <span class="n">Other</span> <span class="p">};</span>
+
+    <span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="n">slots</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="nf">setGender</span><span class="p">(</span><span class="n">Gender</span><span class="p">);</span>
+
+<span class="nl">signals:</span>
+    <span class="kt">void</span> <span class="nf">nameChanged</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="n">name</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="nf">genderChanged</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
+
+<span class="nl">private:</span>
+    <span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
+    <span class="n">Gender</span> <span class="n">m_gender</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">Person</span><span class="o">::</span><span class="n">Person</span><span class="p">(</span><span class="n">QObject</span> <span class="o">*</span><span class="n">parent</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">QObject</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+    <span class="p">,</span> <span class="n">m_gender</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">Unknown</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">QString</span> <span class="n">Person</span><span class="o">::</span><span class="n">name</span><span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">m_name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">Person</span><span class="o">::</span><span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="n">m_name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">m_name</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+        <span class="n">emit</span> <span class="nf">nameChanged</span><span class="p">(</span><span class="n">m_name</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Having a valid class derived from <tt class="docutils literal"><span class="pre">QObject</span></tt>, we have gained some more.</p>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>demonstrate className, point out the importance of Q_OBJECT</li>
+<li>demonstrate memory management through the c&#8217;tor</li>
+<li>talk about that this is the key to integrating C++ and QML</li>
+</ul>
+</div>
+</div>
+<div class="section" id="build-systems">
+<h2>Build Systems<a class="headerlink" href="#build-systems" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23build-systems&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-4">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>why a build system</li>
+<li>the actual Qt build flow</li>
+</ul>
+</div>
+<div class="section" id="qmake">
+<h3>QMake<a class="headerlink" href="#qmake" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-5">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>background, drawbacks, benefits</li>
+<li>a basic example</li>
+</ul>
+</div>
+</div>
+<div class="section" id="cmake">
+<h3>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23cmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-6">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>background, KDE, benefits, drawbacks, etc</li>
+<li>a basic example</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="common-qt-classes">
+<h2>Common Qt Classes<a class="headerlink" href="#common-qt-classes" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23common-qt-classes&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">QObject</span></tt> class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.</p>
+<div class="admonition-todo admonition" id="index-7">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>QString, QStringList</li>
+<li>unicode, arg()</li>
+</ul>
+</div>
+<div class="admonition-todo admonition" id="index-8">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>QList, foreach, iterators (both C++-style and JavaStyle)</li>
+</ul>
+</div>
+<div class="admonition-todo admonition" id="index-9">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>QFile, QTextReader</li>
+</ul>
+</div>
+</div>
+<div class="section" id="models-in-c">
+<h2>Models in C++<a class="headerlink" href="#models-in-c" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23models-in-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-10">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>QAbstractListModel</li>
+<li>custom role names</li>
+<li>the basics</li>
+<li>how this fits into QML</li>
+</ul>
+</div>
+<div class="section" id="asynchronous-data-retrieval">
+<h3>Asynchronous Data Retrieval<a class="headerlink" href="#asynchronous-data-retrieval" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23asynchronous-data-retrieval&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-11">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>canFetchMore/fetchMore + beginInsertRows/endInsertRows</li>
+<li>this really does not work very well with QML, should we scrap it?</li>
+</ul>
+</div>
+</div>
+<div class="section" id="sql-models">
+<h3>SQL Models<a class="headerlink" href="#sql-models" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23sql-models&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-12">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>QSqlTableModel</li>
+<li>QSqlQueryModel</li>
+<li>mapping columns to roles</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Dec 22, 2014.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Native Plugins &mdash; Qt5 Cadaques Book v2014-12</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2014-12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Qt5 Cadaques Book v2014-12" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          QmlBook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2014-12</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Chapters <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../ch01/index.html">1. Meet Qt 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/index.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/index.html">3. Qt Creator IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04/index.html">4. Quick Starter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/index.html">5. Fluid Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06/index.html">6. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07/index.html">7. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08/index.html">8. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09/index.html">9. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10/index.html">10. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11/index.html">11. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Native Plugins</a><ul>
+<li><a class="reference internal" href="#understanding-the-qml-run-time">Understanding the QML Run-time</a><ul>
+<li><a class="reference internal" href="#building-a-basic-qml-viewer">Building a Basic QML Viewer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extending-the-context">Extending the Context</a><ul>
+<li><a class="reference internal" href="#context-properties">Context Properties</a></li>
+<li><a class="reference internal" href="#a-context-property-object">A Context Property Object</a></li>
+<li><a class="reference internal" href="#image-providers">Image Providers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#registered-types">Registered Types</a><ul>
+<li><a class="reference internal" href="#data-sources">Data Sources</a></li>
+<li><a class="reference internal" href="#qquickpainteritem">QQuickPainterItem</a></li>
+<li><a class="reference internal" href="#qml-specific-property-concepts">QML Specific Property Concepts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extension-plugins">Extension Plugins</a></li>
+<li><a class="reference internal" href="#resource-files">Resource Files</a></li>
+<li><a class="reference internal" href="#advanced-techniques">Advanced Techniques</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Native Plugins</a><ul>
+<li><a class="reference internal" href="#understanding-the-qml-run-time">Understanding the QML Run-time</a><ul>
+<li><a class="reference internal" href="#building-a-basic-qml-viewer">Building a Basic QML Viewer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extending-the-context">Extending the Context</a><ul>
+<li><a class="reference internal" href="#context-properties">Context Properties</a></li>
+<li><a class="reference internal" href="#a-context-property-object">A Context Property Object</a></li>
+<li><a class="reference internal" href="#image-providers">Image Providers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#registered-types">Registered Types</a><ul>
+<li><a class="reference internal" href="#data-sources">Data Sources</a></li>
+<li><a class="reference internal" href="#qquickpainteritem">QQuickPainterItem</a></li>
+<li><a class="reference internal" href="#qml-specific-property-concepts">QML Specific Property Concepts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extension-plugins">Extension Plugins</a></li>
+<li><a class="reference internal" href="#resource-files">Resource Files</a></li>
+<li><a class="reference internal" href="#advanced-techniques">Advanced Techniques</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="native-plugins">
+<h1>Native Plugins<a class="headerlink" href="#native-plugins" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23native-plugins&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>Executing QML within the confined space that QML as a language offers can sometimes be limiting. By extending the QML run-time with native plugins written in C++, the application can utilize the full performance and freedom of the base platform.</p>
+<div class="section" id="understanding-the-qml-run-time">
+<h2>Understanding the QML Run-time<a class="headerlink" href="#understanding-the-qml-run-time" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23understanding-the-qml-run-time&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>When running QML, it is being executed by in a run-time environment. The run-time is implemented in C++ in the <tt class="docutils literal"><span class="pre">QtDeclarative</span></tt> module. It consists of an engine, responsible for the execution of QML, contexts, holding the properties accessible for each component, and components, the instantiated QML elements.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include &lt;QGuiApplication&gt;</span>
+<span class="cp">#include &lt;QQuickView&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">QGuiApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="n">QQuickView</span> <span class="n">view</span><span class="p">;</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">QUrl</span><span class="o">::</span><span class="n">fromLocalFile</span><span class="p">(</span><span class="s">&quot;main.qml&quot;</span><span class="p">));</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The basic components of the application shown are the <tt class="docutils literal"><span class="pre">QGuiApplication</span></tt> object, <tt class="docutils literal"><span class="pre">app</span></tt> and the <tt class="docutils literal"><span class="pre">QQuickView</span></tt> object, <tt class="docutils literal"><span class="pre">view</span></tt>. The application object encapsulates all that is related to the application instance. There must be one, and only one, instance of an application object at any given time in a Qt application.</p>
+<div class="section" id="building-a-basic-qml-viewer">
+<h3>Building a Basic QML Viewer<a class="headerlink" href="#building-a-basic-qml-viewer" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23building-a-basic-qml-viewer&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>The most trivial QML run-time that can be constructed, consists of a <tt class="docutils literal"><span class="pre">QGuiApplication</span></tt> and a <tt class="docutils literal"><span class="pre">QQuickView</span></tt>. The application object is reponsible for running the event loop, integrating the program into the surrounding system. For instance, it harvests the touch events from the host platform, be it Linux, Symbian, QNX or anything else, and creates the corresponding <tt class="docutils literal"><span class="pre">QEvent</span></tt> objects that are passed to the right <tt class="docutils literal"><span class="pre">QObject</span></tt> instance. The view has a similar response, acting as the bridge between QML and C++. It executes QML code, passing events, properties and instantiable types from C++ to QML.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include &lt;QGuiApplication&gt;</span>
+<span class="cp">#include &lt;QQuickView&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">QGuiApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="n">QQuickView</span> <span class="n">view</span><span class="p">;</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">QUrl</span><span class="o">::</span><span class="n">fromLocalFile</span><span class="p">(</span><span class="s">&quot;main.qml&quot;</span><span class="p">));</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The components of the view can be accessed through methods. For instance, the <tt class="docutils literal"><span class="pre">engine</span></tt> method provides access to the <tt class="docutils literal"><span class="pre">QDeclarativeEngine</span></tt> responsible for executing the QML. The engine, in turn, can be used to configure the behavior of the run-time in detail. The native run-time shown above will serve as base for the examples through-out the remainder of this chapter.</p>
+</div>
+</div>
+<div class="section" id="extending-the-context">
+<h2>Extending the Context<a class="headerlink" href="#extending-the-context" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23extending-the-context&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>The easiest way to create a bridge between the C++ run-time and QML, is to extend the root context with new properties. These properties are exposed to QML as global variables. Through these globals, it is possible to access data and methods from the C++ side. The root context is available through the <tt class="docutils literal"><span class="pre">rootContext</span></tt> method of the <tt class="docutils literal"><span class="pre">QQuickView</span></tt>.</p>
+<div class="section" id="context-properties">
+<h3>Context Properties<a class="headerlink" href="#context-properties" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23context-properties&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>Each <tt class="docutils literal"><span class="pre">QDeclarativeEngine</span></tt> has a <tt class="docutils literal"><span class="pre">rootContext</span></tt> property, containing the root context of the QML environment in which the QML components are instantiated. This root context forms the basic setup of properties available to all components contained within that engine. In addition to the root context, each component within the engine has a context of its own. A new context can be provided to the <tt class="docutils literal"><span class="pre">QDeclarativeComponent::create</span></tt> method, used to instantiate QML components from C++.</p>
+<p>In the example below, a <tt class="docutils literal"><span class="pre">QDeclarativeEngine</span></tt> is created, then two components are created within that engine. One, <tt class="docutils literal"><span class="pre">xxx</span></tt>, is constructed by calling <tt class="docutils literal"><span class="pre">create</span></tt> without an argument. This causes the engine&#8217;s <tt class="docutils literal"><span class="pre">rootContext</span></tt> to be used. For the other component, a <tt class="docutils literal"><span class="pre">QDeclarativeContext</span></tt> is provided. This causes the second component, <tt class="docutils literal"><span class="pre">xxx</span></tt>, to execute in a context different from the one of <tt class="docutils literal"><span class="pre">xxx</span></tt>.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">example, as described above, fix names xxx for first and second component</p>
+</div>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="c1">// TODO In the example below, a QDeclarativeEngine is created, then two components are created within that engine. One, xxx, is constructed by calling create without an argument. This causes the engine&#39;s rootContext to be used. For the other component, a QDeclarativeContext is provided. This causes the second component, xxx, to execute in a context different from the one of xxx.</span>
+</pre></div>
+</div>
+<p>All components execute within a context. By inserting properties into those contexts, it is possible to provide a bridge between C++ and QML. The easiest way to do this is to provide value properties. This means providing a single value under a name, for instance, the example below demonstrates how to pass a simple string from C++ to QML using the <tt class="docutils literal"><span class="pre">setContextProperty</span></tt> method.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include &lt;QGuiApplication&gt;</span>
+<span class="cp">#include &lt;QQuickView&gt;</span>
+<span class="cp">#include &lt;QDeclarativeContext&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">QGuiApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="n">QQuickView</span> <span class="n">view</span><span class="p">;</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s">&quot;userName&quot;</span><span class="p">,</span> <span class="n">QString</span><span class="o">::</span><span class="n">fromLocal8Bit</span><span class="p">(</span><span class="n">qgetenv</span><span class="p">(</span><span class="s">&quot;LOGNAME&quot;</span><span class="p">).</span><span class="n">constData</span><span class="p">()</span><span class="o">?</span><span class="n">qgetenv</span><span class="p">(</span><span class="s">&quot;LOGNAME&quot;</span><span class="p">)</span><span class="o">:</span><span class="s">&quot;John Doe&quot;</span><span class="p">));</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">QUrl</span><span class="o">::</span><span class="n">fromLocalFile</span><span class="p">(</span><span class="s">&quot;main.qml&quot;</span><span class="p">));</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It is possible to expose a number of types as values. The basic types being supported are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">bool</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt>, <tt class="docutils literal"><span class="pre">int</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">float</span></tt>, <tt class="docutils literal"><span class="pre">double</span></tt>, <tt class="docutils literal"><span class="pre">qreal</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QString</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QUrl</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QColor</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QDate</span></tt>, <tt class="docutils literal"><span class="pre">QTime</span></tt>, <tt class="docutils literal"><span class="pre">QDateTime</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QPoint</span></tt>, <tt class="docutils literal"><span class="pre">QPointF</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QSize</span></tt>, <tt class="docutils literal"><span class="pre">QSizeF</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QRect</span></tt>, <tt class="docutils literal"><span class="pre">QRectF</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QVariant</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">QVariantList</span></tt>, <tt class="docutils literal"><span class="pre">QVariantMap</span></tt></li>
+</ul>
+<p>By altering the value of a context property while the QML is being executed, the bindings relating to the property are reevaluated. This means that the state of the QML is being updated according to the state of C++. The code snippet below shows the C++-half of such as setup, where the <tt class="docutils literal"><span class="pre">inverted</span></tt> property is toggled every second using a <tt class="docutils literal"><span class="pre">QTimer</span></tt>.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include &lt;QGuiApplication&gt;</span>
+<span class="cp">#include &lt;QQuickView&gt;</span>
+<span class="cp">#include &lt;QDeclarativeContext&gt;</span>
+<span class="cp">#include &lt;QTimer&gt;</span>
+
+<span class="n">QDeclarativeContext</span> <span class="o">*</span><span class="n">context</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">toggleBool</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="o">!</span><span class="n">b</span><span class="p">;</span>
+    <span class="n">context</span><span class="o">-&gt;</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s">&quot;inverted&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">QGuiApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+
+    <span class="n">QQuickView</span> <span class="n">view</span><span class="p">;</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">view</span><span class="p">.</span><span class="n">rootContext</span><span class="p">();</span>
+    <span class="n">toggleBool</span><span class="p">();</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">QUrl</span><span class="o">::</span><span class="n">fromLocalFile</span><span class="p">(</span><span class="s">&quot;main.qml&quot;</span><span class="p">));</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+
+    <span class="n">QTimer</span> <span class="n">t</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">setInterval</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+    <span class="n">QObject</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span><span class="o">&amp;</span><span class="n">t</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">QTimer</span><span class="o">::</span><span class="n">timeout</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">toggleBool</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The corresponding QML-half is shown below. As you can tell, the <tt class="docutils literal"><span class="pre">inverted</span></tt> property is used to alternate between the unnamed state and <tt class="docutils literal"><span class="pre">&quot;inverted&quot;</span></tt>. A nice aspect to notice is that the C++ property is changed instantaneously, but by using it to drive the states, the <tt class="docutils literal"><span class="pre">transitions</span></tt> apply, making the end result a fluid user interface with smooth property changes.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">Rectangle</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">container</span>
+    
+	<span class="nx">width</span><span class="o">:</span> <span class="mi">512</span><span class="p">;</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">300</span>
+	
+	<span class="nx">Text</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">helloText</span>
+		<span class="nx">anchors</span><span class="p">.</span><span class="nx">centerIn</span><span class="o">:</span> <span class="nx">parent</span>
+		<span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;Hello World!&quot;</span>
+	<span class="p">}</span>
+	
+	<span class="nx">states</span><span class="o">:</span> <span class="p">[</span>
+        <span class="nx">State</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;inverted&quot;</span>
+            <span class="nx">PropertyChanges</span> <span class="p">{</span> <span class="nx">target</span><span class="o">:</span> <span class="nx">container</span><span class="p">;</span> <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;black&quot;</span> <span class="p">}</span>
+            <span class="nx">PropertyChanges</span> <span class="p">{</span> <span class="nx">target</span><span class="o">:</span> <span class="nx">helloText</span><span class="p">;</span> <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span> <span class="nx">font</span><span class="p">.</span><span class="nx">pixelSize</span><span class="o">:</span> <span class="mi">30</span> <span class="p">}</span>
+        <span class="p">}</span>
+	<span class="p">]</span>
+	
+	<span class="nx">state</span><span class="o">:</span> <span class="nx">inverted</span><span class="o">?</span><span class="s2">&quot;inverted&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span>
+    
+    <span class="nx">transitions</span><span class="o">:</span> <span class="p">[</span>
+        <span class="nx">Transition</span> <span class="p">{</span> 
+            <span class="nx">ColorAnimation</span> <span class="p">{</span> <span class="nx">duration</span><span class="o">:</span> <span class="mi">500</span> <span class="p">}</span>
+            <span class="nx">PropertyAnimation</span> <span class="p">{</span> <span class="nx">property</span><span class="o">:</span> <span class="s2">&quot;font.pixelSize&quot;</span><span class="p">;</span> <span class="nx">duration</span><span class="o">:</span> <span class="mi">300</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">example registering a custom type</p>
+</div>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">example exposing a QVariantList and a QVariantMap</p>
+</div>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="c1">// TODO</span>
+</pre></div>
+</div>
+<p>An alternative to exposing pure values to QML, is to expose <tt class="docutils literal"><span class="pre">QObject</span></tt> instances. This allows QML to use the full interface of the object. For instance, properties declared through Q_PROPERTY can be accessed, as can Q_INVOKABLE methods, as well as signals. Enumerations declared with Q_ENUMS can also be accessed directly from QML through the class name, as shown below. When looking at the example, notice how the <tt class="docutils literal"><span class="pre">Connections</span></tt> element is used to connect to a signal from the object.</p>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<p class="last">example exposing a QObject*, and an enum property and signal</p>
+</div>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="c1">// TODO</span>
+</pre></div>
+</div>
+<p>A special, and very useful, case of exposing a <tt class="docutils literal"><span class="pre">QObject</span></tt> to QML from C++ is to expose a model. This makes it easy to share data in the form of a C++ model to QML. Depending on the nature of the application being developed, a model is a natural mechanism for exposing list data to QML.</p>
+<p>In the following example a simple <tt class="docutils literal"><span class="pre">QStringListModel</span></tt> is provided to QML space under the name <tt class="docutils literal"><span class="pre">colorModel</span></tt>. It contains all the color names known to Qt. On the QML side, the model is visualized through a <tt class="docutils literal"><span class="pre">GridView</span></tt> exposing a set of colored rectangles. This shows how natural it is to expose data through models implemented in C++.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include &lt;QGuiApplication&gt;</span>
+<span class="cp">#include &lt;QQuickView&gt;</span>
+<span class="cp">#include &lt;QDeclarativeContext&gt;</span>
+<span class="cp">#include &lt;QStringListModel&gt;</span>
+<span class="cp">#include &lt;QColor&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">QGuiApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="n">QQuickView</span> <span class="n">view</span><span class="p">;</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s">&quot;colorModel&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">QStringListModel</span><span class="p">(</span><span class="n">QColor</span><span class="o">::</span><span class="n">colorNames</span><span class="p">()));</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">QUrl</span><span class="o">::</span><span class="n">fromLocalFile</span><span class="p">(</span><span class="s">&quot;main.qml&quot;</span><span class="p">));</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>On the QML-side, shown below, there is no additional code to handle the fact that the model is instantiated from C++. Likewise, on the C++ side, shown above, the model is identical to a model used through a C++ view, it is only bound to a QML name using the <tt class="docutils literal"><span class="pre">setContextProperty</span></tt> method of the root context.</p>
+<div class="highlight-js"><div class="highlight"><pre>/*
+ * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the editors nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-context-property-object">
+<h3>A Context Property Object<a class="headerlink" href="#a-context-property-object" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23a-context-property-object&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-4">
+<p class="first admonition-title">Todo</p>
+<p class="last">context property object</p>
+</div>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="c1">// TODO</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="image-providers">
+<h3>Image Providers<a class="headerlink" href="#image-providers" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23image-providers&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>A common requirement when developing QML applications is to use generated graphics in the user interface. This can range from images being created on the fly from a data set, to images provided through a non-standard mechanism such as a custom API. In these cases, a small C++ snippet is needed to create an actual <tt class="docutils literal"><span class="pre">QImage</span></tt> or <tt class="docutils literal"><span class="pre">QPixmap</span></tt> object. However, it is not possible to share such an image with QML directly. It is not one of the default types, and the <tt class="docutils literal"><span class="pre">Image</span></tt> element does not accept it through any property. Instead, images are always accessed through URLs in QML.</p>
+<p>To pass a custom, generated, image from C++ to QML, an image provider must be implemented. This is done by inhering the <tt class="docutils literal"><span class="pre">QDeclarativeImageProvider</span></tt> class and implementing one of the virtual methods <tt class="docutils literal"><span class="pre">requestImage</span></tt> or <tt class="docutils literal"><span class="pre">requestPixmap</span></tt>, depending on the format of the image being generated. The image provides are registered with the <tt class="docutils literal"><span class="pre">QDeclarativeEngine</span></tt> used through the <tt class="docutils literal"><span class="pre">addImageProvider</span></tt> method. As soon as an image has been registered under a name, all URLs starting with <tt class="docutils literal"><span class="pre">image:://name/</span></tt> will be passed to the provider. For instance, the provider below gets all the URLs starting with <tt class="docutils literal"><span class="pre">image://stock-icons/</span></tt>.</p>
+<div class="admonition-todo admonition" id="index-5">
+<p class="first admonition-title">Todo</p>
+<p class="last">example, stock-icons image provider</p>
+</div>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include &lt;QApplication&gt;</span>
+<span class="cp">#include &lt;QtDeclarative&gt;</span>
+
+<span class="cp">#include &quot;stockimageprovider.h&quot;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">QApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+
+	<span class="n">QDeclarativeView</span> <span class="n">view</span><span class="p">;</span>
+	<span class="n">view</span><span class="p">.</span><span class="n">engine</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">addImageProvider</span><span class="p">(</span><span class="s">&quot;stockimages&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">StockImageProvider</span><span class="p">());</span>
+	<span class="n">view</span><span class="p">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">QUrl</span><span class="o">::</span><span class="n">fromLocalFile</span><span class="p">(</span><span class="s">&quot;main.qml&quot;</span><span class="p">));</span>
+	<span class="n">view</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+
+	<span class="k">return</span> <span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The image provider implemented above makes it easy to access a set of stock icons. The example below demonstrates this by showing the available icons in a <tt class="docutils literal"><span class="pre">GridView</span></tt>.</p>
+<div class="admonition-todo admonition" id="index-6">
+<p class="first admonition-title">Todo</p>
+<p class="last">example, a model of strings, shown through Image and Text elements in a GridView</p>
+</div>
+<div class="highlight-js"><div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2013, Juergen Bocklage-Ryannel, Johan Thelin</span>
+<span class="cm"> * All rights reserved.</span>
+<span class="cm"> * </span>
+<span class="cm"> * Redistribution and use in source and binary forms, with or without</span>
+<span class="cm"> * modification, are permitted provided that the following conditions are met:</span>
+<span class="cm"> *     * Redistributions of source code must retain the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer.</span>
+<span class="cm"> *     * Redistributions in binary form must reproduce the above copyright</span>
+<span class="cm"> *       notice, this list of conditions and the following disclaimer in the</span>
+<span class="cm"> *       documentation and/or other materials provided with the distribution.</span>
+<span class="cm"> *     * Neither the name of the editors nor the</span>
+<span class="cm"> *       names of its contributors may be used to endorse or promote products</span>
+<span class="cm"> *       derived from this software without specific prior written permission.</span>
+<span class="cm"> * </span>
+<span class="cm"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span>
+<span class="cm"> * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span>
+<span class="cm"> * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="cm"> * DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE FOR ANY</span>
+<span class="cm"> * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span>
+<span class="cm"> * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span>
+<span class="cm"> * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+<span class="cm"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span>
+<span class="cm"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span>
+<span class="cm"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<span class="cm"> */</span>
+
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">1.1</span>
+
+<span class="nx">Rectangle</span> <span class="p">{</span>
+	<span class="nx">width</span><span class="o">:</span> <span class="mi">1024</span>
+	<span class="nx">height</span><span class="o">:</span> <span class="mi">600</span>
+
+	<span class="nx">ListView</span> <span class="p">{</span>
+		<span class="nx">anchors</span><span class="p">.</span><span class="nx">fill</span><span class="o">:</span> <span class="nx">parent</span>
+
+		<span class="nx">model</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="s2">&quot;back&quot;</span><span class="p">,</span> <span class="s2">&quot;forward&quot;</span><span class="p">]</span>
+		<span class="nx">delegate</span><span class="o">:</span> <span class="nx">listDelegate</span>
+	<span class="p">}</span>
+
+	<span class="nx">Component</span> <span class="p">{</span>
+		<span class="nx">id</span><span class="o">:</span> <span class="nx">listDelegate</span>
+
+		<span class="nx">Item</span> <span class="p">{</span>
+			<span class="nx">width</span><span class="o">:</span> <span class="nx">ListView</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">width</span>
+			<span class="nx">height</span><span class="o">:</span> <span class="mi">32</span>
+
+			<span class="nx">Row</span> <span class="p">{</span>
+<span class="c1">//				Image {</span>
+<span class="c1">//					anchors.verticalCenter: parent.verticalCenter</span>
+<span class="c1">//					source: &quot;image://stockimages/&quot; + modelData</span>
+<span class="c1">//				}</span>
+				<span class="nx">Text</span> <span class="p">{</span>
+					<span class="nx">anchors</span><span class="p">.</span><span class="nx">verticalCenter</span><span class="o">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">verticalCenter</span>
+					<span class="nx">text</span><span class="o">:</span> <span class="nx">modelData</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It is possible to use an image provider to acquire images in a separate thread, as well as provide images that change over time. Both these topics are covered in the advanced techniques section later in this chapter.</p>
+</div>
+</div>
+<div class="section" id="registered-types">
+<h2>Registered Types<a class="headerlink" href="#registered-types" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23registered-types&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>Providing data through context properties is useful to exposing data from a static setting. For instance, the current time, temperature, screen orientation, and other information that always is available. In some cases, this is not flexible enough. For instance, providing a model representing the contents of a directory path as a context property limits the user interface to showing the contents of a single directory at once. An alterantive would be to expose the model to QML in such a fashion that QML could instantiate any number of instances of the model. This would allow the QML developer to determine how many directories to show at once.</p>
+<p>Any class derived from the <tt class="docutils literal"><span class="pre">QObject</span></tt> clase can be registered with QML to allow QML to instantate it. However, there are basically two types of elements that are useful to expose to QML this way: data sources, such as the directory contents model, and visible items. We will discuss both types in the sections below.</p>
+<div class="section" id="data-sources">
+<h3>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23data-sources&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>Any QObject derived class can be used to expose data to QML. By providing a relevant set of properties, methods and signals, the usage from QML can be made both convenient and reusable. A special, and very common, case of a non-visual class exposed to QML are data models. Before we look at a model, a simple directory monitoring class is used.</p>
+<div class="admonition-todo admonition" id="index-7">
+<p class="first admonition-title">Todo</p>
+<p class="last">example, class exposing inotify, counting the contents of a directory and signalling changes</p>
+</div>
+<div class="admonition-todo admonition" id="index-8">
+<p class="first admonition-title">Todo</p>
+<p class="last">explain howto register type</p>
+</div>
+<div class="admonition-todo admonition" id="index-9">
+<p class="first admonition-title">Todo</p>
+<p class="last">example of a model exposing directory contents, where the base directory path can be controlled, as well as a filter. Base on QDir. Expose an invokable method for creating directories...</p>
+</div>
+</div>
+<div class="section" id="qquickpainteritem">
+<h3>QQuickPainterItem<a class="headerlink" href="#qquickpainteritem" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23qquickpainteritem&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>using the painter or OpenGL</li>
+</ul>
+</div>
+<div class="admonition-todo admonition" id="index-10">
+<p class="first admonition-title">Todo</p>
+<p class="last">qmlRegisterUncreatableType&lt;QDeclarativeCameraCapture&gt;(uri, 5, 0, &#8220;CameraCapture&#8221;, trUtf8(&#8220;CameraCapture is only provided by Camera element&#8221;));</p>
+</div>
+</div>
+<div class="section" id="qml-specific-property-concepts">
+<h3>QML Specific Property Concepts<a class="headerlink" href="#qml-specific-property-concepts" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23qml-specific-property-concepts&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><ul class="simple">
+<li>List properties</li>
+<li>Default properties</li>
+<li>Grouped properties</li>
+</ul>
+</div>
+</div>
+<div class="section" id="extension-plugins">
+<h2>Extension Plugins<a class="headerlink" href="#extension-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23extension-plugins&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Exporting and exposing extensions as plugins through the qmlscene viewer application</p>
+</div>
+</div>
+<div class="section" id="resource-files">
+<h2>Resource Files<a class="headerlink" href="#resource-files" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23resource-files&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">embedding data in the application. Accessing files from qrc qml, accessing qrc from file qml</p>
+</div>
+</div>
+<div class="section" id="advanced-techniques">
+<h2>Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch16%2Findex.html%23advanced-techniques&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><ul class="simple">
+<li>Threaded image provider</li>
+<li>Image provider and images changing over time (<a class="reference external" href="http://www.digia.com/en/Blogs/Qt-blog/Andy-Shaw/Dates/2012/2/Qt-Commercial-Support-Weekly-15---Models-providing-dynamic-images-in-QML/">http://www.digia.com/en/Blogs/Qt-blog/Andy-Shaw/Dates/2012/2/Qt-Commercial-Support-Weekly-15&#8212;Models-providing-dynamic-images-in-QML/</a>)</li>
+<li>Using QDeclarativeParserStatus</li>
+<li>Using extension objects, and why</li>
+<li>API revisions, how to use a single class for multiple revisions and why</li>
+<li>Working with QSGNode</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Dec 22, 2014.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
