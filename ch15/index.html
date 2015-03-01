@@ -252,7 +252,7 @@
 </div>
 <p>We will not go into depth into this topic just remember Qt uses project files for projects and qmake generates the platform specific make files from these project files.</p>
 <p>The simple code example above just writes the text and exists the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here the same example now using a desktop button to trigger the writing.</p>
-<p>Our <tt class="docutils literal"><span class="pre">main.cpp</span></tt> suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs and own object as you will see shortly.</p>
+<p>Our <tt class="docutils literal"><span class="pre">main.cpp</span></tt> suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs an own object as you will see shortly.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;QtCore&gt;</span>
 <span class="cp">#include &lt;QtGui&gt;</span>
 <span class="cp">#include &lt;QtWidgets&gt;</span>
@@ -342,20 +342,6 @@
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23the-qobject&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>As described in the introduction, the <tt class="docutils literal"><span class="pre">QObject</span></tt> is what enables Qt&#8217;s introspection. Is the base class of almost all classes in Qt. Exceptions are value types such as <tt class="docutils literal"><span class="pre">QColor</span></tt>, <tt class="docutils literal"><span class="pre">QString</span></tt> and <tt class="docutils literal"><span class="pre">QList</span></tt>.</p>
 <p>A Qt object is a standard C++ object, but with more abilities. These can be divided into two groups: introspection and memory management. The first means that a Qt object is aware of its class name, its relationship to other classes, as well as its methods and properties. The memory management concept means that each Qt object can be the parent of child objects. The parent <em>owns</em> the children, and when the parent is destroyed, it is responsible for destroying its children.</p>
 <p>The best way of understanding how the <tt class="docutils literal"><span class="pre">QObject</span></tt> abilities affect a class is to take a standard C++ class and Qt enable it. The class shown below represents an ordinary such class.</p>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>when is it applicable - individuals, not values</li>
-<li>getter, setter, reset method - using enum</li>
-<li>inherit</li>
-<li>Q_OBJECT</li>
-<li>getFoo -&gt; foo()</li>
-<li>Q_PROPERTY, Q_ENUM</li>
-<li>signal</li>
-<li>setter is a natural slot</li>
-<li>Q_INVOKABLE</li>
-</ul>
-</div>
 <p>The person class is a data class with a name and gender properties. The person class uses Qt&#8217;s object system to add meta information to the c++ class. It allows users of a person object to connect to the slots and get notified when the properties get changed.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Person</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span>
 <span class="p">{</span>
@@ -426,26 +412,144 @@
 </div>
 <div class="section" id="build-systems">
 <h2>15.3. Build Systems<a class="headerlink" href="#build-systems" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23build-systems&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>why a build system</li>
-<li>the actual Qt build flow</li>
-</ul>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23build-systems&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Building software reliable on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the <tt class="docutils literal"><span class="pre">qmake</span></tt> build file generator. <tt class="docutils literal"><span class="pre">qmake</span></tt> operator on a project file with the ending <tt class="docutils literal"><span class="pre">.pro</span></tt>. This project file contains instructions about the appication and the sources to be used. Running qmake on this project file will generate for you a <tt class="docutils literal"><span class="pre">Makefile</span></tt> on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.</p>
+<p>A typical build flow in Qt would be under unix:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">edit</span> <span class="nx">myproject</span><span class="p">.</span><span class="nx">pro</span>
+<span class="nx">$</span> <span class="nx">qmake</span> <span class="c1">// generates Makefile</span>
+<span class="nx">$</span> <span class="nx">make</span>
+</pre></div>
 </div>
+<p>Qt allows you also to use shadow builds. A shadow build is a build outside of your source code location. Assume we have a myproject folder with a <tt class="docutils literal"><span class="pre">myproject.pro</span></tt> file. The flow would be like this:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">mkdir</span> <span class="nx">build</span>
+<span class="nx">$</span> <span class="nx">cd</span> <span class="nx">build</span>
+<span class="nx">$</span> <span class="nx">qmake</span> <span class="p">..</span><span class="o">/</span><span class="nx">myproject</span><span class="o">/</span><span class="nx">myproject</span><span class="p">.</span><span class="nx">pro</span>
+</pre></div>
+</div>
+<p>We create a build folder and then call qmake from inside the build folder with the location of our project folder. This will setup the make file in a way that all build artifacts are stored under the build folder instead of inside our source code folder. This allows us to create builds for different qt versions and build configurations at the same time and also it does not clutter our soruce code folder which is always a good thing.</p>
+<p>When you are using Qt Creator it does these things behind the scenes for you and you do not have to worry about these steps usually. For larger projects and more deeper understanding of the flow it is recommended that you can build your qt project from the command line.</p>
 <div class="section" id="qmake">
 <h3>15.3.1. QMake<a class="headerlink" href="#qmake" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-2">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>background, drawbacks, benefits</li>
-<li>a basic example</li>
-</ul>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configiration, external dependencies and your source files. The simplest source file is probably this:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="c1">// myproject.pro</span>
+
+<span class="nx">SOURCES</span> <span class="o">+=</span> <span class="nx">main</span><span class="p">.</span><span class="nx">cpp</span>
+</pre></div>
 </div>
+<p>Here we build an exectuable application which will have the name <tt class="docutils literal"><span class="pre">myproject</span></tt> based on the project file name. The build will only contain the <tt class="docutils literal"><span class="pre">main.cpp</span></tt> source file. And by default we will use the QtCore and QtGui module for this project. If our project would be a QML application we would need to add the QtQuick and QtQml module to the list:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="c1">// myproject.pro</span>
+
+<span class="nx">QT</span> <span class="o">+=</span> <span class="nx">qml</span> <span class="nx">quick</span>
+
+<span class="nx">SOURCES</span> <span class="o">+=</span> <span class="nx">main</span><span class="p">.</span><span class="nx">cpp</span>
+</pre></div>
+</div>
+<p>Now the build file knows to link against the QtQml and QtQuick Qt modules. QMake use the concept of <tt class="docutils literal"><span class="pre">=</span></tt>, <tt class="docutils literal"><span class="pre">+=`</span> <span class="pre">and</span> <span class="pre">``-=</span></tt> to assign, add, remove elements from a list of options. For example for a pure console build without UI dependencies you would remove the QtGui module:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="c1">// myproject.pro</span>
+
+<span class="nx">QT</span> <span class="o">-=</span> <span class="nx">gui</span>
+
+<span class="nx">SOURCES</span> <span class="o">+=</span> <span class="nx">main</span><span class="p">.</span><span class="nx">cpp</span>
+</pre></div>
+</div>
+<p>When you want to build a library instead of an application you need to change the build template:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="c1">// myproject.pro</span>
+<span class="nx">TEMPLATE</span> <span class="o">=</span> <span class="nx">lib</span>
+
+<span class="nx">QT</span> <span class="o">-=</span> <span class="nx">gui</span>
+
+<span class="nx">HEADERS</span> <span class="o">+=</span> <span class="nx">utils</span><span class="p">.</span><span class="nx">h</span>
+<span class="nx">SOURCES</span> <span class="o">+=</span> <span class="nx">utils</span><span class="p">.</span><span class="nx">cpp</span>
+</pre></div>
+</div>
+<p>Now the project will build as a library without UI dependencies and used the <tt class="docutils literal"><span class="pre">utils.h</span></tt> header and the <tt class="docutils literal"><span class="pre">utils.cpp</span></tt> source file. The format of the library will depend on the OS you are building the project.</p>
+<p>Often you wil have more complicated setups and need to build a set of projects. For this qmake offers the <tt class="docutils literal"><span class="pre">subdirs</span></tt> template. Assumy we would have a mylib and a myapp project. Then our setup could be like this:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">my</span><span class="p">.</span><span class="nx">pro</span>
+<span class="nx">mylib</span><span class="o">/</span><span class="nx">mylib</span><span class="p">.</span><span class="nx">pro</span>
+<span class="nx">mylib</span><span class="o">/</span><span class="nx">utils</span><span class="p">.</span><span class="nx">h</span>
+<span class="nx">mylib</span><span class="o">/</span><span class="nx">utils</span><span class="p">.</span><span class="nx">cpp</span>
+<span class="nx">myapp</span><span class="o">/</span><span class="nx">myapp</span><span class="p">.</span><span class="nx">pro</span>
+<span class="nx">myapp</span><span class="o">/</span><span class="nx">main</span><span class="p">.</span><span class="nx">cpp</span>
+</pre></div>
+</div>
+<p>We know already how the mylib.pro and myapp.pro would look like. The my.pro as the overarching project file would look like this:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="c1">// my.pro</span>
+<span class="nx">TEMPLATE</span> <span class="o">=</span> <span class="nx">subdirs</span>
+
+<span class="nx">subdirs</span> <span class="o">=</span> <span class="nx">mylib</span> <span class="o">\</span>
+    <span class="nx">myapp</span>
+
+<span class="nx">myapp</span><span class="p">.</span><span class="nx">depends</span> <span class="o">=</span> <span class="nx">mylib</span>
+</pre></div>
+</div>
+<p>This declares a project with two subproject <tt class="docutils literal"><span class="pre">mylib</span></tt> and <tt class="docutils literal"><span class="pre">myapp</span></tt>. Where <tt class="docutils literal"><span class="pre">myapp</span></tt> depends on <tt class="docutils literal"><span class="pre">mylib</span></tt>. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When running the make file for <tt class="docutils literal"><span class="pre">my.pro</span></tt> then all subproject are also build.</p>
+<p>Sometimes you need to do one thing on one platform and another thing on other platforms based on your configuration. For this qmake introduces the concept of scopes. A scope is a applied when a configuration option is set to true.</p>
+<p>For example to use a unix specific utils implementation you could use:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">unix</span> <span class="p">{</span>
+    <span class="nx">SOURCES</span> <span class="o">+=</span> <span class="nx">utils_unix</span><span class="p">.</span><span class="nx">cpp</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">SOURCES</span> <span class="o">+=</span> <span class="nx">utils</span><span class="p">.</span><span class="nx">cpp</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>What it says is if the CONFIG variable contains a unix option then apply this scope otherwise use the else path. A typical one is to remove the application bundling under mac:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">macx</span> <span class="p">{</span>
+    <span class="nx">CONFIG</span> <span class="o">-=</span> <span class="nx">app_bundle</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will create your application as a plain executable under mac and not as a <tt class="docutils literal"><span class="pre">.app</span></tt> folder which is used for application instalation.</p>
+<p>QMake based projects are normally the choice number one when you start programming Qt applications. But there are also other options out there. All have their benefits and drawbacks. We will shortly discuss these other options in the next topcis.</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><a class="reference external" href="http://doc.qt.io/qt-5//qmake-manual.html">QMake Manual</a> - Table of contents of the qmake manual</li>
+<li><a class="reference external" href="http://doc.qt.io/qt-5//qmake-language.html">QMake Language</a> - Value assignment, scopes and so like</li>
+<li><a class="reference external" href="http://doc.qt.io/qt-5//qmake-variable-reference.html">QMake Variables</a> - Variables like TEMPLATE, CONFIG, QT are explained here</li>
+</ul>
 </div>
 <div class="section" id="cmake">
 <h3>15.3.2. CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23cmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-3">
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23cmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>CMake is a tool create by Kitware. Kitware is very well known for their 3D visualitation software VTK and also CMake, the cross platform makefile generator. It uses a series of <tt class="docutils literal"><span class="pre">CMakeLists.txt</span></tt> files to generate platform specific make files. CMake is used by the KDE project and as such has a special relationship with the Qt community.</p>
+<p>The <tt class="docutils literal"><span class="pre">CMakeLists.txt</span></tt> file to store the project configuration. For a simple hello world using QtCore the project file would look like this:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="c1">// ensure cmake version is at least 3.0</span>
+<span class="nx">cmake_minimum_required</span><span class="p">(</span><span class="nx">VERSION</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="c1">// adds the source and build location to the include path</span>
+<span class="nx">set</span><span class="p">(</span><span class="nx">CMAKE_INCLUDE_CURRENT_DIR</span> <span class="nx">ON</span><span class="p">)</span>
+<span class="c1">// Qt&#39;s MOC tool shall be automatically invoked</span>
+<span class="nx">set</span><span class="p">(</span><span class="nx">CMAKE_AUTOMOC</span> <span class="nx">ON</span><span class="p">)</span>
+<span class="c1">// using the Qt5Core module</span>
+<span class="nx">find_package</span><span class="p">(</span><span class="nx">Qt5Core</span><span class="p">)</span>
+<span class="c1">// create excutable helloworld using main.cpp</span>
+<span class="nx">add_executable</span><span class="p">(</span><span class="nx">helloworld</span> <span class="nx">main</span><span class="p">.</span><span class="nx">cpp</span><span class="p">)</span>
+<span class="c1">// helloworld links against Qt5Core</span>
+<span class="nx">target_link_libraries</span><span class="p">(</span><span class="nx">helloworld</span> <span class="k">Qt5:</span><span class="o">:</span><span class="nx">Core</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will build a helloworld executable using main.cpp and linked agains the external Qt5Core library. The build file can be modified to be more generic:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="c1">// sets the PROJECT_NAME variable</span>
+<span class="nx">project</span><span class="p">(</span><span class="nx">helloworld</span><span class="p">)</span>
+<span class="nx">cmake_minimum_required</span><span class="p">(</span><span class="nx">VERSION</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="nx">set</span><span class="p">(</span><span class="nx">CMAKE_INCLUDE_CURRENT_DIR</span> <span class="nx">ON</span><span class="p">)</span>
+<span class="nx">set</span><span class="p">(</span><span class="nx">CMAKE_AUTOMOC</span> <span class="nx">ON</span><span class="p">)</span>
+<span class="nx">find_package</span><span class="p">(</span><span class="nx">Qt5Core</span><span class="p">)</span>
+
+<span class="c1">// creates a SRC_LIST variable with main.cpp as single entry</span>
+<span class="nx">set</span><span class="p">(</span><span class="nx">SRC_LIST</span> <span class="nx">main</span><span class="p">.</span><span class="nx">cpp</span><span class="p">)</span>
+<span class="c1">// add an executable based on the project name and source list</span>
+<span class="nx">add_executable</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">PROJECT_NAME</span><span class="p">}</span> <span class="nx">$</span><span class="p">{</span><span class="nx">SRC_LIST</span><span class="p">})</span>
+<span class="c1">// links Qt5Core to the project executable</span>
+<span class="nx">target_link_libraries</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">PROJECT_NAME</span><span class="p">}</span> <span class="k">Qt5:</span><span class="o">:</span><span class="nx">Core</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You see CMake is quit powerful. It takes some time to get used to the syntax. What is said in general that CMake is better suited for large and complex projects.</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cmake.org/documentation/">CMake Help</a> - available online but also as QtHelp format</li>
+<li><a class="reference external" href="http://www.cmake.org/runningcmake/">Running CMake</a></li>
+<li><a class="reference external" href="https://techbase.kde.org/Development/Tutorials/CMake">KDE CMake Tutorial</a></li>
+<li><a class="reference external" href="http://www.kitware.com/products/books/CMakeBook.html">CMake Book</a></li>
+<li><a class="reference external" href="http://www.cmake.org/cmake/help/v3.0/manual/cmake-qt.7.html">CMake and Qt</a></li>
+</ul>
+<div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>background, KDE, benefits, drawbacks, etc</li>
@@ -457,20 +561,20 @@
 <div class="section" id="common-qt-classes">
 <h2>15.4. Common Qt Classes<a class="headerlink" href="#common-qt-classes" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23common-qt-classes&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">QObject</span></tt> class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.</p>
-<div class="admonition-todo admonition" id="index-4">
+<div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QString, QStringList</li>
 <li>unicode, arg()</li>
 </ul>
 </div>
-<div class="admonition-todo admonition" id="index-5">
+<div class="admonition-todo admonition" id="index-2">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QList, foreach, iterators (both C++-style and JavaStyle)</li>
 </ul>
 </div>
-<div class="admonition-todo admonition" id="index-6">
+<div class="admonition-todo admonition" id="index-3">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QFile, QTextReader</li>
@@ -479,7 +583,7 @@
 </div>
 <div class="section" id="models-in-c">
 <h2>15.5. Models in C++<a class="headerlink" href="#models-in-c" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23models-in-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-7">
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23models-in-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-4">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QAbstractListModel</li>
@@ -490,7 +594,7 @@
 </div>
 <div class="section" id="asynchronous-data-retrieval">
 <h3>15.5.1. Asynchronous Data Retrieval<a class="headerlink" href="#asynchronous-data-retrieval" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23asynchronous-data-retrieval&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-8">
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23asynchronous-data-retrieval&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-5">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>canFetchMore/fetchMore + beginInsertRows/endInsertRows</li>
@@ -500,7 +604,7 @@
 </div>
 <div class="section" id="sql-models">
 <h3>15.5.2. SQL Models<a class="headerlink" href="#sql-models" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23sql-models&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-9">
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23sql-models&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-6">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QSqlTableModel</li>
