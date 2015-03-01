@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. Get Started &mdash; Qt5 Cadaques Book v2014-12</title>
+    <title>2. Get Started &mdash; Qt5 Cadaques Book v2015-03</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2014-12',
+        VERSION:     '2015-03',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2014-12" href="../index.html" />
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../index.html" />
     <link rel="next" title="3. Qt Creator IDE" href="../ch03/index.html" />
     <link rel="prev" title="1. Meet Qt 5" href="../ch01/index.html" />
 <meta charset='utf-8'>
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2014-12</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -80,6 +80,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Native Plugins</a></li>
 </ul>
 </ul>
 </li>
@@ -231,7 +233,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">HelloWord.qml</span></tt> is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it&#8217;s describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 300 x 300 pixel geometry with a centered text &#8220;Hello World&#8221;. A mouse area spans the whole rectangle and when the user clicks it, the application quits.</p>
+<p>The <tt class="docutils literal"><span class="pre">HelloWord.qml</span></tt> is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it&#8217;s describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 360 x 360 pixel geometry with a centered text &#8220;Hello World&#8221;. A mouse area spans the whole rectangle and when the user clicks it, the application quits.</p>
 <div class="admonition-todo admonition" id="index-4">
 <p class="first admonition-title">Todo</p>
 <p class="last">&#8220;just so much it&#8217;s describes the user interface in a series of hierarchical elements&#8221;</p>
@@ -353,13 +355,13 @@ make -j4
     <span class="c1">// loop forever macro</span>
     <span class="n">forever</span> <span class="p">{</span>
         <span class="n">QString</span> <span class="n">line</span> <span class="o">=</span> <span class="n">stream</span><span class="p">.</span><span class="n">readLine</span><span class="p">();</span>
-        <span class="c1">// test for empty string &#39;QString(&quot;&quot;)&#39;</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">())</span> <span class="p">{</span>
-            <span class="k">continue</span><span class="p">;</span>
-        <span class="p">}</span>
         <span class="c1">// test for null string &#39;String()&#39;</span>
         <span class="k">if</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">isNull</span><span class="p">())</span> <span class="p">{</span>
             <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// test for empty string &#39;QString(&quot;&quot;)&#39;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">continue</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="n">QStringList</span> <span class="n">row</span><span class="p">;</span>
         <span class="c1">// for each loop to iterate over containers</span>
@@ -661,7 +663,7 @@ m_model-&gt;select();
 </div>
 <div class="section" id="summary">
 <h2>2.4. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch02%2Findex.html%23summary&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>We have seen how to install the Qt SDK and how to create our first application. The we walked you through the different application types to give you and overview of Qt. Showed off some features Qt offers you for application development. I hope you got a good impression that Qt is a very rich user interface toolkit and offers everything an application developer can hope for and more. Still Qt does not lock you into you always can use other libraries or extend Qt yourself. It is also rich when it comes to supporting different application models: console, classical desktop user interface and touch user interface.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch02%2Findex.html%23summary&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>We have seen how to install the Qt SDK and how to create our first application. Then we walked you through the different application types to give you an overview of Qt, showing off some features Qt offers for application development. I hope you got a good impression that Qt is a very rich user interface toolkit and offers everything an application developer can hope for and more. Still, Qt does not lock you into specific libraries, as you always can use other libraries or extend Qt yourself. It is also rich when it comes to supporting different application models: console, classical desktop user interface and touch user interface.</p>
 </div>
 </div>
 
@@ -678,7 +680,7 @@ m_model-&gt;select();
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 22, 2014.<br/>
+      Last updated on Mar 01, 2015.<br/>
     </p>
   </div>
 </footer>

@@ -76,7 +76,7 @@ Another file, ``HelloWorld.qml``, is our application code. Open it and try to gu
         }
     }
 
-The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it's describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 300 x 300 pixel geometry with a centered text "Hello World". A mouse area spans the whole rectangle and when the user clicks it, the application quits.
+The ``HelloWord.qml`` is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it's describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 360 x 360 pixel geometry with a centered text "Hello World". A mouse area spans the whole rectangle and when the user clicks it, the application quits.
 
 .. todo:: "just so much it's describes the user interface in a series of hierarchical elements"
 
@@ -230,13 +230,13 @@ In the next snippet we read a CSV file from the local directory and loop over th
         // loop forever macro
         forever {
             QString line = stream.readLine();
-            // test for empty string 'QString("")'
-            if(line.isEmpty()) {
-                continue;
-            }
             // test for null string 'String()'
             if(line.isNull()) {
                 break;
+            }
+            // test for empty string 'QString("")'
+            if(line.isEmpty()) {
+                continue;
             }
             QStringList row;
             // for each loop to iterate over containers
@@ -596,7 +596,7 @@ Summary
 
 .. issues:: ch02
 
-We have seen how to install the Qt SDK and how to create our first application. The we walked you through the different application types to give you and overview of Qt. Showed off some features Qt offers you for application development. I hope you got a good impression that Qt is a very rich user interface toolkit and offers everything an application developer can hope for and more. Still Qt does not lock you into you always can use other libraries or extend Qt yourself. It is also rich when it comes to supporting different application models: console, classical desktop user interface and touch user interface.
+We have seen how to install the Qt SDK and how to create our first application. Then we walked you through the different application types to give you an overview of Qt, showing off some features Qt offers for application development. I hope you got a good impression that Qt is a very rich user interface toolkit and offers everything an application developer can hope for and more. Still, Qt does not lock you into specific libraries, as you always can use other libraries or extend Qt yourself. It is also rich when it comes to supporting different application models: console, classical desktop user interface and touch user interface.
 
 
 

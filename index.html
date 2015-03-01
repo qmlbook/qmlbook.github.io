@@ -4,18 +4,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <title>Qt5 Cadaques &mdash; Qt5 Cadaques Book v2015-12</title>
-
+    
+    <title>Qt5 Cadaques &mdash; Qt5 Cadaques Book v2015-03</title>
+    
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2014-12',
+        VERSION:     '2015-03',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2014-12" href="#" />
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="#" />
     <link rel="next" title="1. Meet Qt 5" href="ch01/index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -49,13 +49,13 @@
         </button>
         <a class="navbar-brand" href="#">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2014-12</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
           <ul class="nav navbar-nav">
-
-
+            
+            
               <li class="dropdown globaltoc-container">
   <a role="button"
      id="dLabelGlobalToc"
@@ -79,10 +79,12 @@
 <li class="toctree-l1"><a class="reference internal" href="ch12/index.html">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch16/index.html">16. Native Plugins</a></li>
 </ul>
 </ul>
 </li>
-
+              
                 <li class="dropdown">
   <a role="button"
      id="dLabelLocalToc"
@@ -100,26 +102,26 @@
 </ul>
 </ul>
 </li>
-
-
-
-
-
+              
+            
+            
+              
+                
   <li>
     <a href="ch01/index.html" title="Next Chapter: 1. Meet Qt 5"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">1. Meet Qt 5 &raquo;</span>
     </a>
   </li>
-
-
-
-
-
+              
+            
+            
+            
+            
               <li class="hidden-sm"></li>
-
+            
           </ul>
 
-
-
+          
+            
 <form class="navbar-form navbar-right" action="search.html" method="get">
  <div class="form-group">
   <input type="text" name="q" class="form-control" placeholder="Search" />
@@ -127,7 +129,7 @@
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
-
+          
         </div>
     </div>
   </div>
@@ -135,10 +137,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-
+      
   <div class="section" id="a-book-about-qt5">
 <h1>A Book about Qt5<a class="headerlink" href="#a-book-about-qt5" title="Permalink to this headline">¶</a></h1>
-<p>Last Build: December 22, 2014 at 17:41 CET</p>
+<p>Last Build: March 01, 2015 at 09:30 CET</p>
 <div class="topic">
 <p class="topic-title first">Welcome</p>
 <p>Welcome to the online book of Qt5 Cadaques! Why Qt5? Because Qt5 is awesome! Why cadaques? Because one of the authors had a great holiday in this rocky coast line in the north-east of spain.</p>
@@ -150,7 +152,7 @@
 <li><strong>We love your support</strong>. If you find any errors or have suggestions, please use our feedback system (the <img alt="issues" src="_images/issues.png" /> links). It will create a new ticket-entry in our ticket system and help us to keep track.</li>
 <li><strong>Be patient.</strong> We are working in our spare time on the book and we depend on the support of our companies and family.</li>
 </ol>
-<p>Download this book in <a class="reference external" href="qt5_cadaques.pdf">PDF</a>, or <a class="reference external" href="qt5_cadaques.epub">ePub</a> form for free.</p>
+<p>Download this book in <a class="reference external" href="assets/qt5_cadaques.pdf">PDF</a>, or <a class="reference external" href="assets/qt5_cadaques.epub">ePub</a> form for free.</p>
 <p>Enjoy!</p>
 </div>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+index.html%23a-book-about-qt5&labels=master">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=master&page=1&state=open">View</a></div><div class="section" id="content">
@@ -171,34 +173,31 @@
 <li class="toctree-l1"><a class="reference internal" href="ch12/index.html">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch16/index.html">16. Native Plugins</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="chapter-queue">
 <h2>Chapter Queue<a class="headerlink" href="#chapter-queue" title="Permalink to this headline">¶</a></h2>
 <p>The chapter queue are the chapters we are working on. They might be almost ready or in an infante state. Give it a try if you like.</p>
-<ul class="simple">
-<li><a class="reference internal" href="ch15/index.html"><em>Qt and C++</em></a></li>
-<li><a class="reference internal" href="ch16/index.html"><em>Native Plugins</em></a></li>
-<li><a class="reference internal" href="ch17/index.html"><em>Scenegraph Nodes</em></a></li>
-</ul>
 </div>
 </div>
 
 
     </div>
-
+      
   </div>
 </div>
 <footer class="footer">
   <div class="container">
     <p class="pull-right">
       <a href="#">Back to top</a>
-
+      
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 22, 2014.<br/>
+      Last updated on Mar 01, 2015.<br/>
     </p>
   </div>
 </footer>

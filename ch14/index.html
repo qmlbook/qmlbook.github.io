@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>14. JavaScript &mdash; Qt5 Cadaques Book v2014-12</title>
+    <title>14. JavaScript &mdash; Qt5 Cadaques Book v2015-03</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2014-12',
+        VERSION:     '2015-03',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,8 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2014-12" href="../index.html" />
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../index.html" />
+    <link rel="next" title="15. Qt and C++" href="../ch15/index.html" />
     <link rel="prev" title="13. Dynamic QML" href="../ch13/index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -49,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2014-12</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -79,6 +80,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Native Plugins</a></li>
 </ul>
 </ul>
 </li>
@@ -93,9 +96,10 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">14. JavaScript</a><ul>
-<li><a class="reference internal" href="#the-language">14.1. The Language</a></li>
-<li><a class="reference internal" href="#js-objects">14.2. JS Objects</a></li>
-<li><a class="reference internal" href="#creating-a-js-console">14.3. Creating a JS Console</a></li>
+<li><a class="reference internal" href="#browser-html-vs-qtquick-qml">14.1. Browser/HTML vs QtQuick/QML</a></li>
+<li><a class="reference internal" href="#the-language">14.2. The Language</a></li>
+<li><a class="reference internal" href="#js-objects">14.3. JS Objects</a></li>
+<li><a class="reference internal" href="#creating-a-js-console">14.4. Creating a JS Console</a></li>
 </ul>
 </li>
 </ul>
@@ -108,6 +112,10 @@
                 
   <li>
     <a href="../ch13/index.html" title="Previous Chapter: 13. Dynamic QML"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 13. Dynamic QML</span>
+    </a>
+  </li>
+  <li>
+    <a href="../ch15/index.html" title="Next Chapter: 15. Qt and C++"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">15. Qt and C++ &raquo;</span>
     </a>
   </li>
               
@@ -138,9 +146,10 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">14. JavaScript</a><ul>
-<li><a class="reference internal" href="#the-language">14.1. The Language</a></li>
-<li><a class="reference internal" href="#js-objects">14.2. JS Objects</a></li>
-<li><a class="reference internal" href="#creating-a-js-console">14.3. Creating a JS Console</a></li>
+<li><a class="reference internal" href="#browser-html-vs-qtquick-qml">14.1. Browser/HTML vs QtQuick/QML</a></li>
+<li><a class="reference internal" href="#the-language">14.2. The Language</a></li>
+<li><a class="reference internal" href="#js-objects">14.3. JS Objects</a></li>
+<li><a class="reference internal" href="#creating-a-js-console">14.4. Creating a JS Console</a></li>
 </ul>
 </li>
 </ul>
@@ -205,8 +214,14 @@
 <p class="first admonition-title">Note</p>
 <p class="last">In general: backend developers are functional driven and frontend developers are user story driven.</p>
 </div>
+<div class="section" id="browser-html-vs-qtquick-qml">
+<h2>14.1. Browser/HTML vs QtQuick/QML<a class="headerlink" href="#browser-html-vs-qtquick-qml" title="Permalink to this headline">¶</a></h2>
+<p>The browser is the runtime to render HTML and execute the Javascript associated with the HTML. Nowadays modern web applications contain much more JavaScript then HTML. The Javascript inside the browser is a standard ECMAScript environment with some browser additions. A typical JS environment inside the browser knows the <tt class="docutils literal"><span class="pre">window</span></tt> object to access the browser window. There are also the basic DOM selectors which are used by jQuery to provide the CSS selectors. Additional the is a <tt class="docutils literal"><span class="pre">setTimeout</span></tt> function to call a function after a certain time. Besides these the JS is standard JavaScript environment similar to QML/JS.</p>
+<p>What is also different is where JS can appear inside HTML and QML. in HTML you can only add JS on event handlers (e.g. page loaded, mouse pressed). For example your JS initializes normally in page load, which is comparable to <tt class="docutils literal"><span class="pre">Component.onCompleted</span></tt> in QML. For example you can not use JS for property bindings (at least not directly, AngularJS enhances the DOM tree to allow these, but this is far away from standard HTML).</p>
+<p>So in QML JS is much more a fist-class citizen and much deeper integrated into the QML render tree. Which makes the syntax much more readable. Besides this people which have developed HTML/JS applications will feel at home inside QML/JS.</p>
+</div>
 <div class="section" id="the-language">
-<h2>14.1. The Language<a class="headerlink" href="#the-language" title="Permalink to this headline">¶</a></h2>
+<h2>14.2. The Language<a class="headerlink" href="#the-language" title="Permalink to this headline">¶</a></h2>
 <p>This chapter will not give you a general introducton to JavaScript. There are other books out there or for a general introduction ot JavaScript, please visit this great side on <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">Mozilla Developer Network</a>.</p>
 <p>On the surface javascript is a very common language and not differs a lot from other languages:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">countDown</span><span class="p">()</span> <span class="p">{</span>
@@ -270,7 +285,7 @@
 </div>
 </div>
 <div class="section" id="js-objects">
-<h2>14.2. JS Objects<a class="headerlink" href="#js-objects" title="Permalink to this headline">¶</a></h2>
+<h2>14.3. JS Objects<a class="headerlink" href="#js-objects" title="Permalink to this headline">¶</a></h2>
 <p>While working with JS there are some objects and methods which are more frequently used. This is a small collection of them.</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">Math.floor(v)</span></tt>, <tt class="docutils literal"><span class="pre">Math.ceil(v)</span></tt>, <tt class="docutils literal"><span class="pre">Math.round(v)</span></tt> - largest, smallest, rounded integer from float</li>
@@ -346,14 +361,14 @@
 </div>
 </div>
 <div class="section" id="creating-a-js-console">
-<h2>14.3. Creating a JS Console<a class="headerlink" href="#creating-a-js-console" title="Permalink to this headline">¶</a></h2>
+<h2>14.4. Creating a JS Console<a class="headerlink" href="#creating-a-js-console" title="Permalink to this headline">¶</a></h2>
 <p>As a little example we will create a JS console. We need an input field where the user can enter its JS expressions and ideally a list of output results. As this should more look like a desktop application we use the QtQuick Controls module.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A JS console inside your next project can be really benefitical for testing. Enhanced with a Quake-Terminal effect it is also good to impress customers. To use it wisely you need to control the scope the JS console evaluates in, e.g. the current visible screen, the main data model, a singleton core object or all together.</p>
 </div>
 <img alt="../_images/jsconsole.png" src="../_images/jsconsole.png" />
-<p>We use Qt Creator to create a QtQuick UI project using QtQuick controls. We call the project <cite>JSConsole</cite>. After the wizard has finished we have already a basic structure for the application with an application window and a menu to exit the application.</p>
+<p>We use Qt Creator to create a Qt Quick UI project using QtQuick controls. We call the project <cite>JSConsole</cite>. After the wizard has finished we have already a basic structure for the application with an application window and a menu to exit the application.</p>
 <p>For the input we use a TextField and a Button to send the input for evaluation. The result of the expression evaluation is displayed using a ListView with a ListModel as the model and two labels to display the expression and the evaluated result.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// part of JSConsole.qml</span>
 <span class="nx">ApplicationWindow</span> <span class="p">{</span>
@@ -492,7 +507,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 22, 2014.<br/>
+      Last updated on Mar 01, 2015.<br/>
     </p>
   </div>
 </footer>

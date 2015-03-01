@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6. Model-View-Delegate &mdash; Qt5 Cadaques Book v2014-12</title>
+    <title>6. Model-View-Delegate &mdash; Qt5 Cadaques Book v2015-03</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2014-12',
+        VERSION:     '2015-03',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2014-12" href="../index.html" />
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../index.html" />
     <link rel="next" title="7. Canvas Element" href="../ch07/index.html" />
     <link rel="prev" title="5. Fluid Elements" href="../ch05/index.html" />
 <meta charset='utf-8'>
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2014-12</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -80,6 +80,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Native Plugins</a></li>
 </ul>
 </ul>
 </li>
@@ -197,7 +199,7 @@
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch06%2Findex.html%23model-view-delegate&labels=ch06">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch06&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: December 22, 2014 at 17:41 CET</p>
+<p>Last Build: March 01, 2015 at 09:30 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>In QtQuick, data is separated from the presentation through a model-view separation. For each view, the visualization of each data element is separated into a delegate. QtQuick comes with a set of predefined models and views. To utilize the system, one must understand these classes and know how to create appropriate delegates to get the right look and feel.</p>
@@ -216,7 +218,7 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
 <div class="section" id="basic-models">
 <h2>6.2. Basic Models<a class="headerlink" href="#basic-models" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch06%2Findex.html%23basic-models&labels=ch06">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch06&page=1&state=open">View</a></div><p>The most basic way to separate the data from the presentation is to use the <tt class="docutils literal"><span class="pre">Repeater</span></tt> element. It is used to instantiate an array of items, and is easy to combine with a positioner to populate a part of the user interface. A repeater uses a model, which can be anything from the number of items to instantiate, to a fully blown model gathering data from the Internet.</p>
-<p>In the most basic for, the repeater can be used to instantiate a specified number of items. Each item will have access to an attached property, the variable <tt class="docutils literal"><span class="pre">index</span></tt>, that can be used to tell the items apart. In the example below, a repeater is used to create 10 instances of an item. The number of items are controlled using the <tt class="docutils literal"><span class="pre">model</span></tt> property. For each item, the <tt class="docutils literal"><span class="pre">Rectangle</span></tt> containing a <tt class="docutils literal"><span class="pre">Text</span></tt> element found inside the <tt class="docutils literal"><span class="pre">Repeater</span></tt> item, is instantiated. As you can tell, the <tt class="docutils literal"><span class="pre">text</span></tt> property is set to the <tt class="docutils literal"><span class="pre">index</span></tt> value, thus the items are numbered from zero to nine.</p>
+<p>In its simplest form, the repeater can be used to instantiate a specified number of items. Each item will have access to an attached property, the variable <tt class="docutils literal"><span class="pre">index</span></tt>, that can be used to tell the items apart. In the example below, a repeater is used to create 10 instances of an item. The number of items are controlled using the <tt class="docutils literal"><span class="pre">model</span></tt> property. For each item, the <tt class="docutils literal"><span class="pre">Rectangle</span></tt> containing a <tt class="docutils literal"><span class="pre">Text</span></tt> element found inside the <tt class="docutils literal"><span class="pre">Repeater</span></tt> item, is instantiated. As you can tell, the <tt class="docutils literal"><span class="pre">text</span></tt> property is set to the <tt class="docutils literal"><span class="pre">index</span></tt> value, thus the items are numbered from zero to nine.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 <span class="kr">import</span> <span class="s2">&quot;../common&quot;</span>
 
@@ -603,7 +605,7 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
 <div class="section" id="delegate">
 <h2>6.4. Delegate<a class="headerlink" href="#delegate" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch06%2Findex.html%23delegate&labels=ch06">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch06&page=1&state=open">View</a></div><p>When it comes to using models and views in a custom user interface, the delegate plays a huge role in creating a look. As each item in a the model are visualized through a delegate, what is actually visible to the user are the delegates.</p>
-<p>Each delegate gets access to a number or attached properties, some from the data model, others from the view. From the model, the properties conveys the data for each item to the delegate. From the view, the properties convey state information related to the delegate within the view.</p>
+<p>Each delegate gets access to a number of attached properties, some from the data model, others from the view. From the model, the properties convey the data for each item to the delegate. From the view, the properties convey state information related to the delegate within the view.</p>
 <p>The most commonly used properties attached from the view are <tt class="docutils literal"><span class="pre">ListView.isCurrentItem</span></tt> and <tt class="docutils literal"><span class="pre">ListView.view</span></tt>. The first is a boolean indicating if the item is the current item, while the latter is a read-only reference to the actual view. Through access to the view, it is possible to create general, reusable delegates that adapt to the size and nature of the view in which they are contained. In the example below, the <tt class="docutils literal"><span class="pre">width</span></tt> of each delegate is bound to the <tt class="docutils literal"><span class="pre">width</span></tt> of the view, while the background <tt class="docutils literal"><span class="pre">color</span></tt> of each delegate depends on the attached <tt class="docutils literal"><span class="pre">ListView.isCurrentItem</span></tt> property.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
@@ -1217,7 +1219,7 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 22, 2014.<br/>
+      Last updated on Mar 01, 2015.<br/>
     </p>
   </div>
 </footer>

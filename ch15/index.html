@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Qt and C++ &mdash; Qt5 Cadaques Book v2014-12</title>
+    <title>15. Qt and C++ &mdash; Qt5 Cadaques Book v2015-03</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2014-12',
+        VERSION:     '2015-03',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,9 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2014-12" href="../index.html" />
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../index.html" />
+    <link rel="next" title="16. Native Plugins" href="../ch16/index.html" />
+    <link rel="prev" title="14. JavaScript" href="../ch14/index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -48,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2014-12</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -63,7 +65,7 @@
      href="../index.html">Chapters <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../ch01/index.html">1. Meet Qt 5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch02/index.html">2. Get Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch03/index.html">3. Qt Creator IDE</a></li>
@@ -78,6 +80,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Native Plugins</a></li>
 </ul>
 </ul>
 </li>
@@ -91,18 +95,18 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Qt and C++</a><ul>
-<li><a class="reference internal" href="#a-boilerplate-application">A Boilerplate Application</a></li>
-<li><a class="reference internal" href="#the-qobject">The QObject</a></li>
-<li><a class="reference internal" href="#build-systems">Build Systems</a><ul>
-<li><a class="reference internal" href="#qmake">QMake</a></li>
-<li><a class="reference internal" href="#cmake">CMake</a></li>
+<li><a class="reference internal" href="#">15. Qt and C++</a><ul>
+<li><a class="reference internal" href="#a-boilerplate-application">15.1. A Boilerplate Application</a></li>
+<li><a class="reference internal" href="#the-qobject">15.2. The QObject</a></li>
+<li><a class="reference internal" href="#build-systems">15.3. Build Systems</a><ul>
+<li><a class="reference internal" href="#qmake">15.3.1. QMake</a></li>
+<li><a class="reference internal" href="#cmake">15.3.2. CMake</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#common-qt-classes">Common Qt Classes</a></li>
-<li><a class="reference internal" href="#models-in-c">Models in C++</a><ul>
-<li><a class="reference internal" href="#asynchronous-data-retrieval">Asynchronous Data Retrieval</a></li>
-<li><a class="reference internal" href="#sql-models">SQL Models</a></li>
+<li><a class="reference internal" href="#common-qt-classes">15.4. Common Qt Classes</a></li>
+<li><a class="reference internal" href="#models-in-c">15.5. Models in C++</a><ul>
+<li><a class="reference internal" href="#asynchronous-data-retrieval">15.5.1. Asynchronous Data Retrieval</a></li>
+<li><a class="reference internal" href="#sql-models">15.5.2. SQL Models</a></li>
 </ul>
 </li>
 </ul>
@@ -115,6 +119,14 @@
             
               
                 
+  <li>
+    <a href="../ch14/index.html" title="Previous Chapter: 14. JavaScript"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 14. JavaScript</span>
+    </a>
+  </li>
+  <li>
+    <a href="../ch16/index.html" title="Next Chapter: 16. Native Plugins"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">16. Native Plugi... &raquo;</span>
+    </a>
+  </li>
               
             
             
@@ -142,18 +154,18 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Qt and C++</a><ul>
-<li><a class="reference internal" href="#a-boilerplate-application">A Boilerplate Application</a></li>
-<li><a class="reference internal" href="#the-qobject">The QObject</a></li>
-<li><a class="reference internal" href="#build-systems">Build Systems</a><ul>
-<li><a class="reference internal" href="#qmake">QMake</a></li>
-<li><a class="reference internal" href="#cmake">CMake</a></li>
+<li><a class="reference internal" href="#">15. Qt and C++</a><ul>
+<li><a class="reference internal" href="#a-boilerplate-application">15.1. A Boilerplate Application</a></li>
+<li><a class="reference internal" href="#the-qobject">15.2. The QObject</a></li>
+<li><a class="reference internal" href="#build-systems">15.3. Build Systems</a><ul>
+<li><a class="reference internal" href="#qmake">15.3.1. QMake</a></li>
+<li><a class="reference internal" href="#cmake">15.3.2. CMake</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#common-qt-classes">Common Qt Classes</a></li>
-<li><a class="reference internal" href="#models-in-c">Models in C++</a><ul>
-<li><a class="reference internal" href="#asynchronous-data-retrieval">Asynchronous Data Retrieval</a></li>
-<li><a class="reference internal" href="#sql-models">SQL Models</a></li>
+<li><a class="reference internal" href="#common-qt-classes">15.4. Common Qt Classes</a></li>
+<li><a class="reference internal" href="#models-in-c">15.5. Models in C++</a><ul>
+<li><a class="reference internal" href="#asynchronous-data-retrieval">15.5.1. Asynchronous Data Retrieval</a></li>
+<li><a class="reference internal" href="#sql-models">15.5.2. SQL Models</a></li>
 </ul>
 </li>
 </ul>
@@ -165,39 +177,172 @@
     <div class="col-md-9">
       
   <div class="section" id="qt-and-c">
-<h1>Qt and C++<a class="headerlink" href="#qt-and-c" title="Permalink to this headline">¶</a></h1>
+<h1>15. Qt and C++<a class="headerlink" href="#qt-and-c" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qt-and-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Qt is a C++ toolkit. There are many language bindings for Qt, but as Qt is developed in C++, the properties of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qt-and-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Qt is a C++ toolkit with an extension for QML and Javascript. There exists many language bindings for Qt, but as Qt is developed in C++, the spirit of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.</p>
 <p>This chapter will, just as Qt, require the reader to have some basic knowledge of C++. Qt does not rely on advanced C++ features, and I generally consider the Qt style of C++ to be very readable, so do not worry if you feel that your C++ knowledge is shaky.</p>
-<p>Approaching Qt from a C++ direction, you will find that Qt enrichen C++ with a number of modern language features enabled through making introspection data available. This is made possible through the use of the <tt class="docutils literal"><span class="pre">QObject</span></tt> base class. Introspection data, or meta data, maintains information of the classes at run-time. Something that ordinary C++ does not to. This makes it possible to dynamically probe objects for information about such details as their properties and available methods.</p>
-<p>Qt uses this information to enable a very losely bound callback concept using signals and slots. Each signal can be connected to any number of slots. When a signal is emitted from an object instance, the connected slots are invoked. As the signal emitting object does not need to know anything about the object owning the slot and vise versa, this mechanism can be used to create very reusable components with very few inter-component dependencies.</p>
-<p>The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. This feature is used in the WebKit bindings, making it possible to expose C++ objects to Javascript that are a part of an HTML5 application, but also in the QML bindings.</p>
-<p>In addition to this central concept Qt makes it possible to develop cross platform applications using C++. That is, to recompile the same source code for Windows, OS X and Linux. The end result is natively built applications with the look and feel of the target platform. It is also possible to target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.</p>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>Illustration of basic app on all major platforms.</li>
-</ul>
-</div>
-<p>For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platforms&#8217; main loop, and cross platform threading support.</p>
+<p>Approaching Qt from a C++ direction, you will find that Qt enrichen C++ with a number of modern language features enabled through making introspection data available. This is made possible through the use of the <tt class="docutils literal"><span class="pre">QObject</span></tt> base class. Introspection data, or meta data, maintains information of the classes at run-time. Something that ordinary C++ does not do. This makes it possible to dynamically probe objects for information about such details as their properties and available methods.</p>
+<p>Qt uses this meta information to enable a very losely bound callback concept using signals and slots. Each signal can be connected to any number of slots or even other signals. When a signal is emitted from an object instance, the connected slots are invoked. As the signal emitting object does not need to know anything about the object owning the slot and vise versa, this mechanism is used to create very reusable components with very few inter-component dependencies.</p>
+<p>The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. Other bindings for Qt C++ exists and besides the standard Javascript binding a popular one is the Python binding called <a class="reference external" href="http://www.riverbankcomputing.co.uk/software/pyqt/intro">PyQt</a>.</p>
+<p>In addition to this central concept Qt makes it possible to develop cross platform applications using C++. Qt C++ provides a platform abstraction on the different operating systems, which allows the developer to concentrate on the task at hand and not how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X and Linux and Qt takes care about the different OS ways of handling certain things. The end result are natively built applications with the look and feel of the target platform. As the mobile is the new desktop newer Qt version can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.</p>
+<p>When it comes to re-use it is not only the source code which can be re-used it is also the developer skills which are much better re-usable. A team knowing Qt can reach out to far more platforms then a team just focusing on a single platform specific technology and as Qt is so flexible the team can create different system components using the same technology.</p>
+<img alt="../_images/yourapplication.png" src="../_images/yourapplication.png" />
+<p>For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platforms main loop, and cross platform threading  and networking support. The general philosophy is that for an application developer Qt comes with all required functionality included. For domain specific tasks such as to interface to your native libraries Qt comes with several helper classes to make this easier.</p>
 <div class="section" id="a-boilerplate-application">
-<h2>A Boilerplate Application<a class="headerlink" href="#a-boilerplate-application" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23a-boilerplate-application&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The best way to understand Qt is to start from a small demonstration application.</p>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>the main loop</li>
-<li>a basic build configuration using qmake</li>
-<li>how to build and run</li>
-</ul>
+<h2>15.1. A Boilerplate Application<a class="headerlink" href="#a-boilerplate-application" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23a-boilerplate-application&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The best way to understand Qt is to start from a small demonstration application. This application creates a simple <tt class="docutils literal"><span class="pre">&quot;Hello</span> <span class="pre">World!&quot;</span></tt> string and writes it into a file using unicode characters.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;QCoreApplication&gt;</span>
+<span class="cp">#include &lt;QString&gt;</span>
+<span class="cp">#include &lt;QFile&gt;</span>
+<span class="cp">#include &lt;QDir&gt;</span>
+<span class="cp">#include &lt;QTextStream&gt;</span>
+<span class="cp">#include &lt;QDebug&gt;</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">QCoreApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+
+    <span class="c1">// prepare the message</span>
+    <span class="n">QString</span> <span class="n">message</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+
+    <span class="c1">// prepare a file in the users home directory named out.txt</span>
+    <span class="n">QFile</span> <span class="n">file</span><span class="p">(</span><span class="n">QDir</span><span class="o">::</span><span class="n">home</span><span class="p">().</span><span class="n">absoluteFilePath</span><span class="p">(</span><span class="s">&quot;out.txt&quot;</span><span class="p">));</span>
+    <span class="c1">// try to open the file in write mode</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">QIODevice</span><span class="o">::</span><span class="n">WriteOnly</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">qWarning</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Can not open file with write access&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// as we handle text we need to use proper text codecs</span>
+    <span class="n">QTextStream</span> <span class="n">stream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
+    <span class="c1">// write message to file via the text stream</span>
+    <span class="n">stream</span> <span class="o">&lt;&lt;</span> <span class="n">message</span><span class="p">;</span>
+
+    <span class="c1">// do not start the eventloop as this would wait for external IO</span>
+    <span class="c1">// app.exec();</span>
+
+    <span class="c1">// no need to close file, closes automatically when scope ends</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+<p>The simple example demonstrates the use of file access and the correct way of writing text into a file using text codecs via the text stream. For binary data there is a cross platform binary stream called <tt class="docutils literal"><span class="pre">QDataStream</span></tt>. The different classes we use are included using their class name. Another possibility would be to use a module and class name e.g. <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&lt;QtCore/QFile&gt;</span></tt>. For the lazy there is also the possibility to include a whole module using <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&lt;QtCore&gt;</span></tt>. E.g. in <tt class="docutils literal"><span class="pre">QtCore</span></tt> you have the most common classes used for an application, which are not UI dependent. Have a look at the <a class="reference external" href="http://doc.qt.io/qt-5/qtcore-module.html">QtCore class list</a> or the <a class="reference external" href="http://doc.qt.io/qt-5/qtcore-index.html">QtCore overview</a>.</p>
+<p>You build the application using qmake and make. QMake reads a project file and generates a Makefile which then can be called using make. The project file is platform independent and qmake has some rules to apply the platform specific settings to the generated make file. The project can also contain platform scopes for platform sepcific rules, which are required in some specific cases. Here is an example of a simple project file.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp"># build an application</span>
+<span class="n">TEMPLATE</span> <span class="o">=</span> <span class="n">app</span>
+
+<span class="cp"># use the core module and do not use the gui module</span>
+<span class="n">QT</span>       <span class="o">+=</span> <span class="n">core</span>
+<span class="n">QT</span>       <span class="o">-=</span> <span class="n">gui</span>
+
+<span class="cp"># name of the executable</span>
+<span class="n">TARGET</span> <span class="o">=</span> <span class="n">CoreApp</span>
+
+<span class="cp"># allow console output</span>
+<span class="n">CONFIG</span>   <span class="o">+=</span> <span class="n">console</span>
+
+<span class="cp"># for mac remove the application bundling</span>
+<span class="n">macx</span> <span class="p">{</span>
+    <span class="n">CONFIG</span>   <span class="o">-=</span> <span class="n">app_bundle</span>
+<span class="p">}</span>
+
+<span class="cp"># sources to be build</span>
+<span class="n">SOURCES</span> <span class="o">+=</span> <span class="n">main</span><span class="p">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<p>We will not go into depth into this topic just remember Qt uses project files for projects and qmake generates the platform specific make files from these project files.</p>
+<p>The simple code example above just writes the text and exists the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here the same example now using a desktop button to trigger the writing.</p>
+<p>Our <tt class="docutils literal"><span class="pre">main.cpp</span></tt> suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs and own object as you will see shortly.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;QtCore&gt;</span>
+<span class="cp">#include &lt;QtGui&gt;</span>
+<span class="cp">#include &lt;QtWidgets&gt;</span>
+<span class="cp">#include &quot;mainwindow.h&quot;</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">QApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+
+    <span class="n">MainWindow</span> <span class="n">win</span><span class="p">;</span>
+    <span class="n">win</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">);</span>
+    <span class="n">win</span><span class="p">.</span><span class="n">setVisible</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the main we simple create the application object and start the event loop using <tt class="docutils literal"><span class="pre">exec()</span></tt>. For now the application sits in the event loop and waits for user input.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">QApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span> <span class="c1">// init application</span>
+
+    <span class="c1">// create the ui</span>
+
+    <span class="k">return</span> <span class="n">app</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span> <span class="c1">// execute event loop</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Qt offers several UI technologies. For this example we use the Desktop Widgets user interface library using pure Qt C++. For this we create a main window which will host a push button to trigger the functionality and also the main window will host our core functionality which we know from the previous example.</p>
+<img alt="../_images/storecontent.png" src="../_images/storecontent.png" />
+<p>The main window itself is a widget, which if it does not has a parent is a window. This resembles also how Qt sees a user interface as a tree of ui elements. In this case is the main window our root element nd the push button a child of the main window.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#ifndef MAINWINDOW_H</span>
+<span class="cp">#define MAINWINDOW_H</span>
+
+<span class="cp">#include &lt;QtWidgets&gt;</span>
+
+<span class="k">class</span> <span class="nc">MainWindow</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QMainWindow</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">MainWindow</span><span class="p">(</span><span class="n">QWidget</span><span class="o">*</span> <span class="n">parent</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">MainWindow</span><span class="p">();</span>
+<span class="k">public</span> <span class="n">slots</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">storeContent</span><span class="p">();</span>
+<span class="nl">private:</span>
+    <span class="n">QPushButton</span> <span class="o">*</span><span class="n">m_button</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#endif </span><span class="c1">// MAINWINDOW_H</span>
+</pre></div>
+</div>
+<p>Additional we define a public slot called <tt class="docutils literal"><span class="pre">storeContent()</span></tt> whih shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &quot;mainwindow.h&quot;</span>
+
+<span class="n">MainWindow</span><span class="o">::</span><span class="n">MainWindow</span><span class="p">(</span><span class="n">QWidget</span> <span class="o">*</span><span class="n">parent</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">QMainWindow</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">m_button</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s">&quot;Store Content&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+
+    <span class="n">setCentralWidget</span><span class="p">(</span><span class="n">m_button</span><span class="p">);</span>
+    <span class="n">connect</span><span class="p">(</span><span class="n">m_button</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">QPushButton</span><span class="o">::</span><span class="n">clicked</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">MainWindow</span><span class="o">::</span><span class="n">storeContent</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">MainWindow</span><span class="o">::~</span><span class="n">MainWindow</span><span class="p">()</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">storeContent</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;... store content&quot;</span><span class="p">;</span>
+    <span class="n">QString</span> <span class="nf">message</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+    <span class="n">QFile</span> <span class="nf">file</span><span class="p">(</span><span class="n">QDir</span><span class="o">::</span><span class="n">home</span><span class="p">().</span><span class="n">absoluteFilePath</span><span class="p">(</span><span class="s">&quot;out.txt&quot;</span><span class="p">));</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">QIODevice</span><span class="o">::</span><span class="n">WriteOnly</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">qWarning</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Can not open file with write access&quot;</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">QTextStream</span> <span class="n">stream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
+    <span class="n">stream</span> <span class="o">&lt;&lt;</span> <span class="n">message</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the main window we create fist the push button and then register the signal <tt class="docutils literal"><span class="pre">clicked()</span></tt> with the slot <tt class="docutils literal"><span class="pre">storeContent()</span></tt> using the connect method. Every time the signal clicked is emitted the slot slot <tt class="docutils literal"><span class="pre">storeContent()</span></tt> is called. As simple as this, objects communicate via signal and slots with loose coupling.</p>
 </div>
 <div class="section" id="the-qobject">
-<h2>The QObject<a class="headerlink" href="#the-qobject" title="Permalink to this headline">¶</a></h2>
+<h2>15.2. The QObject<a class="headerlink" href="#the-qobject" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23the-qobject&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>As described in the introduction, the <tt class="docutils literal"><span class="pre">QObject</span></tt> is what enables Qt&#8217;s introspection. Is the base class of almost all classes in Qt. Exceptions are value types such as <tt class="docutils literal"><span class="pre">QColor</span></tt>, <tt class="docutils literal"><span class="pre">QString</span></tt> and <tt class="docutils literal"><span class="pre">QList</span></tt>.</p>
 <p>A Qt object is a standard C++ object, but with more abilities. These can be divided into two groups: introspection and memory management. The first means that a Qt object is aware of its class name, its relationship to other classes, as well as its methods and properties. The memory management concept means that each Qt object can be the parent of child objects. The parent <em>owns</em> the children, and when the parent is destroyed, it is responsible for destroying its children.</p>
 <p>The best way of understanding how the <tt class="docutils literal"><span class="pre">QObject</span></tt> abilities affect a class is to take a standard C++ class and Qt enable it. The class shown below represents an ordinary such class.</p>
-<div class="admonition-todo admonition" id="index-2">
+<div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>when is it applicable - individuals, not values</li>
@@ -211,16 +356,20 @@
 <li>Q_INVOKABLE</li>
 </ul>
 </div>
+<p>The person class is a data class with a name and gender properties. The person class uses Qt&#8217;s object system to add meta information to the c++ class. It allows users of a person object to connect to the slots and get notified when the properties get changed.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Person</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span>
 <span class="p">{</span>
-    <span class="n">Q_OBJECT</span>
+    <span class="n">Q_OBJECT</span> <span class="c1">// enabled meta object abilities</span>
 
+    <span class="c1">// property declarations required for QML</span>
     <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">QString</span> <span class="n">name</span> <span class="n">READ</span> <span class="n">name</span> <span class="n">WRITE</span> <span class="n">setName</span> <span class="n">NOTIFY</span> <span class="n">nameChanged</span><span class="p">)</span>
     <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span> <span class="n">READ</span> <span class="n">gender</span> <span class="n">WRITE</span> <span class="n">setGender</span> <span class="n">NOTIFY</span> <span class="n">genderChanged</span><span class="p">)</span>
 
+    <span class="c1">// enables enum introspections</span>
     <span class="n">Q_ENUMS</span><span class="p">(</span><span class="n">Gender</span><span class="p">)</span>
 
 <span class="nl">public:</span>
+    <span class="c1">// standard Qt constructor with parent for memory management</span>
     <span class="n">Person</span><span class="p">(</span><span class="n">QObject</span> <span class="o">*</span><span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 
     <span class="k">enum</span> <span class="n">Gender</span> <span class="p">{</span> <span class="n">Unknown</span><span class="p">,</span> <span class="n">Male</span><span class="p">,</span> <span class="n">Female</span><span class="p">,</span> <span class="n">Other</span> <span class="p">};</span>
@@ -228,20 +377,22 @@
     <span class="n">QString</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
     <span class="n">Gender</span> <span class="n">gender</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-<span class="k">public</span> <span class="n">slots</span><span class="o">:</span>
+<span class="k">public</span> <span class="n">slots</span><span class="o">:</span> <span class="c1">// slots can be connected to signals</span>
     <span class="kt">void</span> <span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="p">);</span>
     <span class="kt">void</span> <span class="nf">setGender</span><span class="p">(</span><span class="n">Gender</span><span class="p">);</span>
 
-<span class="nl">signals:</span>
+<span class="nl">signals:</span> <span class="c1">// signals can be emitted</span>
     <span class="kt">void</span> <span class="nf">nameChanged</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="n">name</span><span class="p">);</span>
     <span class="kt">void</span> <span class="nf">genderChanged</span><span class="p">(</span><span class="n">Gender</span> <span class="n">gender</span><span class="p">);</span>
 
 <span class="nl">private:</span>
+    <span class="c1">// data members</span>
     <span class="n">QString</span> <span class="n">m_name</span><span class="p">;</span>
     <span class="n">Gender</span> <span class="n">m_gender</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
+<p>The constructor passes on the parent to the super class and initialize the members. Qt&#8217;s value classes are automatically initialized. In this case <tt class="docutils literal"><span class="pre">QString</span></tt> will initialize to a null string (<tt class="docutils literal"><span class="pre">QString::isNull()</span></tt>) and the gender member will explicitly initialize to the unknown gender.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">Person</span><span class="o">::</span><span class="n">Person</span><span class="p">(</span><span class="n">QObject</span> <span class="o">*</span><span class="n">parent</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">QObject</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
     <span class="p">,</span> <span class="n">m_gender</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">Unknown</span><span class="p">)</span>
@@ -249,34 +400,33 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>The getter function is named after the property and is normally a simple <tt class="docutils literal"><span class="pre">const</span></tt> function. The setter emits the changed signal when the property really has changed. For this we insert a guard to compare the current value with the new value. And only when the value differs we assign it to the member variable and emit the changed signal.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">QString</span> <span class="n">Person</span><span class="o">::</span><span class="n">name</span><span class="p">()</span> <span class="k">const</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="n">m_name</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">Person</span><span class="o">::</span><span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">)</span>
+<span class="kt">void</span> <span class="n">Person</span><span class="o">::</span><span class="n">setName</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="n">name</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="n">m_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">m_name</span> <span class="o">!=</span> <span class="n">name</span><span class="p">)</span> <span class="c1">// guard</span>
     <span class="p">{</span>
-        <span class="n">m_name</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+        <span class="n">m_name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
         <span class="n">emit</span> <span class="nf">nameChanged</span><span class="p">(</span><span class="n">m_name</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Having a valid class derived from <tt class="docutils literal"><span class="pre">QObject</span></tt>, we have gained some more.</p>
-<div class="admonition-todo admonition" id="index-3">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>demonstrate className, point out the importance of Q_OBJECT</li>
-<li>demonstrate memory management through the c&#8217;tor</li>
-<li>talk about that this is the key to integrating C++ and QML</li>
-</ul>
+<p>Having a class derived from <tt class="docutils literal"><span class="pre">QObject</span></tt>, we have gained more meta object abilities we can explore using the <tt class="docutils literal"><span class="pre">metaObject()</span></tt> method. For example retrieving the class name from the object.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">Person</span><span class="o">*</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+<span class="n">person</span><span class="o">-&gt;</span><span class="n">metaObject</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">className</span><span class="p">();</span> <span class="c1">// &quot;Person&quot;</span>
+<span class="n">Person</span><span class="o">::</span><span class="n">staticMetaObject</span><span class="p">.</span><span class="n">className</span><span class="p">();</span> <span class="c1">// &quot;Person&quot;</span>
+</pre></div>
 </div>
+<p>There are many more features which can be accessed by the <tt class="docutils literal"><span class="pre">QObject</span></tt> base class and the meta object. Please check out the <tt class="docutils literal"><span class="pre">QMetaObject</span></tt> documentation.</p>
 </div>
 <div class="section" id="build-systems">
-<h2>Build Systems<a class="headerlink" href="#build-systems" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23build-systems&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-4">
+<h2>15.3. Build Systems<a class="headerlink" href="#build-systems" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23build-systems&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>why a build system</li>
@@ -284,8 +434,8 @@
 </ul>
 </div>
 <div class="section" id="qmake">
-<h3>QMake<a class="headerlink" href="#qmake" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-5">
+<h3>15.3.1. QMake<a class="headerlink" href="#qmake" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-2">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>background, drawbacks, benefits</li>
@@ -294,8 +444,8 @@
 </div>
 </div>
 <div class="section" id="cmake">
-<h3>CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23cmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-6">
+<h3>15.3.2. CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23cmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-3">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>background, KDE, benefits, drawbacks, etc</li>
@@ -305,22 +455,22 @@
 </div>
 </div>
 <div class="section" id="common-qt-classes">
-<h2>Common Qt Classes<a class="headerlink" href="#common-qt-classes" title="Permalink to this headline">¶</a></h2>
+<h2>15.4. Common Qt Classes<a class="headerlink" href="#common-qt-classes" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23common-qt-classes&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">QObject</span></tt> class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.</p>
-<div class="admonition-todo admonition" id="index-7">
+<div class="admonition-todo admonition" id="index-4">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QString, QStringList</li>
 <li>unicode, arg()</li>
 </ul>
 </div>
-<div class="admonition-todo admonition" id="index-8">
+<div class="admonition-todo admonition" id="index-5">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QList, foreach, iterators (both C++-style and JavaStyle)</li>
 </ul>
 </div>
-<div class="admonition-todo admonition" id="index-9">
+<div class="admonition-todo admonition" id="index-6">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QFile, QTextReader</li>
@@ -328,8 +478,8 @@
 </div>
 </div>
 <div class="section" id="models-in-c">
-<h2>Models in C++<a class="headerlink" href="#models-in-c" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23models-in-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-10">
+<h2>15.5. Models in C++<a class="headerlink" href="#models-in-c" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23models-in-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-7">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QAbstractListModel</li>
@@ -339,8 +489,8 @@
 </ul>
 </div>
 <div class="section" id="asynchronous-data-retrieval">
-<h3>Asynchronous Data Retrieval<a class="headerlink" href="#asynchronous-data-retrieval" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23asynchronous-data-retrieval&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-11">
+<h3>15.5.1. Asynchronous Data Retrieval<a class="headerlink" href="#asynchronous-data-retrieval" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23asynchronous-data-retrieval&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-8">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>canFetchMore/fetchMore + beginInsertRows/endInsertRows</li>
@@ -349,8 +499,8 @@
 </div>
 </div>
 <div class="section" id="sql-models">
-<h3>SQL Models<a class="headerlink" href="#sql-models" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23sql-models&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-12">
+<h3>15.5.2. SQL Models<a class="headerlink" href="#sql-models" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23sql-models&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-9">
 <p class="first admonition-title">Todo</p>
 <ul class="last simple">
 <li>QSqlTableModel</li>
@@ -375,7 +525,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 22, 2014.<br/>
+      Last updated on Mar 01, 2015.<br/>
     </p>
   </div>
 </footer>

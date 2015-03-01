@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Meet Qt 5 &mdash; Qt5 Cadaques Book v2014-12</title>
+    <title>1. Meet Qt 5 &mdash; Qt5 Cadaques Book v2015-03</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2014-12',
+        VERSION:     '2015-03',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2014-12" href="../index.html" />
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../index.html" />
     <link rel="next" title="2. Get Started" href="../ch02/index.html" />
     <link rel="prev" title="A Book about Qt5" href="../index.html" />
 <meta charset='utf-8'>
@@ -50,7 +50,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2014-12</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -80,6 +80,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Native Plugins</a></li>
 </ul>
 </ul>
 </li>
@@ -236,7 +238,7 @@
 <p class="first admonition-title">Note</p>
 <p>Each element has properties, e.g. a image has a <tt class="docutils literal"><span class="pre">width</span></tt>, <tt class="docutils literal"><span class="pre">height</span></tt> but also other properties like a <tt class="docutils literal"><span class="pre">source</span></tt> property.  The size of the image element is automatically deducted from the image size. Otherwise we would need to set the <tt class="docutils literal"><span class="pre">width</span></tt> and <tt class="docutils literal"><span class="pre">height</span></tt> property to some useful pixel values.</p>
 <p>The most standard elements are located in the <tt class="docutils literal"><span class="pre">QtQuick</span></tt> module which we include in the first line with the import statement.</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">id</span></tt> special property is optional and contains an identifier to reference this element later in other places in the document. Important: An <tt class="docutils literal"><span class="pre">id</span></tt> property can not be changed after it has been set and it can not be set during runtime. Using <tt class="docutils literal"><span class="pre">root</span></tt> as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">id</span></tt> special property is optional and contains an identifier to reference this element later in other places in the document. Important: An <tt class="docutils literal"><span class="pre">id</span></tt> property cannot be changed after it has been set and it cannot be set during runtime. Using <tt class="docutils literal"><span class="pre">root</span></tt> as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.</p>
 </div>
 <p>The foreground elements pole and pin wheel of our user interface are placed as separate images.</p>
 <img alt="../_images/pole.png" src="../_images/pole.png" />
@@ -413,7 +415,7 @@ QtSql -&gt; QtCore
 <p>From the <a class="reference external" href="http://wiki.qt-project.org">qt-project wiki</a>:</p>
 <p>&#8220;The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision making processes, and contribute to Qt’s development.&#8221;</p>
 <p>The Qt-Project is an organisation which developes the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is DIGIA, which holds also the comercial rights to Qt.</p>
-<p>Qt has an open-source aspect and a comercial aspect for companies. The comercial aspect is for companies which can not or want not to comply with the open-source licenses. Without the comercial aspect these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt-Project.</p>
+<p>Qt has an open-source aspect and a comercial aspect for companies. The comercial aspect is for companies which can not or will not comply with the open-source licenses. Without the comercial aspect these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt-Project.</p>
 <p>There are many companies world-wide, which make their living out of consultancy and product development using Qt on the various platforms. There are many open-source projects and open-source developers, which rely on Qt as their major development library. It feels good to be part of this vibrant community and to work with this awesome tools and libraries. Does it make you a better person? Maybe:-)</p>
 <p><strong>Contribute here: http://wiki.qt-project.org</strong></p>
 </div>
@@ -432,7 +434,7 @@ QtSql -&gt; QtCore
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 22, 2014.<br/>
+      Last updated on Mar 01, 2015.<br/>
     </p>
   </div>
 </footer>
