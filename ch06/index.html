@@ -199,7 +199,7 @@
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch06%2Findex.html%23model-view-delegate&labels=ch06">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch06&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 01, 2015 at 12:23 CET</p>
+<p>Last Build: March 01, 2015 at 16:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>In QtQuick, data is separated from the presentation through a model-view separation. For each view, the visualization of each data element is separated into a delegate. QtQuick comes with a set of predefined models and views. To utilize the system, one must understand these classes and know how to create appropriate delegates to get the right look and feel.</p>
@@ -208,11 +208,11 @@
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch06%2Findex.html%23concept&labels=ch06">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch06&page=1&state=open">View</a></div><p>One of the most important aspects when developing user interfaces, is to keep the representation of the data separate from the visualization. For instance, a phonebook could be arranged as a vertical list of text entries or a grid of pictures of the contacts. In both cases, the data is identical: the phonebook, but the visualization differs. This division is commonly referred to as the model-view pattern. In this pattern the data is referred to as the model, while the visualization is handled by the view.</p>
 <p>In QML, the model and view are joined by the delegate. The responsibility are divided as follows. The model provides the data. For each data item, there might be multiple values. In the example above, each phonebook entry has a name, a picture and a number. The data is arranged in a view, in which each item is visualized using a delegate. The task of the view is to arrange the delegates, while each delegate shows the values of each model item to the user.</p>
 <p class="graphviz">
-<img src="../_images/graphviz-00dabdd0a911009b7da04ffd00f7c1537eab1281.png" alt="digraph model_view_delegate_roles {
+digraph model_view_delegate_roles {
 View -&gt; Model [label=&quot;Visualizes Model&quot;]
 Delegate -&gt; Model [label=&quot;Visualizes Model Rows&quot;]
 View -&gt; Delegate [label=&quot;Creates and Places&quot;]
-}" />
+}
 </p>
 </div>
 <div class="section" id="basic-models">
