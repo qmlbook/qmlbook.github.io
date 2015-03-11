@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Native Plugins</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -116,7 +115,7 @@
 <li><a class="reference internal" href="#a-simple-model">15.5.1. A simple model</a></li>
 <li><a class="reference internal" href="#more-complex-data">15.5.2. More Complex Data</a></li>
 <li><a class="reference internal" href="#dynamic-data">15.5.3. Dynamic Data</a></li>
-<li><a class="reference internal" href="#sql-models">15.5.4. SQL Models</a></li>
+<li><a class="reference internal" href="#advanced-techniques">15.5.4. Advanced Techniques</a></li>
 </ul>
 </li>
 </ul>
@@ -184,7 +183,7 @@
 <li><a class="reference internal" href="#a-simple-model">15.5.1. A simple model</a></li>
 <li><a class="reference internal" href="#more-complex-data">15.5.2. More Complex Data</a></li>
 <li><a class="reference internal" href="#dynamic-data">15.5.3. Dynamic Data</a></li>
-<li><a class="reference internal" href="#sql-models">15.5.4. SQL Models</a></li>
+<li><a class="reference internal" href="#advanced-techniques">15.5.4. Advanced Techniques</a></li>
 </ul>
 </li>
 </ul>
@@ -1272,17 +1271,8 @@
 </div>
 <p>Model view programming is one of the hardest tasks in Qt. It is one of the very few classes where you have to implement an interface as a normal application developer. All other classes you just use normally. The sketching of models should always start on the QML side. You should envision how your users shouls would your model inside QML. For this it is often a good idea to create a prototype first using the <tt class="docutils literal"><span class="pre">ListModel</span></tt> to see how this best works in QML. This is also true when it comes to defining QML APIs. Making data available from C++ to QML is not only a technology boundary it is also a programming paradigm change from imperative to declarative style programming. So be prepared for some set backs and aha moments:-).</p>
 </div>
-<div class="section" id="sql-models">
-<h3>15.5.4. SQL Models<a class="headerlink" href="#sql-models" title="Permalink to this headline">¶</a></h3>
-<p>Qt provides support for SQL databases. The support is cross platform and cross database, like sqlite, mysql, postgres and others.</p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23sql-models&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>QSqlTableModel</li>
-<li>QSqlQueryModel</li>
-<li>mapping columns to roles</li>
-</ul>
-</div>
+<div class="section" id="advanced-techniques">
+<h3>15.5.4. Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
@@ -1301,7 +1291,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 08, 2015.<br/>
+      Last updated on Mar 11, 2015.<br/>
     </p>
   </div>
 </footer>
