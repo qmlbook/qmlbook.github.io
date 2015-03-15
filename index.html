@@ -80,7 +80,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch15/index.html">15. Qt and C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch16/index.html">16. Native Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch16/index.html">16. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -140,7 +141,7 @@
       
   <div class="section" id="a-book-about-qt5">
 <h1>A Book about Qt5<a class="headerlink" href="#a-book-about-qt5" title="Permalink to this headline">¶</a></h1>
-<p>Last Build: March 11, 2015 at 08:37 CET</p>
+<p>Last Build: March 12, 2015 at 18:10 CET</p>
 <iframe src="https://ghbtns.com/github-btn.html?user=qmlbook&repo=qmlbook&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 
 <iframe src="https://ghbtns.com/github-btn.html?user=qmlbook&repo=qmlbook&type=star&count=true&v=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
@@ -300,13 +301,18 @@
 <li class="toctree-l2"><a class="reference internal" href="ch15/index.html#models-in-c">15.5. Models in C++</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch16/index.html">16. Native Plugins</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="ch16/index.html">16. Extending QML with C++</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ch16/index.html#understanding-the-qml-run-time">16.1. Understanding the QML Run-time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#extending-the-context">16.2. Extending the Context</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#registered-types">16.3. Registered Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#extension-plugins">16.4. Extension Plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#resource-files">16.5. Resource Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#advanced-techniques">16.6. Advanced Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#plugin-content">16.2. Plugin Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#creating-the-plugin">16.3. Creating the plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#fileio-implementation">16.4. FileIO implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#using-fileio">16.5. Using FileIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch16/index.html#summary">16.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assets/index.html">17. Assets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assets/index.html#offline-books">17.1. Offline Books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets/index.html#source-code-examples">17.2. Source Code Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -332,7 +338,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 11, 2015.<br/>
+      Last updated on Mar 14, 2015.<br/>
     </p>
   </div>
 </footer>
@@ -342,7 +348,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-46104829-1', 'qmlbook.org');
+  ga('create', 'UA-46104829-1', 'auto');
   ga('send', 'pageview');
 
 </script>

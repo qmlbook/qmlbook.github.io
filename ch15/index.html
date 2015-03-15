@@ -29,7 +29,7 @@
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../index.html" />
-    <link rel="next" title="16. Native Plugins" href="../ch16/index.html" />
+    <link rel="next" title="16. Extending QML with C++" href="../ch16/index.html" />
     <link rel="prev" title="14. JavaScript" href="../ch14/index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -81,7 +81,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">15. Qt and C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Native Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -133,7 +134,7 @@
     </a>
   </li>
   <li>
-    <a href="../ch16/index.html" title="Next Chapter: 16. Native Plugins"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">16. Native Plugi... &raquo;</span>
+    <a href="../ch16/index.html" title="Next Chapter: 16. Extending QML with C++"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">16. Extending QM... &raquo;</span>
     </a>
   </li>
               
@@ -196,8 +197,13 @@
       
   <div class="section" id="qt-and-c">
 <h1>15. Qt and C++<a class="headerlink" href="#qt-and-c" title="Permalink to this headline">¶</a></h1>
-<p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qt-and-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Qt is a C++ toolkit with an extension for QML and Javascript. There exists many language bindings for Qt, but as Qt is developed in C++, the spirit of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.</p>
+<p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+ch15%2Findex.html%23qt-and-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Last Build: March 14, 2015 at 22:50 CET</p>
+<p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
+</div>
+<p>Qt is a C++ toolkit with an extension for QML and Javascript. There exists many language bindings for Qt, but as Qt is developed in C++, the spirit of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.</p>
 <p>This chapter will, just as Qt, require the reader to have some basic knowledge of C++. Qt does not rely on advanced C++ features, and I generally consider the Qt style of C++ to be very readable, so do not worry if you feel that your C++ knowledge is shaky.</p>
 <p>Approaching Qt from a C++ direction, you will find that Qt enrichen C++ with a number of modern language features enabled through making introspection data available. This is made possible through the use of the <tt class="docutils literal"><span class="pre">QObject</span></tt> base class. Introspection data, or meta data, maintains information of the classes at run-time. Something that ordinary C++ does not do. This makes it possible to dynamically probe objects for information about such details as their properties and available methods.</p>
 <p>Qt uses this meta information to enable a very losely bound callback concept using signals and slots. Each signal can be connected to any number of slots or even other signals. When a signal is emitted from an object instance, the connected slots are invoked. As the signal emitting object does not need to know anything about the object owning the slot and vise versa, this mechanism is used to create very reusable components with very few inter-component dependencies.</p>
@@ -1291,7 +1297,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 11, 2015.<br/>
+      Last updated on Mar 14, 2015.<br/>
     </p>
   </div>
 </footer>
@@ -1301,7 +1307,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-46104829-1', 'qmlbook.org');
+  ga('create', 'UA-46104829-1', 'auto');
   ga('send', 'pageview');
 
 </script>
