@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>10. Multimedia &mdash; Qt5 Cadaques Book v2015-03</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2015-03',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="next" title="11. Networking" href="../ch11/index.html" />
+    <link rel="prev" title="9. Shader Effects" href="../ch09/index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          QmlBook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Chapters <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ch01/index.html">1. Meet Qt 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/index.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/index.html">3. Qt Creator IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04/index.html">4. Quick Starter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/index.html">5. Fluid Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06/index.html">6. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07/index.html">7. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08/index.html">8. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09/index.html">9. Shader Effects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">10. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11/index.html">11. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">10. Multimedia</a><ul>
+<li><a class="reference internal" href="#playing-media">10.1. Playing Media</a></li>
+<li><a class="reference internal" href="#sound-effects">10.2. Sound Effects</a></li>
+<li><a class="reference internal" href="#video-streams">10.3. Video Streams</a></li>
+<li><a class="reference internal" href="#capturing-images">10.4. Capturing Images</a></li>
+<li><a class="reference internal" href="#advanced-techniques">10.5. Advanced Techniques</a><ul>
+<li><a class="reference internal" href="#implementing-a-playlist">10.5.1. Implementing a Playlist</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">10.6. Summary</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../ch09/index.html" title="Previous Chapter: 9. Shader Effects"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 9. Shader Effect...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../ch11/index.html" title="Next Chapter: 11. Networking"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">11. Networking &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">10. Multimedia</a><ul>
+<li><a class="reference internal" href="#playing-media">10.1. Playing Media</a></li>
+<li><a class="reference internal" href="#sound-effects">10.2. Sound Effects</a></li>
+<li><a class="reference internal" href="#video-streams">10.3. Video Streams</a></li>
+<li><a class="reference internal" href="#capturing-images">10.4. Capturing Images</a></li>
+<li><a class="reference internal" href="#advanced-techniques">10.5. Advanced Techniques</a><ul>
+<li><a class="reference internal" href="#implementing-a-playlist">10.5.1. Implementing a Playlist</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">10.6. Summary</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="multimedia">
+<h1>10. Multimedia<a class="headerlink" href="#multimedia" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23multimedia&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The multimedia elements in the QtMultimedia makes it possible to playback and record media such as sound, video or pictures. Decoding and encoding is handled through platform specific backends. For instance, the popular gstreamer framework is used on Linux, while DirectShow is used on Windows and QuickTime on OS X.</p>
+<p>The multimedia elements are not a part of the QtQuick core API. Instead, they are provided through a separate API made available by importing QtMultimedia 5.0 as shown below:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtMultimedia</span> <span class="mf">5.0</span>
+</pre></div>
+</div>
+<div class="section" id="playing-media">
+<h2>10.1. Playing Media<a class="headerlink" href="#playing-media" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23playing-media&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The most basic case of multimedia integration in a QML application is for it to playback media. This is done using the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element, optionally in combination with a <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> element if the source is an image or video. The <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element has a <tt class="docutils literal"><span class="pre">source</span></tt> property pointing at the media to play. When a media source has been bound, it is simply a matter of calling the <tt class="docutils literal"><span class="pre">play</span></tt> function to start playing.</p>
+<p>If you want to play visual media, i.e. pictures or video, you must also setup a <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> element. The <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> running the playback is bound to the video output through the <tt class="docutils literal"><span class="pre">source</span></tt> property.</p>
+<p>In the example shown below, the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> is given a file with video contents as <tt class="docutils literal"><span class="pre">source</span></tt>. A <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> is created and bound to the media player. As soon as the main component has been fully initialized, i.e. at <tt class="docutils literal"><span class="pre">Component.onCompleted</span></tt>, the player&#8217;s <tt class="docutils literal"><span class="pre">play</span></tt> function is called.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtMultimedia</span> <span class="mf">5.0</span>
+<span class="kr">import</span> <span class="nx">QtSystemInfo</span> <span class="mf">5.0</span>
+
+<span class="nx">Item</span> <span class="p">{</span>
+    <span class="k">width:</span> <span class="mi">1024</span>
+    <span class="k">height:</span> <span class="mi">600</span>
+    
+    <span class="nx">MediaPlayer</span> <span class="p">{</span>
+        <span class="kd">id: player</span>
+        <span class="k">source:</span> <span class="s2">&quot;trailer_400p.ogg&quot;</span>
+    <span class="p">}</span>
+
+    <span class="nx">VideoOutput</span> <span class="p">{</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>        
+        <span class="k">source:</span> <span class="nx">player</span>
+    <span class="p">}</span>
+    
+    <span class="k">Component.onCompleted:</span> <span class="p">{</span>
+        <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="nx">ScreenSaver</span> <span class="p">{</span>
+        <span class="k">screenSaverEnabled:</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// M1&gt;&gt;</span>
+</pre></div>
+</div>
+<p>In addition to the video playback demonstrated above, the example also contains a small snippet of code for disabling the screen saver. This prevents the video to be interrupted. This is achieved by setting the <tt class="docutils literal"><span class="pre">screenSaverEnabled</span></tt> property of the <tt class="docutils literal"><span class="pre">ScreenSaver</span></tt> element to <tt class="docutils literal"><span class="pre">false</span></tt>. The <tt class="docutils literal"><span class="pre">ScreenSaver</span></tt> element is available through the <tt class="docutils literal"><span class="pre">QtSystemInfo</span> <span class="pre">5.0</span></tt> API.</p>
+<p>Basic operations such as altering the volume when playing media is controlled through the <tt class="docutils literal"><span class="pre">volume</span></tt> property of the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element. There are other useful properties as well. For instance, the <tt class="docutils literal"><span class="pre">duration</span></tt> and <tt class="docutils literal"><span class="pre">position</span></tt> properties can be used to build a progress bar. If the <tt class="docutils literal"><span class="pre">seekable</span></tt> property is <tt class="docutils literal"><span class="pre">true</span></tt>, it is even possible to update the <tt class="docutils literal"><span class="pre">position</span></tt> when the progress bar is tapped. The example below shows how this is added to the basic playback example above.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Rectangle</span> <span class="p">{</span>
+        <span class="kd">id: progressBar</span>
+        
+        <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+        <span class="k">anchors.right:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">right</span>
+        <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+        <span class="k">anchors.margins:</span> <span class="mi">100</span>
+        
+        <span class="k">height:</span> <span class="mi">30</span>
+        
+        <span class="k">color:</span> <span class="s2">&quot;lightGray&quot;</span>
+        
+        <span class="nx">Rectangle</span> <span class="p">{</span>
+            <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+            <span class="k">anchors.top:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">top</span>
+            <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+            
+            <span class="k">width:</span> <span class="nx">player</span><span class="p">.</span><span class="nx">duration</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">?</span><span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="o">*</span><span class="nx">player</span><span class="p">.</span><span class="nx">position</span><span class="o">/</span><span class="k">player.duration:</span><span class="mi">0</span>
+            
+            <span class="k">color:</span> <span class="s2">&quot;darkGray&quot;</span>
+        <span class="p">}</span>
+        
+        <span class="nx">MouseArea</span> <span class="p">{</span>
+            <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+            
+            <span class="k">onClicked:</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">seekable</span><span class="p">)</span>
+                    <span class="nx">player</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="nx">mouse</span><span class="p">.</span><span class="nx">x</span><span class="o">/</span><span class="nx">width</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">position</span></tt> property is only updated once per second in the default case. This means that the progress bar will update in large steps unless the duration of the media is long enough, compared to the number pixels that the progress bar is wide. This can, however, be changed through accessing the <tt class="docutils literal"><span class="pre">mediaObject</span></tt> property and its <tt class="docutils literal"><span class="pre">notifyInterval</span></tt> property. It can be set to the number of milliseconds between each position update, increasing the smoothness of the user interface.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Connections</span> <span class="p">{</span>
+        <span class="k">target:</span> <span class="nx">player</span>
+        <span class="k">onMediaObjectChanged:</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">mediaObject</span><span class="p">)</span>
+                <span class="nx">player</span><span class="p">.</span><span class="nx">mediaObject</span><span class="p">.</span><span class="nx">notifyInterval</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">The code above does not have any effect on the update interval! There seems to be no media object...</p>
+</div>
+<p>When using <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> to build a media player, it is good to monitor the <tt class="docutils literal"><span class="pre">status</span></tt> property of the player. It is an enumeration of the possible statuses, ranging from <tt class="docutils literal"><span class="pre">MediaPlayer.Buffered``to</span> <span class="pre">``MediaPlayer.InvalidMedia</span></tt>. The possible values are summarized in the bullets below:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.UnknownStatus</span></tt>. The status is unknown.</li>
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.NoMedia</span></tt>. The player has no media source assigned. Playback is stopped.</li>
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.Loading</span></tt>. The player is loading the media.</li>
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.Loaded</span></tt>. The media has been loaded. Playback is stopped.</li>
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.Stalled</span></tt>. The loading of media has stalled.</li>
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.Buffering</span></tt>. The media is being buffered.</li>
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.Buffered</span></tt>. The media has been buffered, this means that the player can start playing the media.</li>
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.EndOfMedia</span></tt>. The end of the media has been reached. Playback is stopped.</li>
+<li><tt class="docutils literal"><span class="pre">MediaPlayer.InvalidMedia</span></tt>. The media cannot be played. Playback is stopped.</li>
+</ul>
+<p>As mentioned in the bullets above, the playback state can vary over time. Calling <tt class="docutils literal"><span class="pre">play</span></tt>, <tt class="docutils literal"><span class="pre">pause</span></tt> or <tt class="docutils literal"><span class="pre">stop</span></tt> alters the state, but the media in question can also have effect. For example, the end can be reached, or it can be invalid, causing playback to stop. The current playback state can be tracked through the <tt class="docutils literal"><span class="pre">playbackState</span></tt> property. The values can be <tt class="docutils literal"><span class="pre">MediaPlayer.PlayingState</span></tt>, <tt class="docutils literal"><span class="pre">MediaPlayer.PausedState</span></tt> or <tt class="docutils literal"><span class="pre">MediaPlayer.StoppedState</span></tt>.</p>
+<p>Using the <tt class="docutils literal"><span class="pre">autoPlay</span></tt> property, the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> can be made to attempt go to the playing state as soon as a the <tt class="docutils literal"><span class="pre">source</span></tt> property is changed. A similar property is the <tt class="docutils literal"><span class="pre">autoLoad</span></tt> causing the player to try to load the media as soon as the <tt class="docutils literal"><span class="pre">source</span></tt> property is changed. The latter property is enabled by default.</p>
+<p>It is also possible to let the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> to loop a media item. The <tt class="docutils literal"><span class="pre">loops</span></tt> property controls how many times the <tt class="docutils literal"><span class="pre">source</span></tt> is to be played. Setting the property to <tt class="docutils literal"><span class="pre">MediaPlayer.Infinite</span></tt> causes endless looping. Great for continious animations or a looping background song.</p>
+</div>
+<div class="section" id="sound-effects">
+<h2>10.2. Sound Effects<a class="headerlink" href="#sound-effects" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23sound-effects&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>When playing sound effects, the response time from requesting playback until actually playing becomes important. In this situation, the <tt class="docutils literal"><span class="pre">SoundEffect</span></tt> element comes in handy. By setting up the <tt class="docutils literal"><span class="pre">source</span></tt> property, a simple call to the <tt class="docutils literal"><span class="pre">play</span></tt> function immediately starts playback.</p>
+<p>This can be utilized for audio feedback when tapping the screen, as shown below.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">SoundEffect</span> <span class="p">{</span>
+        <span class="kd">id: beep</span>
+        <span class="k">source:</span> <span class="s2">&quot;beep.wav&quot;</span>
+    <span class="p">}</span>
+    
+    <span class="nx">Rectangle</span> <span class="p">{</span>
+        <span class="kd">id: button</span>
+        
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        
+        <span class="k">width:</span> <span class="mi">200</span>
+        <span class="k">height:</span> <span class="mi">100</span>
+        
+        <span class="k">color:</span> <span class="s2">&quot;red&quot;</span>
+        
+        <span class="nx">MouseArea</span> <span class="p">{</span>
+            <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+            <span class="k">onClicked:</span> <span class="nx">beep</span><span class="p">.</span><span class="nx">play</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The element can also be utilized to accompany a transition with audio. To trigger playback from a transition, the <tt class="docutils literal"><span class="pre">ScriptAction</span></tt> element is used.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">SoundEffect</span> <span class="p">{</span>
+        <span class="kd">id: swosh</span>
+        <span class="k">source:</span> <span class="s2">&quot;swosh.wav&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">transitions:</span> <span class="p">[</span>
+        <span class="nx">Transition</span> <span class="p">{</span>
+            <span class="nx">ParallelAnimation</span> <span class="p">{</span>
+                <span class="nx">ScriptAction</span> <span class="p">{</span> <span class="k">script:</span> <span class="nx">swosh</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span> <span class="p">}</span>
+                <span class="nx">PropertyAnimation</span> <span class="p">{</span> <span class="k">properties:</span> <span class="s2">&quot;rotation&quot;</span><span class="p">;</span> <span class="k">duration:</span> <span class="mi">200</span><span class="p">;</span> <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<p>In addition to the <tt class="docutils literal"><span class="pre">play</span></tt> function, a number of properties similar to the ones offered by <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> are available. Examples are <tt class="docutils literal"><span class="pre">volume</span></tt> and <tt class="docutils literal"><span class="pre">loops</span></tt>. The latter can be set to <tt class="docutils literal"><span class="pre">SoundEffect.Infinite</span></tt> for infinite playback. To stop playback, call the <tt class="docutils literal"><span class="pre">stop</span></tt> function.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When the PulseAudio backend is used, <tt class="docutils literal"><span class="pre">stop</span></tt> will not stop instantaneously, but only prevent further loops. This is due to limitations in the underlying API.</p>
+</div>
+</div>
+<div class="section" id="video-streams">
+<h2>10.3. Video Streams<a class="headerlink" href="#video-streams" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23video-streams&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> element is not limited to usage in combination with <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> elements. It can also be used directly with video sources to show a live video stream. Using a <tt class="docutils literal"><span class="pre">Camera</span></tt> element as <tt class="docutils literal"><span class="pre">source</span></tt> and the application is complete. The video stream from a <tt class="docutils literal"><span class="pre">Camera</span></tt> can be used to provide a live stream to the user. This stream works as the search view when capturing photos.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtMultimedia</span> <span class="mf">5.0</span>
+
+<span class="nx">Item</span> <span class="p">{</span>
+    <span class="k">width:</span> <span class="mi">1024</span>
+    <span class="k">height:</span> <span class="mi">600</span>
+    
+    <span class="nx">VideoOutput</span> <span class="p">{</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">source:</span> <span class="nx">camera</span>
+    <span class="p">}</span>
+    
+    <span class="nx">Camera</span> <span class="p">{</span>
+        <span class="kd">id: camera</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="capturing-images">
+<h2>10.4. Capturing Images<a class="headerlink" href="#capturing-images" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23capturing-images&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>One of the key features of the <tt class="docutils literal"><span class="pre">Camera</span></tt> element is that is can be used to take pictures. We will use this in a simple stop-motion application. In it, you will learn how to show a viewfinder, snap photos and to keep track of the pictures taken.</p>
+<p>The user interface is shown below. It consists of three major parts. In the background, you will find the viewfinder, to the right, a column of buttons and at the bottom, a list of images taken. The idea is to take a series of photos, then click the Play Sequence button. This will play the images back, creating a simple stop-motion film.</p>
+<a class="reference internal image-reference" href="../../_images/camera-ui.png"><img alt="../../_images/camera-ui.png" src="../../_images/camera-ui.png" style="width: 515.0px; height: 313.5px;" /></a>
+<p>The viewfinder part of the camera is simply a <tt class="docutils literal"><span class="pre">Camera</span></tt> element used as <tt class="docutils literal"><span class="pre">source</span></tt> in a <tt class="docutils literal"><span class="pre">VideoOutput</span></tt>. This will show the user a live videostream from the camera.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">VideoOutput</span> <span class="p">{</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">source:</span> <span class="nx">camera</span>
+    <span class="p">}</span>
+    
+    <span class="nx">Camera</span> <span class="p">{</span>
+        <span class="kd">id: camera</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The list of photos is a <tt class="docutils literal"><span class="pre">ListView</span></tt> oriented horizontally shows images from a <tt class="docutils literal"><span class="pre">ListModel</span></tt> called <tt class="docutils literal"><span class="pre">imagePaths</span></tt>. In the background, a semi-transparent black <tt class="docutils literal"><span class="pre">Rectangle</span></tt> is used.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">ListModel</span> <span class="p">{</span>
+        <span class="kd">id: imagePaths</span>
+    <span class="p">}</span>
+    
+    <span class="nx">ListView</span> <span class="p">{</span>
+        <span class="kd">id: listView</span>
+        
+        <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+        <span class="k">anchors.right:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">right</span>
+        <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+        <span class="k">anchors.bottomMargin:</span> <span class="mi">10</span>
+        
+        <span class="k">height:</span> <span class="mi">100</span>
+        
+        <span class="k">orientation:</span> <span class="nx">ListView</span><span class="p">.</span><span class="nx">Horizontal</span>
+        <span class="k">spacing:</span> <span class="mi">10</span>
+        
+        <span class="k">model:</span> <span class="nx">imagePaths</span>
+        
+        <span class="k">delegate:</span> <span class="nx">Image</span> <span class="p">{</span> <span class="k">source:</span> <span class="nx">path</span><span class="p">;</span> <span class="k">fillMode:</span> <span class="nx">Image</span><span class="p">.</span><span class="nx">PreserveAspectFit</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">100</span><span class="p">;</span> <span class="p">}</span>
+        
+        <span class="nx">Rectangle</span> <span class="p">{</span>
+            <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+            <span class="k">anchors.topMargin:</span> <span class="o">-</span><span class="mi">10</span>
+            
+            <span class="k">color:</span> <span class="s2">&quot;black&quot;</span>
+            <span class="k">opacity:</span> <span class="mf">0.5</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>For the shooting of images, you need to know that the <tt class="docutils literal"><span class="pre">Camera</span></tt> element contains a set of sub-elements for various tasks. To capture still pictures, the <tt class="docutils literal"><span class="pre">Camera.imageCapture</span></tt> element is used. When you call the <tt class="docutils literal"><span class="pre">capture</span></tt> method, a picture is taken. This results in the <tt class="docutils literal"><span class="pre">Camera.imageCapture</span></tt> emitting first the <tt class="docutils literal"><span class="pre">imageCaptured</span></tt> signal followed by the <tt class="docutils literal"><span class="pre">imageSaved</span></tt> signal.</p>
+<div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="kd">id: shotButton</span>
+        
+            <span class="k">width:</span> <span class="mi">200</span>
+            <span class="k">height:</span> <span class="mi">75</span>
+            
+            <span class="k">text:</span> <span class="s2">&quot;Take Photo&quot;</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+                <span class="nx">camera</span><span class="p">.</span><span class="nx">imageCapture</span><span class="p">.</span><span class="nx">capture</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>To intercept the signals of a sub-element, a <tt class="docutils literal"><span class="pre">Connections</span></tt> element is needed. In this case, we don&#8217;t need to show a preview image, but simply add the resulting image to the <tt class="docutils literal"><span class="pre">ListView</span></tt> at the bottom of the screen. Shown in the example below, the path to the saved image is provided as the <tt class="docutils literal"><span class="pre">path</span></tt> argument with the signal.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Connections</span> <span class="p">{</span>
+        <span class="k">target:</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">imageCapture</span>
+        
+        <span class="k">onImageSaved:</span> <span class="p">{</span>
+            <span class="nx">imagePaths</span><span class="p">.</span><span class="nx">append</span><span class="p">({</span><span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="nx">path</span><span class="p">})</span>
+            <span class="nx">listView</span><span class="p">.</span><span class="nx">positionViewAtEnd</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>For showing a preview, connect to the <tt class="docutils literal"><span class="pre">imageCaptured</span></tt> signal and use the <tt class="docutils literal"><span class="pre">preview</span></tt> signal argument as <tt class="docutils literal"><span class="pre">source</span></tt> of an <tt class="docutils literal"><span class="pre">Image</span></tt> element. A <tt class="docutils literal"><span class="pre">requestId</span></tt> signal argument  is sent along both the <tt class="docutils literal"><span class="pre">imageCaptured</span></tt> and <tt class="docutils literal"><span class="pre">imageSaved</span></tt>. This value is returned from the <tt class="docutils literal"><span class="pre">capture</span></tt> method. Using this, the capture of an image can be traced through the complete cycle. This way, the preview can be used first and then be replaced by the properly saved image. This, however, is nothing that we do in the example.</p>
+<p>The last part of the application is the actual playback. This is driven using a <tt class="docutils literal"><span class="pre">Timer</span></tt> element and some JavaScript. The <tt class="docutils literal"><span class="pre">_imageIndex</span></tt> variable is used to keep track of the currently shown image. When the last image has been shown, the playback is stopped. In the example, the <tt class="docutils literal"><span class="pre">root.state</span></tt> is used to hide parts of the user interface when playing the sequence.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">property</span> <span class="kr">int</span> <span class="nx">_imageIndex</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
+    
+    <span class="kd">function</span> <span class="nx">startPlayback</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">root</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="s2">&quot;playing&quot;</span><span class="p">;</span>
+        <span class="nx">setImageIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="nx">playTimer</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kd">function</span> <span class="nx">setImageIndex</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">_imageIndex</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">_imageIndex</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">_imageIndex</span> <span class="o">&lt;</span> <span class="nx">imagePaths</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span>
+            <span class="nx">image</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="nx">imagePaths</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">_imageIndex</span><span class="p">).</span><span class="nx">path</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="nx">image</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nx">Timer</span> <span class="p">{</span>
+        <span class="kd">id: playTimer</span>
+        
+        <span class="k">interval:</span> <span class="mi">200</span>
+        <span class="k">repeat:</span> <span class="kc">false</span>
+        
+        <span class="k">onTriggered:</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">_imageIndex</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">imagePaths</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nx">setImageIndex</span><span class="p">(</span><span class="nx">_imageIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="nx">playTimer</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="nx">setImageIndex</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+                <span class="nx">root</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="advanced-techniques">
+<h2>10.5. Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23advanced-techniques&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">The Camera API of Qt 5 is really lacking in documentation right now. I would love to cover more advanced camera controls such as exposure and focusing, but there are no ranges or values, nor clear guides to how to use the APIs in the reference docs right now.</p>
+</div>
+<div class="section" id="implementing-a-playlist">
+<h3>10.5.1. Implementing a Playlist<a class="headerlink" href="#implementing-a-playlist" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23implementing-a-playlist&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The Qt 5 multimedia API does not provide support for playlists. Luckly, it is easy to build one. The idea is to be able to set it up with a model of items and and a <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element, as shown below. The <tt class="docutils literal"><span class="pre">Playlist</span></tt> element is resposible for setting the <tt class="docutils literal"><span class="pre">source</span></tt> of the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt>, while the playstate is controlled via the player.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Playlist</span> <span class="p">{</span>
+        <span class="kd">id: playlist</span>
+        
+        <span class="k">mediaPlayer:</span> <span class="nx">player</span>
+        
+        <span class="k">items:</span> <span class="nx">ListModel</span> <span class="p">{</span>
+            <span class="nx">ListElement</span> <span class="p">{</span> <span class="k">source:</span> <span class="s2">&quot;trailer_400p.ogg&quot;</span> <span class="p">}</span>    
+            <span class="nx">ListElement</span> <span class="p">{</span> <span class="k">source:</span> <span class="s2">&quot;trailer_400p.ogg&quot;</span> <span class="p">}</span>
+            <span class="nx">ListElement</span> <span class="p">{</span> <span class="k">source:</span> <span class="s2">&quot;trailer_400p.ogg&quot;</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+        
+    <span class="nx">MediaPlayer</span> <span class="p">{</span>
+        <span class="kd">id: player</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The first half of the <tt class="docutils literal"><span class="pre">Playlist</span></tt> element, shown below, takes care of setting the <tt class="docutils literal"><span class="pre">source</span></tt> element given an index in the <tt class="docutils literal"><span class="pre">setIndex</span></tt> function. It also implements the <tt class="docutils literal"><span class="pre">next</span></tt> and <tt class="docutils literal"><span class="pre">previous</span></tt> functions to navigate the list.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Item</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+    
+    <span class="nx">property</span> <span class="kr">int</span> <span class="k">index:</span> <span class="mi">0</span>
+    <span class="nx">property</span> <span class="nx">MediaPlayer</span> <span class="nx">mediaPlayer</span>
+    <span class="nx">property</span> <span class="nx">ListModel</span> <span class="k">items:</span> <span class="nx">ListModel</span> <span class="p">{}</span>
+    
+    <span class="kd">function</span> <span class="nx">setIndex</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;setting index to: &quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>
+
+        <span class="nx">index</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">index</span> <span class="o">&gt;=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nx">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+            <span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">index</span><span class="p">).</span><span class="nx">source</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">setIndex</span><span class="p">(</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kd">function</span> <span class="nx">previous</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">setIndex</span><span class="p">(</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The trick to make the playlist continue to the next element at the end of each element is to monitor the <tt class="docutils literal"><span class="pre">status</span></tt> property of the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt>. As soon as the <tt class="docutils literal"><span class="pre">MediaPlayer.EndOfMedia</span></tt> state is reached, the index is increased and playback resumed, or, if the end of the list is reached, the playback is stopped.</p>
+<div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Connections</span> <span class="p">{</span>
+        <span class="k">target:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span>
+        
+        <span class="k">onStopped:</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="nx">MediaPlayer</span><span class="p">.</span><span class="nx">EndOfMedia</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nx">root</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">root</span><span class="p">.</span><span class="nx">index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+                <span class="k">else</span>
+                    <span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>10.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23summary&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The media API provided by Qt provides mechanisms for playing and capturing video and audio. Through the <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> element and video source can be displayed in the user interface. Through the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element, most playback can be handled, even though the <tt class="docutils literal"><span class="pre">SoundEffect</span></tt> can be used for low-latency sounds. For capturing, or only showing a live video stream, the <tt class="docutils literal"><span class="pre">Camera</span></tt> element is used.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Mar 15, 2015.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46104829-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

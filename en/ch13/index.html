@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>13. Dynamic QML &mdash; Qt5 Cadaques Book v2015-03</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2015-03',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="next" title="14. JavaScript" href="../ch14/index.html" />
+    <link rel="prev" title="12. Storage" href="../ch12/index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          QmlBook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Chapters <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ch01/index.html">1. Meet Qt 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02/index.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03/index.html">3. Qt Creator IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04/index.html">4. Quick Starter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05/index.html">5. Fluid Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06/index.html">6. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07/index.html">7. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08/index.html">8. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09/index.html">9. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10/index.html">10. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11/index.html">11. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">13. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">13. Dynamic QML</a><ul>
+<li><a class="reference internal" href="#loading-components-dynamically">13.1. Loading Components Dynamically</a><ul>
+<li><a class="reference internal" href="#connecting-indirectly">13.1.1. Connecting Indirectly</a></li>
+<li><a class="reference internal" href="#binding-indirectly">13.1.2. Binding Indirectly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-and-destroying-objects">13.2. Creating and Destroying Objects</a><ul>
+<li><a class="reference internal" href="#dynamically-loading-and-instantiating-items">13.2.1. Dynamically Loading and Instantiating Items</a></li>
+<li><a class="reference internal" href="#dynamically-instantiating-items-from-text">13.2.2. Dynamically Instantiating Items from Text</a></li>
+<li><a class="reference internal" href="#managing-dynamically-created-elements">13.2.3. Managing Dynamically Created Elements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tracking-dynamic-objects">13.3. Tracking Dynamic Objects</a></li>
+<li><a class="reference internal" href="#summary">13.4. Summary</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../ch12/index.html" title="Previous Chapter: 12. Storage"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 12. Storage</span>
+    </a>
+  </li>
+  <li>
+    <a href="../ch14/index.html" title="Next Chapter: 14. JavaScript"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">14. JavaScript &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">13. Dynamic QML</a><ul>
+<li><a class="reference internal" href="#loading-components-dynamically">13.1. Loading Components Dynamically</a><ul>
+<li><a class="reference internal" href="#connecting-indirectly">13.1.1. Connecting Indirectly</a></li>
+<li><a class="reference internal" href="#binding-indirectly">13.1.2. Binding Indirectly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-and-destroying-objects">13.2. Creating and Destroying Objects</a><ul>
+<li><a class="reference internal" href="#dynamically-loading-and-instantiating-items">13.2.1. Dynamically Loading and Instantiating Items</a></li>
+<li><a class="reference internal" href="#dynamically-instantiating-items-from-text">13.2.2. Dynamically Instantiating Items from Text</a></li>
+<li><a class="reference internal" href="#managing-dynamically-created-elements">13.2.3. Managing Dynamically Created Elements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tracking-dynamic-objects">13.3. Tracking Dynamic Objects</a></li>
+<li><a class="reference internal" href="#summary">13.4. Summary</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="dynamic-qml">
+<h1>13. Dynamic QML<a class="headerlink" href="#dynamic-qml" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23dynamic-qml&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Until now, we have treated QML as a tool for constructing a static set of scenes and navigating between them. Depending on various states and logic rules, a live and dynamic user interface is constructed. By working with QML and JavaScript in a more dynamic manner, the flexibility and possibilities expand even further. Components can be loaded and instantiated at run-time, elements can be destroyed. Dynamically created user interfaces can be saved to disk and later restored.</p>
+<div class="section" id="loading-components-dynamically">
+<h2>13.1. Loading Components Dynamically<a class="headerlink" href="#loading-components-dynamically" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23loading-components-dynamically&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>The easiest way to dynamically load different parts of QML is to use the <tt class="docutils literal"><span class="pre">Loader</span></tt> element. It serves as a placeholder to the item that is being loaded. The item to load is controlled through either the <tt class="docutils literal"><span class="pre">source</span></tt> property or the <tt class="docutils literal"><span class="pre">sourceComponent</span></tt> property. The former loads the item from a given URL, while the latter instantiates a component.</p>
+<p>As the loader serves as a placeholder for the item being loaded, its size depends on the size of the item, and vise versa. If the <tt class="docutils literal"><span class="pre">Loader</span></tt> element has a size, either by having set <tt class="docutils literal"><span class="pre">width</span></tt> and <tt class="docutils literal"><span class="pre">height</span></tt> or through anchoring, the loaded item will be given the loader&#8217;s size. If the <tt class="docutils literal"><span class="pre">Loader</span></tt> has no size, it is resized in accordance to the size of the item being loaded.</p>
+<p>The example described below demonstrates how two separate user interface parts can be loaded into the same space using a <tt class="docutils literal"><span class="pre">Loader</span></tt> element. The idea is to have a speed dial that can be either digital or analog, as shown in the illustration below. The code surrounding the dial is unaffected by which item that is loaded for the moment.</p>
+<img alt="../../_images/loader-analog.png" src="../../_images/loader-analog.png" />
+<img alt="../../_images/loader-digital.png" src="../../_images/loader-digital.png" />
+<p>The first step in the application is to declare a <tt class="docutils literal"><span class="pre">Loader</span></tt> element. Notice that the <tt class="docutils literal"><span class="pre">source</span></tt> property is left out. This is because the <tt class="docutils literal"><span class="pre">source</span></tt> depends on which state the user interface is in.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="nx">Loader</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">dialLoader</span>
+
+    <span class="nx">anchors</span><span class="p">.</span><span class="nx">fill</span><span class="o">:</span> <span class="nx">parent</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the <tt class="docutils literal"><span class="pre">states</span></tt> property of the parent of <tt class="docutils literal"><span class="pre">dialLoader</span></tt> a set of <tt class="docutils literal"><span class="pre">PropertyChanges</span></tt> elements drives the loading of different QML files depending on the <tt class="docutils literal"><span class="pre">state</span></tt>. The <tt class="docutils literal"><span class="pre">source</span></tt> property happens to be a relative file path in this example, but it can just as well be a full URL, fetching the item over the web.</p>
+<div class="highlight-js"><div class="highlight"><pre>    <span class="nx">states</span><span class="o">:</span> <span class="p">[</span>
+        <span class="nx">State</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;analog&quot;</span>
+            <span class="nx">PropertyChanges</span> <span class="p">{</span> <span class="nx">target</span><span class="o">:</span> <span class="nx">analogButton</span><span class="p">;</span> <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;green&quot;</span><span class="p">;</span> <span class="p">}</span>
+            <span class="nx">PropertyChanges</span> <span class="p">{</span> <span class="nx">target</span><span class="o">:</span> <span class="nx">dialLoader</span><span class="p">;</span> <span class="nx">source</span><span class="o">:</span> <span class="s2">&quot;Analog.qml&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">State</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;digital&quot;</span>
+            <span class="nx">PropertyChanges</span> <span class="p">{</span> <span class="nx">target</span><span class="o">:</span> <span class="nx">digitalButton</span><span class="p">;</span> <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;green&quot;</span><span class="p">;</span> <span class="p">}</span>
+            <span class="nx">PropertyChanges</span> <span class="p">{</span> <span class="nx">target</span><span class="o">:</span> <span class="nx">dialLoader</span><span class="p">;</span> <span class="nx">source</span><span class="o">:</span> <span class="s2">&quot;Digital.qml&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<p>In order to make the loaded item come alive, its <tt class="docutils literal"><span class="pre">speed</span></tt> property must be bound to the root <tt class="docutils literal"><span class="pre">speed</span></tt> property. This cannot be done as a direct binding as the item not always is loaded and changes over time. Instead a <tt class="docutils literal"><span class="pre">Binding</span></tt> element must be used. The <tt class="docutils literal"><span class="pre">target</span></tt> property of the binding is changed every time the <tt class="docutils literal"><span class="pre">Loader</span></tt> triggers the <tt class="docutils literal"><span class="pre">onLoaded</span></tt> signal.</p>
+<div class="highlight-js"><div class="highlight"><pre>    <span class="nx">Loader</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">dialLoader</span>
+        
+        <span class="nx">anchors</span><span class="p">.</span><span class="nx">left</span><span class="o">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+        <span class="nx">anchors</span><span class="p">.</span><span class="nx">right</span><span class="o">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">right</span>
+        <span class="nx">anchors</span><span class="p">.</span><span class="nx">top</span><span class="o">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">top</span>
+        <span class="nx">anchors</span><span class="p">.</span><span class="nx">bottom</span><span class="o">:</span> <span class="nx">analogButton</span><span class="p">.</span><span class="nx">top</span>
+
+        <span class="nx">onLoaded</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">binder</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="nx">dialLoader</span><span class="p">.</span><span class="nx">item</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">Binding</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">binder</span>
+        
+        <span class="nx">property</span><span class="o">:</span> <span class="s2">&quot;speed&quot;</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="nx">speed</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">onLoaded</span></tt> signal lets the loading QML act when the item has been loaded. In a similar fashion, the QML being loaded can rely on the <tt class="docutils literal"><span class="pre">Component.onCompleted</span></tt> signal. This is signal actually available for all components, regardless how they are loaded. For instance, the root component of an entire application can us it to kick-start itself when the entire user interface has been loaded.</p>
+<div class="section" id="connecting-indirectly">
+<h3>13.1.1. Connecting Indirectly<a class="headerlink" href="#connecting-indirectly" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23connecting-indirectly&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>When creating QML elements dynamically, you cannot connect to signals using the <tt class="docutils literal"><span class="pre">onSignalName</span></tt> approach used for static setup. Instead, the <tt class="docutils literal"><span class="pre">Connections</span></tt> element must be used. It connects to any number of signals of a <tt class="docutils literal"><span class="pre">target</span></tt> element.</p>
+<p>Having set the <tt class="docutils literal"><span class="pre">target</span></tt> property of a <tt class="docutils literal"><span class="pre">Connections</span></tt> element, the signals can be connected as usual, that is, using the <tt class="docutils literal"><span class="pre">onSignalName</span></tt> approach. However, by altering the <tt class="docutils literal"><span class="pre">target</span></tt> property, different elements can be monitored at different times.</p>
+<img alt="../../_images/connections.png" src="../../_images/connections.png" />
+<p>In the example show above, a user interface consisting of two clickable areas is presented to the user. When either area is clicked, it is flashed using an animation. The left area is shown in the code snippet below. In the <tt class="docutils literal"><span class="pre">MouseArea</span></tt>, the <tt class="docutils literal"><span class="pre">leftClickedAnimation</span></tt> is triggered, causing the area to flash.</p>
+<div class="highlight-js"><div class="highlight"><pre>        <span class="nx">Rectangle</span> <span class="p">{</span>
+            <span class="nx">id</span><span class="o">:</span> <span class="nx">leftRectangle</span>
+            
+            <span class="nx">width</span><span class="o">:</span> <span class="mi">290</span>
+            <span class="nx">height</span><span class="o">:</span> <span class="mi">200</span>
+            
+            <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;green&quot;</span>
+            
+            <span class="nx">MouseArea</span> <span class="p">{</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="nx">leftMouseArea</span>
+                <span class="nx">anchors</span><span class="p">.</span><span class="nx">fill</span><span class="o">:</span> <span class="nx">parent</span>
+                <span class="nx">onClicked</span><span class="o">:</span> <span class="nx">leftClickedAnimation</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+            <span class="p">}</span>
+            
+            <span class="nx">Text</span> <span class="p">{</span>
+                <span class="nx">anchors</span><span class="p">.</span><span class="nx">centerIn</span><span class="o">:</span> <span class="nx">parent</span>
+                <span class="nx">font</span><span class="p">.</span><span class="nx">pixelSize</span><span class="o">:</span> <span class="mi">30</span>
+                <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;white&quot;</span>
+                <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;Click me!&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>In addition to the two clickable areas, a <tt class="docutils literal"><span class="pre">Connections</span></tt> element is used. This triggers a third animation when the active, i.e. the <tt class="docutils literal"><span class="pre">target</span></tt> of the element, is clicked.</p>
+<div class="highlight-js"><div class="highlight"><pre>    <span class="nx">Connections</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">connections</span>
+        <span class="nx">onClicked</span><span class="o">:</span> <span class="nx">activeClickedAnimation</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>To determine which <tt class="docutils literal"><span class="pre">MouseArea</span></tt> to target, two states are defined. Notice that we cannot set the <tt class="docutils literal"><span class="pre">target</span></tt> property using a <tt class="docutils literal"><span class="pre">PropertyChanges</span></tt> element, as it already contains a <tt class="docutils literal"><span class="pre">target</span></tt> property. Instead a <tt class="docutils literal"><span class="pre">StateChangeScript</span></tt> is utilized.</p>
+<div class="highlight-js"><div class="highlight"><pre>    <span class="nx">states</span><span class="o">:</span> <span class="p">[</span>
+        <span class="nx">State</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span>
+            <span class="nx">StateChangeScript</span> <span class="p">{</span>
+                <span class="nx">script</span><span class="o">:</span> <span class="nx">connections</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="nx">leftMouseArea</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">State</span> <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;right&quot;</span>
+            <span class="nx">StateChangeScript</span> <span class="p">{</span>
+                <span class="nx">script</span><span class="o">:</span> <span class="nx">connections</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="nx">rightMouseArea</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<p>When trying out the example, it is worth noticing that when multiple signal handlers are used, all are invoked. The execution order of these is, however, undefined.</p>
+<p>When creating a <tt class="docutils literal"><span class="pre">Connections</span></tt> element without setting the <tt class="docutils literal"><span class="pre">target</span></tt> property, the property defaults to <tt class="docutils literal"><span class="pre">parent</span></tt>. This means that it explicitly has to be set to <tt class="docutils literal"><span class="pre">null</span></tt> to avoid catching signals from the <tt class="docutils literal"><span class="pre">parent</span></tt> until the <tt class="docutils literal"><span class="pre">target</span></tt> is set. This behavior does make it possible to create custom signal handler components based on a <tt class="docutils literal"><span class="pre">Connections</span></tt> element. This way, the code reacting to the signals can be encapsulated and re-used.</p>
+<p>In the example below, the <tt class="docutils literal"><span class="pre">Flasher</span></tt> component can be put inside any <tt class="docutils literal"><span class="pre">MouseArea</span></tt>. When clicked, it triggers an animation, causing the parent to flash. In the same <tt class="docutils literal"><span class="pre">MouseArea</span></tt> the actual task being triggered can also be carried out. This separates the standardized user feedback, i.e. the flashing, from the actual action.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">Connections</span> <span class="p">{</span>
+	<span class="nx">onClicked</span><span class="o">:</span> <span class="p">{</span>
+		<span class="c1">// Automatically targets the parent</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To use the <tt class="docutils literal"><span class="pre">Flasher</span></tt>, simply instantiate a Flasher within each MouseArea, and it all works.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">Item</span> <span class="p">{</span>
+	<span class="c1">// A background flasher that flashes the background of any parent MouseArea</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When using a <tt class="docutils literal"><span class="pre">Connections</span></tt> element to monitor the signals of multiple types of <tt class="docutils literal"><span class="pre">target</span></tt> elements, you sometimes find yourself in a situation where the available signals vary between the targets. This results in the <tt class="docutils literal"><span class="pre">Connections</span></tt> element outputting run-time errors as signals are missed. To avoid this, the <tt class="docutils literal"><span class="pre">ignoreUnknownSignal</span></tt> property can be set to <tt class="docutils literal"><span class="pre">true</span></tt>. This ignores all such errors.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is usually a bad idea to supress error messages.</p>
+</div>
+</div>
+<div class="section" id="binding-indirectly">
+<h3>13.1.2. Binding Indirectly<a class="headerlink" href="#binding-indirectly" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23binding-indirectly&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Just as it is not possible to connect to signals of dynamically created elements directly, nor it is possible to bind properties of a dynamically created element without working with a bridge element. To bind a property of any element, including dynamically created elements, the <tt class="docutils literal"><span class="pre">Binding</span></tt> element is used.</p>
+<p>The <tt class="docutils literal"><span class="pre">Binding</span></tt> element lets you specify a <tt class="docutils literal"><span class="pre">target</span></tt> element, a <tt class="docutils literal"><span class="pre">property</span></tt> to bind and a <tt class="docutils literal"><span class="pre">value</span></tt> to bind it to. Through using a <cite>Binding`</cite> element, it is, for instance, possible to bind properties of a dynamically loaded element. This was demonstrated in the introductory example in this chapter, as shown below.</p>
+<div class="highlight-js"><div class="highlight"><pre>    <span class="nx">Loader</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">dialLoader</span>
+        
+        <span class="nx">anchors</span><span class="p">.</span><span class="nx">left</span><span class="o">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+        <span class="nx">anchors</span><span class="p">.</span><span class="nx">right</span><span class="o">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">right</span>
+        <span class="nx">anchors</span><span class="p">.</span><span class="nx">top</span><span class="o">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">top</span>
+        <span class="nx">anchors</span><span class="p">.</span><span class="nx">bottom</span><span class="o">:</span> <span class="nx">analogButton</span><span class="p">.</span><span class="nx">top</span>
+
+        <span class="nx">onLoaded</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">binder</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="nx">dialLoader</span><span class="p">.</span><span class="nx">item</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">Binding</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">binder</span>
+        
+        <span class="nx">property</span><span class="o">:</span> <span class="s2">&quot;speed&quot;</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="nx">speed</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>As the <tt class="docutils literal"><span class="pre">target</span></tt> element of a <tt class="docutils literal"><span class="pre">Binding</span></tt> not always is set, and perhaps not always has a given property, the <tt class="docutils literal"><span class="pre">when</span></tt> property of the <tt class="docutils literal"><span class="pre">Binding</span></tt> element can be used to limit the time when the binding is active. For instance, it can be limited to specific modes in the user interface.</p>
+</div>
+</div>
+<div class="section" id="creating-and-destroying-objects">
+<h2>13.2. Creating and Destroying Objects<a class="headerlink" href="#creating-and-destroying-objects" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23creating-and-destroying-objects&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">Loader</span></tt> element makes it possible to populate part of a user interface dynamically. However, the overall structure of the interface is still static. Through JavaScript it is possible to take one more step and to instantiate QML elements completely dynamically.</p>
+<p>Before we dive into the details of creating elements dynamically, we need to understand the workflow. When loading a piece of QML from a file or even over the Internet, a component is created. The component encapsulates the interpreted QML code and can be used to create items. This means that loading a piece of QML code and instantiating items from it is a two stage process. First the QML code is parsed into a component. Then the component is used to instantiate actual item objects.</p>
+<p>In addition to creating elements from QML code stored in files or on servers, it is also possible to create QML objects directly from text strings containing QML code. The dynamically created items are then treated in a similar fashion once instantiated.</p>
+<div class="section" id="dynamically-loading-and-instantiating-items">
+<h3>13.2.1. Dynamically Loading and Instantiating Items<a class="headerlink" href="#dynamically-loading-and-instantiating-items" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23dynamically-loading-and-instantiating-items&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>When loading a piece of QML, it is first interpreted into a component. This includes loading dependencies and validating the code. The location of the QML being loaded can be either a local file, a Qt resource, or even a distance network location specified by a URL. This means that the loading time can be everything from instant, for instance a Qt resource located in RAM without any non-loaded dependencies, to very long, meaning a piece of code located on a slow server with multiple dependencies that needs to be loaded.</p>
+<p>The status of a component being created can be tracked by its <tt class="docutils literal"><span class="pre">status</span></tt> property. The available values are <tt class="docutils literal"><span class="pre">Component.Null</span></tt>, <tt class="docutils literal"><span class="pre">Component.Loading</span></tt>, <tt class="docutils literal"><span class="pre">Component.Ready</span></tt> and <tt class="docutils literal"><span class="pre">Component.Error</span></tt>. The <tt class="docutils literal"><span class="pre">Null</span></tt> to <tt class="docutils literal"><span class="pre">Loading</span></tt> to <tt class="docutils literal"><span class="pre">Ready</span></tt> is the usual flow. At any stage the <tt class="docutils literal"><span class="pre">status</span></tt> can change to <tt class="docutils literal"><span class="pre">Error</span></tt>. In that case, the component cannot be used to create new object instances. The <tt class="docutils literal"><span class="pre">Component.errorString()</span></tt> function can be used to retrieve a user readable error description.</p>
+<p>When loading components over slow connections, the <tt class="docutils literal"><span class="pre">progress</span></tt> property can be of use. It ranges from <tt class="docutils literal"><span class="pre">0.0</span></tt>, meaning nothing has been loaded, to <tt class="docutils literal"><span class="pre">1.0</span></tt> indicating that all has been loaded. When the component&#8217;s <tt class="docutils literal"><span class="pre">status</span></tt> changes to <tt class="docutils literal"><span class="pre">Ready</span></tt>, the component can be used to instantiate objects. The code below demonstrates how that can be achieved, taking into account the event of the component becoming ready or failing to be created directly, as well as the case where to component is ready slightly later.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">component</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">createImageObject</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">component</span> <span class="o">=</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">createComponent</span><span class="p">(</span><span class="s2">&quot;dynamic-image.qml&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">Component</span><span class="p">.</span><span class="nx">Ready</span> <span class="o">||</span> <span class="nx">component</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">Component</span><span class="p">.</span><span class="nb">Error</span><span class="p">)</span>
+        <span class="nx">finishCreation</span><span class="p">();</span>
+    <span class="k">else</span>
+        <span class="nx">component</span><span class="p">.</span><span class="nx">statusChanged</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">finishCreation</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">finishCreation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">Component</span><span class="p">.</span><span class="nx">Ready</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">component</span><span class="p">.</span><span class="nx">createObject</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">});</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">image</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Error creating image&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">Component</span><span class="p">.</span><span class="nb">Error</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Error loading component:&quot;</span><span class="p">,</span> <span class="nx">component</span><span class="p">.</span><span class="nx">errorString</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The code above is kept in a separate JavaScript source file, referenced from the main QML file.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="s2">&quot;create-component.js&quot;</span> <span class="nx">as</span> <span class="nx">ImageCreator</span>
+
+<span class="nx">Item</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">root</span>
+
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">1024</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">600</span>
+
+    <span class="nx">Component</span><span class="p">.</span><span class="nx">onCompleted</span><span class="o">:</span> <span class="nx">ImageCreator</span><span class="p">.</span><span class="nx">createImageObject</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">createObject</span></tt> function of a component is used to create object instances, as shown above. This not only applies to dynamically loaded components, but also <tt class="docutils literal"><span class="pre">Component</span></tt> elements inlined in the QML code. The resulting object can be used in the QML scene like any other object. The only difference is that it does not have an <tt class="docutils literal"><span class="pre">id</span></tt>.</p>
+<p>The <tt class="docutils literal"><span class="pre">createObject</span></tt> function takes two arguments. The first is a <tt class="docutils literal"><span class="pre">parent</span></tt> object of the type <tt class="docutils literal"><span class="pre">Item</span></tt>. The second is a list of properties and values on the format <tt class="docutils literal"><span class="pre">{&quot;name&quot;:</span> <span class="pre">value,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">value}</span></tt>. This is demonstrated in the example below. Notice that the properties argument is optional.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">component</span><span class="p">.</span><span class="nx">createObject</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">});</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A dynamically created component instance is not different to an in-line <tt class="docutils literal"><span class="pre">Component</span></tt> element. The in-line <tt class="docutils literal"><span class="pre">Component</span></tt> element also provides functions to instantiate objects dynamically.</p>
+</div>
+</div>
+<div class="section" id="dynamically-instantiating-items-from-text">
+<h3>13.2.2. Dynamically Instantiating Items from Text<a class="headerlink" href="#dynamically-instantiating-items-from-text" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23dynamically-instantiating-items-from-text&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Sometimes, it is convenient to be able to instantiate an object from a text string of QML. If nothing else, it is quicker than putting the code in a separate source file. For this, the <tt class="docutils literal"><span class="pre">Qt.createQmlObject</span></tt> function is used.</p>
+<p>qThe function takes three arguments: <tt class="docutils literal"><span class="pre">qml</span></tt>, <tt class="docutils literal"><span class="pre">parent</span></tt> and <tt class="docutils literal"><span class="pre">filepath</span></tt>. The <tt class="docutils literal"><span class="pre">qml</span></tt> argument contains the string of QML code to instantiate. The <tt class="docutils literal"><span class="pre">parent</span></tt> argument provides a parent object to the newly created object. The <tt class="docutils literal"><span class="pre">filepath</span></tt> argument is used when reporting any errors from the creation of the object. The result returned from the function is either a new object, or <tt class="docutils literal"><span class="pre">null</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">createQmlObject</span></tt> function always returns immediately. For the function to succeed, all the dependencies of the call must be loaded. This means that if the code passed to the function refers to a non-loaded component, the call will fail and return <tt class="docutils literal"><span class="pre">null</span></tt>. To better handle this, the <tt class="docutils literal"><span class="pre">createComponent</span></tt> / <tt class="docutils literal"><span class="pre">createObject</span></tt> approach must be used.</p>
+</div>
+<p>The objects created using the <tt class="docutils literal"><span class="pre">Qt.createQmlObject</span></tt> function resembles any other dynamically created object. That means that it is identical to every other QML object, apart from not having an <tt class="docutils literal"><span class="pre">id</span></tt>. In the example below, a new <tt class="docutils literal"><span class="pre">Rectangle</span></tt> element is instantiated from in-line QML code when the <tt class="docutils literal"><span class="pre">root</span></tt> element has been created.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">Item</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">root</span>
+
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">1024</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">600</span>
+
+    <span class="kd">function</span> <span class="nx">createItem</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Qt</span><span class="p">.</span><span class="nx">createQmlObject</span><span class="p">(</span><span class="s2">&quot;import QtQuick 2.0; Rectangle { x: 100; y: 100; width: 100; height: 100; color: \&quot;blue\&quot; }&quot;</span><span class="p">,</span> <span class="nx">root</span><span class="p">,</span> <span class="s2">&quot;dynamicItem&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">Component</span><span class="p">.</span><span class="nx">onCompleted</span><span class="o">:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">createItem</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="managing-dynamically-created-elements">
+<h3>13.2.3. Managing Dynamically Created Elements<a class="headerlink" href="#managing-dynamically-created-elements" title="Permalink to this headline">¶</a></h3>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23managing-dynamically-created-elements&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Dynamically created objects can be treated as any other object in a QML scene. However, there are some pitfalls that needs to be handled. The most important is the concept of creation contexts.</p>
+<p>The creation context of a dynamically created object is the context within it is being created. This is not necessarily the same context as the parent exists in. When the creation context is destroyed, so is the bindings concerning the object. This means that it is important to implement the creation of dynamic objects in a place in the code which will be instantiated during the entire life-time of the objects.</p>
+<p>Dynamically created objects can also be dynamically destroyed. When doing this, there is a rule of thumb: never attempt to destroy an object that you have not created. This also includes elements that you have created, but not using a dynamic mechanism such as <tt class="docutils literal"><span class="pre">Component.createObject</span></tt> or <tt class="docutils literal"><span class="pre">createQmlObject</span></tt>.</p>
+<p>An object is destroyed by calling its <tt class="docutils literal"><span class="pre">destroy</span></tt> function. The function takes an optional argument which is an integer specifying how many milliseconds the objects shall exist before being destroyed. This is useful to, for instance, let the object complete a final transition.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">item</span> <span class="o">=</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">createQmlObject</span><span class="p">(...);</span>
+<span class="p">...</span>
+<span class="nx">item</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is possible to destroy on object from within, making it possible to create self-destroying popup windows for instance.</p>
+</div>
+</div>
+</div>
+<div class="section" id="tracking-dynamic-objects">
+<h2>13.3. Tracking Dynamic Objects<a class="headerlink" href="#tracking-dynamic-objects" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23tracking-dynamic-objects&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Working with dynamic objects, it is often necessary to track the created objects. Another common feature is to be able to store and restore the state of the dynamic objects. Both these tasks are easily handled using a <tt class="docutils literal"><span class="pre">ListModel</span></tt> that we populate dynamically.</p>
+<p>In the example shown below two types of elements, rockets and planets, can be created and moved around by the user. In order to be able to manipulate the entire scene of dynamically created elements, we use a model to track the items.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">illustration</p>
+</div>
+<p>The model, a <tt class="docutils literal"><span class="pre">ListModel</span></tt>, is populated as the items are created. The object reference is tracked along side the source URL used when instantiating it. The latter is not strictly needed for tracking the objects, but will come in handy later.</p>
+<div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="s2">&quot;create-object.js&quot;</span> <span class="nx">as</span> <span class="nx">CreateObject</span>
+
+<span class="nx">Item</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">root</span>
+
+    <span class="nx">ListModel</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">objectsModel</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">addPlanet</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">CreateObject</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;planet.qml&quot;</span><span class="p">,</span> <span class="nx">root</span><span class="p">,</span> <span class="nx">itemAdded</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">addRocket</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">CreateObject</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;rocket.qml&quot;</span><span class="p">,</span> <span class="nx">root</span><span class="p">,</span> <span class="nx">itemAdded</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">itemAdded</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">objectsModel</span><span class="p">.</span><span class="nx">append</span><span class="p">({</span><span class="s2">&quot;obj&quot;</span><span class="o">:</span> <span class="nx">obj</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="nx">source</span><span class="p">})</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can tell from the example above, the <tt class="docutils literal"><span class="pre">create-object.js</span></tt> is a more generalized form of the JavaScript introduced earlier. The <tt class="docutils literal"><span class="pre">create</span></tt> method uses three arguments: a source URL, a root element and a callback to invoke when finished. The callback gets called with two arguments: a reference to the newly created object and the source URL used.</p>
+<p>This means that each time <tt class="docutils literal"><span class="pre">addPlanet</span></tt> or <tt class="docutils literal"><span class="pre">addRocket</span></tt> functions are called, the <tt class="docutils literal"><span class="pre">itemAdded</span></tt> function will be called when the new object has been created. The latter will append the object reference and source URL to the <tt class="docutils literal"><span class="pre">objectsModel</span></tt> model.</p>
+<p>The <tt class="docutils literal"><span class="pre">objectsModel</span></tt> can be used in many ways. In the example in question, the <tt class="docutils literal"><span class="pre">clearItems</span></tt> function relies on it. This function demonstrates two things. First, how to iterate over the model and perform a task, i.e. calling the <tt class="docutils literal"><span class="pre">destroy</span></tt> function for each item to remove it. Secondly, it highlights the fact that the model is not updated as objects are destroyed. Instead of removing the model item connected to the object in question, the <tt class="docutils literal"><span class="pre">obj</span></tt> property of that model item is set to <tt class="docutils literal"><span class="pre">null</span></tt>. To remedy this, the code explicitly has to clear the model item as the objects are removed.</p>
+<div class="highlight-js"><div class="highlight"><pre>    <span class="kd">function</span> <span class="nx">clearItems</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">while</span><span class="p">(</span><span class="nx">objectsModel</span><span class="p">.</span><span class="nx">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">objectsModel</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">obj</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+            <span class="nx">objectsModel</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Having a model representing all dynamically created items, it is easy to create a function that serializes the items. In the example code, the serialized information consists of the source URL of each object along its <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> properties. These are the properties that can be altered by the user. The information is used to build an XML document string.</p>
+<div class="highlight-js"><div class="highlight"><pre>    <span class="kd">function</span> <span class="nx">serialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="s2">&quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;utf-8\&quot;?&gt;\n&lt;scene&gt;\n&quot;</span><span class="p">;</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">ii</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">ii</span> <span class="o">&lt;</span> <span class="nx">objectsModel</span><span class="p">.</span><span class="nx">count</span><span class="p">;</span> <span class="o">++</span><span class="nx">ii</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">objectsModel</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">ii</span><span class="p">);</span>
+            <span class="nx">res</span> <span class="o">+=</span> <span class="s2">&quot;  &lt;item&gt;\n    &lt;source&gt;&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">.</span><span class="nx">source</span> <span class="o">+</span> <span class="s2">&quot;&lt;/source&gt;\n    &lt;x&gt;&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">.</span><span class="nx">obj</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="s2">&quot;&lt;/x&gt;\n    &lt;y&gt;&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">.</span><span class="nx">obj</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="s2">&quot;&lt;/y&gt;\n  &lt;/item&gt;\n&quot;</span>
+        <span class="p">}</span>
+
+        <span class="nx">res</span> <span class="o">+=</span> <span class="s2">&quot;&lt;/scene&gt;&quot;</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The XML document string can be used with a <tt class="docutils literal"><span class="pre">XmlListModel</span></tt> by setting the <tt class="docutils literal"><span class="pre">xml</span></tt> property of the model. In the code below, the model is shown along the <tt class="docutils literal"><span class="pre">deserialize</span></tt> function. The <tt class="docutils literal"><span class="pre">deserialize</span></tt> function kickstarts the deserialization by setting the <tt class="docutils literal"><span class="pre">dsIndex</span></tt> to refer to the first item of the model and then invoking the creation of that item. The callback, <tt class="docutils literal"><span class="pre">dsItemAdded</span></tt> then sets that <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> properties of the newly created object. It then updates the index and creates the nexts object, if any.</p>
+<div class="highlight-js"><div class="highlight"><pre>    <span class="nx">XmlListModel</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">xmlModel</span>
+        <span class="nx">query</span><span class="o">:</span> <span class="s2">&quot;/scene/item&quot;</span>
+        <span class="nx">XmlRole</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span><span class="p">;</span> <span class="nx">query</span><span class="o">:</span> <span class="s2">&quot;source/string()&quot;</span> <span class="p">}</span>
+        <span class="nx">XmlRole</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;x&quot;</span><span class="p">;</span> <span class="nx">query</span><span class="o">:</span> <span class="s2">&quot;x/string()&quot;</span> <span class="p">}</span>
+        <span class="nx">XmlRole</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;y&quot;</span><span class="p">;</span> <span class="nx">query</span><span class="o">:</span> <span class="s2">&quot;y/string()&quot;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">deserialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">dsIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="nx">CreateObject</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">xmlModel</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">dsIndex</span><span class="p">).</span><span class="nx">source</span><span class="p">,</span> <span class="nx">root</span><span class="p">,</span> <span class="nx">dsItemAdded</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">dsItemAdded</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">itemAdded</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">source</span><span class="p">);</span>
+        <span class="nx">obj</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">xmlModel</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">dsIndex</span><span class="p">).</span><span class="nx">x</span><span class="p">;</span>
+        <span class="nx">obj</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">xmlModel</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">dsIndex</span><span class="p">).</span><span class="nx">y</span><span class="p">;</span>
+
+        <span class="nx">dsIndex</span> <span class="o">++</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">dsIndex</span> <span class="o">&lt;</span> <span class="nx">xmlModel</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span>
+            <span class="nx">CreateObject</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">xmlModel</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">dsIndex</span><span class="p">).</span><span class="nx">source</span><span class="p">,</span> <span class="nx">root</span><span class="p">,</span> <span class="nx">dsItemAdded</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">property</span> <span class="kr">int</span> <span class="nx">dsIndex</span>
+</pre></div>
+</div>
+<p>The example demonstrates how a model can be used to track created items, and how easy it is to serialize and deserialize such information. This can be used to store a dynamically populated scene such as a set of widgets. In the example, a model was used to track each item.</p>
+<p>An alterante solution would be to use the <tt class="docutils literal"><span class="pre">children</span></tt> property of the root of a scene to track items. This, however, requres the items themselves to know the source URL to use to re-create them. It also requires the scene to consist only of dynamically created items, to avoid attempting to serialize and later deserialize any statically allocated objects.</p>
+</div>
+<div class="section" id="summary">
+<h2>13.4. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23summary&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>In this chapter we have looked at creating QML elements dynamically. This lets us create QML scenes freely, opening the door for user configurability and plug-in based architectures.</p>
+<p>The easiest way to dynamically load a QML element is to use a <tt class="docutils literal"><span class="pre">Loader</span></tt> element. This acts as a placeholder for the contents being loaded.</p>
+<p>For a more dynamic approach, the <tt class="docutils literal"><span class="pre">Qt.createQmlObject</span></tt> function can be used to instantiate a string of QML. This approach does, however, have limitations. The full blown solution is to dynamically create a <tt class="docutils literal"><span class="pre">Component</span></tt> using the <tt class="docutils literal"><span class="pre">Qt.createComponent</span></tt> function. Objects are then created by calling the <tt class="docutils literal"><span class="pre">createObject</span></tt> function of a <tt class="docutils literal"><span class="pre">Component</span></tt>.</p>
+<p>As bindings and signal connections rely on the existence of an object <tt class="docutils literal"><span class="pre">id</span></tt>, or access to the object instantiation, an alternate approach must be used for dynamically created objects. To create a binding, the <tt class="docutils literal"><span class="pre">Binding</span></tt> element is used. The <tt class="docutils literal"><span class="pre">Connections</span></tt> element makes it possible to connect to signals of a dynamically created object.</p>
+<p>One of the challenges of working with dynamically created items is to keep track of them. This can be done using a <tt class="docutils literal"><span class="pre">ListModel</span></tt>. By having a model tracking the dynamically created items, it is possible to implement functions for serialization and deserialization, making it possible to store and restore dynamically created scenes.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Mar 15, 2015.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46104829-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>
