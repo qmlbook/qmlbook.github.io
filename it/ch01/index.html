@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Introduzione a Qt 5 &mdash; Qt5 Cadaques Book v2015-03</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2015-03',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          QmlBook</a>
+        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Chapters <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch01/index.html">1. Meet Qt 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch02/index.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch03/index.html">3. Qt Creator IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch04/index.html">4. Quick Starter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch05/index.html">5. Fluid Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch06/index.html">6. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch07/index.html">7. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch08/index.html">8. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch09/index.html">9. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch10/index.html">10. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch11/index.html">11. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch12/index.html">12. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch13/index.html">13. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch14/index.html">14. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch15/index.html">15. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../en/ch16/index.html">16. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">1. Introduzione a Qt 5</a><ul>
+<li><a class="reference internal" href="#prefazione">1.1. Prefazione</a><ul>
+<li><a class="reference internal" href="#il-focus-di-qt5">1.1.1. Il focus di Qt5</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introduzione-a-qt5">1.2. Introduzione a Qt5</a><ul>
+<li><a class="reference internal" href="#qt-quick">1.2.1. Qt Quick</a></li>
+<li><a class="reference internal" href="#assimilare-un-interfaccia-utente">1.2.2. Assimilare un&#8217;Interfaccia Utente</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gli-ingredienti-di-qt">1.3. Gli ingredienti di Qt</a><ul>
+<li><a class="reference internal" href="#i-moduli-qt">1.3.1. I moduli Qt</a></li>
+<li><a class="reference internal" href="#piattaforme-supportate">1.3.2. Piattaforme Supportate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#il-qt-project">1.4. Il Qt Project</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">1. Introduzione a Qt 5</a><ul>
+<li><a class="reference internal" href="#prefazione">1.1. Prefazione</a><ul>
+<li><a class="reference internal" href="#il-focus-di-qt5">1.1.1. Il focus di Qt5</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introduzione-a-qt5">1.2. Introduzione a Qt5</a><ul>
+<li><a class="reference internal" href="#qt-quick">1.2.1. Qt Quick</a></li>
+<li><a class="reference internal" href="#assimilare-un-interfaccia-utente">1.2.2. Assimilare un&#8217;Interfaccia Utente</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gli-ingredienti-di-qt">1.3. Gli ingredienti di Qt</a><ul>
+<li><a class="reference internal" href="#i-moduli-qt">1.3.1. I moduli Qt</a></li>
+<li><a class="reference internal" href="#piattaforme-supportate">1.3.2. Piattaforme Supportate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#il-qt-project">1.4. Il Qt Project</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="introduzione-a-qt-5">
+<h1>1. Introduzione a Qt 5<a class="headerlink" href="#introduzione-a-qt-5" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a>, <a class="reference external" href="https://github.com/marco-piccolino">marco-piccolino</a></em></p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+it%2Fch01%2Findex.html%23introduzione-a-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Il codice sorgente associato a questo capitolo è disponibile nella cartella <a class="reference external" href="../../assets">assets</a>.</p>
+</div>
+<p>Questo libro vuole offrire una panoramica sui diversi aspetti legati allo sviluppo di applicazioni con Qt, versione 5.x. Il libro è incentrato sulla nuova tecnologia di Qt Quick, ma allo stesso tempo fornisce le informazioni necessarie per scrivere back-end in C++, come anche estensioni per Qt Quick.</p>
+<p>Questo capitolo fornisce una visione d&#8217;insieme di Qt 5. Il capitolo mostra sia le varie tipologie di applicazione a disposizione degli sviluppatori che un&#8217;applicazione dimostrativa, in modo da fornire un&#8217;anteprima degli argomenti che verranno affrontati. Inoltre, il capitolo vuole offrire una panoramica sul contenuto di Qt 5 e mostrare come entrare in contatto con i suoi creatori.</p>
+<div class="section" id="prefazione">
+<h2>1.1. Prefazione<a class="headerlink" href="#prefazione" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Storia</p>
+<p>Qt 4 ha visto un progresso costante dal 2005, ed ha rappresentato una base solida per migliaia di applicazioni, e persino sistemi desktop e mobile completi. Negli ultimi anni, gli utenti dei personal computer hanno modificato considerevolmente le proprie abitudini di utilizzo. Dai PC da tavolo si è passati ai notebook portatili e, infine, ai computer tascabili. Il desktop classico viene via via rimpiazzato da schermi portatili, basati sul touch e costantemente connessi. Questi cambiamenti vanno di passo con cambiamenti nella User Experience anche su desktop. Mentre nel passato le interfacce utente di Windows dominavano il mondo, oggigiorno spendiamo più tempo su schermi di altro tipo e interfacce che utilizzano un linguaggio differente.</p>
+<p>Qt 4 è stato disegnato per soddisfare il mondo desktop e per fornire un set di widget per interfacce utente su tutte le maggiori piattaforme. La sfida per gli utenti di Qt oggi è cambiata, e la sfida principale è quella di fornire interfacce utente basate sul touch, i cui requisiti vengono definiti dai clienti, e che devono essere in grado di fornire un&#8217;esperienza d&#8217;uso moderna su tutti i maggiori sistemi desktop e mobile. Qt 4.7 ha introdotto la tecnologia QtQuick, che permette agli utenti di creare una serie di componenti UI partendo da elementi semplici, per poter così ottenere interfacce utente completamente nuove, definite dalle richieste dei clienti.</p>
+<div class="section" id="il-focus-di-qt5">
+<h3>1.1.1. Il focus di Qt5<a class="headerlink" href="#il-focus-di-qt5" title="Permalink to this headline">¶</a></h3>
+<p>Qt 5 è una versione completamente rinnovata rispetto alla release di grande successo di Qt 4. Con la versione 4.8, Qt 4 ha ormai 7 anni. Era quindi il momento di rendere un toolkit eccezionale ancora migliore. Qt 5 è incentrato sui seguenti aspetti:</p>
+<ul class="simple">
+<li><strong>Grafica eccellente</strong>: Qt Quick 2 si appoggia su OpenGL (ES) e utilizza un&#8217;implementazione basata su scene graph. Questa nuova composizione dello stack grafico consente di raggiungere nuovi livelli in termini di effetti grafici, combinati ad una semplicità di utilizzo mai vista prima in questo campo.</li>
+<li><strong>Produttività degli sviluppatori</strong>: QML e JavaScript sono gli strumenti principali per la creazione delle UI. Il back-end sarà gestito dal codice in C++. La divisione netta tra JavaScript e C++  consente iterazioni rapide sia per gli sviluppatori front-end, che possono così concentrarsi sulla creazione di interfacce utente eleganti, sia per gli sviluppatori back-end in C++, che si possono concentrare su stabilità, performance ed estensioni del runtime.</li>
+<li><strong>Portabilità cross-platform</strong>: Con la tecnologia consolidata della Qt Platform Abstraction, è ora possibile portare Qt su una gamma più ampia di piattaforme in maniera più semplice e rapida. Qt 5 si fonda sul concetto di Qt Essentials e di Add-ons, che consente agli sviluppatori OS di concentrarsi sui moduli essenziali e permette inoltre di ottenere dei runtime di dimensioni inferiori.</li>
+<li><strong>Sviluppo Open</strong>: Qt è ora veramente un progetto di tipo open-governance, ospitato su <a class="reference external" href="http://qt-project.org">Qt-Project</a>. Lo sviluppo è open e guidato dalla community.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="introduzione-a-qt5">
+<h2>1.2. Introduzione a Qt5<a class="headerlink" href="#introduzione-a-qt5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qt-quick">
+<h3>1.2.1. Qt Quick<a class="headerlink" href="#qt-quick" title="Permalink to this headline">¶</a></h3>
+<p>Qt Quick è il termine onnicomprensivo per la tecnologia dell&#8217;interfaccia utente utilizzata in Qt5. Qt Quick di per sé è una collezione di diverse tecnologie:</p>
+<ul class="simple">
+<li>QML - Linguaggio markup per interfacce utente</li>
+<li>JavaScript - Il linguaggio di scripting dinamico</li>
+<li>Qt C++ - La libreria c++ avanzata altamente portabile</li>
+</ul>
+<img alt="../../_images/qt5_overview1.png" src="../../_images/qt5_overview1.png" />
+<p>Similmente ad HTML, QML è un linguaggio di markup. E&#8217; costituito da tags che in QtQuick vengono chiamati elementi, i quali vengono racchiusi in parentesi graffe <tt class="docutils literal"><span class="pre">Item</span> <span class="pre">{}</span></tt>. E&#8217; stato progettato fin dall&#8217;origine per la creazione di interfacce utente, per la velocità e per essere di facile lettura per gli sviluppatori. L&#8217;interfaccia utente può essere potenziata tramite l&#8217;utilizzo di codice JavaScript. Qt Quick è facilmente estendibile con funzionalità native custom tramite Qt C++. Sinteticamente, la UI dichiarativa viene chiamata front-end e le parti native vengono chiamate back-end. La distinzione permette di separare le operazioni native e computazionalmente onerose di un&#8217;applicazione dalla parte dell&#8217;interfaccia grafica.</p>
+<p>In un progetto tipico, il front-end viene sviluppato in QML/JavaScript, mentre il codice back-end, che si interfaccia col sistema e si occupa del lavoro pesante, viene sviluppato usando Qt C++. Ciò permette una divisione naturale tra gli sviluppatori più orientati al design e gli sviluppatori funzionali. Tipicamente, il back-end viene testato utilizzando il testing framework proprio di Qt, e viene quindi esportato per l&#8217;utilizzo da parte degli sviluppatori front-end.</p>
+</div>
+<div class="section" id="assimilare-un-interfaccia-utente">
+<h3>1.2.2. Assimilare un&#8217;Interfaccia Utente<a class="headerlink" href="#assimilare-un-interfaccia-utente" title="Permalink to this headline">¶</a></h3>
+<p>Usando QtQuick, creeremo ora una semplice interfaccia utente che dimostra alcuni aspetti del linguaggio QML. Il risultato finale sarà una girandola con le pale che ruotano.</p>
+<a class="reference internal image-reference" href="../../_images/scene3.png"><img alt="../../_images/scene3.png" src="../../_images/scene3.png" style="width: 512.0px; height: 323.0px;" /></a>
+<p>Cominciamo da un documento vuoto che chiamiamo <tt class="docutils literal"><span class="pre">main.qml</span></tt>. Tutti i file QML conterranno l&#8217;estensione <tt class="docutils literal"><span class="pre">.qml</span></tt>. Essendo un linguaggio di markup (come l&#8217;HTML) un documento QML deve avere uno e uno solo elemento radice che, nel nostro caso, è l&#8217;elemento <tt class="docutils literal"><span class="pre">Image</span></tt>, che ha larghezza e altezza basate sulla geometria dell&#8217;immagine di sfondo:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
+
+<span class="nx">Image</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+    <span class="k">source:</span> <span class="s2">&quot;images/background.png&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Poiché il QML non pone alcun tipo di restrizione sul tipo di elemento che può essere l&#8217;elemento radice, utilizziamo un elemento <tt class="docutils literal"><span class="pre">Image</span></tt> con la proprietà source (sorgente) settata all&#8217;immagine di background.</p>
+<img alt="../../_images/background1.png" src="../../_images/background1.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Ogni elemento ha diverse proprietà, per esempio un&#8217;immagine ha le proprietà <tt class="docutils literal"><span class="pre">width</span></tt>, <tt class="docutils literal"><span class="pre">height</span></tt> come anche altre proprietà, quali <tt class="docutils literal"><span class="pre">source</span></tt>.  Le dimensioni dell&#8217;elemento Image vengono desunte automaticamente dalle dimensioni dell&#8217;immagine sorgente. In alternativa, dovremmo settare le proprietà <tt class="docutils literal"><span class="pre">width</span></tt> e <tt class="docutils literal"><span class="pre">height</span></tt> a valori in pixel che siano ragionevoli.</p>
+<p>Gli elementi più comuni sono localizzati nel modulo <tt class="docutils literal"><span class="pre">QtQuick</span></tt> che abbiamo incluso nella prima riga con la dichiarazione di import.</p>
+<p class="last">La proprietà speciale <tt class="docutils literal"><span class="pre">id</span></tt> è opzionale e contiene un identificativo per fare riferimento all&#8217;elemento in altre sezioni del documento. Importante: Una proprietà <tt class="docutils literal"><span class="pre">id</span></tt> non può venire modificata dopo che è stata creata, e non può venire settata al runtime. L&#8217;utilizzo di <tt class="docutils literal"><span class="pre">root</span></tt> come id per l&#8217;elemento radice è solo un&#8217;abitudine dell&#8217;autore che permette di fare riferimento all&#8217;elemento più in alto nella gerarchia in documenti QML di una certa lunghezza.</p>
+</div>
+<p>Gli elementi in primo piano dell&#8217;interfaccia utente (l&#8217;asta e la girandola) sono localizzati in immagini separate.</p>
+<img alt="../../_images/pole1.png" src="../../_images/pole1.png" />
+<img alt="../../_images/pinwheel1.png" src="../../_images/pinwheel1.png" />
+<p>L&#8217;asta (pole) va posizionata al centro orizontale dello sfondo, verso il basso. E la girandola (pinwheel) va posizionata al centro dello sfondo.</p>
+<p>Di regola l&#8217;interfaccia utente sarà composta da molti elementi di tipo differente, e non solo immagini come in questo esempio.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+    <span class="p">...</span>
+    <span class="nx">Image</span> <span class="p">{</span>
+        <span class="kd">id: pole</span>
+        <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+        <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+        <span class="k">source:</span> <span class="s2">&quot;images/pole.png&quot;</span>
+    <span class="p">}</span>
+
+    <span class="nx">Image</span> <span class="p">{</span>
+        <span class="kd">id: wheel</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">source:</span> <span class="s2">&quot;images/pinwheel.png&quot;</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Per posizionare la girandola al centro utilizziamo una proprietà complessa chiamata <tt class="docutils literal"><span class="pre">anchor</span></tt>. L&#8217;ancoraggio permette di specificare relazioni geometriche tra oggetti che hanno relazione padre-figlio e fratelli. Es.: Posizionami al centro di un altro elemento (<tt class="docutils literal"><span class="pre">anchors.centerIn:parent</span></tt>). Da entrambe le parti, sono disponibili le seguenti relazioni: left, right, top, bottom, centerIn, fill, verticalCenter e horizontalCenter. E&#8217; necessario che le relazioni siano concordanti: per esempio, non ha senso ancorare il lato sinistro (left) di un elemento al lato superiore (top) di un altro elemento.</p>
+<p>Quindi, andiamo a settare la girandola come centrata rispetto al genitore (parent), l&#8217;immagine di sfondo.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A volte sarà necessario effettuare piccoli aggiustamenti rispetto alla centratura esatta. Questa operazione è resa possibile dalle proprietà <tt class="docutils literal"><span class="pre">anchors.horizontalCenterOffset</span></tt> e <tt class="docutils literal"><span class="pre">anchors.verticalCenterOffset</span></tt>. Proprietà di aggiustamento simili sono disponibili anche per tutti gli altri punti di ancoraggio. Per una lista completa delle proprietà di ancoraggio, consultare la documentazione.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Posizionare un&#8217;immagine come elemento figlio del rettangolo radice mostra un aspetto importante dei linguaggi dichiarativi. L&#8217;interfaccia utente viene descritta seguendo l&#8217;ordine di livelli e gruppi, dove il livello più alto (il nostro rettangolo) è il primo ad essere disegnato, mentre i livelli figli vengono disegnati davanti ad esso, secondo il sistema di coordinate locale dell&#8217;elemento contenitore.</p>
+</div>
+<p>Per rendere questa dimostrazione più interessante, potremmo ora rendere la scena interattiva. L&#8217;idea è quella di rotare la girandola quando l&#8217;utente preme il tasto del mouse da qualche parte nella scena.</p>
+<p>Per fare questo, utilizziamo l&#8217;elemento <tt class="docutils literal"><span class="pre">MouseArea</span></tt> e gli attribuiamo le stesse dimensioni dell&#8217;elemento radice.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+    <span class="p">...</span>
+    <span class="nx">MouseArea</span> <span class="p">{</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">onClicked:</span> <span class="nx">wheel</span><span class="p">.</span><span class="nx">rotation</span> <span class="o">+=</span> <span class="mi">90</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>L&#8217;area del mouse emette dei segnali (signals) quando l&#8217;utente clicca al suo interno. E&#8217; possibile intercettare questo segnale sovrascrivendo la funzione <tt class="docutils literal"><span class="pre">onClicked</span></tt>. Nel caso specifico, facciamo riferimento alla girandola e ne modifichiamo la rotazione di +90 gradi.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Questo meccanismo funziona per ogni segnale, la convenzione per il nome della funzione è <tt class="docutils literal"><span class="pre">on</span></tt> + <tt class="docutils literal"><span class="pre">NomeDelSegnale</span></tt>. Inoltre, tutte le proprietà emettono un segnale una volta che il loro valore è cambiato. La convenzione per il nome è:</p>
+<blockquote>
+<div><tt class="docutils literal"><span class="pre">on</span></tt> + <tt class="docutils literal"><span class="pre">NomeProprietà</span></tt> + <tt class="docutils literal"><span class="pre">Changed</span></tt></div></blockquote>
+<p class="last">Per esempio, se una proprietà <tt class="docutils literal"><span class="pre">width</span></tt> cambia, è possibile osservarla con <tt class="docutils literal"><span class="pre">onWidthChanged:</span> <span class="pre">print(width)</span></tt>.</p>
+</div>
+<p>Ora la girandola ruota, ma non in modo fluido. La proprietà rotation cambia immediatamente. Invece, vorremmo che la proprietà cambiasse di 90 gradi in un arco di tempo. A questo punto entrano in gioco le animazioni. Un&#8217;animazione definisce come il cambio di una proprietà debba essere distribuito lungo un periodo di tempo. Per abilitare questo comportamento, utilizziamo un tipo di animazione chiamato property behavior. Il <tt class="docutils literal"><span class="pre">Behaviour</span></tt> (comportamento) specifica un&#8217;animazione per una certa proprietà che si applica ad ogni cambiamento di quella proprietà. In breve, ogni volta che la proprietà cambia, l&#8217;animazione viene lanciata. Questo è solo uno dei tanti modi che esistono per dichiarare un&#8217;animazione in QML.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+    <span class="nx">Image</span> <span class="p">{</span>
+        <span class="kd">id: wheel</span>
+        <span class="nx">Behavior</span> <span class="nx">on</span> <span class="nx">rotation</span> <span class="p">{</span>
+            <span class="nx">NumberAnimation</span> <span class="p">{</span>
+                <span class="k">duration:</span> <span class="mi">250</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Ora, ogniqualvolta la proprietà rotation della girandola cambia, essa verrà animata utilizzando una <tt class="docutils literal"><span class="pre">NumberAnimation</span></tt> della durata di 250 ms. Ovvero, ogni rotazione di 90 gradi impiegherà 250 ms.</p>
+<a class="reference internal image-reference" href="../../_images/scene21.png"><img alt="../../_images/scene21.png" src="../../_images/scene21.png" style="width: 512.0px; height: 323.0px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In realtà, la girandola non apparirà sfocata. Lo sfocamento serve solo ad indicare la rotazione. Tuttavia, nella cartella degli assets è presente una girandola sfocata. Forse vuoi provare ad utilizzarla.</p>
+</div>
+<p>Ora la girandola ha già un aspetto molto migliore. Spero che questo esempio ti abbia dato una prima impressione di come funzioni la programmazione in Qt Quick.</p>
+</div>
+</div>
+<div class="section" id="gli-ingredienti-di-qt">
+<h2>1.3. Gli ingredienti di Qt<a class="headerlink" href="#gli-ingredienti-di-qt" title="Permalink to this headline">¶</a></h2>
+<p>Qt 5 consiste di una grande quantità di moduli. Generalmente, un modulo è una libreria che può essere utilizzata dallo sviluppatore. Alcuni moduli sono obbligatori per ogni piattaforma che supporta Qt. Tali moduli formano un insieme chiamato <em>Qt Essentials Modules</em>. Molti moduli sono opzionali e formano i <em>Qt Add-On Modules</em>. E&#8217; probabile che la maggior parte degli sviluppatori non abbia bisogno di tali moduli, ma conoscerli è buona cosa in quanto essi forniscono soluzioni egregie a problemi ricorrenti.</p>
+<div class="section" id="i-moduli-qt">
+<h3>1.3.1. I moduli Qt<a class="headerlink" href="#i-moduli-qt" title="Permalink to this headline">¶</a></h3>
+<p>I Qt Essentials modules sono obbligatori per ogni piattaforma che supporta Qt. Essi forniscono le basi per sviluppare un&#8217;applicazione Qt 5 moderna utilizzando Qt Quick 2.</p>
+<p class="rubric">Core-Essential Modules</p>
+<p>Il set minimo di moduli Qt 5 per iniziare la programmazione in QML.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Modulo</th>
+<th class="head">Descrizione</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Qt Core</td>
+<td>Le classi fondamentali non grafiche utilizzate dagli altri moduli</td>
+</tr>
+<tr class="row-odd"><td>Qt GUI</td>
+<td>Classi base per componenti di interfaccia grafica utente (GUI). Include OpenGL.</td>
+</tr>
+<tr class="row-even"><td>Qt Multimedia</td>
+<td>Classi per funzionalità audio, video, radio e camera.</td>
+</tr>
+<tr class="row-odd"><td>Qt Network</td>
+<td>Classi che rendono la programmazione di rete più semplice e portabile.</td>
+</tr>
+<tr class="row-even"><td>Qt QML</td>
+<td>Classi per i linguaggi QML e JavaScript.</td>
+</tr>
+<tr class="row-odd"><td>Qt Quick</td>
+<td>Framework dichiarativo per la costruzione di applicazioni altamente dinamiche con interfacce utente personalizzate.</td>
+</tr>
+<tr class="row-even"><td>Qt SQL</td>
+<td>Classi per l&#8217;integrazione di database utilizzando SQL.</td>
+</tr>
+<tr class="row-odd"><td>Qt Test</td>
+<td>Classi per lo unit testing di applicazioni e librerie Qt.</td>
+</tr>
+<tr class="row-even"><td>Qt WebKit</td>
+<td>Classi per un&#8217;implementazione basata su WebKit2 ed una nuova API in QML. Vedi anche Qt WebKit Widgets nei moduli add-on.</td>
+</tr>
+<tr class="row-odd"><td>Qt WebKit Widgets</td>
+<td>Classi di Qt 4 basate su WebKit1 e QWidget.</td>
+</tr>
+<tr class="row-even"><td>Qt Widgets</td>
+<td>Classi per estendere Qt GUI con widget C++.</td>
+</tr>
+</tbody>
+</table>
+<p class="graphviz">
+<img src="../../_images/graphviz-748fb340dd79a8004144bb8c91ec98bf1ed82cf3.png" alt="digraph essentials {
+QtGui -&gt; QtCore
+QtNetwork -&gt;QtCore
+QtMultimedia -&gt;QtGui
+QtQml -&gt; QtCore
+QtQuick -&gt; QtQml
+QtSql -&gt; QtCore
+}" />
+</p>
+<p class="rubric">Moduli Addon Qt</p>
+<p>Oltre ai moduli essenziali, Qt offre agli sviluppatori software moduli addizionali che non fanno parte della distribuzione. Ecco un breve elenco di moduli addizionali disponibili.</p>
+<ul class="simple">
+<li>Qt 3D - Una serie di API che rendono la programmazione grafica 3D semplice e dichiarativa.</li>
+<li>Qt Bluetooth - API in C++ e QML per piattaforme che utilizzano la tecnologia wireless Bluetooth.</li>
+<li>Qt Contacts - API in C++ e QML per accedere alle rubriche e ai database dei contatti.</li>
+<li>Qt Location - Mette a disposizione posizionamento, mappe, navigazione e ricerca dei luoghi tramite interfacce QML e C++. back-end NMEA per il posizionamento</li>
+<li>Qt Organizer - API in C++ e QML per accedere agli eventi dell&#8217;agenda (memo, eventi, etc.).</li>
+<li>Qt Publish and Subscribe.</li>
+<li>Qt Sensors - Accesso ai sensori tramite interfacce QML e C++.</li>
+<li>Qt Service Framework -  Permette alle applicazioni di leggere, sfogliare e sottoscrivere notifiche di cambiamento.</li>
+<li>Qt System Info - Per accedere alle informazioni e capacità del sistema.</li>
+<li>Qt Versit - Supporto per i formati vCard e iCalendar.</li>
+<li>Qt Wayland - Solo per Linux. Include l&#8217;API Qt Compositor (server), e il plugin per piattaforme Wayland (clients).</li>
+<li>Qt Feedback - Riscontro tattile e audio alle azioni degli utenti.</li>
+<li>Qt JSON DB - Un sistema di immagazzinamento dati non basato su SQL.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Poiché questi moduli non fanno parte della distribuzione, il loro stato varia, a seconda di quanti contributori siano attivi e di quanto vengano testati.</p>
+</div>
+</div>
+<div class="section" id="piattaforme-supportate">
+<h3>1.3.2. Piattaforme Supportate<a class="headerlink" href="#piattaforme-supportate" title="Permalink to this headline">¶</a></h3>
+<p>Qt supporta numerose piattaforme. Tutte le maggiori piattaforme sia desktop che embedded sono supportate. Tramite la Qt Application Abstraction, oggi risulta più semplice portare Qt sulla tua piattaforma, se necessario.</p>
+<p>Testare Qt 5 su una piattaforma è dispendioso in termini di tempo. Un sottoinsieme delle piattaforme è stato selezionato dal qt-project per costituire il gruppo delle piattaforme di riferimento. Queste piattaforme vengono testate approfonditamente per assicurarne la qualità. Ma attenzione: non esiste codice completamente privo di errori.</p>
+</div>
+</div>
+<div class="section" id="il-qt-project">
+<h2>1.4. Il Qt Project<a class="headerlink" href="#il-qt-project" title="Permalink to this headline">¶</a></h2>
+<p>Dalla <a class="reference external" href="http://wiki.qt-project.org">wiki del qt-project</a>:</p>
+<p>&#8220;Il Qt Project è una comunità meritocratica e basata sul consenso interessata a Qt. Anyone who shares that interest can join the community, participate in its decision making processes, and contribute to Qt’s development.&#8221;</p>
+<p>Il Qt-Project è un&#8217;organizzazione che porta avanti lo sviluppo della parte open-source di Qt. Costituisce la base a cui altri utenti possono contribuire. Il contributore maggiore è DIGIA, che detiene anche i diritti commerciali di Qt.</p>
+<p>Qt ha un lato open-source e un lato commerciale. Il lato commerciale è riservato a quelle aziende che non soddisfano le licenze di tipo open-source. Senza l&#8217;aspetto commerciale, queste aziende non sarebbero in grado di usare Qt, e DIGIA non sarebbe in grado di contribuire con così tanto codice al Qt-Project.</p>
+<p>Ci sono molte aziende in tutto il modo che sussistono grazie alle consulenze e allo sviluppo di prodotti con Qt sule varie piattaforme. Ci sono molti progetti e sviluppatori open-source che si affidano a Qt come libreria principale per lo sviluppo. E&#8217; bello far parte di questa comunità molto attiva e lavorare con tool e librerie eccezionali. Questo ti rende una persona migliore? Forse :-)</p>
+<p><strong>Contribuisci qui: http://wiki.qt-project.org</strong></p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Mar 17, 2015.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46104829-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>
