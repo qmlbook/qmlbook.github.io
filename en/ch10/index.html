@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -179,9 +178,9 @@
 </div>
 <div class="section" id="playing-media">
 <h2>10.1. Playing Media<a class="headerlink" href="#playing-media" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23playing-media&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The most basic case of multimedia integration in a QML application is for it to playback media. This is done using the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element, optionally in combination with a <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> element if the source is an image or video. The <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element has a <tt class="docutils literal"><span class="pre">source</span></tt> property pointing at the media to play. When a media source has been bound, it is simply a matter of calling the <tt class="docutils literal"><span class="pre">play</span></tt> function to start playing.</p>
-<p>If you want to play visual media, i.e. pictures or video, you must also setup a <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> element. The <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> running the playback is bound to the video output through the <tt class="docutils literal"><span class="pre">source</span></tt> property.</p>
-<p>In the example shown below, the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> is given a file with video contents as <tt class="docutils literal"><span class="pre">source</span></tt>. A <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> is created and bound to the media player. As soon as the main component has been fully initialized, i.e. at <tt class="docutils literal"><span class="pre">Component.onCompleted</span></tt>, the player&#8217;s <tt class="docutils literal"><span class="pre">play</span></tt> function is called.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23playing-media&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The most basic case of multimedia integration in a QML application is for it to playback media. This is done using the <code class="docutils literal"><span class="pre">MediaPlayer</span></code> element, optionally in combination with a <code class="docutils literal"><span class="pre">VideoOutput</span></code> element if the source is an image or video. The <code class="docutils literal"><span class="pre">MediaPlayer</span></code> element has a <code class="docutils literal"><span class="pre">source</span></code> property pointing at the media to play. When a media source has been bound, it is simply a matter of calling the <code class="docutils literal"><span class="pre">play</span></code> function to start playing.</p>
+<p>If you want to play visual media, i.e. pictures or video, you must also setup a <code class="docutils literal"><span class="pre">VideoOutput</span></code> element. The <code class="docutils literal"><span class="pre">MediaPlayer</span></code> running the playback is bound to the video output through the <code class="docutils literal"><span class="pre">source</span></code> property.</p>
+<p>In the example shown below, the <code class="docutils literal"><span class="pre">MediaPlayer</span></code> is given a file with video contents as <code class="docutils literal"><span class="pre">source</span></code>. A <code class="docutils literal"><span class="pre">VideoOutput</span></code> is created and bound to the media player. As soon as the main component has been fully initialized, i.e. at <code class="docutils literal"><span class="pre">Component.onCompleted</span></code>, the player&#8217;s <code class="docutils literal"><span class="pre">play</span></code> function is called.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 <span class="kr">import</span> <span class="nx">QtMultimedia</span> <span class="mf">5.0</span>
 <span class="kr">import</span> <span class="nx">QtSystemInfo</span> <span class="mf">5.0</span>
@@ -211,8 +210,8 @@
 <span class="c1">// M1&gt;&gt;</span>
 </pre></div>
 </div>
-<p>In addition to the video playback demonstrated above, the example also contains a small snippet of code for disabling the screen saver. This prevents the video to be interrupted. This is achieved by setting the <tt class="docutils literal"><span class="pre">screenSaverEnabled</span></tt> property of the <tt class="docutils literal"><span class="pre">ScreenSaver</span></tt> element to <tt class="docutils literal"><span class="pre">false</span></tt>. The <tt class="docutils literal"><span class="pre">ScreenSaver</span></tt> element is available through the <tt class="docutils literal"><span class="pre">QtSystemInfo</span> <span class="pre">5.0</span></tt> API.</p>
-<p>Basic operations such as altering the volume when playing media is controlled through the <tt class="docutils literal"><span class="pre">volume</span></tt> property of the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element. There are other useful properties as well. For instance, the <tt class="docutils literal"><span class="pre">duration</span></tt> and <tt class="docutils literal"><span class="pre">position</span></tt> properties can be used to build a progress bar. If the <tt class="docutils literal"><span class="pre">seekable</span></tt> property is <tt class="docutils literal"><span class="pre">true</span></tt>, it is even possible to update the <tt class="docutils literal"><span class="pre">position</span></tt> when the progress bar is tapped. The example below shows how this is added to the basic playback example above.</p>
+<p>In addition to the video playback demonstrated above, the example also contains a small snippet of code for disabling the screen saver. This prevents the video to be interrupted. This is achieved by setting the <code class="docutils literal"><span class="pre">screenSaverEnabled</span></code> property of the <code class="docutils literal"><span class="pre">ScreenSaver</span></code> element to <code class="docutils literal"><span class="pre">false</span></code>. The <code class="docutils literal"><span class="pre">ScreenSaver</span></code> element is available through the <code class="docutils literal"><span class="pre">QtSystemInfo</span> <span class="pre">5.0</span></code> API.</p>
+<p>Basic operations such as altering the volume when playing media is controlled through the <code class="docutils literal"><span class="pre">volume</span></code> property of the <code class="docutils literal"><span class="pre">MediaPlayer</span></code> element. There are other useful properties as well. For instance, the <code class="docutils literal"><span class="pre">duration</span></code> and <code class="docutils literal"><span class="pre">position</span></code> properties can be used to build a progress bar. If the <code class="docutils literal"><span class="pre">seekable</span></code> property is <code class="docutils literal"><span class="pre">true</span></code>, it is even possible to update the <code class="docutils literal"><span class="pre">position</span></code> when the progress bar is tapped. The example below shows how this is added to the basic playback example above.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Rectangle</span> <span class="p">{</span>
         <span class="kd">id: progressBar</span>
         
@@ -246,7 +245,7 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">position</span></tt> property is only updated once per second in the default case. This means that the progress bar will update in large steps unless the duration of the media is long enough, compared to the number pixels that the progress bar is wide. This can, however, be changed through accessing the <tt class="docutils literal"><span class="pre">mediaObject</span></tt> property and its <tt class="docutils literal"><span class="pre">notifyInterval</span></tt> property. It can be set to the number of milliseconds between each position update, increasing the smoothness of the user interface.</p>
+<p>The <code class="docutils literal"><span class="pre">position</span></code> property is only updated once per second in the default case. This means that the progress bar will update in large steps unless the duration of the media is long enough, compared to the number pixels that the progress bar is wide. This can, however, be changed through accessing the <code class="docutils literal"><span class="pre">mediaObject</span></code> property and its <code class="docutils literal"><span class="pre">notifyInterval</span></code> property. It can be set to the number of milliseconds between each position update, increasing the smoothness of the user interface.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Connections</span> <span class="p">{</span>
         <span class="k">target:</span> <span class="nx">player</span>
         <span class="k">onMediaObjectChanged:</span> <span class="p">{</span>
@@ -260,25 +259,25 @@
 <p class="first admonition-title">Todo</p>
 <p class="last">The code above does not have any effect on the update interval! There seems to be no media object...</p>
 </div>
-<p>When using <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> to build a media player, it is good to monitor the <tt class="docutils literal"><span class="pre">status</span></tt> property of the player. It is an enumeration of the possible statuses, ranging from <tt class="docutils literal"><span class="pre">MediaPlayer.Buffered``to</span> <span class="pre">``MediaPlayer.InvalidMedia</span></tt>. The possible values are summarized in the bullets below:</p>
+<p>When using <code class="docutils literal"><span class="pre">MediaPlayer</span></code> to build a media player, it is good to monitor the <code class="docutils literal"><span class="pre">status</span></code> property of the player. It is an enumeration of the possible statuses, ranging from <code class="docutils literal"><span class="pre">MediaPlayer.Buffered``to</span> <span class="pre">``MediaPlayer.InvalidMedia</span></code>. The possible values are summarized in the bullets below:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.UnknownStatus</span></tt>. The status is unknown.</li>
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.NoMedia</span></tt>. The player has no media source assigned. Playback is stopped.</li>
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.Loading</span></tt>. The player is loading the media.</li>
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.Loaded</span></tt>. The media has been loaded. Playback is stopped.</li>
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.Stalled</span></tt>. The loading of media has stalled.</li>
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.Buffering</span></tt>. The media is being buffered.</li>
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.Buffered</span></tt>. The media has been buffered, this means that the player can start playing the media.</li>
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.EndOfMedia</span></tt>. The end of the media has been reached. Playback is stopped.</li>
-<li><tt class="docutils literal"><span class="pre">MediaPlayer.InvalidMedia</span></tt>. The media cannot be played. Playback is stopped.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.UnknownStatus</span></code>. The status is unknown.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.NoMedia</span></code>. The player has no media source assigned. Playback is stopped.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.Loading</span></code>. The player is loading the media.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.Loaded</span></code>. The media has been loaded. Playback is stopped.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.Stalled</span></code>. The loading of media has stalled.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.Buffering</span></code>. The media is being buffered.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.Buffered</span></code>. The media has been buffered, this means that the player can start playing the media.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.EndOfMedia</span></code>. The end of the media has been reached. Playback is stopped.</li>
+<li><code class="docutils literal"><span class="pre">MediaPlayer.InvalidMedia</span></code>. The media cannot be played. Playback is stopped.</li>
 </ul>
-<p>As mentioned in the bullets above, the playback state can vary over time. Calling <tt class="docutils literal"><span class="pre">play</span></tt>, <tt class="docutils literal"><span class="pre">pause</span></tt> or <tt class="docutils literal"><span class="pre">stop</span></tt> alters the state, but the media in question can also have effect. For example, the end can be reached, or it can be invalid, causing playback to stop. The current playback state can be tracked through the <tt class="docutils literal"><span class="pre">playbackState</span></tt> property. The values can be <tt class="docutils literal"><span class="pre">MediaPlayer.PlayingState</span></tt>, <tt class="docutils literal"><span class="pre">MediaPlayer.PausedState</span></tt> or <tt class="docutils literal"><span class="pre">MediaPlayer.StoppedState</span></tt>.</p>
-<p>Using the <tt class="docutils literal"><span class="pre">autoPlay</span></tt> property, the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> can be made to attempt go to the playing state as soon as a the <tt class="docutils literal"><span class="pre">source</span></tt> property is changed. A similar property is the <tt class="docutils literal"><span class="pre">autoLoad</span></tt> causing the player to try to load the media as soon as the <tt class="docutils literal"><span class="pre">source</span></tt> property is changed. The latter property is enabled by default.</p>
-<p>It is also possible to let the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> to loop a media item. The <tt class="docutils literal"><span class="pre">loops</span></tt> property controls how many times the <tt class="docutils literal"><span class="pre">source</span></tt> is to be played. Setting the property to <tt class="docutils literal"><span class="pre">MediaPlayer.Infinite</span></tt> causes endless looping. Great for continious animations or a looping background song.</p>
+<p>As mentioned in the bullets above, the playback state can vary over time. Calling <code class="docutils literal"><span class="pre">play</span></code>, <code class="docutils literal"><span class="pre">pause</span></code> or <code class="docutils literal"><span class="pre">stop</span></code> alters the state, but the media in question can also have effect. For example, the end can be reached, or it can be invalid, causing playback to stop. The current playback state can be tracked through the <code class="docutils literal"><span class="pre">playbackState</span></code> property. The values can be <code class="docutils literal"><span class="pre">MediaPlayer.PlayingState</span></code>, <code class="docutils literal"><span class="pre">MediaPlayer.PausedState</span></code> or <code class="docutils literal"><span class="pre">MediaPlayer.StoppedState</span></code>.</p>
+<p>Using the <code class="docutils literal"><span class="pre">autoPlay</span></code> property, the <code class="docutils literal"><span class="pre">MediaPlayer</span></code> can be made to attempt go to the playing state as soon as a the <code class="docutils literal"><span class="pre">source</span></code> property is changed. A similar property is the <code class="docutils literal"><span class="pre">autoLoad</span></code> causing the player to try to load the media as soon as the <code class="docutils literal"><span class="pre">source</span></code> property is changed. The latter property is enabled by default.</p>
+<p>It is also possible to let the <code class="docutils literal"><span class="pre">MediaPlayer</span></code> to loop a media item. The <code class="docutils literal"><span class="pre">loops</span></code> property controls how many times the <code class="docutils literal"><span class="pre">source</span></code> is to be played. Setting the property to <code class="docutils literal"><span class="pre">MediaPlayer.Infinite</span></code> causes endless looping. Great for continious animations or a looping background song.</p>
 </div>
 <div class="section" id="sound-effects">
 <h2>10.2. Sound Effects<a class="headerlink" href="#sound-effects" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23sound-effects&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>When playing sound effects, the response time from requesting playback until actually playing becomes important. In this situation, the <tt class="docutils literal"><span class="pre">SoundEffect</span></tt> element comes in handy. By setting up the <tt class="docutils literal"><span class="pre">source</span></tt> property, a simple call to the <tt class="docutils literal"><span class="pre">play</span></tt> function immediately starts playback.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23sound-effects&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>When playing sound effects, the response time from requesting playback until actually playing becomes important. In this situation, the <code class="docutils literal"><span class="pre">SoundEffect</span></code> element comes in handy. By setting up the <code class="docutils literal"><span class="pre">source</span></code> property, a simple call to the <code class="docutils literal"><span class="pre">play</span></code> function immediately starts playback.</p>
 <p>This can be utilized for audio feedback when tapping the screen, as shown below.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">SoundEffect</span> <span class="p">{</span>
         <span class="kd">id: beep</span>
@@ -302,7 +301,7 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The element can also be utilized to accompany a transition with audio. To trigger playback from a transition, the <tt class="docutils literal"><span class="pre">ScriptAction</span></tt> element is used.</p>
+<p>The element can also be utilized to accompany a transition with audio. To trigger playback from a transition, the <code class="docutils literal"><span class="pre">ScriptAction</span></code> element is used.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">SoundEffect</span> <span class="p">{</span>
         <span class="kd">id: swosh</span>
         <span class="k">source:</span> <span class="s2">&quot;swosh.wav&quot;</span>
@@ -318,15 +317,15 @@
     <span class="p">]</span>
 </pre></div>
 </div>
-<p>In addition to the <tt class="docutils literal"><span class="pre">play</span></tt> function, a number of properties similar to the ones offered by <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> are available. Examples are <tt class="docutils literal"><span class="pre">volume</span></tt> and <tt class="docutils literal"><span class="pre">loops</span></tt>. The latter can be set to <tt class="docutils literal"><span class="pre">SoundEffect.Infinite</span></tt> for infinite playback. To stop playback, call the <tt class="docutils literal"><span class="pre">stop</span></tt> function.</p>
+<p>In addition to the <code class="docutils literal"><span class="pre">play</span></code> function, a number of properties similar to the ones offered by <code class="docutils literal"><span class="pre">MediaPlayer</span></code> are available. Examples are <code class="docutils literal"><span class="pre">volume</span></code> and <code class="docutils literal"><span class="pre">loops</span></code>. The latter can be set to <code class="docutils literal"><span class="pre">SoundEffect.Infinite</span></code> for infinite playback. To stop playback, call the <code class="docutils literal"><span class="pre">stop</span></code> function.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When the PulseAudio backend is used, <tt class="docutils literal"><span class="pre">stop</span></tt> will not stop instantaneously, but only prevent further loops. This is due to limitations in the underlying API.</p>
+<p class="last">When the PulseAudio backend is used, <code class="docutils literal"><span class="pre">stop</span></code> will not stop instantaneously, but only prevent further loops. This is due to limitations in the underlying API.</p>
 </div>
 </div>
 <div class="section" id="video-streams">
 <h2>10.3. Video Streams<a class="headerlink" href="#video-streams" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23video-streams&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> element is not limited to usage in combination with <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> elements. It can also be used directly with video sources to show a live video stream. Using a <tt class="docutils literal"><span class="pre">Camera</span></tt> element as <tt class="docutils literal"><span class="pre">source</span></tt> and the application is complete. The video stream from a <tt class="docutils literal"><span class="pre">Camera</span></tt> can be used to provide a live stream to the user. This stream works as the search view when capturing photos.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23video-streams&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">VideoOutput</span></code> element is not limited to usage in combination with <code class="docutils literal"><span class="pre">MediaPlayer</span></code> elements. It can also be used directly with video sources to show a live video stream. Using a <code class="docutils literal"><span class="pre">Camera</span></code> element as <code class="docutils literal"><span class="pre">source</span></code> and the application is complete. The video stream from a <code class="docutils literal"><span class="pre">Camera</span></code> can be used to provide a live stream to the user. This stream works as the search view when capturing photos.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 <span class="kr">import</span> <span class="nx">QtMultimedia</span> <span class="mf">5.0</span>
 
@@ -348,10 +347,10 @@
 </div>
 <div class="section" id="capturing-images">
 <h2>10.4. Capturing Images<a class="headerlink" href="#capturing-images" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23capturing-images&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>One of the key features of the <tt class="docutils literal"><span class="pre">Camera</span></tt> element is that is can be used to take pictures. We will use this in a simple stop-motion application. In it, you will learn how to show a viewfinder, snap photos and to keep track of the pictures taken.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23capturing-images&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>One of the key features of the <code class="docutils literal"><span class="pre">Camera</span></code> element is that is can be used to take pictures. We will use this in a simple stop-motion application. In it, you will learn how to show a viewfinder, snap photos and to keep track of the pictures taken.</p>
 <p>The user interface is shown below. It consists of three major parts. In the background, you will find the viewfinder, to the right, a column of buttons and at the bottom, a list of images taken. The idea is to take a series of photos, then click the Play Sequence button. This will play the images back, creating a simple stop-motion film.</p>
 <a class="reference internal image-reference" href="../../_images/camera-ui.png"><img alt="../../_images/camera-ui.png" src="../../_images/camera-ui.png" style="width: 515.0px; height: 313.5px;" /></a>
-<p>The viewfinder part of the camera is simply a <tt class="docutils literal"><span class="pre">Camera</span></tt> element used as <tt class="docutils literal"><span class="pre">source</span></tt> in a <tt class="docutils literal"><span class="pre">VideoOutput</span></tt>. This will show the user a live videostream from the camera.</p>
+<p>The viewfinder part of the camera is simply a <code class="docutils literal"><span class="pre">Camera</span></code> element used as <code class="docutils literal"><span class="pre">source</span></code> in a <code class="docutils literal"><span class="pre">VideoOutput</span></code>. This will show the user a live videostream from the camera.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">VideoOutput</span> <span class="p">{</span>
         <span class="k">anchors.fill:</span> <span class="nx">parent</span>
         <span class="k">source:</span> <span class="nx">camera</span>
@@ -362,7 +361,7 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The list of photos is a <tt class="docutils literal"><span class="pre">ListView</span></tt> oriented horizontally shows images from a <tt class="docutils literal"><span class="pre">ListModel</span></tt> called <tt class="docutils literal"><span class="pre">imagePaths</span></tt>. In the background, a semi-transparent black <tt class="docutils literal"><span class="pre">Rectangle</span></tt> is used.</p>
+<p>The list of photos is a <code class="docutils literal"><span class="pre">ListView</span></code> oriented horizontally shows images from a <code class="docutils literal"><span class="pre">ListModel</span></code> called <code class="docutils literal"><span class="pre">imagePaths</span></code>. In the background, a semi-transparent black <code class="docutils literal"><span class="pre">Rectangle</span></code> is used.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">ListModel</span> <span class="p">{</span>
         <span class="kd">id: imagePaths</span>
     <span class="p">}</span>
@@ -394,7 +393,7 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>For the shooting of images, you need to know that the <tt class="docutils literal"><span class="pre">Camera</span></tt> element contains a set of sub-elements for various tasks. To capture still pictures, the <tt class="docutils literal"><span class="pre">Camera.imageCapture</span></tt> element is used. When you call the <tt class="docutils literal"><span class="pre">capture</span></tt> method, a picture is taken. This results in the <tt class="docutils literal"><span class="pre">Camera.imageCapture</span></tt> emitting first the <tt class="docutils literal"><span class="pre">imageCaptured</span></tt> signal followed by the <tt class="docutils literal"><span class="pre">imageSaved</span></tt> signal.</p>
+<p>For the shooting of images, you need to know that the <code class="docutils literal"><span class="pre">Camera</span></code> element contains a set of sub-elements for various tasks. To capture still pictures, the <code class="docutils literal"><span class="pre">Camera.imageCapture</span></code> element is used. When you call the <code class="docutils literal"><span class="pre">capture</span></code> method, a picture is taken. This results in the <code class="docutils literal"><span class="pre">Camera.imageCapture</span></code> emitting first the <code class="docutils literal"><span class="pre">imageCaptured</span></code> signal followed by the <code class="docutils literal"><span class="pre">imageSaved</span></code> signal.</p>
 <div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">Button</span> <span class="p">{</span>
             <span class="kd">id: shotButton</span>
         
@@ -408,7 +407,7 @@
         <span class="p">}</span>
 </pre></div>
 </div>
-<p>To intercept the signals of a sub-element, a <tt class="docutils literal"><span class="pre">Connections</span></tt> element is needed. In this case, we don&#8217;t need to show a preview image, but simply add the resulting image to the <tt class="docutils literal"><span class="pre">ListView</span></tt> at the bottom of the screen. Shown in the example below, the path to the saved image is provided as the <tt class="docutils literal"><span class="pre">path</span></tt> argument with the signal.</p>
+<p>To intercept the signals of a sub-element, a <code class="docutils literal"><span class="pre">Connections</span></code> element is needed. In this case, we don&#8217;t need to show a preview image, but simply add the resulting image to the <code class="docutils literal"><span class="pre">ListView</span></code> at the bottom of the screen. Shown in the example below, the path to the saved image is provided as the <code class="docutils literal"><span class="pre">path</span></code> argument with the signal.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Connections</span> <span class="p">{</span>
         <span class="k">target:</span> <span class="nx">camera</span><span class="p">.</span><span class="nx">imageCapture</span>
         
@@ -419,8 +418,8 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>For showing a preview, connect to the <tt class="docutils literal"><span class="pre">imageCaptured</span></tt> signal and use the <tt class="docutils literal"><span class="pre">preview</span></tt> signal argument as <tt class="docutils literal"><span class="pre">source</span></tt> of an <tt class="docutils literal"><span class="pre">Image</span></tt> element. A <tt class="docutils literal"><span class="pre">requestId</span></tt> signal argument  is sent along both the <tt class="docutils literal"><span class="pre">imageCaptured</span></tt> and <tt class="docutils literal"><span class="pre">imageSaved</span></tt>. This value is returned from the <tt class="docutils literal"><span class="pre">capture</span></tt> method. Using this, the capture of an image can be traced through the complete cycle. This way, the preview can be used first and then be replaced by the properly saved image. This, however, is nothing that we do in the example.</p>
-<p>The last part of the application is the actual playback. This is driven using a <tt class="docutils literal"><span class="pre">Timer</span></tt> element and some JavaScript. The <tt class="docutils literal"><span class="pre">_imageIndex</span></tt> variable is used to keep track of the currently shown image. When the last image has been shown, the playback is stopped. In the example, the <tt class="docutils literal"><span class="pre">root.state</span></tt> is used to hide parts of the user interface when playing the sequence.</p>
+<p>For showing a preview, connect to the <code class="docutils literal"><span class="pre">imageCaptured</span></code> signal and use the <code class="docutils literal"><span class="pre">preview</span></code> signal argument as <code class="docutils literal"><span class="pre">source</span></code> of an <code class="docutils literal"><span class="pre">Image</span></code> element. A <code class="docutils literal"><span class="pre">requestId</span></code> signal argument  is sent along both the <code class="docutils literal"><span class="pre">imageCaptured</span></code> and <code class="docutils literal"><span class="pre">imageSaved</span></code>. This value is returned from the <code class="docutils literal"><span class="pre">capture</span></code> method. Using this, the capture of an image can be traced through the complete cycle. This way, the preview can be used first and then be replaced by the properly saved image. This, however, is nothing that we do in the example.</p>
+<p>The last part of the application is the actual playback. This is driven using a <code class="docutils literal"><span class="pre">Timer</span></code> element and some JavaScript. The <code class="docutils literal"><span class="pre">_imageIndex</span></code> variable is used to keep track of the currently shown image. When the last image has been shown, the playback is stopped. In the example, the <code class="docutils literal"><span class="pre">root.state</span></code> is used to hide parts of the user interface when playing the sequence.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">property</span> <span class="kr">int</span> <span class="nx">_imageIndex</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
     
     <span class="kd">function</span> <span class="nx">startPlayback</span><span class="p">()</span>
@@ -470,7 +469,7 @@
 </div>
 <div class="section" id="implementing-a-playlist">
 <h3>10.5.1. Implementing a Playlist<a class="headerlink" href="#implementing-a-playlist" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23implementing-a-playlist&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The Qt 5 multimedia API does not provide support for playlists. Luckly, it is easy to build one. The idea is to be able to set it up with a model of items and and a <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element, as shown below. The <tt class="docutils literal"><span class="pre">Playlist</span></tt> element is resposible for setting the <tt class="docutils literal"><span class="pre">source</span></tt> of the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt>, while the playstate is controlled via the player.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23implementing-a-playlist&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The Qt 5 multimedia API does not provide support for playlists. Luckly, it is easy to build one. The idea is to be able to set it up with a model of items and and a <code class="docutils literal"><span class="pre">MediaPlayer</span></code> element, as shown below. The <code class="docutils literal"><span class="pre">Playlist</span></code> element is resposible for setting the <code class="docutils literal"><span class="pre">source</span></code> of the <code class="docutils literal"><span class="pre">MediaPlayer</span></code>, while the playstate is controlled via the player.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Playlist</span> <span class="p">{</span>
         <span class="kd">id: playlist</span>
         
@@ -488,7 +487,7 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The first half of the <tt class="docutils literal"><span class="pre">Playlist</span></tt> element, shown below, takes care of setting the <tt class="docutils literal"><span class="pre">source</span></tt> element given an index in the <tt class="docutils literal"><span class="pre">setIndex</span></tt> function. It also implements the <tt class="docutils literal"><span class="pre">next</span></tt> and <tt class="docutils literal"><span class="pre">previous</span></tt> functions to navigate the list.</p>
+<p>The first half of the <code class="docutils literal"><span class="pre">Playlist</span></code> element, shown below, takes care of setting the <code class="docutils literal"><span class="pre">source</span></code> element given an index in the <code class="docutils literal"><span class="pre">setIndex</span></code> function. It also implements the <code class="docutils literal"><span class="pre">next</span></code> and <code class="docutils literal"><span class="pre">previous</span></code> functions to navigate the list.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">Item</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     
@@ -522,7 +521,7 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The trick to make the playlist continue to the next element at the end of each element is to monitor the <tt class="docutils literal"><span class="pre">status</span></tt> property of the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt>. As soon as the <tt class="docutils literal"><span class="pre">MediaPlayer.EndOfMedia</span></tt> state is reached, the index is increased and playback resumed, or, if the end of the list is reached, the playback is stopped.</p>
+<p>The trick to make the playlist continue to the next element at the end of each element is to monitor the <code class="docutils literal"><span class="pre">status</span></code> property of the <code class="docutils literal"><span class="pre">MediaPlayer</span></code>. As soon as the <code class="docutils literal"><span class="pre">MediaPlayer.EndOfMedia</span></code> state is reached, the index is increased and playback resumed, or, if the end of the list is reached, the playback is stopped.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Connections</span> <span class="p">{</span>
         <span class="k">target:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span>
         
@@ -543,7 +542,7 @@
 </div>
 <div class="section" id="summary">
 <h2>10.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23summary&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The media API provided by Qt provides mechanisms for playing and capturing video and audio. Through the <tt class="docutils literal"><span class="pre">VideoOutput</span></tt> element and video source can be displayed in the user interface. Through the <tt class="docutils literal"><span class="pre">MediaPlayer</span></tt> element, most playback can be handled, even though the <tt class="docutils literal"><span class="pre">SoundEffect</span></tt> can be used for low-latency sounds. For capturing, or only showing a live video stream, the <tt class="docutils literal"><span class="pre">Camera</span></tt> element is used.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch10%2Findex.html%23summary&labels=ch10">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch10&page=1&state=open">View</a></div><p>The media API provided by Qt provides mechanisms for playing and capturing video and audio. Through the <code class="docutils literal"><span class="pre">VideoOutput</span></code> element and video source can be displayed in the user interface. Through the <code class="docutils literal"><span class="pre">MediaPlayer</span></code> element, most playback can be handled, even though the <code class="docutils literal"><span class="pre">SoundEffect</span></code> can be used for low-latency sounds. For capturing, or only showing a live video stream, the <code class="docutils literal"><span class="pre">Camera</span></code> element is used.</p>
 </div>
 </div>
 
@@ -561,7 +560,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

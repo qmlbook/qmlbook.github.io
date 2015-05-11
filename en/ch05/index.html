@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -182,7 +181,7 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23fluid-elements&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 15, 2015 at 10:13 CET</p>
+<p>Last Build: May 11, 2015 at 16:49 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>Till now, we have mostly looked at simple graphical elements and how to arrange and manipulate them. This chapter is about how to control these changes in a way that a value of a property not just changes instantly, it&#8217;s more how the value changes over time: an animation. This technology is one of the key foundations for modern slick user interfaces and can be extended with a system to describe your user interface using states and transitions. Each state defines a set of property changes and can be combined with animations on state changes, called transitions.</p>
@@ -220,33 +219,33 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The example above shows a simple animation applied on the <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">rotation</span></tt> property. Each animation has a duration of 4000 milliseconds (msecs) and loops forever. The animation on x moves the x coordinate from the rocket gradually over to 240px. The animation on rotation runs from the current angle to 360 degree. Both animations run in parallel and are started as soon as the UI is loaded.</p>
-<p>Now you can play around with the animation by changing the <tt class="docutils literal"><span class="pre">to</span></tt> and <tt class="docutils literal"><span class="pre">duration</span></tt> property or you could add another animation for example on the <tt class="docutils literal"><span class="pre">opacity</span></tt> or even the <tt class="docutils literal"><span class="pre">scale</span></tt>. Combining these it could look like the rocket is disappearing in the endless deep space. Try it out!</p>
+<p>The example above shows a simple animation applied on the <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">rotation</span></code> property. Each animation has a duration of 4000 milliseconds (msecs) and loops forever. The animation on x moves the x coordinate from the rocket gradually over to 240px. The animation on rotation runs from the current angle to 360 degree. Both animations run in parallel and are started as soon as the UI is loaded.</p>
+<p>Now you can play around with the animation by changing the <code class="docutils literal"><span class="pre">to</span></code> and <code class="docutils literal"><span class="pre">duration</span></code> property or you could add another animation for example on the <code class="docutils literal"><span class="pre">opacity</span></code> or even the <code class="docutils literal"><span class="pre">scale</span></code>. Combining these it could look like the rocket is disappearing in the endless deep space. Try it out!</p>
 <div class="section" id="animation-elements">
 <h3>5.1.1. Animation Elements<a class="headerlink" href="#animation-elements" title="Permalink to this headline">¶</a></h3>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23animation-elements&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>There are several types of animation elements, each optimized for a specific use case. Here is a list of the most prominent animations:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">PropertyAnimation</span></tt> - Animates changes in property values</li>
-<li><tt class="docutils literal"><span class="pre">NumberAnimation</span></tt> - Animates changes in qreal-type values</li>
-<li><tt class="docutils literal"><span class="pre">ColorAnimation</span></tt> - Animates changes in color values</li>
-<li><tt class="docutils literal"><span class="pre">RotationAnimation</span></tt> - Animates changes in rotation values</li>
+<li><code class="docutils literal"><span class="pre">PropertyAnimation</span></code> - Animates changes in property values</li>
+<li><code class="docutils literal"><span class="pre">NumberAnimation</span></code> - Animates changes in qreal-type values</li>
+<li><code class="docutils literal"><span class="pre">ColorAnimation</span></code> - Animates changes in color values</li>
+<li><code class="docutils literal"><span class="pre">RotationAnimation</span></code> - Animates changes in rotation values</li>
 </ul>
 <p>Besides these basic and widely used animation elements, QtQuick provides also more specialized animations for specific use cases:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">PauseAnimation</span></tt> - Provides a pause for an animation</li>
-<li><tt class="docutils literal"><span class="pre">SequentialAnimation</span></tt> - Allows animations to be run sequentially</li>
-<li><tt class="docutils literal"><span class="pre">ParallelAnimation</span></tt> - Allows animations to be run in parallel</li>
-<li><tt class="docutils literal"><span class="pre">AnchorAnimation</span></tt> - Animates changes in anchor values</li>
-<li><tt class="docutils literal"><span class="pre">ParentAnimation</span></tt> - Animates changes in parent values</li>
-<li><tt class="docutils literal"><span class="pre">SmoothedAnimation</span></tt> - Allows a property to smoothly track a value</li>
-<li><tt class="docutils literal"><span class="pre">SpringAnimation</span></tt> - Allows a property to track a value in a spring-like motion</li>
-<li><tt class="docutils literal"><span class="pre">PathAnimation</span></tt> - Animates an item along a path</li>
-<li><tt class="docutils literal"><span class="pre">Vector3dAnimation</span></tt> - Animates changes in QVector3d values</li>
+<li><code class="docutils literal"><span class="pre">PauseAnimation</span></code> - Provides a pause for an animation</li>
+<li><code class="docutils literal"><span class="pre">SequentialAnimation</span></code> - Allows animations to be run sequentially</li>
+<li><code class="docutils literal"><span class="pre">ParallelAnimation</span></code> - Allows animations to be run in parallel</li>
+<li><code class="docutils literal"><span class="pre">AnchorAnimation</span></code> - Animates changes in anchor values</li>
+<li><code class="docutils literal"><span class="pre">ParentAnimation</span></code> - Animates changes in parent values</li>
+<li><code class="docutils literal"><span class="pre">SmoothedAnimation</span></code> - Allows a property to smoothly track a value</li>
+<li><code class="docutils literal"><span class="pre">SpringAnimation</span></code> - Allows a property to track a value in a spring-like motion</li>
+<li><code class="docutils literal"><span class="pre">PathAnimation</span></code> - Animates an item along a path</li>
+<li><code class="docutils literal"><span class="pre">Vector3dAnimation</span></code> - Animates changes in QVector3d values</li>
 </ul>
 <p>We will learn later how to create a sequence of animations. While working on more complex animations there comes up the need to change a property or to run a script during an an ongoing animation. For this QtQuick offers the action elements, which can be used everywhere where the other animation elements can be used:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">PropertyAction</span></tt> - Specifies immediate property changes during animation</li>
-<li><tt class="docutils literal"><span class="pre">ScriptAction</span></tt> - Defines scripts to be run during an animation</li>
+<li><code class="docutils literal"><span class="pre">PropertyAction</span></code> - Specifies immediate property changes during animation</li>
+<li><code class="docutils literal"><span class="pre">ScriptAction</span></code> - Defines scripts to be run during an animation</li>
 </ul>
 <p>The major animation types will be discussed during this chapter using small focused examples.</p>
 </div>
@@ -256,12 +255,12 @@
 <ul class="simple">
 <li><em>Animation on property</em> - runs automatically after element is fully loaded</li>
 <li><em>Behavior on property</em> - runs automatically when the property value changes</li>
-<li><em>Standalone Animation</em> - runs when animation is explicitly started using <tt class="docutils literal"><span class="pre">start()</span></tt> or <tt class="docutils literal"><span class="pre">running</span></tt> is set to true (e.g. by a property binding)</li>
+<li><em>Standalone Animation</em> - runs when animation is explicitly started using <code class="docutils literal"><span class="pre">start()</span></code> or <code class="docutils literal"><span class="pre">running</span></code> is set to true (e.g. by a property binding)</li>
 </ul>
 <p><em>Later we see also how animations can be used inside state transitions.</em></p>
 <div class="topic">
 <p class="topic-title first">Extended ClickableImage Version 2</p>
-<p>To demonstrate the usage of animations we reuse our <tt class="docutils literal"><span class="pre">ClickableImage</span></tt> component from an earlier chapter and extended it with a text element.</p>
+<p>To demonstrate the usage of animations we reuse our <code class="docutils literal"><span class="pre">ClickableImage</span></code> component from an earlier chapter and extended it with a text element.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// ClickableImageV2.qml</span>
 <span class="c1">// Simple image which can be clicked</span>
 
@@ -296,15 +295,15 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To organize the element below the image we used a <tt class="docutils literal"><span class="pre">Column</span></tt> positioner and calculated the width and height based on the column&#8217;s <tt class="docutils literal"><span class="pre">childrenRect</span></tt> property. We exposed two properties: <tt class="docutils literal"><span class="pre">text</span></tt> and the image <tt class="docutils literal"><span class="pre">source</span></tt> as also the <tt class="docutils literal"><span class="pre">clicked</span></tt> signal. We also wanted that the text is as wide as the image and it should wrap. We achieve the latter by using the <tt class="docutils literal"><span class="pre">Text</span></tt> elements <tt class="docutils literal"><span class="pre">wrapMode</span></tt> property.</p>
+<p>To organize the element below the image we used a <code class="docutils literal"><span class="pre">Column</span></code> positioner and calculated the width and height based on the column&#8217;s <code class="docutils literal"><span class="pre">childrenRect</span></code> property. We exposed two properties: <code class="docutils literal"><span class="pre">text</span></code> and the image <code class="docutils literal"><span class="pre">source</span></code> as also the <code class="docutils literal"><span class="pre">clicked</span></code> signal. We also wanted that the text is as wide as the image and it should wrap. We achieve the latter by using the <code class="docutils literal"><span class="pre">Text</span></code> elements <code class="docutils literal"><span class="pre">wrapMode</span></code> property.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Due to the inversion of the geometry-dependency (parent geometry depends on child geometry) we can&#8217;t set a width/height on the <tt class="docutils literal"><span class="pre">ClickableImageV2</span></tt>, as this will break our width/height binding. This is a limitation on our internal design and as a designer of components you should be aware of this. Normally you should prefer the child&#8217;s geometry to depend on the parent&#8217;s geometry.</p>
+<p class="last">Due to the inversion of the geometry-dependency (parent geometry depends on child geometry) we can&#8217;t set a width/height on the <code class="docutils literal"><span class="pre">ClickableImageV2</span></code>, as this will break our width/height binding. This is a limitation on our internal design and as a designer of components you should be aware of this. Normally you should prefer the child&#8217;s geometry to depend on the parent&#8217;s geometry.</p>
 </div>
 </div>
 <p class="rubric">The rocket race can start.</p>
 <img alt="../../_images/animationtypes_start.png" src="../../_images/animationtypes_start.png" />
-<p>The three rockets are all at the same y-position (<tt class="docutils literal"><span class="pre">y=200</span></tt>). They need to travel all to <tt class="docutils literal"><span class="pre">y=40</span></tt>. Each of them using a different method with different side-effects and features.</p>
+<p>The three rockets are all at the same y-position (<code class="docutils literal"><span class="pre">y=200</span></code>). They need to travel all to <code class="docutils literal"><span class="pre">y=40</span></code>. Each of them using a different method with different side-effects and features.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">ClickableImageV3</span> <span class="p">{</span>
         <span class="kd">id: rocket1</span>
         <span class="k">x:</span> <span class="mi">40</span><span class="p">;</span> <span class="k">y:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">height</span>
@@ -317,7 +316,7 @@
 </pre></div>
 </div>
 <p class="rubric">1st rocket</p>
-<p>The 1st rocket travels using the <tt class="docutils literal"><span class="pre">Animation</span> <span class="pre">on</span> <span class="pre">&lt;property&gt;</span></tt> strategy. The animation starts immediately. When a rocket is clicked their y-position is reset to the start position, this applies to all rockets. On the 1st rocket the reset does not have any effect as long as the animation is running. It&#8217;s even disturbing as the y-position is set for a fraction of a second to a new value before the animation starts. <em>Such competing property changes should be avoided</em>.</p>
+<p>The 1st rocket travels using the <code class="docutils literal"><span class="pre">Animation</span> <span class="pre">on</span> <span class="pre">&lt;property&gt;</span></code> strategy. The animation starts immediately. When a rocket is clicked their y-position is reset to the start position, this applies to all rockets. On the 1st rocket the reset does not have any effect as long as the animation is running. It&#8217;s even disturbing as the y-position is set for a fraction of a second to a new value before the animation starts. <em>Such competing property changes should be avoided</em>.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">ClickableImageV3</span> <span class="p">{</span>
         <span class="kd">id: rocket2</span>
         <span class="k">x:</span> <span class="mi">152</span><span class="p">;</span> <span class="k">y:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">height</span>
@@ -334,7 +333,7 @@
 </pre></div>
 </div>
 <p class="rubric">2nd rocket</p>
-<p>The 2nd rocket travels using a <tt class="docutils literal"><span class="pre">behavior</span> <span class="pre">on</span></tt> animation. This behavior tells the property, every time the property value changes, it changes through this animation. The behavior can be disabled by <tt class="docutils literal"><span class="pre">enabled</span> <span class="pre">:</span> <span class="pre">false</span></tt> on the <tt class="docutils literal"><span class="pre">Behavior</span></tt> element. The rocket will start traveling when you click it (y-position is then set to 40). Another click has no influence as the position is already set. You could try to use a random value (e.g. <tt class="docutils literal"><span class="pre">40+(Math.random()*(205-40)</span></tt>) for the y-position. You will see that the rocket will always animate to the new position and adapt is speed to match the 4 seconds to the destination defined by the animations duration.</p>
+<p>The 2nd rocket travels using a <code class="docutils literal"><span class="pre">behavior</span> <span class="pre">on</span></code> animation. This behavior tells the property, every time the property value changes, it changes through this animation. The behavior can be disabled by <code class="docutils literal"><span class="pre">enabled</span> <span class="pre">:</span> <span class="pre">false</span></code> on the <code class="docutils literal"><span class="pre">Behavior</span></code> element. The rocket will start traveling when you click it (y-position is then set to 40). Another click has no influence as the position is already set. You could try to use a random value (e.g. <code class="docutils literal"><span class="pre">40+(Math.random()*(205-40)</span></code>) for the y-position. You will see that the rocket will always animate to the new position and adapt is speed to match the 4 seconds to the destination defined by the animations duration.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">ClickableImageV3</span> <span class="p">{</span>
         <span class="kd">id: rocket3</span>
         <span class="k">x:</span> <span class="mi">264</span><span class="p">;</span> <span class="k">y:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">height</span>
@@ -355,12 +354,12 @@
 </pre></div>
 </div>
 <p class="rubric">3rd rocket</p>
-<p>The 3rd rocket uses a <tt class="docutils literal"><span class="pre">standalone</span> <span class="pre">animation</span></tt>. The animation is defined as an own element and could be everywhere in the document. The click will start the animation using the animations function <tt class="docutils literal"><span class="pre">start()</span></tt>. Each animation has a start(), stop(), resume(), restart() function. The animation itself contains much more information then the other animation types earlier. We need to define the target and properties to declare the target element to be animated and which properties we want to animate. We need to define a <tt class="docutils literal"><span class="pre">to</span></tt> value and in this case we define also a <tt class="docutils literal"><span class="pre">from</span></tt> value to allow a re-start of the animation.</p>
+<p>The 3rd rocket uses a <code class="docutils literal"><span class="pre">standalone</span> <span class="pre">animation</span></code>. The animation is defined as an own element and could be everywhere in the document. The click will start the animation using the animations function <code class="docutils literal"><span class="pre">start()</span></code>. Each animation has a start(), stop(), resume(), restart() function. The animation itself contains much more information then the other animation types earlier. We need to define the target and properties to declare the target element to be animated and which properties we want to animate. We need to define a <code class="docutils literal"><span class="pre">to</span></code> value and in this case we define also a <code class="docutils literal"><span class="pre">from</span></code> value to allow a re-start of the animation.</p>
 <img alt="../../_images/animationtypes.png" src="../../_images/animationtypes.png" />
 <p>A click on the background will reset all rockets to their initial position. The 1st rocket can&#8217;t be restarted only be re-starting the program which triggers the re-loading of the element.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Another way to start/stop an animation is to bind a property to the <tt class="docutils literal"><span class="pre">running</span></tt> property of an animation. This is especially useful when the user-input is in control of properties:</p>
+<p>Another way to start/stop an animation is to bind a property to the <code class="docutils literal"><span class="pre">running</span></code> property of an animation. This is especially useful when the user-input is in control of properties:</p>
 <div class="last highlight-qml"><div class="highlight"><pre><span class="nx">NumberAnimation</span> <span class="p">{</span>
     <span class="p">...</span>
     <span class="c1">// animation runs when mouse is pressed</span>
@@ -375,16 +374,16 @@
 </div>
 <div class="section" id="easing-curves">
 <h3>5.1.3. Easing Curves<a class="headerlink" href="#easing-curves" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23easing-curves&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>The value change of a property can be controlled by an animation. Easing attributes allows to influence the interpolation curve of a property change. All animations we have defined by now use a linear interpolation because the initial easing type of an animation is <tt class="docutils literal"><span class="pre">Easing.Linear</span></tt>. It&#8217;s best visualized with a small plot, where the y-axis is the property to be animated and the x-axis is the time (<em>duration</em>). A linear interpolation would draw a straight line from the <tt class="docutils literal"><span class="pre">from</span></tt> value at the start of the animation to the <tt class="docutils literal"><span class="pre">to</span></tt> value at the end of the animation. So the easing type defines the curve of change. Easing types are carefully chosen to support a natural fit for a moving object, for example when a page slides out. Initially the page should slide out slowly and then gaining the speed to finally slide out on high speed, similar to turning a book side.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23easing-curves&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>The value change of a property can be controlled by an animation. Easing attributes allows to influence the interpolation curve of a property change. All animations we have defined by now use a linear interpolation because the initial easing type of an animation is <code class="docutils literal"><span class="pre">Easing.Linear</span></code>. It&#8217;s best visualized with a small plot, where the y-axis is the property to be animated and the x-axis is the time (<em>duration</em>). A linear interpolation would draw a straight line from the <code class="docutils literal"><span class="pre">from</span></code> value at the start of the animation to the <code class="docutils literal"><span class="pre">to</span></code> value at the end of the animation. So the easing type defines the curve of change. Easing types are carefully chosen to support a natural fit for a moving object, for example when a page slides out. Initially the page should slide out slowly and then gaining the speed to finally slide out on high speed, similar to turning a book side.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Animations should not be overused. As other aspects of UI design also animations should be designed carefully and support the UI flow and not dominate it. The eye reacts very sensible on moving objects and can easily distract the user.</p>
 </div>
-<p>In the next example we will try some easing curves. Each easing curve is displayed by a click-able image and when clicked will set a new easing type on the <tt class="docutils literal"><span class="pre">square</span></tt> animation as also trigger a <tt class="docutils literal"><span class="pre">restart()</span></tt> to run the animation with the new curve.</p>
+<p>In the next example we will try some easing curves. Each easing curve is displayed by a click-able image and when clicked will set a new easing type on the <code class="docutils literal"><span class="pre">square</span></code> animation as also trigger a <code class="docutils literal"><span class="pre">restart()</span></code> to run the animation with the new curve.</p>
 <a class="reference internal image-reference" href="../../_images/easingcurves.png"><img alt="../../_images/easingcurves.png" src="../../_images/easingcurves.png" style="width: 534.0px; height: 295.0px;" /></a>
 <div class="topic">
 <p class="topic-title first">Extended ClickableImage V3</p>
-<p>We enhanced the ClickableImage for another time be able to add a small frame around the image and text. For that we added a <tt class="docutils literal"><span class="pre">property</span> <span class="pre">bool</span> <span class="pre">framed:</span> <span class="pre">false</span></tt> property to our API and based on <tt class="docutils literal"><span class="pre">framed</span></tt> value we set the visibility of the frame to not break existing element users. Here are the changes we did.</p>
+<p>We enhanced the ClickableImage for another time be able to add a small frame around the image and text. For that we added a <code class="docutils literal"><span class="pre">property</span> <span class="pre">bool</span> <span class="pre">framed:</span> <span class="pre">false</span></code> property to our API and based on <code class="docutils literal"><span class="pre">framed</span></code> value we set the visibility of the frame to not break existing element users. Here are the changes we did.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// ClickableImageV2.qml</span>
 <span class="c1">// Simple image which can be clicked</span>
 
@@ -410,7 +409,7 @@
 </pre></div>
 </div>
 </div>
-<p>The code for this example was made compact. We use an array of easing curve names (<tt class="docutils literal"><span class="pre">property</span> <span class="pre">variant</span> <span class="pre">easings</span></tt>) and assign them inside a <tt class="docutils literal"><span class="pre">Repeater</span></tt> element to a <tt class="docutils literal"><span class="pre">ClickableImage</span></tt>. The image source is defined through a naming scheme, so an easing curve named &#8220;InQuad&#8221; will have a respective diagram under the location &#8220;curves/InQuad.png&#8221;. If you click one curve diagram the click handler will assign the easing type to the animation and then restart the animation. The animation itself is a standalone-animation with the target set to the square and configured for x-property animation with a duration of 2 secs.</p>
+<p>The code for this example was made compact. We use an array of easing curve names (<code class="docutils literal"><span class="pre">property</span> <span class="pre">variant</span> <span class="pre">easings</span></code>) and assign them inside a <code class="docutils literal"><span class="pre">Repeater</span></code> element to a <code class="docutils literal"><span class="pre">ClickableImage</span></code>. The image source is defined through a naming scheme, so an easing curve named &#8220;InQuad&#8221; will have a respective diagram under the location &#8220;curves/InQuad.png&#8221;. If you click one curve diagram the click handler will assign the easing type to the animation and then restart the animation. The animation itself is a standalone-animation with the target set to the square and configured for x-property animation with a duration of 2 secs.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// easingtypes.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -471,7 +470,7 @@
 </pre></div>
 </div>
 <p>When you run it and play with it, please observe the change of speed during an animation. Some animations feel more natural for the object and some feel irritating.</p>
-<p>Besides the <tt class="docutils literal"><span class="pre">duration</span></tt> and <tt class="docutils literal"><span class="pre">easing.type</span></tt> you are able to fine tune animations. For example the general <tt class="docutils literal"><span class="pre">PropertyAnimation</span></tt> where most animation inherit from supports additionally an <tt class="docutils literal"><span class="pre">easing.amplitude</span></tt>, <tt class="docutils literal"><span class="pre">easing.overshoot</span></tt> and <tt class="docutils literal"><span class="pre">easing.period</span></tt> property which allows you to fine-tune the behavior of particular easing curve. Not all easing curves support these parameters. Please consult the <a class="reference external" href="http://doc.qt.io/qt-5//qml-qtquick2-propertyanimation.html#easing.type-prop.html">easing table</a> from the <tt class="docutils literal"><span class="pre">PropertyAnimation</span></tt> documentation to check if an easing parameter has influence on an easing curve.</p>
+<p>Besides the <code class="docutils literal"><span class="pre">duration</span></code> and <code class="docutils literal"><span class="pre">easing.type</span></code> you are able to fine tune animations. For example the general <code class="docutils literal"><span class="pre">PropertyAnimation</span></code> where most animation inherit from supports additionally an <code class="docutils literal"><span class="pre">easing.amplitude</span></code>, <code class="docutils literal"><span class="pre">easing.overshoot</span></code> and <code class="docutils literal"><span class="pre">easing.period</span></code> property which allows you to fine-tune the behavior of particular easing curve. Not all easing curves support these parameters. Please consult the <a class="reference external" href="http://doc.qt.io/qt-5//qml-qtquick2-propertyanimation.html#easing.type-prop.html">easing table</a> from the <code class="docutils literal"><span class="pre">PropertyAnimation</span></code> documentation to check if an easing parameter has influence on an easing curve.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Choosing the right animation for the element in the user interface context is crucial for the outcome. Remember the animation shall support the UI flow not irritate the user.</p>
@@ -479,7 +478,7 @@
 </div>
 <div class="section" id="grouped-animations">
 <h3>5.1.4. Grouped Animations<a class="headerlink" href="#grouped-animations" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23grouped-animations&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>Often animations will be more complex then just animating one property. It might be you want to run several animation combined at the same time or one-after another or even execute a script between two animations. For this the grouped animation offer you a possibility. As the named suggests it&#8217;s possible to group animation. Grouping can be in two ways: parallel or sequential. For this you can use the <tt class="docutils literal"><span class="pre">SequentialAnimation</span></tt> or the <tt class="docutils literal"><span class="pre">ParallelAnimation</span></tt> element, which act as an animation containers for other animation elements. These grouped animations are animations themselves and can be used exactly as such.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23grouped-animations&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>Often animations will be more complex then just animating one property. It might be you want to run several animation combined at the same time or one-after another or even execute a script between two animations. For this the grouped animation offer you a possibility. As the named suggests it&#8217;s possible to group animation. Grouping can be in two ways: parallel or sequential. For this you can use the <code class="docutils literal"><span class="pre">SequentialAnimation</span></code> or the <code class="docutils literal"><span class="pre">ParallelAnimation</span></code> element, which act as an animation containers for other animation elements. These grouped animations are animations themselves and can be used exactly as such.</p>
 <img alt="../../_images/groupedanimation.png" src="../../_images/groupedanimation.png" />
 <p>All direct child animations of a parallel animation will run in parallel, when started. This allows you to animate different properties at the same time.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// parallelanimation.qml</span>
@@ -575,9 +574,9 @@
 <img alt="../../_images/soccer_init.png" src="../../_images/soccer_init.png" />
 <p>To understand the animation we need to dissect it into the integral transformations of the object. We need to remember animation do animate property changes. Here are the different transformations:</p>
 <ul class="simple">
-<li>An x-translation from left-to-right (<tt class="docutils literal"><span class="pre">X1</span></tt>)</li>
-<li>An y-translation from down to up (<tt class="docutils literal"><span class="pre">Y1</span></tt>) followed by a translation from up to down (<tt class="docutils literal"><span class="pre">Y2</span></tt>) with some bouncing</li>
-<li>A rotation over 360 over the whole animation duration (<tt class="docutils literal"><span class="pre">ROT1</span></tt>)</li>
+<li>An x-translation from left-to-right (<code class="docutils literal"><span class="pre">X1</span></code>)</li>
+<li>An y-translation from down to up (<code class="docutils literal"><span class="pre">Y1</span></code>) followed by a translation from up to down (<code class="docutils literal"><span class="pre">Y2</span></code>) with some bouncing</li>
+<li>A rotation over 360 over the whole animation duration (<code class="docutils literal"><span class="pre">ROT1</span></code>)</li>
 </ul>
 <p>The whole duration of the animation should take three seconds.</p>
 <img alt="../../_images/soccer_plan.png" src="../../_images/soccer_plan.png" />
@@ -675,7 +674,7 @@
 </pre></div>
 </div>
 <img alt="../../_images/soccer_stage4.png" src="../../_images/soccer_stage4.png" />
-<p>At the end we would like the ball to be rotating. For this we need to add another animation to the parallel animation. We choose the <tt class="docutils literal"><span class="pre">RotationAnimation</span></tt> as it&#8217;s specialized for rotation.</p>
+<p>At the end we would like the ball to be rotating. For this we need to add another animation to the parallel animation. We choose the <code class="docutils literal"><span class="pre">RotationAnimation</span></code> as it&#8217;s specialized for rotation.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">ParallelAnimation</span> <span class="p">{</span>
     <span class="nx">id</span><span class="o">:</span> <span class="nx">anim</span>
     <span class="nx">SequentialAnimation</span> <span class="p">{</span>
@@ -693,7 +692,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>That&#8217;s the whole animation sequence. The one thing left is to provide the correct easing curves for the movements of the ball. For the <em>Y1</em> animation I use a <tt class="docutils literal"><span class="pre">Easing.OutCirc</span></tt> curve as this shall look more like a circular movement. <em>Y2</em> is enhanced using a <tt class="docutils literal"><span class="pre">Easing.OutBounce</span></tt> as the ball shall bounce and the bouncing shall happening at the end (try an <tt class="docutils literal"><span class="pre">Easing.InBounce</span></tt> and you see the bouncing will start right away).
+<p>That&#8217;s the whole animation sequence. The one thing left is to provide the correct easing curves for the movements of the ball. For the <em>Y1</em> animation I use a <code class="docutils literal"><span class="pre">Easing.OutCirc</span></code> curve as this shall look more like a circular movement. <em>Y2</em> is enhanced using a <code class="docutils literal"><span class="pre">Easing.OutBounce</span></code> as the ball shall bounce and the bouncing shall happening at the end (try an <code class="docutils literal"><span class="pre">Easing.InBounce</span></code> and you see the bouncing will start right away).
 The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.</p>
 <p>Here is the final animation code for your reference:</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">ParallelAnimation</span> <span class="p">{</span>
@@ -736,7 +735,7 @@ The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.<
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23states-and-transitions&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>Often parts of a user interface can be described in states. A state defines a set of property changes and can be triggered by a certain condition. Additional these state switches can have a transition attached which defines how these changes should be animated or any additional actions shall be applied. Actions can also be applied when a state is entered.</p>
 <div class="section" id="states">
 <h3>5.2.1. States<a class="headerlink" href="#states" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23states&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>You define states in QML with the <tt class="docutils literal"><span class="pre">State</span></tt> element, which needs to be bound to the <tt class="docutils literal"><span class="pre">states</span></tt> array of any item element. A state is identified through a state name and consist in its simplest form of a series of property changes elements. The default state is defined by the initial properties of the element and is named <tt class="docutils literal"><span class="pre">&quot;&quot;</span></tt> (the empty string).</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23states&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>You define states in QML with the <code class="docutils literal"><span class="pre">State</span></code> element, which needs to be bound to the <code class="docutils literal"><span class="pre">states</span></code> array of any item element. A state is identified through a state name and consist in its simplest form of a series of property changes elements. The default state is defined by the initial properties of the element and is named <code class="docutils literal"><span class="pre">&quot;&quot;</span></code> (the empty string).</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">Item</span> <span class="p">{</span>
     <span class="nx">id</span><span class="o">:</span> <span class="nx">root</span>
     <span class="nx">states</span><span class="o">:</span> <span class="p">[</span>
@@ -752,10 +751,10 @@ The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.<
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>A state is changed by assigning a new state name to the <tt class="docutils literal"><span class="pre">state</span></tt> property of the element with the states defined.</p>
+<p>A state is changed by assigning a new state name to the <code class="docutils literal"><span class="pre">state</span></code> property of the element with the states defined.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Another way to switch states is using the <tt class="docutils literal"><span class="pre">when</span></tt> property of the <tt class="docutils literal"><span class="pre">State</span></tt> element. The <tt class="docutils literal"><span class="pre">when</span></tt> property can be set to an expression that evaluates to true when the state should be applied.</p>
+<p class="last">Another way to switch states is using the <code class="docutils literal"><span class="pre">when</span></code> property of the <code class="docutils literal"><span class="pre">State</span></code> element. The <code class="docutils literal"><span class="pre">when</span></code> property can be set to an expression that evaluates to true when the state should be applied.</p>
 </div>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">Item</span> <span class="p">{</span>
     <span class="nx">id</span><span class="o">:</span> <span class="nx">root</span>
@@ -774,7 +773,7 @@ The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.<
 <img alt="../../_images/trafficlight_sketch.png" src="../../_images/trafficlight_sketch.png" />
 <p>For example a traffic light might have two signaling lights. The upper one signaling stop with a red color and the lower one signaling go with a green color. In this example both lights should not shine at the same time. Let&#8217;s have a look at the state chart diagram.</p>
 <img alt="../../_images/trafficlight_states.png" src="../../_images/trafficlight_states.png" />
-<p>When the system is switched on it goes automatically into the stop mode as default state. The stop state changes the <tt class="docutils literal"><span class="pre">light1</span></tt> to red and <tt class="docutils literal"><span class="pre">light2</span></tt> to black (off). An external event can trigger now a state switch to the <tt class="docutils literal"><span class="pre">&quot;go&quot;</span></tt> state. In the go state we change the color properties from <tt class="docutils literal"><span class="pre">light1</span></tt> to black (off) and <tt class="docutils literal"><span class="pre">light2</span></tt> to green to indicate the passers may walk now.</p>
+<p>When the system is switched on it goes automatically into the stop mode as default state. The stop state changes the <code class="docutils literal"><span class="pre">light1</span></code> to red and <code class="docutils literal"><span class="pre">light2</span></code> to black (off). An external event can trigger now a state switch to the <code class="docutils literal"><span class="pre">&quot;go&quot;</span></code> state. In the go state we change the color properties from <code class="docutils literal"><span class="pre">light1</span></code> to black (off) and <code class="docutils literal"><span class="pre">light2</span></code> to green to indicate the passers may walk now.</p>
 <p>To realize this scenario we start sketching our user interface for the 2 lights. For simplicity we use 2 rectangles with the radius set to the half of the width (and the width is the same as the height, which means it&#8217;s a square).</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Rectangle</span> <span class="p">{</span>
         <span class="kd">id: light1</span>
@@ -795,10 +794,10 @@ The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.<
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>As defined in the state chart we want to have two states one the <tt class="docutils literal"><span class="pre">&quot;go&quot;</span></tt> state and the other the <tt class="docutils literal"><span class="pre">&quot;stop&quot;</span></tt> state, where each of them changes the traffic lights respective to red or green. We set the <tt class="docutils literal"><span class="pre">state</span></tt> property to <tt class="docutils literal"><span class="pre">stop</span></tt> to ensure the initial state of our traffic light is the <tt class="docutils literal"><span class="pre">stop</span></tt> state.</p>
+<p>As defined in the state chart we want to have two states one the <code class="docutils literal"><span class="pre">&quot;go&quot;</span></code> state and the other the <code class="docutils literal"><span class="pre">&quot;stop&quot;</span></code> state, where each of them changes the traffic lights respective to red or green. We set the <code class="docutils literal"><span class="pre">state</span></code> property to <code class="docutils literal"><span class="pre">stop</span></code> to ensure the initial state of our traffic light is the <code class="docutils literal"><span class="pre">stop</span></code> state.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">We could have achieved the same effect with only a <tt class="docutils literal"><span class="pre">&quot;go&quot;</span></tt> state and no explicit <tt class="docutils literal"><span class="pre">&quot;stop&quot;</span></tt> state by setting the color of <tt class="docutils literal"><span class="pre">light1</span></tt> to red and the color of <tt class="docutils literal"><span class="pre">light2</span></tt> to black. The initial state <tt class="docutils literal"><span class="pre">&quot;&quot;</span></tt> defined by the initial property values would then act as the <tt class="docutils literal"><span class="pre">&quot;stop&quot;</span></tt> state.</p>
+<p class="last">We could have achieved the same effect with only a <code class="docutils literal"><span class="pre">&quot;go&quot;</span></code> state and no explicit <code class="docutils literal"><span class="pre">&quot;stop&quot;</span></code> state by setting the color of <code class="docutils literal"><span class="pre">light1</span></code> to red and the color of <code class="docutils literal"><span class="pre">light2</span></code> to black. The initial state <code class="docutils literal"><span class="pre">&quot;&quot;</span></code> defined by the initial property values would then act as the <code class="docutils literal"><span class="pre">&quot;stop&quot;</span></code> state.</p>
 </div>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="k">state:</span> <span class="s2">&quot;stop&quot;</span>
 
@@ -816,7 +815,7 @@ The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.<
     <span class="p">]</span>
 </pre></div>
 </div>
-<p>Using <tt class="docutils literal"><span class="pre">PropertyChanges</span> <span class="pre">{</span> <span class="pre">target:</span> <span class="pre">light2;</span> <span class="pre">color:</span> <span class="pre">&quot;black&quot;</span> <span class="pre">}</span></tt> is not really required in this examples as the initial color of <tt class="docutils literal"><span class="pre">light2</span></tt> is already black. In a state it&#8217;s only necessary to describe how the properties shall change from their default state (and not from the previous state).</p>
+<p>Using <code class="docutils literal"><span class="pre">PropertyChanges</span> <span class="pre">{</span> <span class="pre">target:</span> <span class="pre">light2;</span> <span class="pre">color:</span> <span class="pre">&quot;black&quot;</span> <span class="pre">}</span></code> is not really required in this examples as the initial color of <code class="docutils literal"><span class="pre">light2</span></code> is already black. In a state it&#8217;s only necessary to describe how the properties shall change from their default state (and not from the previous state).</p>
 <p>A state change is triggered using a mouse area which covers the whole traffic light and toggles between the go and stop state when clicked.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">MouseArea</span> <span class="p">{</span>
         <span class="k">anchors.fill:</span> <span class="nx">parent</span>
@@ -833,8 +832,8 @@ The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.<
 </div>
 <div class="section" id="transitions">
 <h3>5.2.2. Transitions<a class="headerlink" href="#transitions" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23transitions&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>A series of transitions can be added to every item. A transition is executed by a state change. You can define on which state change a particular transition can be applied using the <tt class="docutils literal"><span class="pre">from:</span></tt> and <tt class="docutils literal"><span class="pre">to:</span></tt> properties. These two properties act like a filter, when the filter is true the transition will be applied. You can also use the wild-cast &#8220;*&#8221; which means &#8220;any state&#8221;. For example <tt class="docutils literal"><span class="pre">from:”*”;</span> <span class="pre">to:”*”</span></tt> means from any state to any other state and is the default value for <tt class="docutils literal"><span class="pre">from</span></tt> and <tt class="docutils literal"><span class="pre">to</span></tt>, which means the transition is applied to every state switch.</p>
-<p>For this example we would like to animate the color changes when switching state from &#8220;go&#8221; to &#8220;stop&#8221;. For the other reversed state change (&#8220;stop&#8221; to &#8220;go&#8221;) we want to keep an immediate color change and don&#8217;t apply a transition. We restrict the transition with the <tt class="docutils literal"><span class="pre">from</span></tt> and <tt class="docutils literal"><span class="pre">to</span></tt> properties to filter only the state change from &#8220;go&#8221; to &#8220;stop&#8221;. Insite the transition we add two color animations for each light, which shall animate the property changes defined in the state description.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch05%2Findex.html%23transitions&labels=ch05">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch05&page=1&state=open">View</a></div><p>A series of transitions can be added to every item. A transition is executed by a state change. You can define on which state change a particular transition can be applied using the <code class="docutils literal"><span class="pre">from:</span></code> and <code class="docutils literal"><span class="pre">to:</span></code> properties. These two properties act like a filter, when the filter is true the transition will be applied. You can also use the wild-cast &#8220;*&#8221; which means &#8220;any state&#8221;. For example <code class="docutils literal"><span class="pre">from:”*”;</span> <span class="pre">to:”*”</span></code> means from any state to any other state and is the default value for <code class="docutils literal"><span class="pre">from</span></code> and <code class="docutils literal"><span class="pre">to</span></code>, which means the transition is applied to every state switch.</p>
+<p>For this example we would like to animate the color changes when switching state from &#8220;go&#8221; to &#8220;stop&#8221;. For the other reversed state change (&#8220;stop&#8221; to &#8220;go&#8221;) we want to keep an immediate color change and don&#8217;t apply a transition. We restrict the transition with the <code class="docutils literal"><span class="pre">from</span></code> and <code class="docutils literal"><span class="pre">to</span></code> properties to filter only the state change from &#8220;go&#8221; to &#8220;stop&#8221;. Insite the transition we add two color animations for each light, which shall animate the property changes defined in the state description.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="k">transitions:</span> <span class="p">[</span>
         <span class="nx">Transition</span> <span class="p">{</span>
             <span class="k">from:</span> <span class="s2">&quot;stop&quot;</span><span class="p">;</span> <span class="k">to:</span> <span class="s2">&quot;go&quot;</span>
@@ -873,7 +872,7 @@ The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.<
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

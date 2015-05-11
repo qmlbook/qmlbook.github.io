@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -170,7 +169,7 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23shader-effects&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 15, 2015 at 10:13 CET</p>
+<p>Last Build: May 11, 2015 at 16:49 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <div class="topic">
@@ -251,7 +250,7 @@
 <p>In the above example we have a row of 3 images. The first is the real image. The second is rendered using the default shader and the third is rendered using the default shader code for the fragment and vertex extracted from the Qt5 source code.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you don&#8217;t want to see the source image and only the effected image you can set the <em>Image</em> to invisible (<tt class="docutils literal"><span class="pre">visible</span> <span class="pre">:</span> <span class="pre">false</span></tt>). The shader effects will still use the image data just the <em>Image</em> element will not be rendered.</p>
+<p class="last">If you don&#8217;t want to see the source image and only the effected image you can set the <em>Image</em> to invisible (<code class="docutils literal"><span class="pre">visible</span> <span class="pre">:</span> <span class="pre">false</span></code>). The shader effects will still use the image data just the <em>Image</em> element will not be rendered.</p>
 </div>
 <p>Let&#8217;s have a closer look at the shader code.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">vertexShader</span><span class="o">:</span> <span class="s2">&quot;</span>
@@ -680,7 +679,7 @@ First we enhance our animation to support an own bending property. This is neces
         <span class="p">}</span>
 </pre></div>
 </div>
-<p>Additional to make the bending a smooth curve the y-effect on the x-position is not modified by a curved function from 0..1 and the <tt class="docutils literal"><span class="pre">pos.x</span></tt> depends now on the new bend property animation:</p>
+<p>Additional to make the bending a smooth curve the y-effect on the x-position is not modified by a curved function from 0..1 and the <code class="docutils literal"><span class="pre">pos.x</span></code> depends now on the new bend property animation:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">highp</span> <span class="kr">float</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">/</span> <span class="nx">height</span><span class="p">;</span>
 <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.0</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="nx">t</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span> <span class="o">*</span> <span class="nx">t</span><span class="p">;</span>
 <span class="nx">pos</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">mix</span><span class="p">(</span><span class="nx">qt_Vertex</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">t</span> <span class="o">*</span> <span class="nx">bend</span><span class="p">);</span>
@@ -819,7 +818,7 @@ First we enhance our animation to support an own bending property. This is neces
 <p>Just a little bot for the background, the curtain is actually an image called <em>fabric.jpg</em> and it is the source for a shader effect. The effect uses the vertex shader to swing the curtain and uses the fragment shader to provide some shades. Here is a simple diagram to make you hopefully better understand the code.</p>
 <img alt="../../_images/curtain_diagram.png" src="../../_images/curtain_diagram.png" />
 <p>The waved shades of the curtain are computed through a sin curve with 7 up/downs (7*PI=21.99...) on the width of the curtain. The other important part is the swing. The <em>topWidth</em> of the curtain is animated when the curtain is opened or closed. The <em>bottomWidth</em> follows the <em>topWidth</em> with a <em>SpringAnimation</em>. By this we create the effect of the swinging bottom part of the curtain. The calculated <em>swing</em> provides the strength of this swing interpolated over the y-component of the vertexes.</p>
-<p>The curtain effect is located in the <tt class="docutils literal"><span class="pre">CurtainEffect.qml</span></tt> component where the fabric image act as the texture source. There is nothing new on the use of shaders here, only a different way to manipulate the <em>gl_Position</em> in the vertex shader and the <em>gl_FragColor</em> in the fragment shader.</p>
+<p>The curtain effect is located in the <code class="docutils literal"><span class="pre">CurtainEffect.qml</span></code> component where the fabric image act as the texture source. There is nothing new on the use of shaders here, only a different way to manipulate the <em>gl_Position</em> in the vertex shader and the <em>gl_FragColor</em> in the fragment shader.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
 <span class="nx">ShaderEffect</span> <span class="p">{</span>
@@ -901,7 +900,7 @@ First we enhance our animation to support an own bending property. This is neces
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The effect is used in the <tt class="docutils literal"><span class="pre">curtaindemo.qml</span></tt> file.</p>
+<p>The effect is used in the <code class="docutils literal"><span class="pre">curtaindemo.qml</span></code> file.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
@@ -932,12 +931,12 @@ First we enhance our animation to support an own bending property. This is neces
 <h2>9.7. Qt GraphicsEffect Library<a class="headerlink" href="#qt-graphicseffect-library" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23qt-graphicseffect-library&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The graphics effect library is a collection of shader effects. Ready made by the Qt developers. It&#8217;s a great tool-set to be used in your application but also a great source to learn how to build shaders.</p>
 <p>The graphics effects library comes with a so called manual testbed which is a great tool to interactively discover the different effects.</p>
-<p>The testbed is located under <tt class="docutils literal"><span class="pre">$QTDIR/qtgraphicaleffects/tests/manual/testbed</span></tt>.</p>
+<p>The testbed is located under <code class="docutils literal"><span class="pre">$QTDIR/qtgraphicaleffects/tests/manual/testbed</span></code>.</p>
 <img alt="../../_images/graphicseffectstestbed.png" src="../../_images/graphicseffectstestbed.png" />
 <p>The effects library contains ca 20 effects. A list of the effect and a short description can be found below.</p>
 <p class="rubric">Graphics Effects List</p>
-<table border="1" class="docutils">
-<caption>Graphics Effects List</caption>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Graphics Effects List</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="27%" />
 <col width="18%" />
@@ -1111,7 +1110,7 @@ First we enhance our animation to support an own bending property. This is neces
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

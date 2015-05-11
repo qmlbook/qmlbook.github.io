@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -195,10 +194,10 @@
 </div>
 <div class="section" id="hello-world">
 <h2>2.2. Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23hello-world&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>To test your installation, we will create a small <em>hello world</em> application. Please open Qt Creator and create a Qt Quick UI Project ( <em class="menuselection">File ‣ New File or Project ‣ Qt Quick Project ‣ Qt Quick UI</em> ) and name the project <tt class="docutils literal"><span class="pre">HelloWorld</span></tt>.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23hello-world&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>To test your installation, we will create a small <em>hello world</em> application. Please open Qt Creator and create a Qt Quick UI Project ( <span class="menuselection">File ‣ New File or Project ‣ Qt Quick Project ‣ Qt Quick UI</span> ) and name the project <code class="docutils literal"><span class="pre">HelloWorld</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The Qt Creator IDE allows you to create various types of applications. If not otherwise stated, we always use a <em class="guilabeL">Qt Quick UI</em> project.</p>
+<p class="last">The Qt Creator IDE allows you to create various types of applications. If not otherwise stated, we always use a <span class="guilabeL">Qt Quick UI</span> project.</p>
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
@@ -208,8 +207,8 @@
 <p class="first admonition-title">Todo</p>
 <p class="last">can native plug-ins launch the runtime code?</p>
 </div>
-<p>Qt Creator will create several files for you. The <tt class="docutils literal"><span class="pre">HelloWorld.qmlproject</span></tt> file is the project file where the relevant project configuration is stored. This file is managed by Qt Creator so don&#8217;t edit.</p>
-<p>Another file, <tt class="docutils literal"><span class="pre">HelloWorld.qml</span></tt>, is our application code. Open it and try to guess what the application does and then continue to read-on.</p>
+<p>Qt Creator will create several files for you. The <code class="docutils literal"><span class="pre">HelloWorld.qmlproject</span></code> file is the project file where the relevant project configuration is stored. This file is managed by Qt Creator so don&#8217;t edit.</p>
+<p>Another file, <code class="docutils literal"><span class="pre">HelloWorld.qml</span></code>, is our application code. Open it and try to guess what the application does and then continue to read-on.</p>
 <div class="admonition-todo admonition" id="index-3">
 <p class="first admonition-title">Todo</p>
 <p class="last">&#8220;read-on&#8221;</p>
@@ -234,12 +233,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">HelloWord.qml</span></tt> is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it&#8217;s describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 360 x 360 pixel geometry with a centered text &#8220;Hello World&#8221;. A mouse area spans the whole rectangle and when the user clicks it, the application quits.</p>
+<p>The <code class="docutils literal"><span class="pre">HelloWord.qml</span></code> is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it&#8217;s describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 360 x 360 pixel geometry with a centered text &#8220;Hello World&#8221;. A mouse area spans the whole rectangle and when the user clicks it, the application quits.</p>
 <div class="admonition-todo admonition" id="index-4">
 <p class="first admonition-title">Todo</p>
 <p class="last">&#8220;just so much it&#8217;s describes the user interface in a series of hierarchical elements&#8221;</p>
 </div>
-<p>To run the application on your own, please press the <img alt="creatorrun" src="../../_images/qtcreator-run.png" /> <em class="guilabel">Run</em> tool on the left side or select <em class="menuselection">Build ‣ Run</em> from the menu.</p>
+<p>To run the application on your own, please press the <img alt="creatorrun" src="../../_images/qtcreator-run.png" /> <span class="guilabel">Run</span> tool on the left side or select <span class="menuselection">Build ‣ Run</span> from the menu.</p>
 <p>If everything goes well you should see now something like this:</p>
 <div class="admonition-todo admonition" id="index-5">
 <p class="first admonition-title">Todo</p>
@@ -261,9 +260,9 @@
 make -j4
 </pre></div>
 </div>
-<p>After a successful compilation and 2 cups of coffee, Qt 5 will be available in the <tt class="docutils literal"><span class="pre">qtbase</span></tt> folder. Any beverage will suffice, however, we suggest coffee for best results.</p>
-<p>If you want to test your compilation, simply start <tt class="docutils literal"><span class="pre">qtbase/bin/qmlscene</span></tt> and select a QtQuick example to run it ...or follow just us into the next chapter.</p>
-<p>To test your installation, we will create a small hello world application. Please create a simple <tt class="docutils literal"><span class="pre">example.qml</span></tt> file using your favorite text editor and paste the following content inside:</p>
+<p>After a successful compilation and 2 cups of coffee, Qt 5 will be available in the <code class="docutils literal"><span class="pre">qtbase</span></code> folder. Any beverage will suffice, however, we suggest coffee for best results.</p>
+<p>If you want to test your compilation, simply start <code class="docutils literal"><span class="pre">qtbase/bin/qmlscene</span></code> and select a QtQuick example to run it ...or follow just us into the next chapter.</p>
+<p>To test your installation, we will create a small hello world application. Please create a simple <code class="docutils literal"><span class="pre">example.qml</span></code> file using your favorite text editor and paste the following content inside:</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="c1">// HelloWorld.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -335,7 +334,7 @@ make -j4
 <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Here we show some advanced list function, which allow you to join a list of strings into one string. This is very handy when you need to proceed line based text input. The inverse (string to string-list) is also possible using <tt class="docutils literal"><span class="pre">QString::split()</span></tt> function.</p>
+<p>Here we show some advanced list function, which allow you to join a list of strings into one string. This is very handy when you need to proceed line based text input. The inverse (string to string-list) is also possible using <code class="docutils literal"><span class="pre">QString::split()</span></code> function.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">QString</span> <span class="nf">s1</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
 <span class="n">QString</span> <span class="nf">s2</span><span class="p">(</span><span class="s">&quot;Qt&quot;</span><span class="p">);</span>
 <span class="c1">// convenient container classes</span>
@@ -404,12 +403,12 @@ make -j4
 <span class="k">class</span> <span class="nc">CustomWidget</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QWidget</span>
 <span class="p">{</span>
     <span class="n">Q_OBJECT</span>
-<span class="nl">public:</span>
+<span class="k">public</span><span class="o">:</span>
     <span class="k">explicit</span> <span class="n">CustomWidget</span><span class="p">(</span><span class="n">QWidget</span> <span class="o">*</span><span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
     <span class="kt">void</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="n">QPaintEvent</span> <span class="o">*</span><span class="n">event</span><span class="p">);</span>
     <span class="kt">void</span> <span class="nf">mousePressEvent</span><span class="p">(</span><span class="n">QMouseEvent</span> <span class="o">*</span><span class="n">event</span><span class="p">);</span>
     <span class="kt">void</span> <span class="nf">mouseMoveEvent</span><span class="p">(</span><span class="n">QMouseEvent</span> <span class="o">*</span><span class="n">event</span><span class="p">);</span>
-<span class="nl">private:</span>
+<span class="k">private</span><span class="o">:</span>
     <span class="n">QPoint</span> <span class="n">m_lastPos</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -459,12 +458,12 @@ make -j4
 <div class="highlight-cpp"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CustomWidget</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QWidget</span>
 <span class="p">{</span>
     <span class="n">Q_OBJECT</span>
-<span class="nl">public:</span>
+<span class="k">public</span><span class="o">:</span>
     <span class="k">explicit</span> <span class="n">CustomWidgetQWidget</span> <span class="o">*</span><span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
-<span class="k">private</span> <span class="n">slots</span><span class="o">:</span>
+<span class="k">private</span> <span class="nl">slots</span><span class="p">:</span>
     <span class="kt">void</span> <span class="n">itemClicked</span><span class="p">(</span><span class="n">QListWidgetItem</span><span class="o">*</span> <span class="n">item</span><span class="p">);</span>
     <span class="kt">void</span> <span class="nf">updateItem</span><span class="p">();</span>
-<span class="nl">private:</span>
+<span class="k">private</span><span class="o">:</span>
     <span class="n">QListWidget</span> <span class="o">*</span><span class="n">m_widget</span><span class="p">;</span>
     <span class="n">QLineEdit</span> <span class="o">*</span><span class="n">m_edit</span><span class="p">;</span>
     <span class="n">QPushButton</span> <span class="o">*</span><span class="n">m_button</span><span class="p">;</span>
@@ -518,9 +517,9 @@ Here a short example. First the header file with the declaration of the view and
 <div class="highlight-cpp"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CustomWidgetV2</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QWidget</span>
 <span class="p">{</span>
     <span class="n">Q_OBJECT</span>
-<span class="nl">public:</span>
+<span class="k">public</span><span class="o">:</span>
     <span class="k">explicit</span> <span class="n">CustomWidgetV2</span><span class="p">(</span><span class="n">QWidget</span> <span class="o">*</span><span class="n">parent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
-<span class="nl">private:</span>
+<span class="k">private</span><span class="o">:</span>
     <span class="n">QGraphicsView</span> <span class="o">*</span><span class="n">m_view</span><span class="p">;</span>
     <span class="n">QGraphicsScene</span> <span class="o">*</span><span class="n">m_scene</span><span class="p">;</span>
 
@@ -600,7 +599,7 @@ m_model-&gt;select();
 <span class="n">proxy</span><span class="o">-&gt;</span><span class="n">setFilterFixedString</span><span class="p">(</span><span class="n">QString</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The filter proxy model is much more powerful then demonstrated here. For now it is enough to remember its exists.</p>
+<p>The filter proxy model is much more powerful than demonstrated here. For now it is enough to remember its exists.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>This was an overview of the different kind of classical application you could develop with Qt5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic then desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.</p>
@@ -624,7 +623,7 @@ m_model-&gt;select();
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The declaration language is called QML and it needs to runtime to run it. Qt provides a standard runtime called <tt class="docutils literal"><span class="pre">qmlscene</span></tt> but it&#8217;s also not so difficult to write a custom runtime. For this we need a quick view and set the main QML document as source. The only thing left is to show the user interface.</p>
+<p>The declaration language is called QML and it needs to runtime to run it. Qt provides a standard runtime called <code class="docutils literal"><span class="pre">qmlscene</span></code> but it&#8217;s also not so difficult to write a custom runtime. For this we need a quick view and set the main QML document as source. The only thing left is to show the user interface.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">QQuickView</span><span class="o">*</span> <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QQuickView</span><span class="p">();</span>
 <span class="n">QUrl</span> <span class="n">source</span> <span class="o">=</span> <span class="n">Qurl</span><span class="o">::</span><span class="n">fromLocalUrl</span><span class="p">(</span><span class="s">&quot;main.qml&quot;</span><span class="p">);</span>
 <span class="n">view</span><span class="o">-&gt;</span><span class="n">setSource</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
@@ -632,7 +631,7 @@ m_model-&gt;select();
 </pre></div>
 </div>
 <p>Coming back to our earlier examples. In one example we used a c++ city model. It would be great if we could use this model inside our declarative QML code.</p>
-<p>To enable this we first code our front-end to see how we want to use a possible city model. In this case the front-end expects a object named <tt class="docutils literal"><span class="pre">cityModel</span></tt> which we can use inside a list view.</p>
+<p>To enable this we first code our front-end to see how we want to use a possible city model. In this case the front-end expects a object named <code class="docutils literal"><span class="pre">cityModel</span></code> which we can use inside a list view.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
@@ -646,7 +645,7 @@ m_model-&gt;select();
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To enable the <tt class="docutils literal"><span class="pre">cityModel</span></tt> we can mostly re-use our previous model and add a context property to our root context (the root context is other root-element in the main document)</p>
+<p>To enable the <code class="docutils literal"><span class="pre">cityModel</span></code> we can mostly re-use our previous model and add a context property to our root context (the root context is other root-element in the main document)</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">m_model</span> <span class="o">=</span> <span class="n">QSqlTableModel</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 <span class="p">...</span> <span class="c1">// some magic code</span>
 <span class="n">QHash</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">QByteArray</span><span class="o">&gt;</span> <span class="n">roles</span><span class="p">;</span>
@@ -682,7 +681,7 @@ m_model-&gt;select();
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

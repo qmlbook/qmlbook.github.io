@@ -35,7 +35,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -80,7 +80,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../en/ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../en/ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../en/ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -183,7 +182,7 @@
 <div class="section" id="prefazione">
 <h2>1.1. Prefazione<a class="headerlink" href="#prefazione" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Storia</p>
-<p>Qt 4 ha visto un progresso costante dal 2005, ed ha rappresentato una base solida per migliaia di applicazioni, e persino sistemi desktop e mobile completi. Negli ultimi anni, gli utenti dei personal computer hanno modificato considerevolmente le proprie abitudini di utilizzo. Dai PC da tavolo si è passati ai notebook portatili e, infine, ai computer tascabili. Il desktop classico viene via via rimpiazzato da schermi portatili, basati sul touch e costantemente connessi. Questi cambiamenti vanno di passo con cambiamenti nella User Experience anche su desktop. Mentre nel passato le interfacce utente di Windows dominavano il mondo, oggigiorno spendiamo più tempo su schermi di altro tipo e interfacce che utilizzano un linguaggio differente.</p>
+<p>Qt 4 ha visto un progresso costante dal 2005, ed ha rappresentato una base solida per migliaia di applicazioni, e persino sistemi desktop e mobile completi.- Negli ultimi anni, gli utenti dei personal computer hanno modificato considerevolmente le proprie abitudini di utilizzo. Dai PC da tavolo si è passati ai notebook portatili e, infine, ai computer tascabili. Il desktop classico viene via via rimpiazzato da schermi portatili, basati sul touch e costantemente connessi. Questi cambiamenti vanno di passo con cambiamenti nella User Experience anche su desktop. Mentre nel passato le interfacce utente di Windows dominavano il mondo, oggigiorno spendiamo più tempo su schermi di altro tipo e interfacce che utilizzano un linguaggio differente.</p>
 <p>Qt 4 è stato disegnato per soddisfare il mondo desktop e per fornire un set di widget per interfacce utente su tutte le maggiori piattaforme. La sfida per gli utenti di Qt oggi è cambiata, e la sfida principale è quella di fornire interfacce utente basate sul touch, i cui requisiti vengono definiti dai clienti, e che devono essere in grado di fornire un&#8217;esperienza d&#8217;uso moderna su tutti i maggiori sistemi desktop e mobile. Qt 4.7 ha introdotto la tecnologia QtQuick, che permette agli utenti di creare una serie di componenti UI partendo da elementi semplici, per poter così ottenere interfacce utente completamente nuove, definite dalle richieste dei clienti.</p>
 <div class="section" id="il-focus-di-qt5">
 <h3>1.1.1. Il focus di Qt5<a class="headerlink" href="#il-focus-di-qt5" title="Permalink to this headline">¶</a></h3>
@@ -207,14 +206,14 @@
 <li>Qt C++ - La libreria c++ avanzata altamente portabile</li>
 </ul>
 <img alt="../../_images/qt5_overview1.png" src="../../_images/qt5_overview1.png" />
-<p>Similmente ad HTML, QML è un linguaggio di markup. E&#8217; costituito da tags che in QtQuick vengono chiamati elementi, i quali vengono racchiusi in parentesi graffe <tt class="docutils literal"><span class="pre">Item</span> <span class="pre">{}</span></tt>. E&#8217; stato progettato fin dall&#8217;origine per la creazione di interfacce utente, per la velocità e per essere di facile lettura per gli sviluppatori. L&#8217;interfaccia utente può essere potenziata tramite l&#8217;utilizzo di codice JavaScript. Qt Quick è facilmente estendibile con funzionalità native custom tramite Qt C++. Sinteticamente, la UI dichiarativa viene chiamata front-end e le parti native vengono chiamate back-end. La distinzione permette di separare le operazioni native e computazionalmente onerose di un&#8217;applicazione dalla parte dell&#8217;interfaccia grafica.</p>
+<p>Similmente ad HTML, QML è un linguaggio di markup. E&#8217; costituito da tags che in QtQuick vengono chiamati elementi, i quali vengono racchiusi in parentesi graffe <code class="docutils literal"><span class="pre">Item</span> <span class="pre">{}</span></code>. E&#8217; stato progettato fin dall&#8217;origine per la creazione di interfacce utente, per la velocità e per essere di facile lettura per gli sviluppatori. L&#8217;interfaccia utente può essere potenziata tramite l&#8217;utilizzo di codice JavaScript. Qt Quick è facilmente estendibile con funzionalità native custom tramite Qt C++. Sinteticamente, la UI dichiarativa viene chiamata front-end e le parti native vengono chiamate back-end. La distinzione permette di separare le operazioni native e computazionalmente onerose di un&#8217;applicazione dalla parte dell&#8217;interfaccia grafica.</p>
 <p>In un progetto tipico, il front-end viene sviluppato in QML/JavaScript, mentre il codice back-end, che si interfaccia col sistema e si occupa del lavoro pesante, viene sviluppato usando Qt C++. Ciò permette una divisione naturale tra gli sviluppatori più orientati al design e gli sviluppatori funzionali. Tipicamente, il back-end viene testato utilizzando il testing framework proprio di Qt, e viene quindi esportato per l&#8217;utilizzo da parte degli sviluppatori front-end.</p>
 </div>
 <div class="section" id="assimilare-un-interfaccia-utente">
 <h3>1.2.2. Assimilare un&#8217;Interfaccia Utente<a class="headerlink" href="#assimilare-un-interfaccia-utente" title="Permalink to this headline">¶</a></h3>
 <p>Usando QtQuick, creeremo ora una semplice interfaccia utente che dimostra alcuni aspetti del linguaggio QML. Il risultato finale sarà una girandola con le pale che ruotano.</p>
 <a class="reference internal image-reference" href="../../_images/scene3.png"><img alt="../../_images/scene3.png" src="../../_images/scene3.png" style="width: 512.0px; height: 323.0px;" /></a>
-<p>Cominciamo da un documento vuoto che chiamiamo <tt class="docutils literal"><span class="pre">main.qml</span></tt>. Tutti i file QML conterranno l&#8217;estensione <tt class="docutils literal"><span class="pre">.qml</span></tt>. Essendo un linguaggio di markup (come l&#8217;HTML) un documento QML deve avere uno e uno solo elemento radice che, nel nostro caso, è l&#8217;elemento <tt class="docutils literal"><span class="pre">Image</span></tt>, che ha larghezza e altezza basate sulla geometria dell&#8217;immagine di sfondo:</p>
+<p>Cominciamo da un documento vuoto che chiamiamo <code class="docutils literal"><span class="pre">main.qml</span></code>. Tutti i file QML conterranno l&#8217;estensione <code class="docutils literal"><span class="pre">.qml</span></code>. Essendo un linguaggio di markup (come l&#8217;HTML) un documento QML deve avere uno e uno solo elemento radice che, nel nostro caso, è l&#8217;elemento <code class="docutils literal"><span class="pre">Image</span></code>, che ha larghezza e altezza basate sulla geometria dell&#8217;immagine di sfondo:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
 
 <span class="nx">Image</span> <span class="p">{</span>
@@ -223,13 +222,13 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Poiché il QML non pone alcun tipo di restrizione sul tipo di elemento che può essere l&#8217;elemento radice, utilizziamo un elemento <tt class="docutils literal"><span class="pre">Image</span></tt> con la proprietà source (sorgente) settata all&#8217;immagine di background.</p>
+<p>Poiché il QML non pone alcun tipo di restrizione sul tipo di elemento che può essere l&#8217;elemento radice, utilizziamo un elemento <code class="docutils literal"><span class="pre">Image</span></code> con la proprietà source (sorgente) settata all&#8217;immagine di background.</p>
 <img alt="../../_images/background1.png" src="../../_images/background1.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Ogni elemento ha diverse proprietà, per esempio un&#8217;immagine ha le proprietà <tt class="docutils literal"><span class="pre">width</span></tt>, <tt class="docutils literal"><span class="pre">height</span></tt> come anche altre proprietà, quali <tt class="docutils literal"><span class="pre">source</span></tt>.  Le dimensioni dell&#8217;elemento Image vengono desunte automaticamente dalle dimensioni dell&#8217;immagine sorgente. In alternativa, dovremmo settare le proprietà <tt class="docutils literal"><span class="pre">width</span></tt> e <tt class="docutils literal"><span class="pre">height</span></tt> a valori in pixel che siano ragionevoli.</p>
-<p>Gli elementi più comuni sono localizzati nel modulo <tt class="docutils literal"><span class="pre">QtQuick</span></tt> che abbiamo incluso nella prima riga con la dichiarazione di import.</p>
-<p class="last">La proprietà speciale <tt class="docutils literal"><span class="pre">id</span></tt> è opzionale e contiene un identificativo per fare riferimento all&#8217;elemento in altre sezioni del documento. Importante: Una proprietà <tt class="docutils literal"><span class="pre">id</span></tt> non può venire modificata dopo che è stata creata, e non può venire settata al runtime. L&#8217;utilizzo di <tt class="docutils literal"><span class="pre">root</span></tt> come id per l&#8217;elemento radice è solo un&#8217;abitudine dell&#8217;autore che permette di fare riferimento all&#8217;elemento più in alto nella gerarchia in documenti QML di una certa lunghezza.</p>
+<p>Ogni elemento ha diverse proprietà, per esempio un&#8217;immagine ha le proprietà <code class="docutils literal"><span class="pre">width</span></code>, <code class="docutils literal"><span class="pre">height</span></code> come anche altre proprietà, quali <code class="docutils literal"><span class="pre">source</span></code>.  Le dimensioni dell&#8217;elemento Image vengono desunte automaticamente dalle dimensioni dell&#8217;immagine sorgente. In alternativa, dovremmo settare le proprietà <code class="docutils literal"><span class="pre">width</span></code> e <code class="docutils literal"><span class="pre">height</span></code> a valori in pixel che siano ragionevoli.</p>
+<p>Gli elementi più comuni sono localizzati nel modulo <code class="docutils literal"><span class="pre">QtQuick</span></code> che abbiamo incluso nella prima riga con la dichiarazione di import.</p>
+<p class="last">La proprietà speciale <code class="docutils literal"><span class="pre">id</span></code> è opzionale e contiene un identificativo per fare riferimento all&#8217;elemento in altre sezioni del documento. Importante: Una proprietà <code class="docutils literal"><span class="pre">id</span></code> non può venire modificata dopo che è stata creata, e non può venire settata al runtime. L&#8217;utilizzo di <code class="docutils literal"><span class="pre">root</span></code> come id per l&#8217;elemento radice è solo un&#8217;abitudine dell&#8217;autore che permette di fare riferimento all&#8217;elemento più in alto nella gerarchia in documenti QML di una certa lunghezza.</p>
 </div>
 <p>Gli elementi in primo piano dell&#8217;interfaccia utente (l&#8217;asta e la girandola) sono localizzati in immagini separate.</p>
 <img alt="../../_images/pole1.png" src="../../_images/pole1.png" />
@@ -255,18 +254,18 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Per posizionare la girandola al centro utilizziamo una proprietà complessa chiamata <tt class="docutils literal"><span class="pre">anchor</span></tt>. L&#8217;ancoraggio permette di specificare relazioni geometriche tra oggetti che hanno relazione padre-figlio e fratelli. Es.: Posizionami al centro di un altro elemento (<tt class="docutils literal"><span class="pre">anchors.centerIn:parent</span></tt>). Da entrambe le parti, sono disponibili le seguenti relazioni: left, right, top, bottom, centerIn, fill, verticalCenter e horizontalCenter. E&#8217; necessario che le relazioni siano concordanti: per esempio, non ha senso ancorare il lato sinistro (left) di un elemento al lato superiore (top) di un altro elemento.</p>
+<p>Per posizionare la girandola al centro utilizziamo una proprietà complessa chiamata <code class="docutils literal"><span class="pre">anchor</span></code>. L&#8217;ancoraggio permette di specificare relazioni geometriche tra oggetti che hanno relazione padre-figlio e fratelli. Es.: Posizionami al centro di un altro elemento (<code class="docutils literal"><span class="pre">anchors.centerIn:parent</span></code>). Da entrambe le parti, sono disponibili le seguenti relazioni: left, right, top, bottom, centerIn, fill, verticalCenter e horizontalCenter. E&#8217; necessario che le relazioni siano concordanti: per esempio, non ha senso ancorare il lato sinistro (left) di un elemento al lato superiore (top) di un altro elemento.</p>
 <p>Quindi, andiamo a settare la girandola come centrata rispetto al genitore (parent), l&#8217;immagine di sfondo.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">A volte sarà necessario effettuare piccoli aggiustamenti rispetto alla centratura esatta. Questa operazione è resa possibile dalle proprietà <tt class="docutils literal"><span class="pre">anchors.horizontalCenterOffset</span></tt> e <tt class="docutils literal"><span class="pre">anchors.verticalCenterOffset</span></tt>. Proprietà di aggiustamento simili sono disponibili anche per tutti gli altri punti di ancoraggio. Per una lista completa delle proprietà di ancoraggio, consultare la documentazione.</p>
+<p class="last">A volte sarà necessario effettuare piccoli aggiustamenti rispetto alla centratura esatta. Questa operazione è resa possibile dalle proprietà <code class="docutils literal"><span class="pre">anchors.horizontalCenterOffset</span></code> e <code class="docutils literal"><span class="pre">anchors.verticalCenterOffset</span></code>. Proprietà di aggiustamento simili sono disponibili anche per tutti gli altri punti di ancoraggio. Per una lista completa delle proprietà di ancoraggio, consultare la documentazione.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Posizionare un&#8217;immagine come elemento figlio del rettangolo radice mostra un aspetto importante dei linguaggi dichiarativi. L&#8217;interfaccia utente viene descritta seguendo l&#8217;ordine di livelli e gruppi, dove il livello più alto (il nostro rettangolo) è il primo ad essere disegnato, mentre i livelli figli vengono disegnati davanti ad esso, secondo il sistema di coordinate locale dell&#8217;elemento contenitore.</p>
 </div>
 <p>Per rendere questa dimostrazione più interessante, potremmo ora rendere la scena interattiva. L&#8217;idea è quella di rotare la girandola quando l&#8217;utente preme il tasto del mouse da qualche parte nella scena.</p>
-<p>Per fare questo, utilizziamo l&#8217;elemento <tt class="docutils literal"><span class="pre">MouseArea</span></tt> e gli attribuiamo le stesse dimensioni dell&#8217;elemento radice.</p>
+<p>Per fare questo, utilizziamo l&#8217;elemento <code class="docutils literal"><span class="pre">MouseArea</span></code> e gli attribuiamo le stesse dimensioni dell&#8217;elemento radice.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
@@ -278,15 +277,15 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>L&#8217;area del mouse emette dei segnali (signals) quando l&#8217;utente clicca al suo interno. E&#8217; possibile intercettare questo segnale sovrascrivendo la funzione <tt class="docutils literal"><span class="pre">onClicked</span></tt>. Nel caso specifico, facciamo riferimento alla girandola e ne modifichiamo la rotazione di +90 gradi.</p>
+<p>L&#8217;area del mouse emette dei segnali (signals) quando l&#8217;utente clicca al suo interno. E&#8217; possibile intercettare questo segnale sovrascrivendo la funzione <code class="docutils literal"><span class="pre">onClicked</span></code>. Nel caso specifico, facciamo riferimento alla girandola e ne modifichiamo la rotazione di +90 gradi.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Questo meccanismo funziona per ogni segnale, la convenzione per il nome della funzione è <tt class="docutils literal"><span class="pre">on</span></tt> + <tt class="docutils literal"><span class="pre">NomeDelSegnale</span></tt>. Inoltre, tutte le proprietà emettono un segnale una volta che il loro valore è cambiato. La convenzione per il nome è:</p>
+<p>Questo meccanismo funziona per ogni segnale, la convenzione per il nome della funzione è <code class="docutils literal"><span class="pre">on</span></code> + <code class="docutils literal"><span class="pre">NomeDelSegnale</span></code>. Inoltre, tutte le proprietà emettono un segnale una volta che il loro valore è cambiato. La convenzione per il nome è:</p>
 <blockquote>
-<div><tt class="docutils literal"><span class="pre">on</span></tt> + <tt class="docutils literal"><span class="pre">NomeProprietà</span></tt> + <tt class="docutils literal"><span class="pre">Changed</span></tt></div></blockquote>
-<p class="last">Per esempio, se una proprietà <tt class="docutils literal"><span class="pre">width</span></tt> cambia, è possibile osservarla con <tt class="docutils literal"><span class="pre">onWidthChanged:</span> <span class="pre">print(width)</span></tt>.</p>
+<div><code class="docutils literal"><span class="pre">on</span></code> + <code class="docutils literal"><span class="pre">NomeProprietà</span></code> + <code class="docutils literal"><span class="pre">Changed</span></code></div></blockquote>
+<p class="last">Per esempio, se una proprietà <code class="docutils literal"><span class="pre">width</span></code> cambia, è possibile osservarla con <code class="docutils literal"><span class="pre">onWidthChanged:</span> <span class="pre">print(width)</span></code>.</p>
 </div>
-<p>Ora la girandola ruota, ma non in modo fluido. La proprietà rotation cambia immediatamente. Invece, vorremmo che la proprietà cambiasse di 90 gradi in un arco di tempo. A questo punto entrano in gioco le animazioni. Un&#8217;animazione definisce come il cambio di una proprietà debba essere distribuito lungo un periodo di tempo. Per abilitare questo comportamento, utilizziamo un tipo di animazione chiamato property behavior. Il <tt class="docutils literal"><span class="pre">Behaviour</span></tt> (comportamento) specifica un&#8217;animazione per una certa proprietà che si applica ad ogni cambiamento di quella proprietà. In breve, ogni volta che la proprietà cambia, l&#8217;animazione viene lanciata. Questo è solo uno dei tanti modi che esistono per dichiarare un&#8217;animazione in QML.</p>
+<p>Ora la girandola ruota, ma non in modo fluido. La proprietà rotation cambia immediatamente. Invece, vorremmo che la proprietà cambiasse di 90 gradi in un arco di tempo. A questo punto entrano in gioco le animazioni. Un&#8217;animazione definisce come il cambio di una proprietà debba essere distribuito lungo un periodo di tempo. Per abilitare questo comportamento, utilizziamo un tipo di animazione chiamato property behavior. Il <code class="docutils literal"><span class="pre">Behaviour</span></code> (comportamento) specifica un&#8217;animazione per una certa proprietà che si applica ad ogni cambiamento di quella proprietà. In breve, ogni volta che la proprietà cambia, l&#8217;animazione viene lanciata. Questo è solo uno dei tanti modi che esistono per dichiarare un&#8217;animazione in QML.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="nx">Image</span> <span class="p">{</span>
@@ -300,7 +299,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Ora, ogniqualvolta la proprietà rotation della girandola cambia, essa verrà animata utilizzando una <tt class="docutils literal"><span class="pre">NumberAnimation</span></tt> della durata di 250 ms. Ovvero, ogni rotazione di 90 gradi impiegherà 250 ms.</p>
+<p>Ora, ogniqualvolta la proprietà rotation della girandola cambia, essa verrà animata utilizzando una <code class="docutils literal"><span class="pre">NumberAnimation</span></code> della durata di 250 ms. Ovvero, ogni rotazione di 90 gradi impiegherà 250 ms.</p>
 <a class="reference internal image-reference" href="../../_images/scene21.png"><img alt="../../_images/scene21.png" src="../../_images/scene21.png" style="width: 512.0px; height: 323.0px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -404,7 +403,7 @@ QtSql -&gt; QtCore
 <div class="section" id="il-qt-project">
 <h2>1.4. Il Qt Project<a class="headerlink" href="#il-qt-project" title="Permalink to this headline">¶</a></h2>
 <p>Dalla <a class="reference external" href="http://wiki.qt-project.org">wiki del qt-project</a>:</p>
-<p>&#8220;Il Qt Project è una comunità meritocratica e basata sul consenso interessata a Qt. Anyone who shares that interest can join the community, participate in its decision making processes, and contribute to Qt’s development.&#8221;</p>
+<p>&#8220;Il Qt Project è una community meritocratica e basata sul consenso interessata a Qt. Chiunque sia interessato può unirsi alla community, partecipare ai processi decisionali, e contribuire allo sviluppo di Qt.&#8221;</p>
 <p>Il Qt-Project è un&#8217;organizzazione che porta avanti lo sviluppo della parte open-source di Qt. Costituisce la base a cui altri utenti possono contribuire. Il contributore maggiore è DIGIA, che detiene anche i diritti commerciali di Qt.</p>
 <p>Qt ha un lato open-source e un lato commerciale. Il lato commerciale è riservato a quelle aziende che non soddisfano le licenze di tipo open-source. Senza l&#8217;aspetto commerciale, queste aziende non sarebbero in grado di usare Qt, e DIGIA non sarebbe in grado di contribuire con così tanto codice al Qt-Project.</p>
 <p>Ci sono molte aziende in tutto il modo che sussistono grazie alle consulenze e allo sviluppo di prodotti con Qt sule varie piattaforme. Ci sono molti progetti e sviluppatori open-source che si affidano a Qt come libreria principale per lo sviluppo. E&#8217; bello far parte di questa comunità molto attiva e lavorare con tool e librerie eccezionali. Questo ti rende una persona migliore? Forse :-)</p>
@@ -426,7 +425,7 @@ QtSql -&gt; QtCore
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 17, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

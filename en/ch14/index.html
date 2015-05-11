@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -217,8 +216,8 @@
 </div>
 <div class="section" id="browser-html-vs-qtquick-qml">
 <h2>14.1. Browser/HTML vs QtQuick/QML<a class="headerlink" href="#browser-html-vs-qtquick-qml" title="Permalink to this headline">¶</a></h2>
-<p>The browser is the runtime to render HTML and execute the Javascript associated with the HTML. Nowadays modern web applications contain much more JavaScript then HTML. The Javascript inside the browser is a standard ECMAScript environment with some browser additions. A typical JS environment inside the browser knows the <tt class="docutils literal"><span class="pre">window</span></tt> object to access the browser window. There are also the basic DOM selectors which are used by jQuery to provide the CSS selectors. Additional the is a <tt class="docutils literal"><span class="pre">setTimeout</span></tt> function to call a function after a certain time. Besides these the JS is standard JavaScript environment similar to QML/JS.</p>
-<p>What is also different is where JS can appear inside HTML and QML. in HTML you can only add JS on event handlers (e.g. page loaded, mouse pressed). For example your JS initializes normally in page load, which is comparable to <tt class="docutils literal"><span class="pre">Component.onCompleted</span></tt> in QML. For example you can not use JS for property bindings (at least not directly, AngularJS enhances the DOM tree to allow these, but this is far away from standard HTML).</p>
+<p>The browser is the runtime to render HTML and execute the Javascript associated with the HTML. Nowadays modern web applications contain much more JavaScript then HTML. The Javascript inside the browser is a standard ECMAScript environment with some browser additions. A typical JS environment inside the browser knows the <code class="docutils literal"><span class="pre">window</span></code> object to access the browser window. There are also the basic DOM selectors which are used by jQuery to provide the CSS selectors. Additional the is a <code class="docutils literal"><span class="pre">setTimeout</span></code> function to call a function after a certain time. Besides these the JS is standard JavaScript environment similar to QML/JS.</p>
+<p>What is also different is where JS can appear inside HTML and QML. in HTML you can only add JS on event handlers (e.g. page loaded, mouse pressed). For example your JS initializes normally in page load, which is comparable to <code class="docutils literal"><span class="pre">Component.onCompleted</span></code> in QML. For example you can not use JS for property bindings (at least not directly, AngularJS enhances the DOM tree to allow these, but this is far away from standard HTML).</p>
 <p>So in QML JS is much more a fist-class citizen and much deeper integrated into the QML render tree. Which makes the syntax much more readable. Besides this people which have developed HTML/JS applications will feel at home inside QML/JS.</p>
 </div>
 <div class="section" id="the-language">
@@ -240,7 +239,7 @@
 </pre></div>
 </div>
 <p>But be warned JS has function scope and not block scope as in C++ (see <a class="reference external" href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Functions_and_function_scope">Functions and function scope</a>).</p>
-<p>The statements <tt class="docutils literal"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">else</span></tt>, <tt class="docutils literal"><span class="pre">break</span></tt>, <tt class="docutils literal"><span class="pre">continue</span></tt> also work as expected. The switch case can also switch about other types then just integer values:</p>
+<p>The statements <code class="docutils literal"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">else</span></code>, <code class="docutils literal"><span class="pre">break</span></code>, <code class="docutils literal"><span class="pre">continue</span></code> also work as expected. The switch case can also switch about other types then just integer values:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">getAge</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// switch over a string</span>
   <span class="k">switch</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
@@ -253,7 +252,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>JS knows several values which can be false, e.g. <tt class="docutils literal"><span class="pre">false</span></tt>, 0, &#8220;&#8221;, <tt class="docutils literal"><span class="pre">undefined</span></tt>, <tt class="docutils literal"><span class="pre">null</span></tt>). For example a function returns by default <tt class="docutils literal"><span class="pre">undefined</span></tt>. To test for false use the &#8216;===&#8217; identity operator. The &#8216;==&#8217; equality operator will do type conversion to test for equality. If possible use the faster and better &#8216;===&#8217; strict equality operator which will test for identity (see <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators">Comparison operators</a>.</p>
+<p>JS knows several values which can be false, e.g. <code class="docutils literal"><span class="pre">false</span></code>, 0, &#8220;&#8221;, <code class="docutils literal"><span class="pre">undefined</span></code>, <code class="docutils literal"><span class="pre">null</span></code>). For example a function returns by default <code class="docutils literal"><span class="pre">undefined</span></code>. To test for false use the &#8216;===&#8217; identity operator. The &#8216;==&#8217; equality operator will do type conversion to test for equality. If possible use the faster and better &#8216;===&#8217; strict equality operator which will test for identity (see <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators">Comparison operators</a>.</p>
 <p>Under the hood javascript has its own ways of doing things. For example arrays:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">doIt</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">// empty arrays</span>
@@ -289,12 +288,12 @@
 <h2>14.3. JS Objects<a class="headerlink" href="#js-objects" title="Permalink to this headline">¶</a></h2>
 <p>While working with JS there are some objects and methods which are more frequently used. This is a small collection of them.</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">Math.floor(v)</span></tt>, <tt class="docutils literal"><span class="pre">Math.ceil(v)</span></tt>, <tt class="docutils literal"><span class="pre">Math.round(v)</span></tt> - largest, smallest, rounded integer from float</li>
-<li><tt class="docutils literal"><span class="pre">Math.random()</span></tt> - create a random number between 0 and 1</li>
-<li><tt class="docutils literal"><span class="pre">Object.keys(o)</span></tt> - get keys from object (including QObject)</li>
-<li><tt class="docutils literal"><span class="pre">JSON.parse(s)</span></tt>, <tt class="docutils literal"><span class="pre">JSON.stringify(o)</span></tt> - conversion between JS object and JSON string</li>
-<li><tt class="docutils literal"><span class="pre">Number.toFixed(p)</span></tt> - fixed precision float</li>
-<li><tt class="docutils literal"><span class="pre">Date</span></tt> - Date manipulation</li>
+<li><code class="docutils literal"><span class="pre">Math.floor(v)</span></code>, <code class="docutils literal"><span class="pre">Math.ceil(v)</span></code>, <code class="docutils literal"><span class="pre">Math.round(v)</span></code> - largest, smallest, rounded integer from float</li>
+<li><code class="docutils literal"><span class="pre">Math.random()</span></code> - create a random number between 0 and 1</li>
+<li><code class="docutils literal"><span class="pre">Object.keys(o)</span></code> - get keys from object (including QObject)</li>
+<li><code class="docutils literal"><span class="pre">JSON.parse(s)</span></code>, <code class="docutils literal"><span class="pre">JSON.stringify(o)</span></code> - conversion between JS object and JSON string</li>
+<li><code class="docutils literal"><span class="pre">Number.toFixed(p)</span></code> - fixed precision float</li>
+<li><code class="docutils literal"><span class="pre">Date</span></code> - Date manipulation</li>
 </ul>
 <p>You can find them also at: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">JavaScript reference</a></p>
 <p>Here some small and limited examples how to use JS with QML. They should give you an idea how you can use JS inside QML</p>
@@ -445,7 +444,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The evaluation function <tt class="docutils literal"><span class="pre">jsCall</span></tt> does the evaluation not by itself this has been moved to a JS module (<tt class="docutils literal"><span class="pre">jsconsole.js</span></tt>) for clearer separation.</p>
+<p>The evaluation function <code class="docutils literal"><span class="pre">jsCall</span></code> does the evaluation not by itself this has been moved to a JS module (<code class="docutils literal"><span class="pre">jsconsole.js</span></code>) for clearer separation.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// part of JSConsole.qml</span>
 
 <span class="kr">import</span> <span class="s2">&quot;jsconsole.js&quot;</span> <span class="nx">as</span> <span class="nx">Util</span>
@@ -465,7 +464,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>For safety we do not use the <tt class="docutils literal"><span class="pre">eval</span></tt> function from JS as this would allow the user to modify the local scope. We use the Function constructor to create a JS function on runtime and pass in our scope as this variable. As the function is created every time it does not act as a closure and stores its own scope, we need to use <tt class="docutils literal"><span class="pre">this.a</span> <span class="pre">=</span> <span class="pre">10</span></tt> to store the value 10 in a inside the this scope of the function. The this scope is set by the script to the scope valriable.</p>
+<p>For safety we do not use the <code class="docutils literal"><span class="pre">eval</span></code> function from JS as this would allow the user to modify the local scope. We use the Function constructor to create a JS function on runtime and pass in our scope as this variable. As the function is created every time it does not act as a closure and stores its own scope, we need to use <code class="docutils literal"><span class="pre">this.a</span> <span class="pre">=</span> <span class="pre">10</span></code> to store the value 10 in a inside the this scope of the function. The this scope is set by the script to the scope valriable.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// jsconsole.js</span>
 <span class="p">.</span><span class="nx">pragma</span> <span class="nx">library</span>
 
@@ -491,7 +490,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The data return from the call function is a JS object with a result, expression and error property: <tt class="docutils literal"><span class="pre">data:</span> <span class="pre">{</span> <span class="pre">expression:</span> <span class="pre">{},</span> <span class="pre">result:</span> <span class="pre">{},</span> <span class="pre">error:</span> <span class="pre">{}</span> <span class="pre">}</span></tt>. We can use this JS object directly inside the ListModel and access it then from the delegate, e.g. <tt class="docutils literal"><span class="pre">model.expression</span></tt> gives us the input expression. For the simplicity of the example we ignore the error result.</p>
+<p>The data return from the call function is a JS object with a result, expression and error property: <code class="docutils literal"><span class="pre">data:</span> <span class="pre">{</span> <span class="pre">expression:</span> <span class="pre">{},</span> <span class="pre">result:</span> <span class="pre">{},</span> <span class="pre">error:</span> <span class="pre">{}</span> <span class="pre">}</span></code>. We can use this JS object directly inside the ListModel and access it then from the delegate, e.g. <code class="docutils literal"><span class="pre">model.expression</span></code> gives us the input expression. For the simplicity of the example we ignore the error result.</p>
 </div>
 </div>
 
@@ -509,7 +508,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

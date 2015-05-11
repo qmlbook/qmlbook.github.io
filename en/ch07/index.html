@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -174,7 +173,7 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23canvas-element&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 15, 2015 at 10:13 CET</p>
+<p>Last Build: May 11, 2015 at 16:49 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <img alt="../../_images/glowlines.png" src="../../_images/glowlines.png" />
@@ -219,8 +218,8 @@
 </div>
 <p>This produces a filled rectangle with a starring point at 50,50 and a size of 100 and a stroke used as a border decoration.</p>
 <img alt="../../_images/rectangle.png" src="../../_images/rectangle.png" />
-<p>The stroke width is set to 4 and uses a blue color define by <tt class="docutils literal"><span class="pre">strokeStyle</span></tt>. The final shape is setup to be filled through the <tt class="docutils literal"><span class="pre">fillStyle</span></tt> to a &#8220;steelblue&#8221; color. Only by calling <tt class="docutils literal"><span class="pre">stroke</span></tt> or <tt class="docutils literal"><span class="pre">fill</span></tt> the actual path will be drawn and they can be used independently from each other. A call to <tt class="docutils literal"><span class="pre">stroke</span></tt> or <tt class="docutils literal"><span class="pre">fill</span></tt> will draw the current path. It&#8217;s not possible to store a path for later reuse only a drawing state can be stored and restored.</p>
-<p>In QML the <tt class="docutils literal"><span class="pre">Canvas</span></tt> element acts as a container for the drawing. The 2D context object provides the actual drawing operation. The actual drawing needs to be done inside the <tt class="docutils literal"><span class="pre">onPaint</span></tt> event handler.</p>
+<p>The stroke width is set to 4 and uses a blue color define by <code class="docutils literal"><span class="pre">strokeStyle</span></code>. The final shape is setup to be filled through the <code class="docutils literal"><span class="pre">fillStyle</span></code> to a &#8220;steelblue&#8221; color. Only by calling <code class="docutils literal"><span class="pre">stroke</span></code> or <code class="docutils literal"><span class="pre">fill</span></code> the actual path will be drawn and they can be used independently from each other. A call to <code class="docutils literal"><span class="pre">stroke</span></code> or <code class="docutils literal"><span class="pre">fill</span></code> will draw the current path. It&#8217;s not possible to store a path for later reuse only a drawing state can be stored and restored.</p>
+<p>In QML the <code class="docutils literal"><span class="pre">Canvas</span></code> element acts as a container for the drawing. The 2D context object provides the actual drawing operation. The actual drawing needs to be done inside the <code class="docutils literal"><span class="pre">onPaint</span></code> event handler.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">Canvas</span> <span class="p">{</span>
     <span class="nx">width</span><span class="o">:</span> <span class="mi">200</span><span class="p">;</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">200</span>
     <span class="nx">onPaint</span><span class="o">:</span> <span class="p">{</span>
@@ -254,11 +253,11 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>This produces a horizontal stroked line from point <tt class="docutils literal"><span class="pre">P1(50,50)</span></tt> to point <tt class="docutils literal"><span class="pre">P2(150,50)</span></tt>.</p>
+<p>This produces a horizontal stroked line from point <code class="docutils literal"><span class="pre">P1(50,50)</span></code> to point <code class="docutils literal"><span class="pre">P2(150,50)</span></code>.</p>
 <img alt="../../_images/line.png" src="../../_images/line.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Typically you always want to set a start point when you reset your path, so the first operation after <tt class="docutils literal"><span class="pre">beginPath</span></tt> is often <tt class="docutils literal"><span class="pre">moveTo</span></tt>.</p>
+<p class="last">Typically you always want to set a start point when you reset your path, so the first operation after <code class="docutils literal"><span class="pre">beginPath</span></code> is often <code class="docutils literal"><span class="pre">moveTo</span></code>.</p>
 </div>
 <div class="section" id="convenient-api">
 <h2>7.1. Convenient API<a class="headerlink" href="#convenient-api" title="Permalink to this headline">¶</a></h2>
@@ -320,7 +319,7 @@
 <p class="first admonition-title">Note</p>
 <p class="last">We had difficulties with shadows in the Qt5 alpha release.</p>
 </div>
-<p>A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you need can specify a <tt class="docutils literal"><span class="pre">shadowColor</span></tt>, <tt class="docutils literal"><span class="pre">shadowOffsetX</span></tt>, <tt class="docutils literal"><span class="pre">shadowOffsetY</span></tt> and a <tt class="docutils literal"><span class="pre">shadowBlur</span></tt>. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.</p>
+<p>A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you need can specify a <code class="docutils literal"><span class="pre">shadowColor</span></code>, <code class="docutils literal"><span class="pre">shadowOffsetX</span></code>, <code class="docutils literal"><span class="pre">shadowOffsetY</span></code> and a <code class="docutils literal"><span class="pre">shadowBlur</span></code>. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.</p>
 <p>A shadow can also be used to create a glow effect around a path. In the next example we create a text &#8220;Earth&#8221; with a white glow around. All this on a dark background for better visibility.</p>
 <p>First we draw the dark background:</p>
 <div class="highlight-qml"><div class="highlight"><pre>        <span class="c1">// setup a dark background</span>
@@ -349,7 +348,7 @@
 </div>
 <div class="section" id="images">
 <h2>7.4. Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23images&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>The QML canvas supports image drawing from several sources. To use an image inside the canvas the image needs to be loaded first. We will use the <tt class="docutils literal"><span class="pre">Component.onCompleted</span></tt> handler to load the image in our example.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23images&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>The QML canvas supports image drawing from several sources. To use an image inside the canvas the image needs to be loaded first. We will use the <code class="docutils literal"><span class="pre">Component.onCompleted</span></code> handler to load the image in our example.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="k">onPaint:</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">)</span>
 
@@ -383,12 +382,12 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The left shows our ball image painted at the top-left position of 10x10. The right image shows the ball with a clip path applied. Images and any other path can be clipped using another path. The clipping is applied by defining a path and calling the <tt class="docutils literal"><span class="pre">clip()</span></tt> function. All following drawing operations will now be clipped by this path. The clipping is disabled again by restoring the previous state or by setting the clip region to the whole canvas.</p>
+<p>The left shows our ball image painted at the top-left position of 10x10. The right image shows the ball with a clip path applied. Images and any other path can be clipped using another path. The clipping is applied by defining a path and calling the <code class="docutils literal"><span class="pre">clip()</span></code> function. All following drawing operations will now be clipped by this path. The clipping is disabled again by restoring the previous state or by setting the clip region to the whole canvas.</p>
 <img alt="../../_images/canvas_image.png" src="../../_images/canvas_image.png" />
 </div>
 <div class="section" id="transformation">
 <h2>7.5. Transformation<a class="headerlink" href="#transformation" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23transformation&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>The canvas allows you to transform the coordinate system in several ways. This is very similar to the transformation offered by QML items. You have the possibility to <tt class="docutils literal"><span class="pre">scale</span></tt>, <tt class="docutils literal"><span class="pre">rotate</span></tt>, <tt class="docutils literal"><span class="pre">translate</span></tt> the coordinate system. In difference to QML the transform origin is always the canvas origin. For example to scale a path around it&#8217;s center you would need to translate the canvas origin to the center of the path. It is also possible to apply a more complex transformation using the transform method.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23transformation&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>The canvas allows you to transform the coordinate system in several ways. This is very similar to the transformation offered by QML items. You have the possibility to <code class="docutils literal"><span class="pre">scale</span></code>, <code class="docutils literal"><span class="pre">rotate</span></code>, <code class="docutils literal"><span class="pre">translate</span></code> the coordinate system. In difference to QML the transform origin is always the canvas origin. For example to scale a path around it&#8217;s center you would need to translate the canvas origin to the center of the path. It is also possible to apply a more complex transformation using the transform method.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// transform.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -415,14 +414,14 @@
 </pre></div>
 </div>
 <img alt="../../_images/transform.png" src="../../_images/transform.png" />
-<p>Besides translate the canvas allows also to scale using <tt class="docutils literal"><span class="pre">scale(x,y)</span></tt> around x and y axis, to rotate using <tt class="docutils literal"><span class="pre">rotate(angle)</span></tt>, where the angle is given in radius (<em>360 degree = 2*Math.PI</em>) and to use a matrix transformation using the <tt class="docutils literal"><span class="pre">setTransform(m11,</span> <span class="pre">m12,</span> <span class="pre">m21,</span> <span class="pre">m22,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></tt>.</p>
+<p>Besides translate the canvas allows also to scale using <code class="docutils literal"><span class="pre">scale(x,y)</span></code> around x and y axis, to rotate using <code class="docutils literal"><span class="pre">rotate(angle)</span></code>, where the angle is given in radius (<em>360 degree = 2*Math.PI</em>) and to use a matrix transformation using the <code class="docutils literal"><span class="pre">setTransform(m11,</span> <span class="pre">m12,</span> <span class="pre">m21,</span> <span class="pre">m22,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">The transformation seems to behave different then the the HTML5 canvas. Not sure if this is a bug.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>To reset any transformation you can call the <tt class="docutils literal"><span class="pre">resetTransform()</span></tt> function to set the transformation matrix back to the identity matrix:</p>
+<p>To reset any transformation you can call the <code class="docutils literal"><span class="pre">resetTransform()</span></code> function to set the transformation matrix back to the identity matrix:</p>
 <div class="last highlight-qml"><div class="highlight"><pre><span class="nx">ctx</span><span class="p">.</span><span class="nx">resetTransform</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -430,7 +429,7 @@
 </div>
 <div class="section" id="composition-modes">
 <h2>7.6. Composition Modes<a class="headerlink" href="#composition-modes" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23composition-modes&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>Composition allows you to draw a shape and blend it with the existing pixels. The canvas supports several composition modes using the <tt class="docutils literal"><span class="pre">globalCompositeOperation(mode)</span></tt> operation.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23composition-modes&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>Composition allows you to draw a shape and blend it with the existing pixels. The canvas supports several composition modes using the <code class="docutils literal"><span class="pre">globalCompositeOperation(mode)</span></code> operation.</p>
 <ul class="simple">
 <li>&#8220;source-over&#8221;</li>
 <li>&#8220;source-in&#8221;</li>
@@ -488,8 +487,8 @@
 </div>
 <div class="section" id="pixel-buffers">
 <h2>7.7. Pixel Buffers<a class="headerlink" href="#pixel-buffers" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23pixel-buffers&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>When working with the canvas you are able to retrieve pixel data from the canvas to read or manipulate the pixels of your canvas. To read the image data use <tt class="docutils literal"><span class="pre">createImageData(sw,sh)</span></tt> or <tt class="docutils literal"><span class="pre">getImageData(sx,sy,sw,sh)</span></tt>. Both functions return an <tt class="docutils literal"><span class="pre">ImageData</span></tt> object with a <tt class="docutils literal"><span class="pre">width</span></tt>, <tt class="docutils literal"><span class="pre">height</span></tt> and a <tt class="docutils literal"><span class="pre">data</span></tt> variable. The data variable contains a one-dimensional array of the pixel data retrieved in the <em>RGBA</em> format, where each value varies in the range of 0 to 255. To set pixels on the canvas you can use the <tt class="docutils literal"><span class="pre">putImageData(imagedata,,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></tt> function.</p>
-<p>Another way to retrieve the content of the canvas is to store the data into an image. This can be achieved with the <tt class="docutils literal"><span class="pre">Canvas</span></tt> functions <tt class="docutils literal"><span class="pre">save(path)</span></tt> or <tt class="docutils literal"><span class="pre">toDataURL(mimeType)</span></tt>, where the later function returns an image url, which can be used to be loaded by an <tt class="docutils literal"><span class="pre">Image</span></tt> element.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23pixel-buffers&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>When working with the canvas you are able to retrieve pixel data from the canvas to read or manipulate the pixels of your canvas. To read the image data use <code class="docutils literal"><span class="pre">createImageData(sw,sh)</span></code> or <code class="docutils literal"><span class="pre">getImageData(sx,sy,sw,sh)</span></code>. Both functions return an <code class="docutils literal"><span class="pre">ImageData</span></code> object with a <code class="docutils literal"><span class="pre">width</span></code>, <code class="docutils literal"><span class="pre">height</span></code> and a <code class="docutils literal"><span class="pre">data</span></code> variable. The data variable contains a one-dimensional array of the pixel data retrieved in the <em>RGBA</em> format, where each value varies in the range of 0 to 255. To set pixels on the canvas you can use the <code class="docutils literal"><span class="pre">putImageData(imagedata,,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> function.</p>
+<p>Another way to retrieve the content of the canvas is to store the data into an image. This can be achieved with the <code class="docutils literal"><span class="pre">Canvas</span></code> functions <code class="docutils literal"><span class="pre">save(path)</span></code> or <code class="docutils literal"><span class="pre">toDataURL(mimeType)</span></code>, where the later function returns an image url, which can be used to be loaded by an <code class="docutils literal"><span class="pre">Image</span></code> element.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
@@ -547,7 +546,7 @@
 </div>
 <div class="section" id="canvas-paint">
 <h2>7.8. Canvas Paint<a class="headerlink" href="#canvas-paint" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23canvas-paint&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>In this example we would like to create a small paint application using the <tt class="docutils literal"><span class="pre">Canvas</span></tt> element.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23canvas-paint&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>In this example we would like to create a small paint application using the <code class="docutils literal"><span class="pre">Canvas</span></code> element.</p>
 <img alt="../../_images/canvaspaint.png" src="../../_images/canvaspaint.png" />
 <p>For this we arrange four color squares on the top of our scene using a row positioner. A color square is a simple rectangle filled with a mouse area to detect clicks.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Row</span> <span class="p">{</span>
@@ -574,8 +573,8 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The colors are stored in an array and the paint color. When one the user clicks in one of the squares the color of the square is assigned to the <tt class="docutils literal"><span class="pre">paintColor</span></tt> property of the the row named <em>colorTools</em>.</p>
-<p>To enable tracking of the mouse events on the canvas we have a <tt class="docutils literal"><span class="pre">MouseArea</span></tt> covering the canvas element and hooked up the pressed and position changed handlers.</p>
+<p>The colors are stored in an array and the paint color. When one the user clicks in one of the squares the color of the square is assigned to the <code class="docutils literal"><span class="pre">paintColor</span></code> property of the the row named <em>colorTools</em>.</p>
+<p>To enable tracking of the mouse events on the canvas we have a <code class="docutils literal"><span class="pre">MouseArea</span></code> covering the canvas element and hooked up the pressed and position changed handlers.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Canvas</span> <span class="p">{</span>
         <span class="kd">id: canvas</span>
         <span class="nx">anchors</span> <span class="p">{</span>
@@ -654,7 +653,7 @@
 </div></blockquote>
 </li>
 </ul>
-<p>Finally we inmpleted our <tt class="docutils literal"><span class="pre">onPaint</span></tt> handler. Inside we acquire a context and call our draw function.</p>
+<p>Finally we inmpleted our <code class="docutils literal"><span class="pre">onPaint</span></code> handler. Inside we acquire a context and call our draw function.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="k">onPaint:</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">);</span>
         <span class="nx">draw</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span>
@@ -738,8 +737,8 @@ setInterval(blank, 40);
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
 </div>
-<p>In HTML5 the Context2D object can paint at any time on the canvas. In QML it can only point inside the <tt class="docutils literal"><span class="pre">onPaint</span></tt> handler. The timer in usage with <tt class="docutils literal"><span class="pre">setInterval</span></tt> triggers in HTML5 the stroke of the line or to blank the screen. Due to the different handling in QML it&#8217;s not possible to just call these functions, because we need to go through the <tt class="docutils literal"><span class="pre">onPaint</span></tt> handler. Also the color presentations needs to be adapted. Let&#8217;s go through the changes on by one.</p>
-<p>Everything starts with the canvas element. For simplicity we just use the <tt class="docutils literal"><span class="pre">Canvas</span></tt> element as the root element of our QML file.</p>
+<p>In HTML5 the Context2D object can paint at any time on the canvas. In QML it can only point inside the <code class="docutils literal"><span class="pre">onPaint</span></code> handler. The timer in usage with <code class="docutils literal"><span class="pre">setInterval</span></code> triggers in HTML5 the stroke of the line or to blank the screen. Due to the different handling in QML it&#8217;s not possible to just call these functions, because we need to go through the <code class="docutils literal"><span class="pre">onPaint</span></code> handler. Also the color presentations needs to be adapted. Let&#8217;s go through the changes on by one.</p>
+<p>Everything starts with the canvas element. For simplicity we just use the <code class="docutils literal"><span class="pre">Canvas</span></code> element as the root element of our QML file.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
 <span class="nx">Canvas</span> <span class="p">{</span>
@@ -750,7 +749,7 @@ setInterval(blank, 40);
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To untangle the direct call of the functions through the <tt class="docutils literal"><span class="pre">setInterval</span></tt>, we replace the <tt class="docutils literal"><span class="pre">setInterval</span></tt> calls with two timers which will request a repaint. A <tt class="docutils literal"><span class="pre">Timer</span></tt> is triggered after a short interval and allows us to execute some code. As we can&#8217;t tell the paint function which operation we would like trigger we define for each operation a bool flag request an operation and trigger then a repaint request.</p>
+<p>To untangle the direct call of the functions through the <code class="docutils literal"><span class="pre">setInterval</span></code>, we replace the <code class="docutils literal"><span class="pre">setInterval</span></code> calls with two timers which will request a repaint. A <code class="docutils literal"><span class="pre">Timer</span></code> is triggered after a short interval and allows us to execute some code. As we can&#8217;t tell the paint function which operation we would like trigger we define for each operation a bool flag request an operation and trigger then a repaint request.</p>
 <p>Here is the code for the line operation. The blank operation is similar.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="p">...</span>
 <span class="nx">property</span> <span class="nx">bool</span> <span class="nx">requestLine</span><span class="o">:</span> <span class="kc">false</span>
@@ -772,7 +771,7 @@ setInterval(blank, 40);
 <span class="p">...</span>
 </pre></div>
 </div>
-<p>Now we have a an indication which (line or blank or even both) operation we need to perform during the <tt class="docutils literal"><span class="pre">onPaint</span></tt> operation. As we enter the <tt class="docutils literal"><span class="pre">onPaint</span></tt> handler for each paint request we need to extract the initialization of the variable into the canvas element.</p>
+<p>Now we have a an indication which (line or blank or even both) operation we need to perform during the <code class="docutils literal"><span class="pre">onPaint</span></code> operation. As we enter the <code class="docutils literal"><span class="pre">onPaint</span></code> handler for each paint request we need to extract the initialization of the variable into the canvas element.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">Canvas</span> <span class="p">{</span>
     <span class="p">...</span>
     <span class="nx">property</span> <span class="nx">real</span> <span class="nx">hue</span><span class="o">:</span> <span class="mi">0</span>
@@ -825,7 +824,7 @@ setInterval(blank, 40);
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The biggest change was the use of the QML <tt class="docutils literal"><span class="pre">Qt.rgba()</span></tt> and <tt class="docutils literal"><span class="pre">Qt.hsla()</span></tt> functions, which required to adapt the values to the used 0.0 ... 1.0 range in QML.</p>
+<p>The biggest change was the use of the QML <code class="docutils literal"><span class="pre">Qt.rgba()</span></code> and <code class="docutils literal"><span class="pre">Qt.hsla()</span></code> functions, which required to adapt the values to the used 0.0 ... 1.0 range in QML.</p>
 <p>Same applies to the <em>blank</em> function.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">blank</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">context</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
@@ -872,7 +871,7 @@ setInterval(blank, 40);
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

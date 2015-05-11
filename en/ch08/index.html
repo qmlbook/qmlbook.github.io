@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -172,33 +171,33 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-simulations&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 15, 2015 at 10:13 CET</p>
+<p>Last Build: May 11, 2015 at 16:49 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>Particles are a computer graphics techniques to visualize certain graphics effects. Typical effects could be: falling leaves, fire, explosions, meteors, clouds, etc.</p>
 <p>It differs from other graphics rendering as particles rendering is based on fuzzy aspects. The outcome is not exactly predictable on pixel-base. Parameters to the particle system describe the boundaries for the stochastic simulation. The phenomena rendered with particles is often difficult to visualize with traditional rendering techniques. The good thing is you can let QML elements interact with the particles systems. Also as parameters are expressed as properties they can be animated using the traditional animation techniques.</p>
 <div class="section" id="concept">
 <h2>8.1. Concept<a class="headerlink" href="#concept" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23concept&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>In the heart of the particle simulation is the <tt class="docutils literal"><span class="pre">ParticleSystem</span></tt> which controls the shared time-line. A scene can have several particles systems, each of them with an independent time-line. A particle is emitted using an <tt class="docutils literal"><span class="pre">Emitter</span></tt> element and visualized with a <tt class="docutils literal"><span class="pre">ParticlePainter</span></tt>, which can be an image, QML item or a shader item.
-An emitter provides also the direction for particle using a vector space. A particle ones emitted can&#8217;t be manipulated by the emitter anymore. The particle module provides the <tt class="docutils literal"><span class="pre">Affector</span></tt>, which allows to manipulate parameters of the particle after is has been emitted.</p>
-<p>Particles in a system can share timed transitions using the <tt class="docutils literal"><span class="pre">ParticleGroup</span></tt> element. By default every particle is on the empty (&#8216;&#8217;) group.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23concept&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>In the heart of the particle simulation is the <code class="docutils literal"><span class="pre">ParticleSystem</span></code> which controls the shared time-line. A scene can have several particles systems, each of them with an independent time-line. A particle is emitted using an <code class="docutils literal"><span class="pre">Emitter</span></code> element and visualized with a <code class="docutils literal"><span class="pre">ParticlePainter</span></code>, which can be an image, QML item or a shader item.
+An emitter provides also the direction for particle using a vector space. A particle ones emitted can&#8217;t be manipulated by the emitter anymore. The particle module provides the <code class="docutils literal"><span class="pre">Affector</span></code>, which allows to manipulate parameters of the particle after is has been emitted.</p>
+<p>Particles in a system can share timed transitions using the <code class="docutils literal"><span class="pre">ParticleGroup</span></code> element. By default every particle is on the empty (&#8216;&#8217;) group.</p>
 <img alt="../../_images/particlesystem.png" src="../../_images/particlesystem.png" />
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">ParticleSystem</span></tt> - manages shared time-line between emitters</li>
-<li><tt class="docutils literal"><span class="pre">Emitter</span></tt> - emits logical particles into the system</li>
-<li><tt class="docutils literal"><span class="pre">ParticlePainter</span></tt> - particles are visualized by a particle painter</li>
-<li><tt class="docutils literal"><span class="pre">Direction</span></tt> - vector space for emitted particles</li>
-<li><tt class="docutils literal"><span class="pre">ParticleGroup</span></tt> - every particle is a member of a group</li>
-<li><tt class="docutils literal"><span class="pre">Affector</span></tt> - manipulates particles after they have been emitted</li>
+<li><code class="docutils literal"><span class="pre">ParticleSystem</span></code> - manages shared time-line between emitters</li>
+<li><code class="docutils literal"><span class="pre">Emitter</span></code> - emits logical particles into the system</li>
+<li><code class="docutils literal"><span class="pre">ParticlePainter</span></code> - particles are visualized by a particle painter</li>
+<li><code class="docutils literal"><span class="pre">Direction</span></code> - vector space for emitted particles</li>
+<li><code class="docutils literal"><span class="pre">ParticleGroup</span></code> - every particle is a member of a group</li>
+<li><code class="docutils literal"><span class="pre">Affector</span></code> - manipulates particles after they have been emitted</li>
 </ul>
 </div>
 <div class="section" id="simple-simulation">
 <h2>8.2. Simple Simulation<a class="headerlink" href="#simple-simulation" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23simple-simulation&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>Let us have a look at a very simple simulation to get started. Qt Quick makes it actually very simple to get started with particle rendering. For this we need:</p>
 <ul class="simple">
-<li>A <tt class="docutils literal"><span class="pre">ParticleSystem</span></tt> which binds all elements to an simulation</li>
-<li>An <tt class="docutils literal"><span class="pre">Emitter</span></tt> which emits particles into the system</li>
-<li>A <tt class="docutils literal"><span class="pre">ParticlePainter</span></tt> derived element, which visualize the particles</li>
+<li>A <code class="docutils literal"><span class="pre">ParticleSystem</span></code> which binds all elements to an simulation</li>
+<li>An <code class="docutils literal"><span class="pre">Emitter</span></code> which emits particles into the system</li>
+<li>A <code class="docutils literal"><span class="pre">ParticlePainter</span></code> derived element, which visualize the particles</li>
 </ul>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Particles</span> <span class="mf">2.0</span>
@@ -234,14 +233,14 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <p>The outcome of the example will look like this:</p>
 <img alt="../../_images/simpleparticles.png" src="../../_images/simpleparticles.png" />
-<p>We start with a a 80x80 pixel dark rectangle as our root element and background. Therein we declare a <tt class="docutils literal"><span class="pre">ParticleSystem</span></tt>. This is always the first step as the system binds all other elements together. Typically the next element is the <tt class="docutils literal"><span class="pre">Emitter</span></tt>, which defines the emitting area based on it&#8217;s bounding box and basic parameters for the to be emitted particles. The emitter is bound to the system using the <tt class="docutils literal"><span class="pre">system</span></tt> property.</p>
-<p>The emitter in this example emits 10 particles per second (<tt class="docutils literal"><span class="pre">emitRate:</span> <span class="pre">10</span></tt>) over the area of the emitter with each a life span of 1000 msecs (<tt class="docutils literal"><span class="pre">lifeSpan</span> <span class="pre">:</span> <span class="pre">1000</span></tt>) and a life span variation between emitted particles of 500 msec (<tt class="docutils literal"><span class="pre">lifeSpanVariation:</span> <span class="pre">500</span></tt>). A particle shall start with a size of 16px (<tt class="docutils literal"><span class="pre">size:</span> <span class="pre">16</span></tt>) and at the end of it&#8217;s life shall be 32px (<tt class="docutils literal"><span class="pre">endSize:</span> <span class="pre">32</span></tt>).</p>
+<p>We start with a a 80x80 pixel dark rectangle as our root element and background. Therein we declare a <code class="docutils literal"><span class="pre">ParticleSystem</span></code>. This is always the first step as the system binds all other elements together. Typically the next element is the <code class="docutils literal"><span class="pre">Emitter</span></code>, which defines the emitting area based on it&#8217;s bounding box and basic parameters for the to be emitted particles. The emitter is bound to the system using the <code class="docutils literal"><span class="pre">system</span></code> property.</p>
+<p>The emitter in this example emits 10 particles per second (<code class="docutils literal"><span class="pre">emitRate:</span> <span class="pre">10</span></code>) over the area of the emitter with each a life span of 1000 msecs (<code class="docutils literal"><span class="pre">lifeSpan</span> <span class="pre">:</span> <span class="pre">1000</span></code>) and a life span variation between emitted particles of 500 msec (<code class="docutils literal"><span class="pre">lifeSpanVariation:</span> <span class="pre">500</span></code>). A particle shall start with a size of 16px (<code class="docutils literal"><span class="pre">size:</span> <span class="pre">16</span></code>) and at the end of it&#8217;s life shall be 32px (<code class="docutils literal"><span class="pre">endSize:</span> <span class="pre">32</span></code>).</p>
 <p>The green bordered rectangle is a tracer element to show the geometry of the emitter. This visualizes that also while the particles are emitted inside the emitters bounding box the rendering is not limited to the emitters bounding box. The rendering position depends upon life-span and direction of the particle. This will get more clear when we look into howto change the direction particles.</p>
-<p>The emitter emits logical particles. A logical particle is visualized using a <tt class="docutils literal"><span class="pre">ParticlePainter</span></tt> in this example we use an <tt class="docutils literal"><span class="pre">ImageParticle</span></tt>, which takes an image URL as the source property. The image particle has also several other properties, which control the appearance of the average particle.</p>
+<p>The emitter emits logical particles. A logical particle is visualized using a <code class="docutils literal"><span class="pre">ParticlePainter</span></code> in this example we use an <code class="docutils literal"><span class="pre">ImageParticle</span></code>, which takes an image URL as the source property. The image particle has also several other properties, which control the appearance of the average particle.</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">emitRate</span></tt>: particles emitted per second (defaults to 10 per second)</li>
-<li><tt class="docutils literal"><span class="pre">lifeSpan</span></tt>: milliseconds the particle should last for (defaults to 1000 msecs)</li>
-<li><tt class="docutils literal"><span class="pre">size</span></tt>, <tt class="docutils literal"><span class="pre">endSize</span></tt>: size of the particles at the beginning and end of their life  (defaults to 16 px)</li>
+<li><code class="docutils literal"><span class="pre">emitRate</span></code>: particles emitted per second (defaults to 10 per second)</li>
+<li><code class="docutils literal"><span class="pre">lifeSpan</span></code>: milliseconds the particle should last for (defaults to 1000 msecs)</li>
+<li><code class="docutils literal"><span class="pre">size</span></code>, <code class="docutils literal"><span class="pre">endSize</span></code>: size of the particles at the beginning and end of their life  (defaults to 16 px)</li>
 </ul>
 <p>Changing these properties can influence the result in a drastically way</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Emitter</span> <span class="p">{</span>
@@ -260,12 +259,12 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <p>Besides increasing the emit rate to 40 and the life span to 2 seconds the size now starts at 64 pixel and decreases 32 pixel at the end of a particle life span.</p>
 <img alt="../../_images/simpleparticles2.png" src="../../_images/simpleparticles2.png" />
-<p>Increasing the <tt class="docutils literal"><span class="pre">endSize</span></tt> even more would lead to a more or less white background. Please note also when the particles are only emitted in the area defined by the emitter the rendering is not constrained to it.</p>
+<p>Increasing the <code class="docutils literal"><span class="pre">endSize</span></code> even more would lead to a more or less white background. Please note also when the particles are only emitted in the area defined by the emitter the rendering is not constrained to it.</p>
 </div>
 <div class="section" id="particle-parameters">
 <h2>8.3. Particle Parameters<a class="headerlink" href="#particle-parameters" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-parameters&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>We saw already how to change the behavior of the emitter to change our simulation. The particle painter used allows us how the particle image is visualized for each particle.</p>
-<p>Coming back to our example we update our <tt class="docutils literal"><span class="pre">ImageParticle</span></tt>. First we change our particle image to a small sparking star image:</p>
+<p>Coming back to our example we update our <code class="docutils literal"><span class="pre">ImageParticle</span></code>. First we change our particle image to a small sparking star image:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">ImageParticle</span> <span class="p">{</span>
     <span class="p">...</span>
     <span class="k">source:</span> <span class="s1">&#39;assets/star.png&#39;</span>
@@ -310,13 +309,13 @@ An emitter provides also the direction for particle using a vector space. A part
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23directed-particles&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>We have seen particles can rotate. But particles can also have a trajectory. The trajectory is specified as the velocity or acceleration of particles defined by a stochastic direction also named a vector space.</p>
 <p>There are different vector spaces available to define the velocity or acceleration of a particle:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">AngleDirection</span></tt> - a direction that varies in angle</li>
-<li><tt class="docutils literal"><span class="pre">PointDirection</span></tt> - a direction that varies in x and y components</li>
-<li><tt class="docutils literal"><span class="pre">TargetDirection</span></tt> - a direction towards the target point</li>
+<li><code class="docutils literal"><span class="pre">AngleDirection</span></code> - a direction that varies in angle</li>
+<li><code class="docutils literal"><span class="pre">PointDirection</span></code> - a direction that varies in x and y components</li>
+<li><code class="docutils literal"><span class="pre">TargetDirection</span></code> - a direction towards the target point</li>
 </ul>
 <img alt="../../_images/particle_directions.png" src="../../_images/particle_directions.png" />
 <p>Let&#8217;s try to move the particles over from the left to the right side of our scene by using the velocity directions.</p>
-<p>We first try the <tt class="docutils literal"><span class="pre">AngleDirection</span></tt>. For this we need to specify the <tt class="docutils literal"><span class="pre">AngleDirection</span></tt> as an element of the velocity property of our emitter:</p>
+<p>We first try the <code class="docutils literal"><span class="pre">AngleDirection</span></code>. For this we need to specify the <code class="docutils literal"><span class="pre">AngleDirection</span></code> as an element of the velocity property of our emitter:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="k">velocity:</span> <span class="nx">AngleDirection</span> <span class="p">{</span> <span class="p">}</span>
 </pre></div>
 </div>
@@ -327,7 +326,7 @@ An emitter provides also the direction for particle using a vector space. A part
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now we have set our direction, the next thing is to specify the velocity of the particle. This is defined by a magnitude. The magnitude is defined in pixels per seconds. As we have ca. 640px to travel 100 seems to be a good number. This would mean by an average life time of 6.4 secs a particle would cross the open space. To make the traveling of the particles more interesting we vary the magnitude using the <tt class="docutils literal"><span class="pre">magnitudeVariation</span></tt> and set this to the half of the magnitude:</p>
+<p>Now we have set our direction, the next thing is to specify the velocity of the particle. This is defined by a magnitude. The magnitude is defined in pixels per seconds. As we have ca. 640px to travel 100 seems to be a good number. This would mean by an average life time of 6.4 secs a particle would cross the open space. To make the traveling of the particles more interesting we vary the magnitude using the <code class="docutils literal"><span class="pre">magnitudeVariation</span></code> and set this to the half of the magnitude:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="k">velocity:</span> <span class="nx">AngleDirection</span> <span class="p">{</span>
     <span class="p">...</span>
     <span class="k">magnitude:</span> <span class="mi">100</span>
@@ -395,9 +394,9 @@ An emitter provides also the direction for particle using a vector space. A part
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the next example we would like that the particles again travel from left to right but this time we use the <tt class="docutils literal"><span class="pre">PointDirection</span></tt> vector space.</p>
-<p>A <tt class="docutils literal"><span class="pre">PointDirection</span></tt> derived it&#8217;s vector space from a x and y component. For example if you want the particles travel in a 45 degree vector, you need to specify the same value for x and y.</p>
-<p>In our case we want the particles travel from left-to-right building a 15 degree cone. For this we specify a <tt class="docutils literal"><span class="pre">PointDirection</span></tt> as our velocity vector space:</p>
+<p>In the next example we would like that the particles again travel from left to right but this time we use the <code class="docutils literal"><span class="pre">PointDirection</span></code> vector space.</p>
+<p>A <code class="docutils literal"><span class="pre">PointDirection</span></code> derived it&#8217;s vector space from a x and y component. For example if you want the particles travel in a 45 degree vector, you need to specify the same value for x and y.</p>
+<p>In our case we want the particles travel from left-to-right building a 15 degree cone. For this we specify a <code class="docutils literal"><span class="pre">PointDirection</span></code> as our velocity vector space:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="k">velocity:</span> <span class="nx">PointDirection</span> <span class="p">{</span> <span class="p">}</span>
 </pre></div>
 </div>
@@ -412,7 +411,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <p>The result should be particles traveling in a 15 degree cone from right to left.</p>
 <img alt="../../_images/pointdirection.png" src="../../_images/pointdirection.png" />
-<p>Now coming to our last contender, the <tt class="docutils literal"><span class="pre">TargetDirection</span></tt>. The target direction allows us to specify a target point as an x and y coordinate relative to the emitter or an item. When an item is specified the center of the item will become the target point. You can achieve the 15 degree cone by specifying a target variation of 1/6 th of the x target:</p>
+<p>Now coming to our last contender, the <code class="docutils literal"><span class="pre">TargetDirection</span></code>. The target direction allows us to specify a target point as an x and y coordinate relative to the emitter or an item. When an item is specified the center of the item will become the target point. You can achieve the 15 degree cone by specifying a target variation of 1/6 th of the x target:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="k">velocity:</span> <span class="nx">TargetDirection</span> <span class="p">{</span>
     <span class="k">targetX:</span> <span class="mi">100</span>
     <span class="k">targetY:</span> <span class="mi">0</span>
@@ -433,8 +432,8 @@ An emitter provides also the direction for particle using a vector space. A part
 <h2>8.5. Particle Painters<a class="headerlink" href="#particle-painters" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-painters&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>Till now we have only used the image based particle painter to visualize particles. Qt comes also with other particle painters:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">ItemParticle</span></tt>: delegate based particle painter</li>
-<li><tt class="docutils literal"><span class="pre">CustomParticle</span></tt>: shader based particle painter</li>
+<li><code class="docutils literal"><span class="pre">ItemParticle</span></code>: delegate based particle painter</li>
+<li><code class="docutils literal"><span class="pre">CustomParticle</span></code>: shader based particle painter</li>
 </ul>
 <p>The ItemParticle can be used to emit QML items as particles. For this you need to specify your own delegate to the particle.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">ItemParticle</span> <span class="p">{</span>
@@ -462,21 +461,21 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <p>We emit 4 images per second with a life span of 4 seconds each. The particles fade automatically in and out.</p>
 <img alt="../../_images/itemparticle.png" src="../../_images/itemparticle.png" />
-<p>For more dynamic cases it is also possible to create an item on your own and let the particle take control of it with <tt class="docutils literal"><span class="pre">take(item,</span> <span class="pre">priority)</span></tt>. By this the particle simulation takes control of your particle and handles the item like an ordinary particle. You can get back control of the item by using <tt class="docutils literal"><span class="pre">give(item)</span></tt>. You can influence item particles even more by halt their life progression using <tt class="docutils literal"><span class="pre">freeze(item)</span></tt> and resume their life using <tt class="docutils literal"><span class="pre">unfreeze(item)</span></tt>.</p>
+<p>For more dynamic cases it is also possible to create an item on your own and let the particle take control of it with <code class="docutils literal"><span class="pre">take(item,</span> <span class="pre">priority)</span></code>. By this the particle simulation takes control of your particle and handles the item like an ordinary particle. You can get back control of the item by using <code class="docutils literal"><span class="pre">give(item)</span></code>. You can influence item particles even more by halt their life progression using <code class="docutils literal"><span class="pre">freeze(item)</span></code> and resume their life using <code class="docutils literal"><span class="pre">unfreeze(item)</span></code>.</p>
 </div>
 <div class="section" id="affecting-particles">
 <h2>8.6. Affecting Particles<a class="headerlink" href="#affecting-particles" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23affecting-particles&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>Particles are emitted by the emitter. After a particle was emitted it can&#8217;t be changed anymore by the emitter. The affectors allows you to influence particles after they have been emitted.</p>
 <p>Each type of affector affects particles in a different way:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">Age</span></tt> - alter where the particle is in its life-cycle</li>
-<li><tt class="docutils literal"><span class="pre">Attractor</span></tt> - attract particles towards a specific point</li>
-<li><tt class="docutils literal"><span class="pre">Friction</span></tt> - slows down movement proportional to the particle&#8217;s current velocity</li>
-<li><tt class="docutils literal"><span class="pre">Gravity</span></tt> - set&#8217;s an acceleration in an angle</li>
-<li><tt class="docutils literal"><span class="pre">Turbulence</span></tt> - fluid like forces based on a noise image</li>
-<li><tt class="docutils literal"><span class="pre">Wander</span></tt> -  randomly vary the trajectory</li>
-<li><tt class="docutils literal"><span class="pre">GroupGoal</span></tt> -  change the state of a group of a particle</li>
-<li><tt class="docutils literal"><span class="pre">SpriteGoal</span></tt> - change the state of a sprite particle</li>
+<li><code class="docutils literal"><span class="pre">Age</span></code> - alter where the particle is in its life-cycle</li>
+<li><code class="docutils literal"><span class="pre">Attractor</span></code> - attract particles towards a specific point</li>
+<li><code class="docutils literal"><span class="pre">Friction</span></code> - slows down movement proportional to the particle&#8217;s current velocity</li>
+<li><code class="docutils literal"><span class="pre">Gravity</span></code> - set&#8217;s an acceleration in an angle</li>
+<li><code class="docutils literal"><span class="pre">Turbulence</span></code> - fluid like forces based on a noise image</li>
+<li><code class="docutils literal"><span class="pre">Wander</span></code> -  randomly vary the trajectory</li>
+<li><code class="docutils literal"><span class="pre">GroupGoal</span></code> -  change the state of a group of a particle</li>
+<li><code class="docutils literal"><span class="pre">SpriteGoal</span></code> - change the state of a sprite particle</li>
 </ul>
 <p class="rubric">Age</p>
 <p>Allows particle to age faster. the <em>lifeLeft</em> property specified how much life a particle should have left.</p>
@@ -494,7 +493,7 @@ An emitter provides also the direction for particle using a vector space. A part
 <p>In the example we shorten the life of the upper particles once, when they reach the age affector to 1200 msecs. As we have set the <em>advancePosition</em> to true, we see the particle appearing again on a position when the particle has 1200 msecs left to life.</p>
 <img alt="../../_images/age.png" src="../../_images/age.png" />
 <p class="rubric">Attractor</p>
-<p>The attractor attracts particles towards a specific point. The point is specified using <tt class="docutils literal"><span class="pre">pointX</span></tt> and <tt class="docutils literal"><span class="pre">pointY</span></tt>, which is relative to the attractor geometry. The strength specifies the force of attraction. In our example we let particles travel from left to right. The attractor is placed on the top and half of the particles travel through the attractor. Affector only affect particles while they are in their bounding box. This split allows us to see the normal stream and the affected stream simultaneous.</p>
+<p>The attractor attracts particles towards a specific point. The point is specified using <code class="docutils literal"><span class="pre">pointX</span></code> and <code class="docutils literal"><span class="pre">pointY</span></code>, which is relative to the attractor geometry. The strength specifies the force of attraction. In our example we let particles travel from left to right. The attractor is placed on the top and half of the particles travel through the attractor. Affector only affect particles while they are in their bounding box. This split allows us to see the normal stream and the affected stream simultaneous.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Attractor</span> <span class="p">{</span>
         <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
         <span class="k">width:</span> <span class="mi">160</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">120</span>
@@ -566,7 +565,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <div class="section" id="particle-groups">
 <h2>8.7. Particle Groups<a class="headerlink" href="#particle-groups" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-groups&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>At the beginning of this chapter we stated particles are in groups, which is by default the empty group (&#8216;&#8217;). Using the <tt class="docutils literal"><span class="pre">GroupGoal</span></tt> affector is it possible to let the particle change groups. To visualize this we would like to create a small firework, where rockets start into space and explode in the air into a spectacular firework.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-groups&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>At the beginning of this chapter we stated particles are in groups, which is by default the empty group (&#8216;&#8217;). Using the <code class="docutils literal"><span class="pre">GroupGoal</span></code> affector is it possible to let the particle change groups. To visualize this we would like to create a small firework, where rockets start into space and explode in the air into a spectacular firework.</p>
 <img alt="../../_images/firework_teaser.png" src="../../_images/firework_teaser.png" />
 <p>The example is divided into 2 parts. The 1st part called &#8220;Launch Time&#8221; is concerned to setup the scene and introduce particle groups and the 2nd part called &#8220;Let there be fireworks&#8221; focuses on the group changes.</p>
 <p>Let&#8217;s get start!</p>
@@ -677,14 +676,14 @@ An emitter provides also the direction for particle using a vector space. A part
 <p class="last">The image shows the scene with the tracers enabled to show the different areas. Rocket particles are emitted in the red area and then affected by the turbulence in the blue area. Finally they are slowed down by the friction affector in the green area and start falling again, because of the steady applied downwards acceleration.</p>
 </div>
 <p class="rubric">Let there be fireworks</p>
-<p>To be able to change the rocket into a beautiful firework we need add a <tt class="docutils literal"><span class="pre">ParticleGroup</span></tt> to encapsulate the changes:</p>
+<p>To be able to change the rocket into a beautiful firework we need add a <code class="docutils literal"><span class="pre">ParticleGroup</span></code> to encapsulate the changes:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">ParticleGroup</span> <span class="p">{</span>
     <span class="k">name:</span> <span class="s1">&#39;explosion&#39;</span>
     <span class="k">system:</span> <span class="nx">particleSystem</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>We change to the particle group using a <tt class="docutils literal"><span class="pre">GroupGoal</span></tt> affector. The group goal affector is placed near the vertical center of the screen and it will affect the group &#8216;rocket&#8217;. With the <em>groupGoal</em> property we set the target group for the change to &#8216;explosion&#8217;, our earlier defined particle group:</p>
+<p>We change to the particle group using a <code class="docutils literal"><span class="pre">GroupGoal</span></code> affector. The group goal affector is placed near the vertical center of the screen and it will affect the group &#8216;rocket&#8217;. With the <em>groupGoal</em> property we set the target group for the change to &#8216;explosion&#8217;, our earlier defined particle group:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">GroupGoal</span> <span class="p">{</span>
     <span class="kd">id: rocketChanger</span>
     <span class="k">anchors.top:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">top</span>
@@ -897,7 +896,7 @@ An emitter provides also the direction for particle using a vector space. A part
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

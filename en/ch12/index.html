@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -164,8 +163,8 @@
 <p>Every application need to store smaller and larger information persistently. This can be done locally on the file system or remote on a server. Some information will be structured and simple (e.g. settings), some will be large and complicated for example documentation files and some will be large and structured and will require some sort of database connection. Here we will mainly cover the built in capabilities of QtQuick to store data as also the networked ways.</p>
 <div class="section" id="settings">
 <h2>12.1. Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
-<p>Qt comes on its native side with the C++ <tt class="docutils literal"><span class="pre">QSettings</span></tt> class, which allows you to store the application settings (aka options, preferences) in a system dependent way. It uses the infrastructure available from your OS. Additional it supports a common INI file format for handling cross platform settings files.</p>
-<p>In Qt 5.2 <tt class="docutils literal"><span class="pre">Settings</span></tt> have entered the QML world. The API is still in the labs module, which means the API may break in the future. So be aware.</p>
+<p>Qt comes on its native side with the C++ <code class="docutils literal"><span class="pre">QSettings</span></code> class, which allows you to store the application settings (aka options, preferences) in a system dependent way. It uses the infrastructure available from your OS. Additional it supports a common INI file format for handling cross platform settings files.</p>
+<p>In Qt 5.2 <code class="docutils literal"><span class="pre">Settings</span></code> have entered the QML world. The API is still in the labs module, which means the API may break in the future. So be aware.</p>
 <p>Here is a small example, which applies a color value to a base rectangle. Every time the user clicks on the window a new random color is generated. When the application is closed and relaunched again you should see your last color. The default color should be the color initially set on the root rectangle.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 <span class="kr">import</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">labs</span><span class="p">.</span><span class="nx">settings</span> <span class="mf">1.0</span>
@@ -199,7 +198,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>It is also possible to store settings into different categories using the <tt class="docutils literal"><span class="pre">category</span></tt> property.</p>
+<p>It is also possible to store settings into different categories using the <code class="docutils literal"><span class="pre">category</span></code> property.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">Settings</span> <span class="p">{</span>
     <span class="k">category:</span> <span class="s1">&#39;window&#39;</span>
     <span class="nx">property</span> <span class="nx">alias</span> <span class="k">x:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">x</span>
@@ -223,7 +222,7 @@
 <div class="section" id="local-storage-sql">
 <h2>12.2. Local Storage - SQL<a class="headerlink" href="#local-storage-sql" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch12%2Findex.html%23local-storage-sql&labels=ch12">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch12&page=1&state=open">View</a></div><p>Qt Quick supports an local storage API known from the web browsers the local storage API. the API is available under &#8220;import QtQuick.LocalStorage 2.0&#8221;.</p>
-<p>In general it stores the content into a SQLITE database in system specific location in an unique ID based file based on the given database name and version. It is not possible to list or delete existing databases. You can find the storage location from <tt class="docutils literal"><span class="pre">QQmlEngine::offlineStoragePath()</span></tt>.</p>
+<p>In general it stores the content into a SQLITE database in system specific location in an unique ID based file based on the given database name and version. It is not possible to list or delete existing databases. You can find the storage location from <code class="docutils literal"><span class="pre">QQmlEngine::offlineStoragePath()</span></code>.</p>
 <p>You use the API by first creating a database object and then creating transactions on the database. Each transaction can contain one or more SQL queries. The transaction will roll-back when a SQL query will fail inside the transaction.</p>
 <p>For example to read from a simple notes table with a text column you could use the local storage like this:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.2</span>
@@ -275,7 +274,7 @@
 </pre></div>
 </div>
 <p>You can drag the rectangle freely around. When you close the application and launch it again the rectangle is at the same position.</p>
-<p>Now we would like to add that the x/y position of the rectangle is stored inside the SQL DB. For this we need to add an <tt class="docutils literal"><span class="pre">init</span></tt>, <tt class="docutils literal"><span class="pre">read</span></tt> and <tt class="docutils literal"><span class="pre">store</span></tt> database function. These function are called when on component completed and on component destruction.</p>
+<p>Now we would like to add that the x/y position of the rectangle is stored inside the SQL DB. For this we need to add an <code class="docutils literal"><span class="pre">init</span></code>, <code class="docutils literal"><span class="pre">read</span></code> and <code class="docutils literal"><span class="pre">store</span></code> database function. These function are called when on component completed and on component destruction.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.2</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">LocalStorage</span> <span class="mf">2.0</span>
 
@@ -361,7 +360,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Instead of selecting the whole record set we could also use the SQLITE count function like this: <tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">from</span> <span class="pre">data</span> <span class="pre">where</span> <span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;crazy&quot;</span></tt> which would return use one row with the amount of rows affected by the select query. Otherwise this is common SQL code. As an additional feature, we use the SQL value binding using the <tt class="docutils literal"><span class="pre">?</span></tt> in the query.</p>
+<p>Instead of selecting the whole record set we could also use the SQLITE count function like this: <code class="docutils literal"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">from</span> <span class="pre">data</span> <span class="pre">where</span> <span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;crazy&quot;</span></code> which would return use one row with the amount of rows affected by the select query. Otherwise this is common SQL code. As an additional feature, we use the SQL value binding using the <code class="docutils literal"><span class="pre">?</span></code> in the query.</p>
 <p>Now you can drag the rectangle and when you quit the application the database stores the x/y position and applies it on the next application run.</p>
 </div>
 <div class="section" id="other-storage-apis">
@@ -384,7 +383,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -208,11 +207,11 @@
   <div class="section" id="networking">
 <h1>11. Networking<a class="headerlink" href="#networking" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23networking&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>Qt5 comes with a rich set of networking classes on the C++ side. There are for example high level classes on the http protocol layer in a request-reply fashion such as <tt class="docutils literal"><span class="pre">QNetworkRequest</span></tt>, <tt class="docutils literal"><span class="pre">QNetworkReply</span></tt> and <tt class="docutils literal"><span class="pre">QNetworkAccessManager</span></tt>. But also lower levels classes on the TCP/IP or UDP protocol layer such as <tt class="docutils literal"><span class="pre">QTcpSocket</span></tt>, <tt class="docutils literal"><span class="pre">QTcpServer</span></tt> and <tt class="docutils literal"><span class="pre">QUdpSocket</span></tt>. Additional classes exists to manage proxies, network cache and also the systems network configuration.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23networking&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>Qt5 comes with a rich set of networking classes on the C++ side. There are for example high level classes on the http protocol layer in a request-reply fashion such as <code class="docutils literal"><span class="pre">QNetworkRequest</span></code>, <code class="docutils literal"><span class="pre">QNetworkReply</span></code> and <code class="docutils literal"><span class="pre">QNetworkAccessManager</span></code>. But also lower levels classes on the TCP/IP or UDP protocol layer such as <code class="docutils literal"><span class="pre">QTcpSocket</span></code>, <code class="docutils literal"><span class="pre">QTcpServer</span></code> and <code class="docutils literal"><span class="pre">QUdpSocket</span></code>. Additional classes exists to manage proxies, network cache and also the systems network configuration.</p>
 <p>This chapter will not be about C++ networking, this chapter is about QtQuick and networking. So how can I connect my QML/JS user interface directly with a network service or how can I serve my user interface via a network service. There are good books and references out there to cover network programming with Qt/C++. Then it is just a manner to read the chapter about C++ integration to come up with an integration layer to feed your data into the QtQuick world.</p>
 <div class="section" id="serving-ui-via-http">
 <h2>11.1. Serving UI via HTTP<a class="headerlink" href="#serving-ui-via-http" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23serving-ui-via-http&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>To load a simple user interface via HTTP we need to have a web-server, which serves the UI documents. We start of with our own simple web-server using a python one-liner. But first we need to have our demo user interface. For this we create a small <tt class="docutils literal"><span class="pre">main.qml</span></tt> file in our project folder and create a red rectangle inside.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23serving-ui-via-http&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>To load a simple user interface via HTTP we need to have a web-server, which serves the UI documents. We start of with our own simple web-server using a python one-liner. But first we need to have our demo user interface. For this we create a small <code class="docutils literal"><span class="pre">main.qml</span></code> file in our project folder and create a red rectangle inside.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// main.qml</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
@@ -228,11 +227,11 @@
 # python -m SimpleHTTPServer 8080
 </pre></div>
 </div>
-<p>Now our file should be reachable via <tt class="docutils literal"><span class="pre">http://localhost:8000/main.qml</span></tt>. You can test it with:</p>
+<p>Now our file should be reachable via <code class="docutils literal"><span class="pre">http://localhost:8000/main.qml</span></code>. You can test it with:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">curl</span> <span class="k">http:</span><span class="c1">//localhost:8000/main.qml</span>
 </pre></div>
 </div>
-<p>Or just point your browser to the location. Your browser does not understand QML and will not be able to render the document through. We need to create now such a browser for QML documents. To render the document we need to point our <tt class="docutils literal"><span class="pre">qmlscene</span></tt> to the location. Unfortunately the <tt class="docutils literal"><span class="pre">qmlscene</span></tt> is limited to local files only. We could overcome this limitation by writing our own <tt class="docutils literal"><span class="pre">qmlscene</span></tt> replacement or simple dynamically load it using QML. We choose the dynamic loading as it work just fine. For this we use a loader element to retrieve for us the remote document.</p>
+<p>Or just point your browser to the location. Your browser does not understand QML and will not be able to render the document through. We need to create now such a browser for QML documents. To render the document we need to point our <code class="docutils literal"><span class="pre">qmlscene</span></code> to the location. Unfortunately the <code class="docutils literal"><span class="pre">qmlscene</span></code> is limited to local files only. We could overcome this limitation by writing our own <code class="docutils literal"><span class="pre">qmlscene</span></code> replacement or simple dynamically load it using QML. We choose the dynamic loading as it work just fine. For this we use a loader element to retrieve for us the remote document.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// remote.qml</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
@@ -246,14 +245,14 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now we can ask the <tt class="docutils literal"><span class="pre">qmlscene</span></tt> to load the local <tt class="docutils literal"><span class="pre">remote.qml</span></tt> loader document. There is one glitch still. The loader will resize to the size of the loaded item. And our <tt class="docutils literal"><span class="pre">qmlscene</span></tt> needs also to adapt to that size. This can be accomplished using the <tt class="docutils literal"><span class="pre">--resize-to-root</span></tt> option to the <tt class="docutils literal"><span class="pre">qmlscene</span></tt>:</p>
+<p>Now we can ask the <code class="docutils literal"><span class="pre">qmlscene</span></code> to load the local <code class="docutils literal"><span class="pre">remote.qml</span></code> loader document. There is one glitch still. The loader will resize to the size of the loaded item. And our <code class="docutils literal"><span class="pre">qmlscene</span></code> needs also to adapt to that size. This can be accomplished using the <code class="docutils literal"><span class="pre">--resize-to-root</span></code> option to the <code class="docutils literal"><span class="pre">qmlscene</span></code>:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">qmlscene</span> <span class="o">--</span><span class="nx">resize</span><span class="o">-</span><span class="nx">to</span><span class="o">-</span><span class="nx">root</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">qml</span>
 </pre></div>
 </div>
-<p>Resize to root tells the qml scene to resize its window to the size of the root element. The remote is now loading the <tt class="docutils literal"><span class="pre">main.qml</span></tt> from our local server and resizes itself to the loaded user interface. Sweet and simple.</p>
+<p>Resize to root tells the qml scene to resize its window to the size of the root element. The remote is now loading the <code class="docutils literal"><span class="pre">main.qml</span></code> from our local server and resizes itself to the loaded user interface. Sweet and simple.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>If you do not want to run a local server you can also use the gist service from GitHub. Gist is a clipboard like online service like PasteBin and others. It is available under <a class="reference external" href="https://gist.github.com">https://gist.github.com</a> . I created for this example a small gist under the url <a class="reference external" href="https://gist.github.com/jryannel/7983492">https://gist.github.com/jryannel/7983492</a> . This will reveal a green rectangle. As the gist url will provide the web-site as HTML code we need to attach a <tt class="docutils literal"><span class="pre">/raw</span></tt> to the url to retrieve the raw file and not the HTML code.</p>
+<p>If you do not want to run a local server you can also use the gist service from GitHub. Gist is a clipboard like online service like PasteBin and others. It is available under <a class="reference external" href="https://gist.github.com">https://gist.github.com</a> . I created for this example a small gist under the url <a class="reference external" href="https://gist.github.com/jryannel/7983492">https://gist.github.com/jryannel/7983492</a> . This will reveal a green rectangle. As the gist url will provide the web-site as HTML code we need to attach a <code class="docutils literal"><span class="pre">/raw</span></code> to the url to retrieve the raw file and not the HTML code.</p>
 <div class="last highlight-qml"><div class="highlight"><pre><span class="c1">// remote.qml</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
@@ -268,7 +267,7 @@
 </pre></div>
 </div>
 </div>
-<p>To load another file over the network you just need to reference the component name. For example a <tt class="docutils literal"><span class="pre">Button.qml</span></tt> can be accessed as normal, as long it is in the same remote folder.</p>
+<p>To load another file over the network you just need to reference the component name. For example a <code class="docutils literal"><span class="pre">Button.qml</span></code> can be accessed as normal, as long it is in the same remote folder.</p>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
 <p class="last">Is this true? What are the rules?</p>
@@ -309,7 +308,7 @@
 <div class="highlight-qml"><div class="highlight"><pre><span class="k">http:</span><span class="c1">//localhost:8080/main2.qml:11:5: Button is not a type</span>
 </pre></div>
 </div>
-<p>So QML can not resolve the button component when it is loaded remotely. If the code would be locally <tt class="docutils literal"><span class="pre">qmlscene</span> <span class="pre">src/main.qml</span></tt> this would be no issue. Locally Qt can parse the directory and detect which components are available but remotely there is no &#8220;list-dir&#8221; function for http. We can force QML to load the element using the import statement inside <tt class="docutils literal"><span class="pre">main.qml</span></tt>:</p>
+<p>So QML can not resolve the button component when it is loaded remotely. If the code would be locally <code class="docutils literal"><span class="pre">qmlscene</span> <span class="pre">src/main.qml</span></code> this would be no issue. Locally Qt can parse the directory and detect which components are available but remotely there is no &#8220;list-dir&#8221; function for http. We can force QML to load the element using the import statement inside <code class="docutils literal"><span class="pre">main.qml</span></code>:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="s2">&quot;http://localhost:8080&quot;</span> <span class="nx">as</span> <span class="nx">Remote</span>
 
 <span class="p">...</span>
@@ -317,7 +316,7 @@
 <span class="nx">Remote</span><span class="p">.</span><span class="nx">Button</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>This will work then when the <tt class="docutils literal"><span class="pre">qmlscene</span></tt> is run again:</p>
+<p>This will work then when the <code class="docutils literal"><span class="pre">qmlscene</span></code> is run again:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">qmlscene</span> <span class="o">--</span><span class="nx">resize</span><span class="o">-</span><span class="nx">to</span><span class="o">-</span><span class="nx">root</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">qml</span>
 </pre></div>
 </div>
@@ -339,12 +338,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>A better option is to use the <tt class="docutils literal"><span class="pre">qmldir</span></tt> file on the server side to control the export.</p>
+<p>A better option is to use the <code class="docutils literal"><span class="pre">qmldir</span></code> file on the server side to control the export.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// qmldir</span>
 <span class="nx">Button</span> <span class="mf">1.0</span> <span class="nx">Button</span><span class="p">.</span><span class="nx">qml</span>
 </pre></div>
 </div>
-<p>And then updating the <tt class="docutils literal"><span class="pre">main.qml</span></tt>:</p>
+<p>And then updating the <code class="docutils literal"><span class="pre">main.qml</span></code>:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="s2">&quot;http://localhost:8080&quot;</span> <span class="mf">1.0</span> <span class="nx">as</span> <span class="nx">Remote</span>
 
 <span class="p">...</span>
@@ -373,8 +372,8 @@
 </div>
 <div class="section" id="http-requests">
 <h2>11.3. HTTP Requests<a class="headerlink" href="#http-requests" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23http-requests&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>A http request is in Qt typical done using <tt class="docutils literal"><span class="pre">QNetworkRequest</span></tt> and <tt class="docutils literal"><span class="pre">QNetworkReply</span></tt> from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools QtQuick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script <tt class="docutils literal"><span class="pre">XMLHttpRequest</span></tt> object.</p>
-<p>The <tt class="docutils literal"><span class="pre">XMLHttpRequest</span></tt> object allows the user to register a response handle function and a url. A request can be send using one of the http verbs (get, post, put, delete, ...) to make the request. When the response arrive the handle function is called. The handle function is called several times. Every-time the request state has changed (for example headers have arrived or request is done).</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23http-requests&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>A http request is in Qt typical done using <code class="docutils literal"><span class="pre">QNetworkRequest</span></code> and <code class="docutils literal"><span class="pre">QNetworkReply</span></code> from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools QtQuick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script <code class="docutils literal"><span class="pre">XMLHttpRequest</span></code> object.</p>
+<p>The <code class="docutils literal"><span class="pre">XMLHttpRequest</span></code> object allows the user to register a response handle function and a url. A request can be send using one of the http verbs (get, post, put, delete, ...) to make the request. When the response arrive the handle function is called. The handle function is called several times. Every-time the request state has changed (for example headers have arrived or request is done).</p>
 <p>Here a short example:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">request</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
@@ -390,7 +389,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>For a response you can get the XML format or just the raw text. It is possible to iterate over the resulting XML but more commonly used is the raw text nowadays for a JSON formatted response. The JSON document will be used to convert text to a JS object using <tt class="docutils literal"><span class="pre">JSON.parse(text)</span></tt>.</p>
+<p>For a response you can get the XML format or just the raw text. It is possible to iterate over the resulting XML but more commonly used is the raw text nowadays for a JSON formatted response. The JSON document will be used to convert text to a JS object using <code class="docutils literal"><span class="pre">JSON.parse(text)</span></code>.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="p">...</span>
 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">XMLHttpRequest</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -401,11 +400,11 @@
 <p>In the response handler, we access the raw response text and convert it into a javascript object. This JSON object is now a valid JS object (in javascript an object can be an object or an array).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It seems the <tt class="docutils literal"><span class="pre">toString()</span></tt> conversion first makes the code more stable. Without the explicit conversion I had several times parser errors. Not sure what the cause it.</p>
+<p class="last">It seems the <code class="docutils literal"><span class="pre">toString()</span></code> conversion first makes the code more stable. Without the explicit conversion I had several times parser errors. Not sure what the cause it.</p>
 </div>
 <div class="section" id="flickr-calls">
 <h3>11.3.1. Flickr Calls<a class="headerlink" href="#flickr-calls" title="Permalink to this headline">¶</a></h3>
-<p>Let us have a look on a more real world example. A typical example is to use the Flickr service to retrieve a public feed of the new uploaded pictures. For this we can use the <tt class="docutils literal"><span class="pre">http://api.flickr.com/services/feeds/photos_public.gne</span></tt> url. Unfortunately it returns by default an XML stream, which could be easily parsed by the <tt class="docutils literal"><span class="pre">XmlListModel</span></tt> in qml. For the sake of the example we would like to concentrate on JSON data. To become a clean JSON response we need to attach some parameters to the request: <tt class="docutils literal"><span class="pre">http://api.flickr.com/services/feeds/photos_public.gne?format=json&amp;nojsoncallback=1</span></tt>. This will return a JSON response without the JSON callback.</p>
+<p>Let us have a look on a more real world example. A typical example is to use the Flickr service to retrieve a public feed of the new uploaded pictures. For this we can use the <code class="docutils literal"><span class="pre">http://api.flickr.com/services/feeds/photos_public.gne</span></code> url. Unfortunately it returns by default an XML stream, which could be easily parsed by the <code class="docutils literal"><span class="pre">XmlListModel</span></code> in qml. For the sake of the example we would like to concentrate on JSON data. To become a clean JSON response we need to attach some parameters to the request: <code class="docutils literal"><span class="pre">http://api.flickr.com/services/feeds/photos_public.gne?format=json&amp;nojsoncallback=1</span></code>. This will return a JSON response without the JSON callback.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A JSON callback wraps the JSON response into a function call. This is a shortcut used on HTML programming where a script tag is used to make a JSON request. The response will trigger a local function defined by the callback. There is no mechanism which works with JSON callbacks in QML.</p>
@@ -444,7 +443,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>As a valid JS array we can use the <tt class="docutils literal"><span class="pre">obj.items</span></tt> array also as a model for a list view. We will try to accomplish this now. First we need to retrieve the response and convert it into a valid JS object. And then we can just set the <tt class="docutils literal"><span class="pre">response.items</span></tt> property as a model to a list view.</p>
+<p>As a valid JS array we can use the <code class="docutils literal"><span class="pre">obj.items</span></code> array also as a model for a list view. We will try to accomplish this now. First we need to retrieve the response and convert it into a valid JS object. And then we can just set the <code class="docutils literal"><span class="pre">response.items</span></code> property as a model to a list view.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">request</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
     <span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -498,8 +497,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>When the document is fully loaded ( <tt class="docutils literal"><span class="pre">Component.onCompleted</span></tt> ) we request the latest feed content from Flickr. On arrival we parse the JSON response and set the <tt class="docutils literal"><span class="pre">items</span></tt> array as the model for our view. The list view has a delegate, which displays the thumbnail icon and the title text in a row.</p>
-<p>An other option would be to have a placeholder <tt class="docutils literal"><span class="pre">ListModel</span></tt> and append each item onto the list model. To support larger models it is required to support pagination (e.g page 1 of 10) and lazy content retrieval.</p>
+<p>When the document is fully loaded ( <code class="docutils literal"><span class="pre">Component.onCompleted</span></code> ) we request the latest feed content from Flickr. On arrival we parse the JSON response and set the <code class="docutils literal"><span class="pre">items</span></code> array as the model for our view. The list view has a delegate, which displays the thumbnail icon and the title text in a row.</p>
+<p>An other option would be to have a placeholder <code class="docutils literal"><span class="pre">ListModel</span></code> and append each item onto the list model. To support larger models it is required to support pagination (e.g page 1 of 10) and lazy content retrieval.</p>
 </div>
 </div>
 <div class="section" id="local-files">
@@ -549,7 +548,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Instead of using the <tt class="docutils literal"><span class="pre">XMLHttpRequest</span></tt> is is also possible to use the XmlListModel to access local files.</p>
+<p>Instead of using the <code class="docutils literal"><span class="pre">XMLHttpRequest</span></code> is is also possible to use the XmlListModel to access local files.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">XmlListModel</span> <span class="mf">2.0</span>
 
 <span class="nx">XmlListModel</span> <span class="p">{</span>
@@ -565,7 +564,7 @@
 <div class="section" id="rest-api">
 <h2>11.5. REST API<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23rest-api&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>To use a web-service, we first need to create one. We will use Flask (<a class="reference external" href="http://flask.pocoo.org">http://flask.pocoo.org</a>) a simple HTTP app server based on python to create a simple color web-service. You could also use every other web server which accepts and returns JSON data. The idea is to have a list of named colors, which can be managed via the web-service. Managed in this case means CRUD (create-read-update-delete).</p>
-<p>A simple web-service in Flask can be written in one file. We start with an empty <tt class="docutils literal"><span class="pre">server.py</span></tt> file. Inside this file, we create some boiler-code and load our initial colors from an external JSON file. See also the Flask <a class="reference external" href="http://flask.pocoo.org/docs/quickstart/">quickstart</a> documentation.</p>
+<p>A simple web-service in Flask can be written in one file. We start with an empty <code class="docutils literal"><span class="pre">server.py</span></code> file. Inside this file, we create some boiler-code and load our initial colors from an external JSON file. See also the Flask <a class="reference external" href="http://flask.pocoo.org/docs/quickstart/">quickstart</a> documentation.</p>
 <div class="highlight-py"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
@@ -710,7 +709,7 @@
 <li>Update last color</li>
 <li>Delete last color</li>
 </ul>
-<p>We bundle our API into an own JS file called <tt class="docutils literal"><span class="pre">colorservice.js</span></tt> and import it into our UI as <tt class="docutils literal"><span class="pre">Service</span></tt>. Inside the service module we create a helper function to make the HTTP requests for us:</p>
+<p>We bundle our API into an own JS file called <code class="docutils literal"><span class="pre">colorservice.js</span></code> and import it into our UI as <code class="docutils literal"><span class="pre">Service</span></code>. Inside the service module we create a helper function to make the HTTP requests for us:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// colorservice.js</span>
 <span class="kd">function</span> <span class="nx">request</span><span class="p">(</span><span class="nx">verb</span><span class="p">,</span> <span class="nx">endpoint</span><span class="p">,</span> <span class="nx">obj</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">print</span><span class="p">(</span><span class="s1">&#39;request: &#39;</span> <span class="o">+</span> <span class="nx">verb</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nx">BASE</span> <span class="o">+</span> <span class="p">(</span><span class="nx">endpoint</span><span class="o">?</span><span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="k">endpoint:</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
@@ -732,7 +731,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>It takes four arguments. The <tt class="docutils literal"><span class="pre">verb</span></tt>, which defines the HTTP verb to be used (GET, POST, PUT, DELETE). The second parameter is the endpoint to be used as postfix to the BASE address (e.g. &#8216;<a class="reference external" href="http://localhost:5000/colors">http://localhost:5000/colors</a>&#8216;). The third parameter is the optional obj, to be send as JSON data to the service. The last parameter defines a callback to be called, when the response returns. The callback receives a response object with the response data. Before we send the request, we indicate that we send and accept JSON data by modifying the request header.</p>
+<p>It takes four arguments. The <code class="docutils literal"><span class="pre">verb</span></code>, which defines the HTTP verb to be used (GET, POST, PUT, DELETE). The second parameter is the endpoint to be used as postfix to the BASE address (e.g. &#8216;<a class="reference external" href="http://localhost:5000/colors">http://localhost:5000/colors</a>&#8216;). The third parameter is the optional obj, to be send as JSON data to the service. The last parameter defines a callback to be called, when the response returns. The callback receives a response object with the response data. Before we send the request, we indicate that we send and accept JSON data by modifying the request header.</p>
 <p>Using this request helper function we can implement the simple commands we defined earlier (create, read, update, delete):</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// colorservice.js</span>
 <span class="kd">function</span> <span class="nx">get_colors</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
@@ -761,7 +760,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This code resides in the service implementation. In the UI we use the service to implement our commands. We have a <tt class="docutils literal"><span class="pre">ListModel</span></tt> with the id <tt class="docutils literal"><span class="pre">gridModel</span></tt> as data provider for the <tt class="docutils literal"><span class="pre">GridView</span></tt>. The commands are indicated using a <tt class="docutils literal"><span class="pre">Button</span></tt> ui element.</p>
+<p>This code resides in the service implementation. In the UI we use the service to implement our commands. We have a <code class="docutils literal"><span class="pre">ListModel</span></code> with the id <code class="docutils literal"><span class="pre">gridModel</span></code> as data provider for the <code class="docutils literal"><span class="pre">GridView</span></code>. The commands are indicated using a <code class="docutils literal"><span class="pre">Button</span></code> ui element.</p>
 <p>Reading the color list from the server.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// rest.qml</span>
 <span class="kr">import</span> <span class="s2">&quot;colorservice.js&quot;</span> <span class="nx">as</span> <span class="nx">Service</span>
@@ -867,7 +866,7 @@
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23authentication-using-oauth&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>OAuth is an open protocol to allow secure authorization in a simple and standard method from web, mobile and desktop applications. OAuth is used to authenticate a client against common web-services such as Google, Facebook and Twitter.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For a custom web-service you could also use the standard HTTP authentication for example by using the <tt class="docutils literal"><span class="pre">XMLHttpRequest</span></tt> username and password in the get method (e.g. <tt class="docutils literal"><span class="pre">xhr.open(verb,</span> <span class="pre">url,</span> <span class="pre">true,</span> <span class="pre">username,</span> <span class="pre">password)</span></tt>)</p>
+<p class="last">For a custom web-service you could also use the standard HTTP authentication for example by using the <code class="docutils literal"><span class="pre">XMLHttpRequest</span></code> username and password in the get method (e.g. <code class="docutils literal"><span class="pre">xhr.open(verb,</span> <span class="pre">url,</span> <span class="pre">true,</span> <span class="pre">username,</span> <span class="pre">password)</span></code>)</p>
 </div>
 <p>OAuth is currently not part of a QML/JS API. So you would need to write some C++ code and export the authentication to QML/JS. Another issue would be the secure storage of the access token.</p>
 <p>Here are some links which we find useful:</p>
@@ -939,17 +938,17 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>You should see the ping message we send <tt class="docutils literal"><span class="pre">socket.sendTextMessage(&quot;ping&quot;)</span></tt> as response in the text field.</p>
+<p>You should see the ping message we send <code class="docutils literal"><span class="pre">socket.sendTextMessage(&quot;ping&quot;)</span></code> as response in the text field.</p>
 <img alt="../../_images/ws_echo.png" src="../../_images/ws_echo.png" />
 <div class="section" id="ws-server">
 <h3>11.8.1. WS Server<a class="headerlink" href="#ws-server" title="Permalink to this headline">¶</a></h3>
-<p>You can easily create your own WS server using the C++ part of the Qt WebSocket or use a different WS implementation, which I find very interesting. It is interesting because it allows to connect the amazing rendering quality of QML with the great expanding web application servers. In this example we will use a Node JS based web socket server using the <a class="reference external" href="https://npmjs.org/package/ws">ws</a> module. For this you first need to install <a class="reference external" href="http://nodejs.org/">node js</a>. Afterwards create a <tt class="docutils literal"><span class="pre">ws_server</span></tt> folder and install the ws package using the node package manager (npm).</p>
+<p>You can easily create your own WS server using the C++ part of the Qt WebSocket or use a different WS implementation, which I find very interesting. It is interesting because it allows to connect the amazing rendering quality of QML with the great expanding web application servers. In this example we will use a Node JS based web socket server using the <a class="reference external" href="https://npmjs.org/package/ws">ws</a> module. For this you first need to install <a class="reference external" href="http://nodejs.org/">node js</a>. Afterwards create a <code class="docutils literal"><span class="pre">ws_server</span></code> folder and install the ws package using the node package manager (npm).</p>
 <div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>ws_server
 <span class="nv">$ </span>npm install ws
 </pre></div>
 </div>
 <p>The npm tool downloads and installs the ws package and dependencies into you local folder.</p>
-<p>A <tt class="docutils literal"><span class="pre">server.js</span></tt> file will be our server implementation. The server code will create a web socket server on port 3000 and listens to an incoming connection. On an incoming connection it will send out a greeting and waits for client messages. Each message a client sends on a socket will be send back to the client.</p>
+<p>A <code class="docutils literal"><span class="pre">server.js</span></code> file will be our server implementation. The server code will create a web socket server on port 3000 and listens to an incoming connection. On an incoming connection it will send out a greeting and waits for client messages. Each message a client sends on a socket will be send back to the client.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">WebSocketServer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;ws&#39;</span><span class="p">).</span><span class="nx">Server</span><span class="p">;</span>
 
 <span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocketServer</span><span class="p">({</span> <span class="k">port :</span> <span class="mi">3000</span> <span class="p">});</span>
@@ -982,7 +981,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Our chat view is a list view, where the text is appended to a list model. Each entry is displayed using a row of prefix and message label. We use a cell width <tt class="docutils literal"><span class="pre">cw</span></tt> factor to split the with into 24 columns.</p>
+<p>Our chat view is a list view, where the text is appended to a list model. Each entry is displayed using a row of prefix and message label. We use a cell width <code class="docutils literal"><span class="pre">cw</span></code> factor to split the with into 24 columns.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// ChatView.qml</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
@@ -1134,7 +1133,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>

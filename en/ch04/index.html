@@ -37,7 +37,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -82,7 +82,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">17. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -206,14 +205,14 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23quick-starter&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 15, 2015 at 10:13 CET</p>
+<p>Last Build: May 11, 2015 at 16:49 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>This chapter provides an overview of QML, the declarative user interface language used in Qt5. We will discuss the QML syntax, which is a tree of elements, followed by an overview of the most important basic elements. Later we will briefly look at how to create our own elements, called components and how to transform elements using property manipulations. Towards the end we will look how to arrange elements together in a layout and finally have a look at elements where the user can provide input.</p>
 <div class="section" id="qml-syntax">
 <h2>4.1. QML Syntax<a class="headerlink" href="#qml-syntax" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23qml-syntax&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-0">QML is a declarative language used to describe the user interface of your application. It breaks down the user interface into smaller elements, which can be combined to components. QML describes the look and the behavior of these user interface elements. This user interface description can be enriched with JavaScript code to provide simple but also more complex logic. In this perspective it follows the HTML-JavaScript pattern but QML is designed from the ground up to describe user interfaces not text-documents.</p>
-<p>In its simplest way QML is a hierarchy of elements. Child elements inherit the coordinate system from the parent. A <tt class="docutils literal"><span class="pre">x,y</span></tt> coordinate is always relative to the parent.</p>
+<p>In its simplest way QML is a hierarchy of elements. Child elements inherit the coordinate system from the parent. A <code class="docutils literal"><span class="pre">x,y</span></code> coordinate is always relative to the parent.</p>
 <img alt="../../_images/scene1.png" src="../../_images/scene1.png" />
 <p>Let&#8217;s start with a simple example of a QML file to explain the different syntax.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// rectangle.qml</span>
@@ -258,17 +257,17 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>The <tt class="docutils literal"><span class="pre">import</span></tt> statement imports a module in a specific version. In general you always want to import <em>QtQuick 2.0</em> as your initial set of elements</li>
-<li>Comments can be made using <tt class="docutils literal"><span class="pre">//</span></tt> for single line comments or <tt class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></tt> for multi-line comments. Just like in C/C++ and JavaScript</li>
+<li>The <code class="docutils literal"><span class="pre">import</span></code> statement imports a module in a specific version. In general you always want to import <em>QtQuick 2.0</em> as your initial set of elements</li>
+<li>Comments can be made using <code class="docutils literal"><span class="pre">//</span></code> for single line comments or <code class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></code> for multi-line comments. Just like in C/C++ and JavaScript</li>
 <li>Every QML file needs to have exactly one root element, like HTML</li>
-<li>An element is declared by its type followed by <tt class="docutils literal"><span class="pre">{</span> <span class="pre">}</span></tt></li>
-<li>Elements can have properties, they are in the form <tt class="docutils literal"><span class="pre">name</span> <span class="pre">:</span> <span class="pre">value</span></tt></li>
-<li>Arbitrary elements inside a QML document can be accessed by using their <tt class="docutils literal"><span class="pre">id</span></tt> (an unquoted identifier)</li>
-<li>Elements can be nested, means a parent element can have child elements. The parent element can be accessed using the <tt class="docutils literal"><span class="pre">parent</span></tt> keyword</li>
+<li>An element is declared by its type followed by <code class="docutils literal"><span class="pre">{</span> <span class="pre">}</span></code></li>
+<li>Elements can have properties, they are in the form <code class="docutils literal"><span class="pre">name</span> <span class="pre">:</span> <span class="pre">value</span></code></li>
+<li>Arbitrary elements inside a QML document can be accessed by using their <code class="docutils literal"><span class="pre">id</span></code> (an unquoted identifier)</li>
+<li>Elements can be nested, means a parent element can have child elements. The parent element can be accessed using the <code class="docutils literal"><span class="pre">parent</span></code> keyword</li>
 </ul>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Often you want to access a particular element by id or a parent element using the <tt class="docutils literal"><span class="pre">parent</span></tt> keyword. So it’s good practice to name your root element root using <tt class="docutils literal"><span class="pre">id:</span> <span class="pre">root</span></tt>. Then you don&#8217;t have to think about how the root element is named in your QML document.</p>
+<p class="last">Often you want to access a particular element by id or a parent element using the <code class="docutils literal"><span class="pre">parent</span></code> keyword. So it’s good practice to name your root element root using <code class="docutils literal"><span class="pre">id:</span> <span class="pre">root</span></code>. Then you don&#8217;t have to think about how the root element is named in your QML document.</p>
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
@@ -277,11 +276,11 @@
 </pre></div>
 </div>
 <p>Where you need to replace the <em>$QTDIR</em> to the path to your Qt installation. The <em>qmlscene</em> executable initializes the Qt Quick runtime and interprets the provided QML file.</p>
-<p class="last">In Qt Creator you can open the corresponding project file and run the document <tt class="docutils literal"><span class="pre">rectangle.qml</span></tt>.</p>
+<p class="last">In Qt Creator you can open the corresponding project file and run the document <code class="docutils literal"><span class="pre">rectangle.qml</span></code>.</p>
 </div>
 <div class="section" id="properties">
 <h3>4.1.1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23properties&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>Elements are declared by using their element name but are defined by using their properties or by creating custom properties. A property is a simple key-value pair, e.g. <tt class="docutils literal"><span class="pre">width</span> <span class="pre">:</span> <span class="pre">100</span></tt>, <tt class="docutils literal"><span class="pre">text:</span> <span class="pre">'Greetings'</span></tt>, <tt class="docutils literal"><span class="pre">color:</span> <span class="pre">'#FF0000'</span></tt>. A property has a well-defined type and can have an initial value.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23properties&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>Elements are declared by using their element name but are defined by using their properties or by creating custom properties. A property is a simple key-value pair, e.g. <code class="docutils literal"><span class="pre">width</span> <span class="pre">:</span> <span class="pre">100</span></code>, <code class="docutils literal"><span class="pre">text:</span> <span class="pre">'Greetings'</span></code>, <code class="docutils literal"><span class="pre">color:</span> <span class="pre">'#FF0000'</span></code>. A property has a well-defined type and can have an initial value.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Text</span> <span class="p">{</span>
         <span class="c1">// (1) identifier</span>
         <span class="kd">id: thisLabel</span>
@@ -321,25 +320,25 @@
 </div>
 <p>Let&#8217;s go through the different features of properties:</p>
 <ol class="arabic">
-<li><p class="first"><tt class="docutils literal"><span class="pre">id</span></tt> is a very special property-like value, it is used to reference elements inside a QML file (called document in QML). The <tt class="docutils literal"><span class="pre">id</span></tt> is not a string type but rather an identifier and part of the QML syntax. An <tt class="docutils literal"><span class="pre">id</span></tt> needs to be unique inside a document and it can&#8217;t be re-set to a different value, neither be queried. (It behaves more like a pointer in the C++ world.)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">id</span></code> is a very special property-like value, it is used to reference elements inside a QML file (called document in QML). The <code class="docutils literal"><span class="pre">id</span></code> is not a string type but rather an identifier and part of the QML syntax. An <code class="docutils literal"><span class="pre">id</span></code> needs to be unique inside a document and it can&#8217;t be re-set to a different value, neither be queried. (It behaves more like a pointer in the C++ world.)</p>
 </li>
 <li><p class="first">A property can be set to a value, depending on its type. If no value is given for a property, an initial value will be chosen. You need to consult the documentation of the particular element for more information about the initial value of a property.</p>
 </li>
-<li><p class="first">A property can depend on one or many other properties. This is called <em>binding</em>. A bound property is updated, when its dependent properties change. It works like a contract, in this case the <tt class="docutils literal"><span class="pre">height</span></tt> should always be two times the <tt class="docutils literal"><span class="pre">width</span></tt>.</p>
+<li><p class="first">A property can depend on one or many other properties. This is called <em>binding</em>. A bound property is updated, when its dependent properties change. It works like a contract, in this case the <code class="docutils literal"><span class="pre">height</span></code> should always be two times the <code class="docutils literal"><span class="pre">width</span></code>.</p>
 </li>
-<li><p class="first">Adding own properties to an element is done using the <tt class="docutils literal"><span class="pre">property</span></tt> qualifier followed by the type, the name and the optional initial value (<tt class="docutils literal"><span class="pre">property</span> <span class="pre">&lt;type&gt;</span> <span class="pre">&lt;name&gt;</span> <span class="pre">:</span> <span class="pre">&lt;value&gt;</span></tt>). If no initial value is given a system initial value is chosen.</p>
+<li><p class="first">Adding own properties to an element is done using the <code class="docutils literal"><span class="pre">property</span></code> qualifier followed by the type, the name and the optional initial value (<code class="docutils literal"><span class="pre">property</span> <span class="pre">&lt;type&gt;</span> <span class="pre">&lt;name&gt;</span> <span class="pre">:</span> <span class="pre">&lt;value&gt;</span></code>). If no initial value is given a system initial value is chosen.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You can also declare one property to be the default property if no property name is given by prep-ending the property declaration with the <tt class="docutils literal"><span class="pre">default</span></tt> keyword. This is used for example when you add child elements, the child elements are added automatically to the default property <tt class="docutils literal"><span class="pre">children</span></tt> of type list if they are visible elements.</p>
+<p class="last">You can also declare one property to be the default property if no property name is given by prep-ending the property declaration with the <code class="docutils literal"><span class="pre">default</span></code> keyword. This is used for example when you add child elements, the child elements are added automatically to the default property <code class="docutils literal"><span class="pre">children</span></code> of type list if they are visible elements.</p>
 </div>
 </li>
-<li><p class="first">Another important way of declaring properties is using the <tt class="docutils literal"><span class="pre">alias</span></tt> keyword (<tt class="docutils literal"><span class="pre">property</span> <span class="pre">alias</span> <span class="pre">&lt;name&gt;</span> <span class="pre">:</span> <span class="pre">&lt;reference&gt;</span></tt>). The <tt class="docutils literal"><span class="pre">alias</span></tt> keyword allows us to forward a property of an object or an object itself from within the type to an outer scope. We will use this technique later when defining components to export the inner properties or element ids to the root level. A property alias does not need a type, it uses the type of the referenced property or object.</p>
+<li><p class="first">Another important way of declaring properties is using the <code class="docutils literal"><span class="pre">alias</span></code> keyword (<code class="docutils literal"><span class="pre">property</span> <span class="pre">alias</span> <span class="pre">&lt;name&gt;</span> <span class="pre">:</span> <span class="pre">&lt;reference&gt;</span></code>). The <code class="docutils literal"><span class="pre">alias</span></code> keyword allows us to forward a property of an object or an object itself from within the type to an outer scope. We will use this technique later when defining components to export the inner properties or element ids to the root level. A property alias does not need a type, it uses the type of the referenced property or object.</p>
 </li>
-<li><p class="first">The <tt class="docutils literal"><span class="pre">text</span></tt> property depends on the custom property <tt class="docutils literal"><span class="pre">times</span></tt> of type int. The <tt class="docutils literal"><span class="pre">int</span></tt> based value is automatically converted to a <tt class="docutils literal"><span class="pre">string</span></tt> type. The expression itself is another example of binding and results into the text being updated every time the <tt class="docutils literal"><span class="pre">times</span></tt> property changes.</p>
+<li><p class="first">The <code class="docutils literal"><span class="pre">text</span></code> property depends on the custom property <code class="docutils literal"><span class="pre">times</span></code> of type int. The <code class="docutils literal"><span class="pre">int</span></code> based value is automatically converted to a <code class="docutils literal"><span class="pre">string</span></code> type. The expression itself is another example of binding and results into the text being updated every time the <code class="docutils literal"><span class="pre">times</span></code> property changes.</p>
 </li>
-<li><p class="first">Some properties are grouped properties. This feature is used when a property is more structured and related properties should be grouped together. Another way of writing grouped properties is <tt class="docutils literal"><span class="pre">font</span> <span class="pre">{</span> <span class="pre">family:</span> <span class="pre">&quot;Ubuntu&quot;;</span> <span class="pre">pixelSize:</span> <span class="pre">24</span> <span class="pre">}</span></tt>.</p>
+<li><p class="first">Some properties are grouped properties. This feature is used when a property is more structured and related properties should be grouped together. Another way of writing grouped properties is <code class="docutils literal"><span class="pre">font</span> <span class="pre">{</span> <span class="pre">family:</span> <span class="pre">&quot;Ubuntu&quot;;</span> <span class="pre">pixelSize:</span> <span class="pre">24</span> <span class="pre">}</span></code>.</p>
 </li>
-<li><p class="first">Some properties are attached to the element itself. This is done for global relevant elements which appear only once in the application (e.g. keyboard input). The writing is <tt class="docutils literal"><span class="pre">&lt;Element&gt;.&lt;property&gt;:</span> <span class="pre">&lt;value&gt;</span></tt>.</p>
+<li><p class="first">Some properties are attached to the element itself. This is done for global relevant elements which appear only once in the application (e.g. keyboard input). The writing is <code class="docutils literal"><span class="pre">&lt;Element&gt;.&lt;property&gt;:</span> <span class="pre">&lt;value&gt;</span></code>.</p>
 </li>
 <li><p class="first">For every property you can provide an signal handler. This handler is called after the property changes. For example here we want to be notified whenever the height changes and use the built-in console to log a message to the system.</p>
 </li>
@@ -386,31 +385,31 @@
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li>The text changed handler <tt class="docutils literal"><span class="pre">onTextChanged</span></tt> prints the current text every-time the text changed due to a space-bar key pressed</li>
-<li>When the text element receives the space-bar key (because the user pressed the space-bar on the keyboard) we call a JavaScript function <tt class="docutils literal"><span class="pre">increment()</span></tt>.</li>
-<li>Definition of a JavaScript function in the form of <tt class="docutils literal"><span class="pre">function</span> <span class="pre">&lt;name&gt;(&lt;parameters&gt;)</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></tt>, which increments our counter <tt class="docutils literal"><span class="pre">spacePressed</span></tt>. Every time <tt class="docutils literal"><span class="pre">spacePressed</span></tt> is incremented bound properties will also be updated.</li>
+<li>The text changed handler <code class="docutils literal"><span class="pre">onTextChanged</span></code> prints the current text every-time the text changed due to a space-bar key pressed</li>
+<li>When the text element receives the space-bar key (because the user pressed the space-bar on the keyboard) we call a JavaScript function <code class="docutils literal"><span class="pre">increment()</span></code>.</li>
+<li>Definition of a JavaScript function in the form of <code class="docutils literal"><span class="pre">function</span> <span class="pre">&lt;name&gt;(&lt;parameters&gt;)</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>, which increments our counter <code class="docutils literal"><span class="pre">spacePressed</span></code>. Every time <code class="docutils literal"><span class="pre">spacePressed</span></code> is incremented bound properties will also be updated.</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The difference between the QML <tt class="docutils literal"><span class="pre">:</span></tt> (binding) and the JavaScript <tt class="docutils literal"><span class="pre">=</span></tt> (assignment) is, that the binding is a contract and keeps true over the lifetime of the binding, whereas the JavaScript assignment (<tt class="docutils literal"><span class="pre">=</span></tt>) is a one time value assignment.
+<p>The difference between the QML <code class="docutils literal"><span class="pre">:</span></code> (binding) and the JavaScript <code class="docutils literal"><span class="pre">=</span></code> (assignment) is, that the binding is a contract and keeps true over the lifetime of the binding, whereas the JavaScript assignment (<code class="docutils literal"><span class="pre">=</span></code>) is a one time value assignment.
 The lifetime of a binding ends, when a new binding is set to the property or even when a JavaScript value is assigned is to the property. For example a key handler setting the text property to an empty string would destroy our increment display:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="k">Keys.onEscapePressed:</span> <span class="p">{</span>
     <span class="nx">label</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>After pressing escape, pressing the space-bar will not update the display anymore as the previous binding of the <tt class="docutils literal"><span class="pre">text</span></tt> property (<em>text: &#8220;Space pressed: &#8221; + spacePresses + &#8221; times&#8221;</em>) was destroyed.</p>
+<p>After pressing escape, pressing the space-bar will not update the display anymore as the previous binding of the <code class="docutils literal"><span class="pre">text</span></code> property (<em>text: &#8220;Space pressed: &#8221; + spacePresses + &#8221; times&#8221;</em>) was destroyed.</p>
 <p class="last">When you have conflicting strategies to change a property as in this case (text updated by a change to a property increment via a binding and text cleared by a JavaScript assignment) then you can&#8217;t use binding! You need to use assignment on both property change paths as the binding will be destroyed by the assignment (broken contract!).</p>
 </div>
 </div>
 </div>
 <div class="section" id="basic-elements">
 <h2>4.2. Basic Elements<a class="headerlink" href="#basic-elements" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23basic-elements&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-1">Elements can be grouped into visual and non-visual elements. A visual element (like the <tt class="docutils literal"><span class="pre">Rectangle</span></tt>) has a geometry and normally present an area on the screen. A non-visual element (like a <tt class="docutils literal"><span class="pre">Timer</span></tt>) provides general functionality, normally used to manipulate the visual elements.</p>
-<p>Currently we will focus on the fundamental visual elements, such as <tt class="docutils literal"><span class="pre">Item</span></tt>, <tt class="docutils literal"><span class="pre">Rectangle</span></tt>, <tt class="docutils literal"><span class="pre">Text</span></tt>, <tt class="docutils literal"><span class="pre">Image</span></tt> and <tt class="docutils literal"><span class="pre">MouseArea</span></tt>.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23basic-elements&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-1">Elements can be grouped into visual and non-visual elements. A visual element (like the <code class="docutils literal"><span class="pre">Rectangle</span></code>) has a geometry and normally present an area on the screen. A non-visual element (like a <code class="docutils literal"><span class="pre">Timer</span></code>) provides general functionality, normally used to manipulate the visual elements.</p>
+<p>Currently we will focus on the fundamental visual elements, such as <code class="docutils literal"><span class="pre">Item</span></code>, <code class="docutils literal"><span class="pre">Rectangle</span></code>, <code class="docutils literal"><span class="pre">Text</span></code>, <code class="docutils literal"><span class="pre">Image</span></code> and <code class="docutils literal"><span class="pre">MouseArea</span></code>.</p>
 <div class="section" id="item-element">
 <h3>4.2.1. Item Element<a class="headerlink" href="#item-element" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23item-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p><tt class="docutils literal"><span class="pre">Item</span></tt> is the base element for all visual elements as such all other visual elements inherit from <tt class="docutils literal"><span class="pre">Item</span></tt>. It doesn&#8217;t paint anything by itself but defines all properties which are common across all visual elements:</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23item-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p><code class="docutils literal"><span class="pre">Item</span></code> is the base element for all visual elements as such all other visual elements inherit from <code class="docutils literal"><span class="pre">Item</span></code>. It doesn&#8217;t paint anything by itself but defines all properties which are common across all visual elements:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
@@ -423,34 +422,34 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Geometry</td>
-<td><tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> to define the top-left position, <tt class="docutils literal"><span class="pre">width</span></tt> and <tt class="docutils literal"><span class="pre">height</span></tt> for the expand of the element and also the <tt class="docutils literal"><span class="pre">z</span></tt> stacking order to lift elements up or down from their natural ordering</td>
+<td><code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> to define the top-left position, <code class="docutils literal"><span class="pre">width</span></code> and <code class="docutils literal"><span class="pre">height</span></code> for the expand of the element and also the <code class="docutils literal"><span class="pre">z</span></code> stacking order to lift elements up or down from their natural ordering</td>
 </tr>
 <tr class="row-odd"><td>Layout handling</td>
-<td><tt class="docutils literal"><span class="pre">anchors</span></tt> (left, right, top, bottom, vertical and horizontal center) to position elements relative to other elements with their <tt class="docutils literal"><span class="pre">margins</span></tt></td>
+<td><code class="docutils literal"><span class="pre">anchors</span></code> (left, right, top, bottom, vertical and horizontal center) to position elements relative to other elements with their <code class="docutils literal"><span class="pre">margins</span></code></td>
 </tr>
 <tr class="row-even"><td>Key handling</td>
-<td>attached <tt class="docutils literal"><span class="pre">Key</span></tt> and <tt class="docutils literal"><span class="pre">KeyNavigation</span></tt> properties to control key handling and the input <tt class="docutils literal"><span class="pre">focus</span></tt> property to enable key handling in the first place</td>
+<td>attached <code class="docutils literal"><span class="pre">Key</span></code> and <code class="docutils literal"><span class="pre">KeyNavigation</span></code> properties to control key handling and the input <code class="docutils literal"><span class="pre">focus</span></code> property to enable key handling in the first place</td>
 </tr>
 <tr class="row-odd"><td>Transformation</td>
-<td><tt class="docutils literal"><span class="pre">scale</span></tt> and <tt class="docutils literal"><span class="pre">rotate</span></tt> transformation and the generic <tt class="docutils literal"><span class="pre">transform</span></tt> property list for <em>x,y,z</em> transformation and their <tt class="docutils literal"><span class="pre">transformOrigin</span></tt> point</td>
+<td><code class="docutils literal"><span class="pre">scale</span></code> and <code class="docutils literal"><span class="pre">rotate</span></code> transformation and the generic <code class="docutils literal"><span class="pre">transform</span></code> property list for <em>x,y,z</em> transformation and their <code class="docutils literal"><span class="pre">transformOrigin</span></code> point</td>
 </tr>
 <tr class="row-even"><td>Visual</td>
-<td><tt class="docutils literal"><span class="pre">opacity</span></tt> to control transparency, <tt class="docutils literal"><span class="pre">visible</span></tt> to show/hide elements, <tt class="docutils literal"><span class="pre">clip</span></tt> to restrain paint operations to the element boundary and <tt class="docutils literal"><span class="pre">smooth</span></tt> to enhance the rendering quality</td>
+<td><code class="docutils literal"><span class="pre">opacity</span></code> to control transparency, <code class="docutils literal"><span class="pre">visible</span></code> to show/hide elements, <code class="docutils literal"><span class="pre">clip</span></code> to restrain paint operations to the element boundary and <code class="docutils literal"><span class="pre">smooth</span></code> to enhance the rendering quality</td>
 </tr>
 <tr class="row-odd"><td>State definition</td>
-<td><tt class="docutils literal"><span class="pre">states</span></tt> list property with the supported list of states and the current <tt class="docutils literal"><span class="pre">state</span></tt> property as also the <tt class="docutils literal"><span class="pre">transitions</span></tt> list property to animate state changes.</td>
+<td><code class="docutils literal"><span class="pre">states</span></code> list property with the supported list of states and the current <code class="docutils literal"><span class="pre">state</span></code> property as also the <code class="docutils literal"><span class="pre">transitions</span></code> list property to animate state changes.</td>
 </tr>
 </tbody>
 </table>
 <p>To better understand the different properties we will try to introduce them throughout this chapter in context of the element presented. Please remember these fundamental properties are available on every visual element and work the same across these elements.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">Item</span></tt> element is often used as a container for other elements, similar to the <em>div</em> element in HTML.</p>
+<p class="last">The <code class="docutils literal"><span class="pre">Item</span></code> element is often used as a container for other elements, similar to the <em>div</em> element in HTML.</p>
 </div>
 </div>
 <div class="section" id="rectangle-element">
 <h3>4.2.2. Rectangle Element<a class="headerlink" href="#rectangle-element" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23rectangle-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">Rectangle</span></tt> extends <tt class="docutils literal"><span class="pre">Item</span></tt> and adds a fill color to it. Additional it supports borders defined by <tt class="docutils literal"><span class="pre">border.color</span></tt> and <tt class="docutils literal"><span class="pre">border.width</span></tt>. To create rounded rectangles you can use the <tt class="docutils literal"><span class="pre">radius</span></tt> property.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23rectangle-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">Rectangle</span></code> extends <code class="docutils literal"><span class="pre">Item</span></code> and adds a fill color to it. Additional it supports borders defined by <code class="docutils literal"><span class="pre">border.color</span></code> and <code class="docutils literal"><span class="pre">border.width</span></code>. To create rounded rectangles you can use the <code class="docutils literal"><span class="pre">radius</span></code> property.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Rectangle</span> <span class="p">{</span>
         <span class="kd">id: rect1</span>
         <span class="k">x:</span> <span class="mi">12</span><span class="p">;</span> <span class="k">y:</span> <span class="mi">12</span>
@@ -486,7 +485,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </pre></div>
 </div>
 <img alt="../../_images/rectangle3.png" src="../../_images/rectangle3.png" />
-<p>A gradient is defined by a series of gradient stops. Each stop has a position and a color. The position marks the position on the y-axis (0 = top, 1 = bottom). The color of the <tt class="docutils literal"><span class="pre">GradientStop</span></tt> marks the color at that position.</p>
+<p>A gradient is defined by a series of gradient stops. Each stop has a position and a color. The position marks the position on the y-axis (0 = top, 1 = bottom). The color of the <code class="docutils literal"><span class="pre">GradientStop</span></code> marks the color at that position.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A rectangle with no <em>width/height</em> set will not be visible. This happens often when you have several rectangles width (height) depending on each other and something went wrong in your composition logic. So watch out!</p>
@@ -498,7 +497,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="section" id="text-element">
 <h3>4.2.3. Text Element<a class="headerlink" href="#text-element" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23text-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>To display text you can use the <tt class="docutils literal"><span class="pre">Text</span></tt> element. Its most notable property is the <tt class="docutils literal"><span class="pre">text</span></tt> property of type <tt class="docutils literal"><span class="pre">string</span></tt>. The element calculates its initial width and height based on the given text and the font used. The font can be influenced using the font property group (e.g. <tt class="docutils literal"><span class="pre">font.family</span></tt>, <tt class="docutils literal"><span class="pre">font.pixelSize</span></tt>, ...). To change the color of the text just use the color property.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23text-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>To display text you can use the <code class="docutils literal"><span class="pre">Text</span></code> element. Its most notable property is the <code class="docutils literal"><span class="pre">text</span></code> property of type <code class="docutils literal"><span class="pre">string</span></code>. The element calculates its initial width and height based on the given text and the font used. The font can be influenced using the font property group (e.g. <code class="docutils literal"><span class="pre">font.family</span></code>, <code class="docutils literal"><span class="pre">font.pixelSize</span></code>, ...). To change the color of the text just use the color property.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Text</span> <span class="p">{</span>
         <span class="k">text:</span> <span class="s2">&quot;The quick brown fox&quot;</span>
         <span class="k">color:</span> <span class="s2">&quot;#303030&quot;</span>
@@ -511,7 +510,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <div class="line"><br /></div>
 </div>
 <img alt="../../_images/text.png" src="../../_images/text.png" />
-<p>Text can be aligned to each side and the center using the <tt class="docutils literal"><span class="pre">horizontalAlignment</span></tt> and <tt class="docutils literal"><span class="pre">verticalAlignment</span></tt> properties. To further enhance the text rendering you can use the <tt class="docutils literal"><span class="pre">style</span></tt> and <tt class="docutils literal"><span class="pre">styleColor</span></tt> property , which allows you render the text in outline, raised and sunken mode. For longer text you often want to define a <em>break</em> position like <em>A very ... long text</em>, this can be achieved using the <tt class="docutils literal"><span class="pre">elide</span></tt> property. The <tt class="docutils literal"><span class="pre">elide</span></tt> property allows you to set the elide position to the left, right or middle of your text. In case you don&#8217;t want the &#8216;...&#8217; of the elide mode to appear but still want to see the full text you can also wrap the text using the <tt class="docutils literal"><span class="pre">wrapMode</span></tt> property (works only when width is explicitly set):</p>
+<p>Text can be aligned to each side and the center using the <code class="docutils literal"><span class="pre">horizontalAlignment</span></code> and <code class="docutils literal"><span class="pre">verticalAlignment</span></code> properties. To further enhance the text rendering you can use the <code class="docutils literal"><span class="pre">style</span></code> and <code class="docutils literal"><span class="pre">styleColor</span></code> property , which allows you render the text in outline, raised and sunken mode. For longer text you often want to define a <em>break</em> position like <em>A very ... long text</em>, this can be achieved using the <code class="docutils literal"><span class="pre">elide</span></code> property. The <code class="docutils literal"><span class="pre">elide</span></code> property allows you to set the elide position to the left, right or middle of your text. In case you don&#8217;t want the &#8216;...&#8217; of the elide mode to appear but still want to see the full text you can also wrap the text using the <code class="docutils literal"><span class="pre">wrapMode</span></code> property (works only when width is explicitly set):</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">Text</span> <span class="p">{</span>
     <span class="k">width:</span> <span class="mi">40</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">120</span>
     <span class="k">text:</span> <span class="s1">&#39;A very long text&#39;</span>
@@ -527,19 +526,19 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>A <tt class="docutils literal"><span class="pre">Text</span></tt> element only displays the given text. It does not render any background decoration. Besides the rendered text the <tt class="docutils literal"><span class="pre">Text</span></tt> element is transparent. It&#8217;s part of your overall design to provide a sensible background to the text element.</p>
+<p>A <code class="docutils literal"><span class="pre">Text</span></code> element only displays the given text. It does not render any background decoration. Besides the rendered text the <code class="docutils literal"><span class="pre">Text</span></code> element is transparent. It&#8217;s part of your overall design to provide a sensible background to the text element.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Be aware a <tt class="docutils literal"><span class="pre">Text</span></tt> initial width (height) is depending on the text string and on the font set. A <tt class="docutils literal"><span class="pre">Text</span></tt> element with no width set and no text will not be visible, as the initial width will be 0.</p>
+<p class="last">Be aware a <code class="docutils literal"><span class="pre">Text</span></code> initial width (height) is depending on the text string and on the font set. A <code class="docutils literal"><span class="pre">Text</span></code> element with no width set and no text will not be visible, as the initial width will be 0.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Often when you want to layout <tt class="docutils literal"><span class="pre">Text</span></tt> elements you need to differentiate between aligning the text inside the <tt class="docutils literal"><span class="pre">Text</span></tt> element boundary box or to align the element boundary box itself. In the former you want to use the <tt class="docutils literal"><span class="pre">horizontalAlignment</span></tt> and <tt class="docutils literal"><span class="pre">verticalAlignment</span></tt> properties and in the later case you want to manipulate the element geometry or use anchors.</p>
+<p class="last">Often when you want to layout <code class="docutils literal"><span class="pre">Text</span></code> elements you need to differentiate between aligning the text inside the <code class="docutils literal"><span class="pre">Text</span></code> element boundary box or to align the element boundary box itself. In the former you want to use the <code class="docutils literal"><span class="pre">horizontalAlignment</span></code> and <code class="docutils literal"><span class="pre">verticalAlignment</span></code> properties and in the later case you want to manipulate the element geometry or use anchors.</p>
 </div>
 </div>
 <div class="section" id="image-element">
 <h3>4.2.4. Image Element<a class="headerlink" href="#image-element" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23image-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>An <tt class="docutils literal"><span class="pre">Image</span></tt> element is able to display images in various formats (e.g. PNG, JPG, GIF, BMP). <em>For the full list of supported image formats, please consult the Qt documentation</em>. Besides the obvious <tt class="docutils literal"><span class="pre">source</span></tt> property to provide the image URL it contains a <tt class="docutils literal"><span class="pre">fillMode</span></tt> which controls the resizing behavior.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23image-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>An <code class="docutils literal"><span class="pre">Image</span></code> element is able to display images in various formats (e.g. PNG, JPG, GIF, BMP). <em>For the full list of supported image formats, please consult the Qt documentation</em>. Besides the obvious <code class="docutils literal"><span class="pre">source</span></code> property to provide the image URL it contains a <code class="docutils literal"><span class="pre">fillMode</span></code> which controls the resizing behavior.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Image</span> <span class="p">{</span>
         <span class="k">x:</span> <span class="mi">12</span><span class="p">;</span> <span class="k">y:</span> <span class="mi">12</span>
         <span class="c1">// width: 48</span>
@@ -563,7 +562,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><tt class="docutils literal"><span class="pre">Image</span></tt> elements using <tt class="docutils literal"><span class="pre">PreserveAspectCrop</span></tt> should also enable the clipping to avoid image data to be rendered outside the <tt class="docutils literal"><span class="pre">Image</span></tt> boundaries. By default clipping is disabled (<tt class="docutils literal"><span class="pre">clip</span> <span class="pre">:</span> <span class="pre">false</span></tt>). You  need to enable clipping (<tt class="docutils literal"><span class="pre">clip</span> <span class="pre">:</span> <span class="pre">true</span></tt>) to restrain the painting to the elements bounding rectangle. This can be used on any visual element.</p>
+<p class="last"><code class="docutils literal"><span class="pre">Image</span></code> elements using <code class="docutils literal"><span class="pre">PreserveAspectCrop</span></code> should also enable the clipping to avoid image data to be rendered outside the <code class="docutils literal"><span class="pre">Image</span></code> boundaries. By default clipping is disabled (<code class="docutils literal"><span class="pre">clip</span> <span class="pre">:</span> <span class="pre">false</span></code>). You  need to enable clipping (<code class="docutils literal"><span class="pre">clip</span> <span class="pre">:</span> <span class="pre">true</span></code>) to restrain the painting to the elements bounding rectangle. This can be used on any visual element.</p>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
@@ -572,7 +571,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="section" id="mousearea-element">
 <h3>4.2.5. MouseArea Element<a class="headerlink" href="#mousearea-element" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23mousearea-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>To interact with these elements you often will use a <tt class="docutils literal"><span class="pre">MouseArea</span></tt>. Its a rectangular invisible item in where you can capture mouse events. The mouse area is often used together with a visible item to execute commands when the user interacts with the visual part.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23mousearea-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>To interact with these elements you often will use a <code class="docutils literal"><span class="pre">MouseArea</span></code>. Its a rectangular invisible item in where you can capture mouse events. The mouse area is often used together with a visible item to execute commands when the user interacts with the visual part.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Rectangle</span> <span class="p">{</span>
         <span class="kd">id: rect1</span>
         <span class="k">x:</span> <span class="mi">12</span><span class="p">;</span> <span class="k">y:</span> <span class="mi">12</span>
@@ -617,7 +616,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="section" id="components">
 <h2>4.3. Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23components&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-2">A component is a reusable element and QML provides different ways to create components. But currently we are only interested in only way: A file based component. A file based component is created by placing a QML element in a file and give the file an element name (e.g. <tt class="docutils literal"><span class="pre">Button.qml</span></tt>). You can use the component like every other element from the QtQuick module, in our case you would use this in your code as <tt class="docutils literal"><span class="pre">Button</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></tt>.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23components&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-2">A component is a reusable element and QML provides different ways to create components. But currently we are only interested in only way: A file based component. A file based component is created by placing a QML element in a file and give the file an element name (e.g. <code class="docutils literal"><span class="pre">Button.qml</span></code>). You can use the component like every other element from the QtQuick module, in our case you would use this in your code as <code class="docutils literal"><span class="pre">Button</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>.</p>
 <p>Let&#8217;s go for this example. We create a rectangle containing a text and a mouse area. This resembles a simple button and doesn&#8217;t need to be more complicated for our purpose.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Rectangle</span> <span class="p">{</span> <span class="c1">// our inlined button ui</span>
         <span class="kd">id: button</span>
@@ -668,8 +667,8 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>I would like to set the text using a <tt class="docutils literal"><span class="pre">text</span></tt> property and to implement my own click handler. Also I would expect the button to have a sensible initial size, which I can overwrite (e.g. with <tt class="docutils literal"><span class="pre">width:</span> <span class="pre">240</span></tt> for example).</p>
-<p>To achieve this we create a <tt class="docutils literal"><span class="pre">Button.qml</span></tt> file and copy our button UI inside. Additionally we need to export the properties a user might want to change on the root level.</p>
+<p>I would like to set the text using a <code class="docutils literal"><span class="pre">text</span></code> property and to implement my own click handler. Also I would expect the button to have a sensible initial size, which I can overwrite (e.g. with <code class="docutils literal"><span class="pre">width:</span> <span class="pre">240</span></code> for example).</p>
+<p>To achieve this we create a <code class="docutils literal"><span class="pre">Button.qml</span></code> file and copy our button UI inside. Additionally we need to export the properties a user might want to change on the root level.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// Button.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -698,8 +697,8 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>We have exported the text and clicked signal on the root level. Typically we name our root element root to make the referencing easier. We use the <tt class="docutils literal"><span class="pre">alias</span></tt> feature of QML, which is a way to export properties inside nested QML elements to the root level and make this available for the outside world. It is important to know, that only the root level properties can be accessed from outside this file by other components.</p>
-<p>To use our new <tt class="docutils literal"><span class="pre">Button</span></tt> element we can simple declare it in our file. So the earlier example will become a little bit simplified.</p>
+<p>We have exported the text and clicked signal on the root level. Typically we name our root element root to make the referencing easier. We use the <code class="docutils literal"><span class="pre">alias</span></code> feature of QML, which is a way to export properties inside nested QML elements to the root level and make this available for the outside world. It is important to know, that only the root level properties can be accessed from outside this file by other components.</p>
+<p>To use our new <code class="docutils literal"><span class="pre">Button</span></code> element we can simple declare it in our file. So the earlier example will become a little bit simplified.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Button</span> <span class="p">{</span> <span class="c1">// our Button component</span>
         <span class="kd">id: button</span>
         <span class="k">x:</span> <span class="mi">12</span><span class="p">;</span> <span class="k">y:</span> <span class="mi">12</span>
@@ -718,10 +717,10 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now you can use as many buttons as you like in your UI by just using <tt class="docutils literal"><span class="pre">Button</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></tt>. A real button could be more complex, e.g providing feedback when clicked or showing a nicer decoration.</p>
+<p>Now you can use as many buttons as you like in your UI by just using <code class="docutils literal"><span class="pre">Button</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. A real button could be more complex, e.g providing feedback when clicked or showing a nicer decoration.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Personally you could even go a step further and use an item as a root element. This prevents users to change the color of our designed button, and provides us more control about the exported API. The target should be to export a minimal API. Practically this means we would need to replace the root <tt class="docutils literal"><span class="pre">Rectangle</span></tt> with an <tt class="docutils literal"><span class="pre">Item</span></tt> and make the rectangle a nested element in the root item.</p>
+<p>Personally you could even go a step further and use an item as a root element. This prevents users to change the color of our designed button, and provides us more control about the exported API. The target should be to export a minimal API. Practically this means we would need to replace the root <code class="docutils literal"><span class="pre">Rectangle</span></code> with an <code class="docutils literal"><span class="pre">Item</span></code> and make the rectangle a nested element in the root item.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -743,8 +742,8 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <h2>4.4. Simple Transformations<a class="headerlink" href="#simple-transformations" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23simple-transformations&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-3">A transformation manipulates the geometry of an object. QML Items can in general be translated, rotated and scaled. There is a simple form of these operation and a more advanced way.</p>
 <p>Let&#8217;s start with the simple transformations. Here is our scene as our starting point.</p>
-<p>A simple translation is done via changing the <tt class="docutils literal"><span class="pre">x,y</span></tt> position. A rotation is done using the <tt class="docutils literal"><span class="pre">rotation</span></tt> property. The value is provided in degrees (0 .. 360). A scaling is done using the <tt class="docutils literal"><span class="pre">scale</span></tt> property and a value &lt;1 means the element is scaled down and <tt class="docutils literal"><span class="pre">&gt;1</span></tt> means the element is scaled up. The rotation and scaling does not change your geometry. The items <tt class="docutils literal"><span class="pre">x,y</span></tt> and <tt class="docutils literal"><span class="pre">width/height</span></tt> are still the same. Just the painting instructions are transformed.</p>
-<p>Before we show off the example I would like to introduce a little helper: The <tt class="docutils literal"><span class="pre">ClickableImage</span></tt> element. The <tt class="docutils literal"><span class="pre">ClickableImage</span></tt> is just an image with an mouse area. By this we follow a simple rule, after three times using the same code it is better to extract a component.</p>
+<p>A simple translation is done via changing the <code class="docutils literal"><span class="pre">x,y</span></code> position. A rotation is done using the <code class="docutils literal"><span class="pre">rotation</span></code> property. The value is provided in degrees (0 .. 360). A scaling is done using the <code class="docutils literal"><span class="pre">scale</span></code> property and a value &lt;1 means the element is scaled down and <code class="docutils literal"><span class="pre">&gt;1</span></code> means the element is scaled up. The rotation and scaling does not change your geometry. The items <code class="docutils literal"><span class="pre">x,y</span></code> and <code class="docutils literal"><span class="pre">width/height</span></code> are still the same. Just the painting instructions are transformed.</p>
+<p>Before we show off the example I would like to introduce a little helper: The <code class="docutils literal"><span class="pre">ClickableImage</span></code> element. The <code class="docutils literal"><span class="pre">ClickableImage</span></code> is just an image with an mouse area. By this we follow a simple rule, after three times using the same code it is better to extract a component.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// ClickableImage.qml</span>
 
 <span class="c1">// Simple image which can be clicked</span>
@@ -830,26 +829,26 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </pre></div>
 </div>
 <img alt="../../_images/rockets_transformed.png" src="../../_images/rockets_transformed.png" />
-<p>Rocket-1 increments the x-position by 5 px on each click and rocket-2 will continue to rotate on each click. Rocket-3 will rotate and scale the image down on each click. For the scaling and rotation operation we set <tt class="docutils literal"><span class="pre">smooth:</span> <span class="pre">true</span></tt> to enable anti-aliasing, which is switched off (same as the clipping property <tt class="docutils literal"><span class="pre">clip</span></tt>) for performance reasons. When you see in your own work some rasterized edges in your graphics, then probably you would like to switch smooth on.</p>
+<p>Rocket-1 increments the x-position by 5 px on each click and rocket-2 will continue to rotate on each click. Rocket-3 will rotate and scale the image down on each click. For the scaling and rotation operation we set <code class="docutils literal"><span class="pre">smooth:</span> <span class="pre">true</span></code> to enable anti-aliasing, which is switched off (same as the clipping property <code class="docutils literal"><span class="pre">clip</span></code>) for performance reasons. When you see in your own work some rasterized edges in your graphics, then probably you would like to switch smooth on.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To achieve better visual quality when scaling images it is recommended to scale images down instead of up. Scaling an image up with a larger scaling factor will result into scaling artifacts (blurred image). When scaling an image you should consider using <tt class="docutils literal"><span class="pre">smooth</span> <span class="pre">:</span> <span class="pre">true</span></tt> to enable the usage of a higher quality filter.</p>
+<p class="last">To achieve better visual quality when scaling images it is recommended to scale images down instead of up. Scaling an image up with a larger scaling factor will result into scaling artifacts (blurred image). When scaling an image you should consider using <code class="docutils literal"><span class="pre">smooth</span> <span class="pre">:</span> <span class="pre">true</span></code> to enable the usage of a higher quality filter.</p>
 </div>
-<p>The background clicker <tt class="docutils literal"><span class="pre">MouseArea</span></tt> covers the whole background and resets the rocket values.</p>
+<p>The background clicker <code class="docutils literal"><span class="pre">MouseArea</span></code> covers the whole background and resets the rocket values.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Elements which appear earlier in the code have a lower stacking order (called z-order). If you click long enough on <tt class="docutils literal"><span class="pre">rocket1</span></tt> you will see it moves below <tt class="docutils literal"><span class="pre">rocket2</span></tt>. The z-order can also be manipulated by the <tt class="docutils literal"><span class="pre">z-property</span></tt> of an Item.</p>
+<p>Elements which appear earlier in the code have a lower stacking order (called z-order). If you click long enough on <code class="docutils literal"><span class="pre">rocket1</span></code> you will see it moves below <code class="docutils literal"><span class="pre">rocket2</span></code>. The z-order can also be manipulated by the <code class="docutils literal"><span class="pre">z-property</span></code> of an Item.</p>
 <img alt="../../_images/order_matters.png" src="../../_images/order_matters.png" />
-<p>This is because <tt class="docutils literal"><span class="pre">rocket2</span></tt> appears later in the code. The same applies also to mouse areas. A mouse area later in the code will overlap (an thus grab the mouse events) of a mouse area earlier in the code.</p>
+<p>This is because <code class="docutils literal"><span class="pre">rocket2</span></code> appears later in the code. The same applies also to mouse areas. A mouse area later in the code will overlap (an thus grab the mouse events) of a mouse area earlier in the code.</p>
 <p class="last">Please remember: <em>The order of elements in the document matters</em>.</p>
 </div>
 </div>
 <div class="section" id="positioning-elements">
 <h2>4.5. Positioning Elements<a class="headerlink" href="#positioning-elements" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23positioning-elements&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-4">There are a number of QML elements used to position items. These are called positioners and the following are provided in the QtQuick module <tt class="docutils literal"><span class="pre">Row</span></tt>, <tt class="docutils literal"><span class="pre">Column</span></tt>, <tt class="docutils literal"><span class="pre">Grid</span></tt> and <tt class="docutils literal"><span class="pre">Flow</span></tt>. They can be seen showing the same contents in the illustration below.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23positioning-elements&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-4">There are a number of QML elements used to position items. These are called positioners and the following are provided in the QtQuick module <code class="docutils literal"><span class="pre">Row</span></code>, <code class="docutils literal"><span class="pre">Column</span></code>, <code class="docutils literal"><span class="pre">Grid</span></code> and <code class="docutils literal"><span class="pre">Flow</span></code>. They can be seen showing the same contents in the illustration below.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Before we go into details, let me introduce some helper elements. The red, blue, green, lighter and darker square. Each of these components contains a 48x48 pixel colorized rectangle. As reference here is the source code for the <tt class="docutils literal"><span class="pre">RedSquare</span></tt>:</p>
+<p>Before we go into details, let me introduce some helper elements. The red, blue, green, lighter and darker square. Each of these components contains a 48x48 pixel colorized rectangle. As reference here is the source code for the <code class="docutils literal"><span class="pre">RedSquare</span></code>:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// RedSquare.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -862,9 +861,9 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p class="last">Please note the use of <tt class="docutils literal"><span class="pre">Qt.lighter(color)</span></tt> to produce a lighter border color based on the fill color. We will use these helpers in the next examples to make the source code more compact and hopefully readable. Please remember each rectangle is initial 48x48 pixel.</p>
+<p class="last">Please note the use of <code class="docutils literal"><span class="pre">Qt.lighter(color)</span></code> to produce a lighter border color based on the fill color. We will use these helpers in the next examples to make the source code more compact and hopefully readable. Please remember each rectangle is initial 48x48 pixel.</p>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">Column</span></tt> element arranges child items into a column by stacking them on top of each other. The <tt class="docutils literal"><span class="pre">spacing</span></tt> property can be used to distance each of the child elements from each other.</p>
+<p>The <code class="docutils literal"><span class="pre">Column</span></code> element arranges child items into a column by stacking them on top of each other. The <code class="docutils literal"><span class="pre">spacing</span></code> property can be used to distance each of the child elements from each other.</p>
 <img alt="../../_images/column.png" src="../../_images/column.png" />
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// column.qml</span>
 
@@ -888,7 +887,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="c1">// M1&lt;&lt;</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">Row</span></tt> element places its child items next to each other, either from the left to the right, or from the right to the left, depending on the <tt class="docutils literal"><span class="pre">layoutDirection</span></tt> property. Again, <tt class="docutils literal"><span class="pre">spacing</span></tt> is used to separate child items.</p>
+<p>The <code class="docutils literal"><span class="pre">Row</span></code> element places its child items next to each other, either from the left to the right, or from the right to the left, depending on the <code class="docutils literal"><span class="pre">layoutDirection</span></code> property. Again, <code class="docutils literal"><span class="pre">spacing</span></code> is used to separate child items.</p>
 <img alt="../../_images/row.png" src="../../_images/row.png" />
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// row.qml</span>
 
@@ -909,7 +908,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">Grid</span></tt> element arranges its children in a grid, by setting the <tt class="docutils literal"><span class="pre">rows</span></tt> and <tt class="docutils literal"><span class="pre">columns</span></tt> properties, the number or rows or columns can be constrained. By not setting either of them, the other is calculated from the number of child items. For instance, setting rows to 3 and adding 6 child items will result in 2 columns. The properties <tt class="docutils literal"><span class="pre">flow</span></tt> and <tt class="docutils literal"><span class="pre">layoutDirection</span></tt> are used to control the order in which the items are added to the grid, while <tt class="docutils literal"><span class="pre">spacing</span></tt> controls the amount of space separating the child items.</p>
+<p>The <code class="docutils literal"><span class="pre">Grid</span></code> element arranges its children in a grid, by setting the <code class="docutils literal"><span class="pre">rows</span></code> and <code class="docutils literal"><span class="pre">columns</span></code> properties, the number or rows or columns can be constrained. By not setting either of them, the other is calculated from the number of child items. For instance, setting rows to 3 and adding 6 child items will result in 2 columns. The properties <code class="docutils literal"><span class="pre">flow</span></code> and <code class="docutils literal"><span class="pre">layoutDirection</span></code> are used to control the order in which the items are added to the grid, while <code class="docutils literal"><span class="pre">spacing</span></code> controls the amount of space separating the child items.</p>
 <img alt="../../_images/grid.png" src="../../_images/grid.png" />
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// grid.qml</span>
 
@@ -935,7 +934,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The final positioner is <tt class="docutils literal"><span class="pre">Flow</span></tt>. It adds its child items in a flow. The direction of the flow is controlled using <tt class="docutils literal"><span class="pre">flow</span></tt> and <tt class="docutils literal"><span class="pre">layoutDirection</span></tt>. It can run sideways or from the top to the bottom. It can also run from left to right or in the opposite direction. As the items are added in the flow, they are wrapped to form new rows or columns as needed. In order for a flow to work, it must have a width or a height. This can be set either directly, or though anchor layouts.</p>
+<p>The final positioner is <code class="docutils literal"><span class="pre">Flow</span></code>. It adds its child items in a flow. The direction of the flow is controlled using <code class="docutils literal"><span class="pre">flow</span></code> and <code class="docutils literal"><span class="pre">layoutDirection</span></code>. It can run sideways or from the top to the bottom. It can also run from left to right or in the opposite direction. As the items are added in the flow, they are wrapped to form new rows or columns as needed. In order for a flow to work, it must have a width or a height. This can be set either directly, or though anchor layouts.</p>
 <img alt="../../_images/flow.png" src="../../_images/flow.png" />
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// flow.qml</span>
 
@@ -957,7 +956,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>An element often used with positioners is the <tt class="docutils literal"><span class="pre">Repeater</span></tt>. It works like a for-loop and iterates over a model. In the simplest case a model is just a value providing the amount of loops.</p>
+<p>An element often used with positioners is the <code class="docutils literal"><span class="pre">Repeater</span></code>. It works like a for-loop and iterates over a model. In the simplest case a model is just a value providing the amount of loops.</p>
 <img alt="../../_images/repeater.png" src="../../_images/repeater.png" />
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// repeater.qml</span>
 
@@ -992,8 +991,8 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined as child of the repeater. In the rectangle we chose the color by using JS math functions <tt class="docutils literal"><span class="pre">Math.floor(Math.random()*3)</span></tt>. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier JavaScript is a core part of QtQuick, as such the standard libraries are available for us.</p>
-<p>A repeater injects the <tt class="docutils literal"><span class="pre">index</span></tt> property into the repeater. It contains the current loop-index. (0,1,..15). We can use this to make our own decisions based on the index, or in our case to visualize the current index with the <tt class="docutils literal"><span class="pre">Text</span></tt> element.</p>
+<p>In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined as child of the repeater. In the rectangle we chose the color by using JS math functions <code class="docutils literal"><span class="pre">Math.floor(Math.random()*3)</span></code>. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier JavaScript is a core part of QtQuick, as such the standard libraries are available for us.</p>
+<p>A repeater injects the <code class="docutils literal"><span class="pre">index</span></code> property into the repeater. It contains the current loop-index. (0,1,..15). We can use this to make our own decisions based on the index, or in our case to visualize the current index with the <code class="docutils literal"><span class="pre">Text</span></code> element.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">More advanced handling of larger models and kinetic views with dynamic delegates is covered in an own model-view chapter. Repeaters are best used when having a small amount of static data to be presented.</p>
@@ -1005,7 +1004,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span id="index-5"></span><p class="first admonition-title">Todo</p>
 <p class="last">do we need to remove all uses of anchors earlier?</p>
 </div>
-<p>QML provides a flexible way to layout items using anchors. The concept of anchoring is part of the <tt class="docutils literal"><span class="pre">Item</span></tt> fundamental properties and available to all visual QML elements. An anchors acts like a contract and is stronger than competing geometry changes. Anchors are expressions of relativeness, you always need a related element to anchor with.</p>
+<p>QML provides a flexible way to layout items using anchors. The concept of anchoring is part of the <code class="docutils literal"><span class="pre">Item</span></code> fundamental properties and available to all visual QML elements. An anchors acts like a contract and is stronger than competing geometry changes. Anchors are expressions of relativeness, you always need a related element to anchor with.</p>
 <img alt="../../_images/anchors.png" src="../../_images/anchors.png" />
 <p>An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter, verticalCenter). Additional there is the baseline anchor for text in Text elements. Each anchor line comes with an offset. In the case of top, bottom, left and right they are called margins. For horizontalCenter, verticalCenter and baseline they are called offsets.</p>
 <img alt="../../_images/anchorgrid.png" src="../../_images/anchorgrid.png" />
@@ -1052,7 +1051,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Center aligned elements. <tt class="docutils literal"><span class="pre">Blue1</span></tt> is horizontal centered  on the parent. <tt class="docutils literal"><span class="pre">Blue2</span></tt> is also horizontal centered but on <tt class="docutils literal"><span class="pre">Blue1</span></tt> and it&#8217;s top is aligned to the <tt class="docutils literal"><span class="pre">Blue1</span></tt> bottom line.</p>
+<li><p class="first">Center aligned elements. <code class="docutils literal"><span class="pre">Blue1</span></code> is horizontal centered  on the parent. <code class="docutils literal"><span class="pre">Blue2</span></code> is also horizontal centered but on <code class="docutils literal"><span class="pre">Blue1</span></code> and it&#8217;s top is aligned to the <code class="docutils literal"><span class="pre">Blue1</span></code> bottom line.</p>
 <blockquote>
 <div><div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">GreenSquare</span> <span class="p">{</span>
             <span class="nx">BlueSquare</span> <span class="p">{</span>
@@ -1105,15 +1104,15 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Our squares have been enhanced to enable dragging. Try the example and drag around some squares. You will see that (1) can&#8217;t be dragged as it&#8217;s anchored on all sides, sure you can drag the parent of (1) as it&#8217;s not anchored at all. (2) can be vertically dragged as only the left side is anchored. Similar applies to (3). (4) can only be dragged vertically as both squares are horizontal centered. (5) is centered on the parent and as such can&#8217;t be dragged, similar applies to (7). Dragging an element means changing their <tt class="docutils literal"><span class="pre">x,y</span></tt> position. As anchoring is stronger than geometry changes such as <tt class="docutils literal"><span class="pre">x,y</span></tt> changes dragging is restricted by the anchored lines. We will see this effect later when we discuss animations.</p>
+<p class="last">Our squares have been enhanced to enable dragging. Try the example and drag around some squares. You will see that (1) can&#8217;t be dragged as it&#8217;s anchored on all sides, sure you can drag the parent of (1) as it&#8217;s not anchored at all. (2) can be vertically dragged as only the left side is anchored. Similar applies to (3). (4) can only be dragged vertically as both squares are horizontal centered. (5) is centered on the parent and as such can&#8217;t be dragged, similar applies to (7). Dragging an element means changing their <code class="docutils literal"><span class="pre">x,y</span></code> position. As anchoring is stronger than geometry changes such as <code class="docutils literal"><span class="pre">x,y</span></code> changes dragging is restricted by the anchored lines. We will see this effect later when we discuss animations.</p>
 </div>
 </div>
 <div class="section" id="input-elements">
 <h2>4.7. Input Elements<a class="headerlink" href="#input-elements" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23input-elements&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-7">We have used already the <tt class="docutils literal"><span class="pre">MouseArea</span></tt> as mouse input element. Here we would like to focus more on the keyboard input possibilities. We start off with the text editing elements: <tt class="docutils literal"><span class="pre">TextInput</span></tt> and <tt class="docutils literal"><span class="pre">TextEdit</span></tt>.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23input-elements&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-7">We have used already the <code class="docutils literal"><span class="pre">MouseArea</span></code> as mouse input element. Here we would like to focus more on the keyboard input possibilities. We start off with the text editing elements: <code class="docutils literal"><span class="pre">TextInput</span></code> and <code class="docutils literal"><span class="pre">TextEdit</span></code>.</p>
 <div class="section" id="textinput">
 <h3>4.7.1. TextInput<a class="headerlink" href="#textinput" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23textinput&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">TextInput</span></tt> allows the user to enter a line of text. The element supports input constraints such as <tt class="docutils literal"><span class="pre">validator</span></tt> and <tt class="docutils literal"><span class="pre">inputMask</span></tt> as also an <tt class="docutils literal"><span class="pre">echoMode</span></tt>.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23textinput&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">TextInput</span></code> allows the user to enter a line of text. The element supports input constraints such as <code class="docutils literal"><span class="pre">validator</span></code> and <code class="docutils literal"><span class="pre">inputMask</span></code> as also an <code class="docutils literal"><span class="pre">echoMode</span></code>.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// textinput.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -1141,7 +1140,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </pre></div>
 </div>
 <img alt="../../_images/textinput.png" src="../../_images/textinput.png" />
-<p>The user can click inside a <tt class="docutils literal"><span class="pre">TextInput</span></tt> to change the focus. To support switching the focus by keyboard, we can use the <tt class="docutils literal"><span class="pre">KeyNavigation</span></tt> attached property.</p>
+<p>The user can click inside a <code class="docutils literal"><span class="pre">TextInput</span></code> to change the focus. To support switching the focus by keyboard, we can use the <code class="docutils literal"><span class="pre">KeyNavigation</span></code> attached property.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// textinput2.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -1170,9 +1169,9 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">KeyNavigation</span></tt> attached property supports a preset of navigation keys where an element id is bound to switch focus on the given key press.</p>
-<p>A text input element comes with no visual presentation besides a blinking cursor and the entered text. For the user to be able to recognize the element as an input element it needs some visual decoration, for example a simple rectangle. When placing the <tt class="docutils literal"><span class="pre">TextInput</span></tt> inside an element you need to ensure to export the major properties you want others be able to access.</p>
-<p>We move this piece of code into our own component called <tt class="docutils literal"><span class="pre">TLineEditV1</span></tt> for reuse.</p>
+<p>The <code class="docutils literal"><span class="pre">KeyNavigation</span></code> attached property supports a preset of navigation keys where an element id is bound to switch focus on the given key press.</p>
+<p>A text input element comes with no visual presentation besides a blinking cursor and the entered text. For the user to be able to recognize the element as an input element it needs some visual decoration, for example a simple rectangle. When placing the <code class="docutils literal"><span class="pre">TextInput</span></code> inside an element you need to ensure to export the major properties you want others be able to access.</p>
+<p>We move this piece of code into our own component called <code class="docutils literal"><span class="pre">TLineEditV1</span></code> for reuse.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// TLineEditV1.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -1196,9 +1195,9 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you like to export the <tt class="docutils literal"><span class="pre">TextInput</span></tt> completely you can export the element by using <tt class="docutils literal"><span class="pre">property</span> <span class="pre">alias</span> <span class="pre">input:</span> <span class="pre">input</span></tt>. The first <tt class="docutils literal"><span class="pre">input</span></tt> is the property name, where the 2nd input is the element id.</p>
+<p class="last">If you like to export the <code class="docutils literal"><span class="pre">TextInput</span></code> completely you can export the element by using <code class="docutils literal"><span class="pre">property</span> <span class="pre">alias</span> <span class="pre">input:</span> <span class="pre">input</span></code>. The first <code class="docutils literal"><span class="pre">input</span></code> is the property name, where the 2nd input is the element id.</p>
 </div>
-<p>We rewrite our <tt class="docutils literal"><span class="pre">KeyNavigation</span></tt> example with the new <tt class="docutils literal"><span class="pre">TLineEditV1</span></tt> component.</p>
+<p>We rewrite our <code class="docutils literal"><span class="pre">KeyNavigation</span></code> example with the new <code class="docutils literal"><span class="pre">TLineEditV1</span></code> component.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">Rectangle</span> <span class="p">{</span>
     <span class="p">...</span>
     <span class="nx">TLineEditV1</span> <span class="p">{</span>
@@ -1213,11 +1212,11 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </pre></div>
 </div>
 <img alt="../../_images/textinput3.png" src="../../_images/textinput3.png" />
-<p>And try the tab key for navigation. You will experience the focus does not change to <tt class="docutils literal"><span class="pre">input2</span></tt>. The simple use of <tt class="docutils literal"><span class="pre">focus:true</span></tt> is not sufficient. The problem arises, that the focus was transferred to the <tt class="docutils literal"><span class="pre">input2</span></tt> element the top-level item inside the TlineEditV1 (our Rectangle) received focus and did not forward the focus to the TextInput. To prevent this QML offers the FocusScope.</p>
+<p>And try the tab key for navigation. You will experience the focus does not change to <code class="docutils literal"><span class="pre">input2</span></code>. The simple use of <code class="docutils literal"><span class="pre">focus:true</span></code> is not sufficient. The problem arises, that the focus was transferred to the <code class="docutils literal"><span class="pre">input2</span></code> element the top-level item inside the TlineEditV1 (our Rectangle) received focus and did not forward the focus to the TextInput. To prevent this QML offers the FocusScope.</p>
 </div>
 <div class="section" id="focusscope">
 <h3>4.7.2. FocusScope<a class="headerlink" href="#focusscope" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23focusscope&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>A focus scope declares that the last child element with <tt class="docutils literal"><span class="pre">focus:true</span></tt> receives the focus if the focus scope receives the focus. So it&#8217;s forward the focus to the last focus requesting child element. We will create a 2nd version of our TLineEdit component called TLineEditV2 using the focus scope as root element.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23focusscope&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>A focus scope declares that the last child element with <code class="docutils literal"><span class="pre">focus:true</span></code> receives the focus if the focus scope receives the focus. So it&#8217;s forward the focus to the last focus requesting child element. We will create a 2nd version of our TLineEdit component called TLineEditV2 using the focus scope as root element.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// TLineEditV2.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -1261,7 +1260,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="section" id="textedit">
 <h3>4.7.3. TextEdit<a class="headerlink" href="#textedit" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23textedit&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The <tt class="docutils literal"><span class="pre">TextEdit</span></tt> is very similar to <tt class="docutils literal"><span class="pre">TextInput</span></tt> and support a multi-line text edit field. It misses the text constraint properties for this it provides querying the painted size of the text (<tt class="docutils literal"><span class="pre">paintedHeight</span></tt>, <tt class="docutils literal"><span class="pre">paintedWidth</span></tt>). We also create our own component called <tt class="docutils literal"><span class="pre">TTextEdit</span></tt> to provide a edit background and use the focus scope for better focus forwarding.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23textedit&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">TextEdit</span></code> is very similar to <code class="docutils literal"><span class="pre">TextInput</span></code> and support a multi-line text edit field. It misses the text constraint properties for this it provides querying the painted size of the text (<code class="docutils literal"><span class="pre">paintedHeight</span></code>, <code class="docutils literal"><span class="pre">paintedWidth</span></code>). We also create our own component called <code class="docutils literal"><span class="pre">TTextEdit</span></code> to provide a edit background and use the focus scope for better focus forwarding.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// TTextEdit.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -1287,7 +1286,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>You can use it like the <tt class="docutils literal"><span class="pre">TLineEdit</span></tt> component</p>
+<p>You can use it like the <code class="docutils literal"><span class="pre">TLineEdit</span></code> component</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// textedit.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -1311,7 +1310,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="section" id="keys-element">
 <h3>4.7.4. Keys Element<a class="headerlink" href="#keys-element" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23keys-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The attached property <tt class="docutils literal"><span class="pre">Keys</span></tt> allows to execute code based on certain key presses. For example to move a square around and scale we can hook up the up, down, left and right keys to translate the element and the plus, minus key to scale the element.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23keys-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The attached property <code class="docutils literal"><span class="pre">Keys</span></code> allows to execute code based on certain key presses. For example to move a square around and scale we can hook up the up, down, left and right keys to translate the element and the plus, minus key to scale the element.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// keys.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -1368,7 +1367,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 15, 2015.<br/>
+      Last updated on May 11, 2015.<br/>
     </p>
   </div>
 </footer>
