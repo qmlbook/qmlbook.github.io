@@ -8,7 +8,7 @@ Offline Books
 
 * `Book as eBook <qt5_cadaques.epub>`_
 * `Book as PDF <qt5_cadaques.pdf>`_
-* `Book as QtHelp <Qt5CadaquesBook.qhc>`_
+* `Book as QtHelp <Qt5CadaquesBook.qch>`_
 
 Source Code Examples
 --------------------
