@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
     <link rel="next" title="12. Storage" href="../ch12/index.html" />
@@ -210,11 +210,11 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23networking&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: May 12, 2015 at 15:55 CET</p>
+<p>Last Build: July 20, 2015 at 11:08 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
-<p>Qt5 comes with a rich set of networking classes on the C++ side. There are for example high level classes on the http protocol layer in a request-reply fashion such as <code class="docutils literal"><span class="pre">QNetworkRequest</span></code>, <code class="docutils literal"><span class="pre">QNetworkReply</span></code> and <code class="docutils literal"><span class="pre">QNetworkAccessManager</span></code>. But also lower levels classes on the TCP/IP or UDP protocol layer such as <code class="docutils literal"><span class="pre">QTcpSocket</span></code>, <code class="docutils literal"><span class="pre">QTcpServer</span></code> and <code class="docutils literal"><span class="pre">QUdpSocket</span></code>. Additional classes exists to manage proxies, network cache and also the systems network configuration.</p>
-<p>This chapter will not be about C++ networking, this chapter is about QtQuick and networking. So how can I connect my QML/JS user interface directly with a network service or how can I serve my user interface via a network service. There are good books and references out there to cover network programming with Qt/C++. Then it is just a manner to read the chapter about C++ integration to come up with an integration layer to feed your data into the QtQuick world.</p>
+<p>Qt 5 comes with a rich set of networking classes on the C++ side. There are for example high level classes on the http protocol layer in a request-reply fashion such as <code class="docutils literal"><span class="pre">QNetworkRequest</span></code>, <code class="docutils literal"><span class="pre">QNetworkReply</span></code> and <code class="docutils literal"><span class="pre">QNetworkAccessManager</span></code>. But also lower levels classes on the TCP/IP or UDP protocol layer such as <code class="docutils literal"><span class="pre">QTcpSocket</span></code>, <code class="docutils literal"><span class="pre">QTcpServer</span></code> and <code class="docutils literal"><span class="pre">QUdpSocket</span></code>. Additional classes exists to manage proxies, network cache and also the systems network configuration.</p>
+<p>This chapter will not be about C++ networking, this chapter is about Qt Quick and networking. So how can I connect my QML/JS user interface directly with a network service or how can I serve my user interface via a network service. There are good books and references out there to cover network programming with Qt/C++. Then it is just a manner to read the chapter about C++ integration to come up with an integration layer to feed your data into the Qt Quick world.</p>
 <div class="section" id="serving-ui-via-http">
 <h2>11.1. Serving UI via HTTP<a class="headerlink" href="#serving-ui-via-http" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23serving-ui-via-http&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>To load a simple user interface via HTTP we need to have a web-server, which serves the UI documents. We start of with our own simple web-server using a python one-liner. But first we need to have our demo user interface. For this we create a small <code class="docutils literal"><span class="pre">main.qml</span></code> file in our project folder and create a red rectangle inside.</p>
@@ -233,11 +233,11 @@
 # python -m SimpleHTTPServer 8080
 </pre></div>
 </div>
-<p>Now our file should be reachable via <code class="docutils literal"><span class="pre">http://localhost:8000/main.qml</span></code>. You can test it with:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">curl</span> <span class="k">http:</span><span class="c1">//localhost:8000/main.qml</span>
+<p>Now our file should be reachable via <code class="docutils literal"><span class="pre">http://localhost:8080/main.qml</span></code>. You can test it with:</p>
+<div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">curl</span> <span class="k">http:</span><span class="c1">//localhost:8080/main.qml</span>
 </pre></div>
 </div>
-<p>Or just point your browser to the location. Your browser does not understand QML and will not be able to render the document through. We need to create now such a browser for QML documents. To render the document we need to point our <code class="docutils literal"><span class="pre">qmlscene</span></code> to the location. Unfortunately the <code class="docutils literal"><span class="pre">qmlscene</span></code> is limited to local files only. We could overcome this limitation by writing our own <code class="docutils literal"><span class="pre">qmlscene</span></code> replacement or simple dynamically load it using QML. We choose the dynamic loading as it work just fine. For this we use a loader element to retrieve for us the remote document.</p>
+<p>Or just point your browser to the location. Your browser does not understand QML and will not be able to render the document through. We need to create now such a browser for QML documents. To render the document we need to point our <code class="docutils literal"><span class="pre">qmlscene</span></code> to the location. Unfortunately the <code class="docutils literal"><span class="pre">qmlscene</span></code> is limited to local files only. We could overcome this limitation by writing our own <code class="docutils literal"><span class="pre">qmlscene</span></code> replacement or simple dynamically load it using QML. We choose the dynamic loading as it works just fine. For this we use a loader element to retrieve for us the remote document.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// remote.qml</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
@@ -285,7 +285,7 @@
 <span class="o">-</span> <span class="nx">src</span><span class="o">/</span><span class="nx">Button</span><span class="p">.</span><span class="nx">qml</span>
 </pre></div>
 </div>
-<p>We modify our main.qml to use the button now:</p>
+<p>We modify our <code class="docutils literal"><span class="pre">main.qml</span></code> to use the button and save it as <code class="docutils literal"><span class="pre">main2.qml</span></code>:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
@@ -367,7 +367,7 @@
 <div class="section" id="templating">
 <h2>11.2. Templating<a class="headerlink" href="#templating" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23templating&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>When working with HTML projects they often use template driven development. A small HTML stub is expanded on the server side with code generated by the server using a template mechanism. For example for a photo list the list header would be coded in HTML and the dynamic image list would be dynamically generated using a template mechanism. In general this can also be done using QML but there are some issues with it.</p>
-<p>First it is not necessary. The reason HTML developers are doing this is doing is to overcome limitations on the HTML backend. There is no component model yet in HTML so dynamic aspects have to be covered using these mechanism or using programmatically javascript on the client side. Many JS frameworks are out there (jQuery, dojo, backbone, angular, ...) to solve this issue and put more logic into the client-side browser to connect with a network service. The client would then just use a web-service API (e.g. serving JSON or XML data) to communicate with the server. This seems also the better approach for QML.</p>
+<p>First it is not necessary. The reason HTML developers are doing this is to overcome limitations on the HTML backend. There is no component model yet in HTML so dynamic aspects have to be covered using these mechanism or using programmatically javascript on the client side. Many JS frameworks are out there (jQuery, dojo, backbone, angular, ...) to solve this issue and put more logic into the client-side browser to connect with a network service. The client would then just use a web-service API (e.g. serving JSON or XML data) to communicate with the server. This seems also the better approach for QML.</p>
 <p>The second issue is the component cache from QML. When QML accesses a component it caches the render-tree and just loads the cached version for rendering. A modified version on disk or remote would not be detected without restarting the client. To overcome this issue we could use a trick. We could use URL fragments to load the url (e.g. <a class="reference external" href="http://localhost:8080/main.qml#1234">http://localhost:8080/main.qml#1234</a>), where &#8216;#1234&#8217; is the fragment. The HTTP server serves always the same document but QML would store this document using the full URL, including the fragment. Every time we would access this URL the fragment would need to change and the QML cache would not get a positive hit. A fragment could be for example the current time in milli seconds or a random number.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">Loader</span> <span class="p">{</span>
     <span class="k">source:</span> <span class="s1">&#39;http://localhost:8080/main.qml#&#39;</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span>
@@ -378,8 +378,8 @@
 </div>
 <div class="section" id="http-requests">
 <h2>11.3. HTTP Requests<a class="headerlink" href="#http-requests" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23http-requests&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>A http request is in Qt typical done using <code class="docutils literal"><span class="pre">QNetworkRequest</span></code> and <code class="docutils literal"><span class="pre">QNetworkReply</span></code> from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools QtQuick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script <code class="docutils literal"><span class="pre">XMLHttpRequest</span></code> object.</p>
-<p>The <code class="docutils literal"><span class="pre">XMLHttpRequest</span></code> object allows the user to register a response handle function and a url. A request can be send using one of the http verbs (get, post, put, delete, ...) to make the request. When the response arrive the handle function is called. The handle function is called several times. Every-time the request state has changed (for example headers have arrived or request is done).</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23http-requests&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>A http request is in Qt typically done using <code class="docutils literal"><span class="pre">QNetworkRequest</span></code> and <code class="docutils literal"><span class="pre">QNetworkReply</span></code> from the c++ site and then the response would be pushed using the Qt/C++ integration into the QML space. So we try to push the envelope here a little bit to use the current tools Qt Quick gives us to communicate with a network endpoint. For this we use a helper object to make http request, response cycle. It comes in the form of the java script <code class="docutils literal"><span class="pre">XMLHttpRequest</span></code> object.</p>
+<p>The <code class="docutils literal"><span class="pre">XMLHttpRequest</span></code> object allows the user to register a response handle function and a url. A request can be sent using one of the http verbs (get, post, put, delete, ...) to make the request. When the response arrive the handle function is called. The handle function is called several times. Every-time the request state has changed (for example headers have arrived or request is done).</p>
 <p>Here a short example:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">request</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
@@ -513,7 +513,7 @@
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;colors.json&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>We use this to read a color table and display it as a grid. It is not possible to modify the file from the QtQuick side. To store data back to the source we would need a small REST based HTTP server or a native QtQuick extension for file access.</p>
+<p>We use this to read a color table and display it as a grid. It is not possible to modify the file from the Qt Quick side. To store data back to the source we would need a small REST based HTTP server or a native Qt Quick extension for file access.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
@@ -891,7 +891,7 @@
 <div class="section" id="web-sockets">
 <h2>11.8. Web Sockets<a class="headerlink" href="#web-sockets" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch11%2Findex.html%23web-sockets&labels=ch11">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch11&page=1&state=open">View</a></div><p>WebSockets are not yet part of the Qt delivery. There are some efforts to get WebSockets into Qt/QML. From the author perspective WebSockets have a great potential to add the missing feature to networked HTTP services - notification. HTTP gives us get and post but not yet a notification. Currently the client polls the server bit for real applications the server needs to be able to notify the client also about changes and events. You can compare this to the QML API: properties, functions, signals. Also called get/set/call and notifications.</p>
-<p>As it looks like a QML WebSocket plugin will be on the way to Qt5. You can try the new web sockets plugin from the qt playground. For a test run we implement and echo server using an existing web socket server.</p>
+<p>As it looks like a QML WebSocket plugin will be on the way to Qt 5. You can try the new web sockets plugin from the qt playground. For a test run we implement and echo server using an existing web socket server.</p>
 <p>First check you are using Qt 5.2.x by querying qmake.</p>
 <div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>qmake --version
 ... Using Qt version 5.2.0 ...
@@ -1139,7 +1139,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on May 12, 2015.<br/>
+      Last updated on Jul 20, 2015.<br/>
     </p>
   </div>
 </footer>

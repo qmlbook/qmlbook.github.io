@@ -6,7 +6,7 @@ Qt Creator IDE
 
 .. issues:: ch03
 
-Qt Creator is the default integrated development environment for Qt. It's written from Qt developers for Qt developers. The IDE is can be used on all major desktop platforms, e.g. Windows/Mac/Linux. We have already seen customers using Qt Creator on an embedded device. Qt Creator has a lean efficient user interface and it shines really in making the developer productive. Qt Creator can be used to run your QtQuick user interface but also to compile c++ code and this fr your host system or using a cross-complier for your device system.
+Qt Creator is the default integrated development environment for Qt. It's written from Qt developers for Qt developers. The IDE is available on all major desktop platforms, e.g. Windows/Mac/Linux. We have already seen customers using Qt Creator on an embedded device. Qt Creator has a lean efficient user interface and it shines really in making the developer productive. Qt Creator can be used to run your Qt Quick user interface but also to compile c++ code and this for your host system or for another device using a cross-compiler.
 
 .. image:: assets/qtcreator-screenshots.png
 
@@ -19,7 +19,7 @@ The User Interface
 
 .. issues:: ch03
 
-When starting Qt Creator you it comes up in a *Welcome* screen. There you will find the most important hints how to continue inside Qt Creator but also your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.
+When starting Qt Creator you are greeted by the *Welcome* screen. There you will find the most important hints how to continue inside Qt Creator but also your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.
 
 On the left side you will see the mode-selector. The mode selectors contain typical steps from your work flow.
 
@@ -29,7 +29,7 @@ On the left side you will see the mode-selector. The mode selectors contain typi
 * Debug mode: Retrieve information about a running application
 * Projects mode: Modify your projects run and build configuration
 * Analyze mode: For detecting memory leaks and profiling
-* Help mode: For people who need from time time read the Qt documentation
+* Help mode: Easy access to the Qt documentation
 
 Below the mode-selectors you will find the actual project-configuration selector and the run/debug
 
@@ -61,15 +61,15 @@ Managing Projects
 
 .. issues:: ch03
 
-Qt Creator manages your source code in projects. You can create a new project by using :menuselection:`File --> New File or Project`. When you create a project you have many choices of application templates. Qt Creator is capable of creating desktop, mobile applications. Application which use Widgets or QtQuick or QtQuick and controls or even bare-bone projects. Also project for HTML5 and python are supported. For a beginner it is difficult to choose, so we pick three project types for you.
+Qt Creator manages your source code in projects. You can create a new project by using :menuselection:`File --> New File or Project`. When you create a project you have many choices of application templates. Qt Creator is capable of creating desktop, mobile applications. Application which use Widgets or Qt Quick or Qt Quick and controls or even bare-bone projects. Also project for HTML5 and python are supported. For a beginner it is difficult to choose, so we pick three project types for you.
 
-* **Applications / QtQuick 2.0 UI**: This will create a QML/JS only project for you, without any C++ code. Take this if you want to sketch a new user interface or plan to create a modern UI application where the native parts are delivered by plug-ins.
-* **Libraries / Qt Quick 2.0 Extension Plug-in**: Use this wizard to create a stub for a plug-in for your QtQuick UI. A plug-in is used to extend QtQuick with native elements.
+* **Applications / Qt Quick 2.0 UI**: This will create a QML/JS only project for you, without any C++ code. Take this if you want to sketch a new user interface or plan to create a modern UI application where the native parts are delivered by plug-ins.
+* **Libraries / Qt Quick 2.0 Extension Plug-in**: Use this wizard to create a stub for a plug-in for your Qt Quick UI. A plug-in is used to extend Qt Quick with native elements.
 * **Other Project / Empty Qt Project**: A bare-bone empty project. Take this if you want to code your application with c++ from scratch. Be aware you need to know what you are doing here.
 
 .. note::
 
-	During the first parts of the book we will mainly use the QtQuick 2.0 UI project type. Later to describe some c++ aspects we will use the Empty-Qt-Project type or something similar. For extending QtQuick with our own native plug-ins we will use the *Qt Quick 2.0 Extension Plug-in* wizard type.
+	During the first parts of the book we will mainly use the Qt Quick 2.0 UI project type. Later to describe some c++ aspects we will use the Empty-Qt-Project type or something similar. For extending Qt Quick with our own native plug-ins we will use the *Qt Quick 2.0 Extension Plug-in* wizard type.
 
 
 
@@ -110,7 +110,7 @@ Qt Creator comes with C++ and QML debugging support.
 
 .. note::
 
-	Hmm, I just realized I have not used debugging a lot. I hope this is a good sign. Need to ask someone to help me out here. In the meantime have a look at the `Qt Creator documentation <http://qt-project.org/doc/qtcreator-2.8/>`_.
+	Hmm, I just realized I have not used debugging a lot. I hope this is a good sign. Need to ask someone to help me out here. In the meantime have a look at the `Qt Creator documentation <http://http://doc.qt.io/qtcreator/index.html>`_.
 
 Shortcuts
 =========
@@ -129,7 +129,7 @@ To get started we have collection some basic shortcuts (in Windows notation):
 * :kbd:`F2` - Follow Symbol under cursor
 * :kbd:`F4` - Switch between header and source (only useful for c++ code)
 
-List of `Qt Creator shortcuts <http://qt-project.org/doc/qtcreator-2.8/creator-keyboard-shortcuts.html>`_ from the documentation.
+List of `Qt Creator shortcuts <http://doc.qt.io/qtcreator/creator-keyboard-shortcuts.html>`_ from the documentation.
 
 
 .. note::

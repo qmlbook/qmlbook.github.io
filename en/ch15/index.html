@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
     <link rel="next" title="16. Extending QML with C++" href="../ch16/index.html" />
@@ -200,18 +200,18 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23qt-and-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: May 12, 2015 at 15:52 CET</p>
+<p>Last Build: July 20, 2015 at 11:08 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <p>Qt is a C++ toolkit with an extension for QML and Javascript. There exists many language bindings for Qt, but as Qt is developed in C++, the spirit of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.</p>
 <p>This chapter will, just as Qt, require the reader to have some basic knowledge of C++. Qt does not rely on advanced C++ features, and I generally consider the Qt style of C++ to be very readable, so do not worry if you feel that your C++ knowledge is shaky.</p>
-<p>Approaching Qt from a C++ direction, you will find that Qt enrichen C++ with a number of modern language features enabled through making introspection data available. This is made possible through the use of the <code class="docutils literal"><span class="pre">QObject</span></code> base class. Introspection data, or meta data, maintains information of the classes at run-time. Something that ordinary C++ does not do. This makes it possible to dynamically probe objects for information about such details as their properties and available methods.</p>
-<p>Qt uses this meta information to enable a very losely bound callback concept using signals and slots. Each signal can be connected to any number of slots or even other signals. When a signal is emitted from an object instance, the connected slots are invoked. As the signal emitting object does not need to know anything about the object owning the slot and vise versa, this mechanism is used to create very reusable components with very few inter-component dependencies.</p>
-<p>The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. Other bindings for Qt C++ exists and besides the standard Javascript binding a popular one is the Python binding called <a class="reference external" href="http://www.riverbankcomputing.co.uk/software/pyqt/intro">PyQt</a>.</p>
-<p>In addition to this central concept Qt makes it possible to develop cross platform applications using C++. Qt C++ provides a platform abstraction on the different operating systems, which allows the developer to concentrate on the task at hand and not how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X and Linux and Qt takes care about the different OS ways of handling certain things. The end result are natively built applications with the look and feel of the target platform. As the mobile is the new desktop newer Qt version can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.</p>
-<p>When it comes to re-use it is not only the source code which can be re-used it is also the developer skills which are much better re-usable. A team knowing Qt can reach out to far more platforms then a team just focusing on a single platform specific technology and as Qt is so flexible the team can create different system components using the same technology.</p>
+<p>Approaching Qt from a C++ direction, you will find that Qt enriches C++ with a number of modern language features enabled through making introspection data available. This is made possible through the use of the <code class="docutils literal"><span class="pre">QObject</span></code> base class. Introspection data, or meta data, maintains information of the classes at run-time, something that ordinary C++ does not do. This makes it possible to dynamically probe objects for information about such details as their properties and available methods.</p>
+<p>Qt uses this meta information to enable a very loosely bound callback concept using signals and slots. Each signal can be connected to any number of slots or even other signals. When a signal is emitted from an object instance, the connected slots are invoked. As the signal emitting object does not need to know anything about the object owning the slot and vise versa, this mechanism is used to create very reusable components with very few inter-component dependencies.</p>
+<p>The introspection features are also used to create dynamic language bindings, making it possible to expose a C++ object instance to QML and making C++ functions callable from Javascript. Other bindings for Qt C++ exist and besides the standard Javascript binding a popular one is the Python binding called <a class="reference external" href="http://www.riverbankcomputing.co.uk/software/pyqt/intro">PyQt</a>.</p>
+<p>In addition to this central concept Qt makes it possible to develop cross platform applications using C++. Qt C++ provides a platform abstraction on the different operating systems, which allows the developer to concentrate on the task at hand and not how you open a file on different operating systems. This means you can re-compile the same source code for Windows, OS X and Linux and Qt takes care of the different OS ways of handling certain things. The end result are natively built applications with the look and feel of the target platform. As the mobile is the new desktop, newer Qt versions can also target a number of mobile platforms using the same source code, e.g. iOS, Android, Jolla, BlackBerry, Ubuntu Phone, Tizen.</p>
+<p>When it comes to re-use, not only can source code be re-used but developer skills are also reusable. A team knowing Qt can reach out to far more platforms then a team just focusing on a single platform specific technology and as Qt is so flexible the team can create different system components using the same technology.</p>
 <img alt="../../_images/yourapplication.png" src="../../_images/yourapplication.png" />
-<p>For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platforms main loop, and cross platform threading  and networking support. The general philosophy is that for an application developer Qt comes with all required functionality included. For domain specific tasks such as to interface to your native libraries Qt comes with several helper classes to make this easier.</p>
+<p>For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platform&#8217;s main loop, and cross platform threading  and networking support. The general philosophy is that for an application developer Qt comes with all required functionality included. For domain specific tasks such as to interface to your native libraries Qt comes with several helper classes to make this easier.</p>
 <div class="section" id="a-boilerplate-application">
 <h2>15.1. A Boilerplate Application<a class="headerlink" href="#a-boilerplate-application" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23a-boilerplate-application&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The best way to understand Qt is to start from a small demonstration application. This application creates a simple <code class="docutils literal"><span class="pre">&quot;Hello</span> <span class="pre">World!&quot;</span></code> string and writes it into a file using unicode characters.</p>
@@ -251,7 +251,7 @@
 </pre></div>
 </div>
 <p>The simple example demonstrates the use of file access and the correct way of writing text into a file using text codecs via the text stream. For binary data there is a cross platform binary stream called <code class="docutils literal"><span class="pre">QDataStream</span></code>. The different classes we use are included using their class name. Another possibility would be to use a module and class name e.g. <code class="docutils literal"><span class="pre">#include</span> <span class="pre">&lt;QtCore/QFile&gt;</span></code>. For the lazy there is also the possibility to include a whole module using <code class="docutils literal"><span class="pre">#include</span> <span class="pre">&lt;QtCore&gt;</span></code>. E.g. in <code class="docutils literal"><span class="pre">QtCore</span></code> you have the most common classes used for an application, which are not UI dependent. Have a look at the <a class="reference external" href="http://doc.qt.io/qt-5/qtcore-module.html">QtCore class list</a> or the <a class="reference external" href="http://doc.qt.io/qt-5/qtcore-index.html">QtCore overview</a>.</p>
-<p>You build the application using qmake and make. QMake reads a project file and generates a Makefile which then can be called using make. The project file is platform independent and qmake has some rules to apply the platform specific settings to the generated make file. The project can also contain platform scopes for platform sepcific rules, which are required in some specific cases. Here is an example of a simple project file.</p>
+<p>You build the application using qmake and make. QMake reads a project file and generates a Makefile which then can be called using make. The project file is platform independent and qmake has some rules to apply the platform specific settings to the generated make file. The project can also contain platform scopes for platform specific rules, which are required in some specific cases. Here is an example of a simple project file.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="cp"># build an application</span>
 <span class="n">TEMPLATE</span> <span class="o">=</span> <span class="n">app</span>
 
@@ -274,9 +274,9 @@
 <span class="n">SOURCES</span> <span class="o">+=</span> <span class="n">main</span><span class="p">.</span><span class="n">cpp</span>
 </pre></div>
 </div>
-<p>We will not go into depth into this topic just remember Qt uses project files for projects and qmake generates the platform specific make files from these project files.</p>
-<p>The simple code example above just writes the text and exists the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here the same example now using a desktop button to trigger the writing.</p>
-<p>Our <code class="docutils literal"><span class="pre">main.cpp</span></code> suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs an own object as you will see shortly.</p>
+<p>We will not go into depth into this topic. Just remember Qt uses project files for projects and qmake generates the platform specific make files from these project files.</p>
+<p>The simple code example above just writes the text and exits the application. For a command line tool this is good enough. For a user interface you would need an event loop which waits for user input and and somehow schedules re-draw operations. So here follows the same example now uses a desktop button to trigger the writing.</p>
+<p>Our <code class="docutils literal"><span class="pre">main.cpp</span></code> suprisingly got smaller. We moved code into an own class to be able to use signal/slots for the user input, e.g. the button click. The signal/slot mechanism normally needs an object instance as you will see shortly.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;QtCore&gt;</span>
 <span class="cp">#include &lt;QtGui&gt;</span>
 <span class="cp">#include &lt;QtWidgets&gt;</span>
@@ -295,7 +295,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the main we simple create the application object and start the event loop using <code class="docutils literal"><span class="pre">exec()</span></code>. For now the application sits in the event loop and waits for user input.</p>
+<p>In the <code class="docutils literal"><span class="pre">main</span></code> function we simple create the application object and start the event loop using <code class="docutils literal"><span class="pre">exec()</span></code>. For now the application sits in the event loop and waits for user input.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">QApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span> <span class="c1">// init application</span>
@@ -306,9 +306,9 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Qt offers several UI technologies. For this example we use the Desktop Widgets user interface library using pure Qt C++. For this we create a main window which will host a push button to trigger the functionality and also the main window will host our core functionality which we know from the previous example.</p>
+<p>Qt offers several UI technologies. For this example we use the Desktop Widgets user interface library using pure Qt C++. We create a main window which will host a push button to trigger the functionality and also the main window will host our core functionality which we know from the previous example.</p>
 <img alt="../../_images/storecontent.png" src="../../_images/storecontent.png" />
-<p>The main window itself is a widget, which if it does not has a parent is a window. This resembles also how Qt sees a user interface as a tree of ui elements. In this case is the main window our root element nd the push button a child of the main window.</p>
+<p>The main window itself is a widget. It becomes a top level window as it does not have any parent. This comes from how Qt sees a user interface as a tree of ui elements. In this case the main window is the root element, thus becomes a window, while the push button a child of the main window and becomes a widget inside the window.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#ifndef MAINWINDOW_H</span>
 <span class="cp">#define MAINWINDOW_H</span>
 
@@ -328,7 +328,7 @@
 <span class="cp">#endif </span><span class="c1">// MAINWINDOW_H</span>
 </pre></div>
 </div>
-<p>Additional we define a public slot called <code class="docutils literal"><span class="pre">storeContent()</span></code> whih shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.</p>
+<p>Additional we define a public slot called <code class="docutils literal"><span class="pre">storeContent()</span></code> which shall be called when the button is clicked. A slot is a C++ method which is registered with the Qt meta object system and can be dynamically called.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &quot;mainwindow.h&quot;</span>
 
 <span class="n">MainWindow</span><span class="o">::</span><span class="n">MainWindow</span><span class="p">(</span><span class="n">QWidget</span> <span class="o">*</span><span class="n">parent</span><span class="p">)</span>
@@ -359,7 +359,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the main window we create fist the push button and then register the signal <code class="docutils literal"><span class="pre">clicked()</span></code> with the slot <code class="docutils literal"><span class="pre">storeContent()</span></code> using the connect method. Every time the signal clicked is emitted the slot slot <code class="docutils literal"><span class="pre">storeContent()</span></code> is called. As simple as this, objects communicate via signal and slots with loose coupling.</p>
+<p>In the main window we first create the push button and then register the signal <code class="docutils literal"><span class="pre">clicked()</span></code> with the slot <code class="docutils literal"><span class="pre">storeContent()</span></code> using the connect method. Every time the signal clicked is emitted the slot <code class="docutils literal"><span class="pre">storeContent()</span></code> is called. As simple as this, objects communicate via signal and slots with loose coupling.</p>
 </div>
 <div class="section" id="the-qobject">
 <h2>15.2. The QObject<a class="headerlink" href="#the-qobject" title="Permalink to this headline">¶</a></h2>
@@ -402,7 +402,7 @@
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>The constructor passes the parent on to the super class and initialize the members. Qt&#8217;s value classes are automatically initialized. In this case <code class="docutils literal"><span class="pre">QString</span></code> will initialize to a null string (<code class="docutils literal"><span class="pre">QString::isNull()</span></code>) and the gender member will explicitly initialize to the unknown gender.</p>
+<p>The constructor passes the parent to the super class and initialize the members. Qt&#8217;s value classes are automatically initialized. In this case <code class="docutils literal"><span class="pre">QString</span></code> will initialize to a null string (<code class="docutils literal"><span class="pre">QString::isNull()</span></code>) and the gender member will explicitly initialize to the unknown gender.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">Person</span><span class="o">::</span><span class="n">Person</span><span class="p">(</span><span class="n">QObject</span> <span class="o">*</span><span class="n">parent</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">QObject</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
     <span class="p">,</span> <span class="n">m_gender</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">Unknown</span><span class="p">)</span>
@@ -436,7 +436,7 @@
 </div>
 <div class="section" id="build-systems">
 <h2>15.3. Build Systems<a class="headerlink" href="#build-systems" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23build-systems&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the <code class="docutils literal"><span class="pre">qmake</span></code> build file generator. <code class="docutils literal"><span class="pre">qmake</span></code> operator on a project file with the ending <code class="docutils literal"><span class="pre">.pro</span></code>. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate for you a <code class="docutils literal"><span class="pre">Makefile</span></code> on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23build-systems&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the <code class="docutils literal"><span class="pre">qmake</span></code> build file generator. <code class="docutils literal"><span class="pre">qmake</span></code> operates on a project file with the ending <code class="docutils literal"><span class="pre">.pro</span></code>. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate for you a <code class="docutils literal"><span class="pre">Makefile</span></code> on unix and mac and even under windows if the mingw compiler toolchain shall be used. Otherwise it may create a visual studio project or an xcode project.</p>
 <p>A typical build flow in Qt would be under unix:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">edit</span> <span class="nx">myproject</span><span class="p">.</span><span class="nx">pro</span>
 <span class="nx">$</span> <span class="nx">qmake</span> <span class="c1">// generates Makefile</span>
@@ -450,10 +450,10 @@
 </pre></div>
 </div>
 <p>We create a build folder and then call qmake from inside the build folder with the location of our project folder. This will setup the make file in a way that all build artifacts are stored under the build folder instead of inside our source code folder. This allows us to create builds for different qt versions and build configurations at the same time and also it does not clutter our soruce code folder which is always a good thing.</p>
-<p>When you are using Qt Creator it does these things behind the scenes for you and you do not have to worry about these steps usually. For larger projects and more deeper understanding of the flow it is recommended that you can build your qt project from the command line.</p>
+<p>When you are using Qt Creator it does these things behind the scenes for you and you do not have to worry about these steps usually. For larger projects and more deeper understanding of the flow it is recommended that you learn to build your qt project from the command line.</p>
 <div class="section" id="qmake">
 <h3>15.3.1. QMake<a class="headerlink" href="#qmake" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23qmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configiration, external dependencies and your source files. The simplest source file is probably this:</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23qmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configuration, external dependencies and your source files. The simplest project file is probably this:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// myproject.pro</span>
 
 <span class="nx">SOURCES</span> <span class="o">+=</span> <span class="nx">main</span><span class="p">.</span><span class="nx">cpp</span>
@@ -505,7 +505,7 @@
 <span class="nx">myapp</span><span class="p">.</span><span class="nx">depends</span> <span class="o">=</span> <span class="nx">mylib</span>
 </pre></div>
 </div>
-<p>This declares a project with two subprojects <code class="docutils literal"><span class="pre">mylib</span></code> and <code class="docutils literal"><span class="pre">myapp</span></code>, were <code class="docutils literal"><span class="pre">myapp</span></code> depends on <code class="docutils literal"><span class="pre">mylib</span></code>. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When you run the make file for <code class="docutils literal"><span class="pre">my.pro</span></code> then all subproject are also built.</p>
+<p>This declares a project with two subprojects: <code class="docutils literal"><span class="pre">mylib</span></code> and <code class="docutils literal"><span class="pre">myapp</span></code>, where <code class="docutils literal"><span class="pre">myapp</span></code> depends on <code class="docutils literal"><span class="pre">mylib</span></code>. When you run qmake on this project file it will generate for each project file a build file in the corresponding folder. When you run the make file for <code class="docutils literal"><span class="pre">my.pro</span></code>, all subprojects are also built.</p>
 <p>Sometimes you need to do one thing on one platform and another thing on other platforms based on your configuration. For this qmake introduces the concept of scopes. A scope is a applied when a configuration option is set to true.</p>
 <p>For example to use a unix specific utils implementation you could use:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">unix</span> <span class="p">{</span>
@@ -521,7 +521,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This will create your application as a plain executable under mac and not as a <code class="docutils literal"><span class="pre">.app</span></code> folder which is used for application instalation.</p>
+<p>This will create your application as a plain executable under mac and not as a <code class="docutils literal"><span class="pre">.app</span></code> folder which is used for application installation.</p>
 <p>QMake based projects are normally the choice number one when you start programming Qt applications. But there are also other options out there. All have their benefits and drawbacks. We will shortly discuss these other options in the next topcis.</p>
 <p class="rubric">References</p>
 <ul class="simple">
@@ -533,7 +533,7 @@
 <div class="section" id="cmake">
 <h3>15.3.2. CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23cmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>CMake is a tool create by Kitware. Kitware is very well known for their 3D visualitation software VTK and also CMake, the cross platform makefile generator. It uses a series of <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code> files to generate platform specific make files. CMake is used by the KDE project and as such has a special relationship with the Qt community.</p>
-<p>The <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code> is file to store the project configuration. For a simple hello world using QtCore the project file would look like this:</p>
+<p>The <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code> is the file used to store the project configuration. For a simple hello world using QtCore the project file would look like this:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="c1">// ensure cmake version is at least 3.0</span>
 <span class="nx">cmake_minimum_required</span><span class="p">(</span><span class="nx">VERSION</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="c1">// adds the source and build location to the include path</span>
@@ -564,7 +564,7 @@
 <span class="nx">target_link_libraries</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">PROJECT_NAME</span><span class="p">}</span> <span class="k">Qt5:</span><span class="o">:</span><span class="nx">Core</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You see CMake is quite powerful. It takes some time to get used to the syntax. In general it is said that CMake is better suited for large and complex projects.</p>
+<p>You see CMake is quite powerful. It takes some time to get used to the syntax. In general, it is said that CMake is better suited for large and complex projects.</p>
 <p class="rubric">References</p>
 <ul class="simple">
 <li><a class="reference external" href="http://www.cmake.org/documentation/">CMake Help</a> - available online but also as QtHelp format</li>
@@ -578,7 +578,7 @@
 <div class="section" id="common-qt-classes">
 <h2>15.4. Common Qt Classes<a class="headerlink" href="#common-qt-classes" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23common-qt-classes&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">QObject</span></code> class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.</p>
-<p>The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. <code class="docutils literal"><span class="pre">QVERIFY</span></code>, <code class="docutils literal"><span class="pre">QCOMPARE</span></code> are functions provided by the test library to assert a certain condition. We will also use <code class="docutils literal"><span class="pre">{}</span></code> scopes to avoid identifier name collisions. So do not get confused.</p>
+<p>The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. <code class="docutils literal"><span class="pre">QVERIFY</span></code>, <code class="docutils literal"><span class="pre">QCOMPARE</span></code> are functions provided by the test library to assert a certain condition. We will use <code class="docutils literal"><span class="pre">{}</span></code> scopes to avoid name collisions. So do not get confused.</p>
 <div class="section" id="qstring">
 <h3>15.4.1. QString<a class="headerlink" href="#qstring" title="Permalink to this headline">¶</a></h3>
 <p>Text handling in Qt is in general unicode based. For this you use the <code class="docutils literal"><span class="pre">QString</span></code> class. It comes with a variety of great functions which you would expect from a modern framework. For 8-bit data you would use normally the <code class="docutils literal"><span class="pre">QByteArray</span></code> class and for ASCII identifiers the <code class="docutils literal"><span class="pre">QLatin1String</span></code> to preserve memory. For a list of strings you can use a <code class="docutils literal"><span class="pre">QList&lt;QString&gt;</span></code> or simply the <code class="docutils literal"><span class="pre">QStringList</span></code> class (which is derived from <code class="docutils literal"><span class="pre">QList&lt;QString&gt;</span></code>).</p>
@@ -638,7 +638,7 @@
     <span class="n">qDebug</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">smilies</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>This gives you some examples how to easily treat unicode aware text in Qt. For non-unicode the <code class="docutils literal"><span class="pre">QByteArray</span></code> class has also many helper functions for conversion. Please read the Qt documentation for <code class="docutils literal"><span class="pre">QString</span></code> as it contains tones of good examples.</p>
+<p>This gives you some examples how to easily treat unicode aware text in Qt. For non-unicode the <code class="docutils literal"><span class="pre">QByteArray</span></code> class has also many helper functions for conversion. Please read the Qt documentation for <code class="docutils literal"><span class="pre">QString</span></code> as it contains tons of good examples.</p>
 </div>
 <div class="section" id="sequential-containers">
 <h3>15.4.2. Sequential Containers<a class="headerlink" href="#sequential-containers" title="Permalink to this headline">¶</a></h3>
@@ -772,7 +772,7 @@
 </div>
 <div class="section" id="file-io">
 <h3>15.4.4. File IO<a class="headerlink" href="#file-io" title="Permalink to this headline">¶</a></h3>
-<p>It is often required to read and write from files. <code class="docutils literal"><span class="pre">QFile</span></code> is actually a <code class="docutils literal"><span class="pre">QObject</span></code> but in most cases it is created on the stack. <code class="docutils literal"><span class="pre">QFile</span></code> contains signals to inform the user when data can be read. This allows reading chunks of data asynchronously until the whole file is read. For convenience it also allows reading data in blocking mode. This should only be used for smaller amounts of data and not large files. Luckily we only use small data in these examples.</p>
+<p>It is often required to read and write from files. <code class="docutils literal"><span class="pre">QFile</span></code> is actually a <code class="docutils literal"><span class="pre">QObject</span></code> but in most cases it is created on the stack. <code class="docutils literal"><span class="pre">QFile</span></code> contains signals to inform the user when data can be read. This allows reading chunks of data asynchronously until the whole file is read. For convenience it also allows reading data in blocking mode. This should only be used for smaller amounts of data and not large files. Luckily we only use small amounts of data in these examples.</p>
 <p>Besides reading raw data from a file into a <code class="docutils literal"><span class="pre">QByteArray</span></code> you can also read data types using the <code class="docutils literal"><span class="pre">QDataStream</span></code> and unicode string using the <code class="docutils literal"><span class="pre">QTextStream</span></code>. We will show you how.</p>
 <div class="highlight-cpp"><div class="highlight"><pre>    <span class="n">QStringList</span> <span class="nf">data</span><span class="p">({</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">});</span>
     <span class="p">{</span> <span class="c1">// write binary files</span>
@@ -816,14 +816,14 @@
 <div class="section" id="more-classes">
 <h3>15.4.5. More Classes<a class="headerlink" href="#more-classes" title="Permalink to this headline">¶</a></h3>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23more-classes&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means for you to just copy and adapt these snippets. Also Qt&#8217;s examples wich come with the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask it is very helpful to ask exact questions and provide a simple example which displays your needs. This will drastically improve the response time of others. So invest a litte bit of time to make the life of others who want to help you easier:-).</p>
-<p>Here some classes which the author things is a must read: <a class="reference external" href="http://doc.qt.io/qt-5//qobject.html">QObject</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qstring.html">QString</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qbytearray.html">QByteArray</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qfile.html">QFile</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdir.html">QDir</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qfileinfo.html">QFileInfo</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qiodevice.html">QIODevice</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtextstream.html">QTextStream</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdatastream.html">QDataStream</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdebug.html">QDebug</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qloggingcategory.html">QLoggingCategory</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtcpserver.html">QTcpServer</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtcpsocket.html">QTcpSocket</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qnetworkrequest.html">QNetworkRequest</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qnetworkreply.html">QNetworkReply</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qabstractitemmodel.html">QAbstractItemModel</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qregexp.html">QRegExp</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qlist.html">QList</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qhash.html">QHash</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qthread.html">QThread</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qprocess.html">QProcess</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qjsondocument.html">QJsonDocument</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qjsvalue.html">QJSValue</a>.</p>
+<p>Here some classes which the author thinks is a must read: <a class="reference external" href="http://doc.qt.io/qt-5//qobject.html">QObject</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qstring.html">QString</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qbytearray.html">QByteArray</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qfile.html">QFile</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdir.html">QDir</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qfileinfo.html">QFileInfo</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qiodevice.html">QIODevice</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtextstream.html">QTextStream</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdatastream.html">QDataStream</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdebug.html">QDebug</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qloggingcategory.html">QLoggingCategory</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtcpserver.html">QTcpServer</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtcpsocket.html">QTcpSocket</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qnetworkrequest.html">QNetworkRequest</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qnetworkreply.html">QNetworkReply</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qabstractitemmodel.html">QAbstractItemModel</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qregexp.html">QRegExp</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qlist.html">QList</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qhash.html">QHash</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qthread.html">QThread</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qprocess.html">QProcess</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qjsondocument.html">QJsonDocument</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qjsvalue.html">QJSValue</a>.</p>
 <p>That should be enough for the beginning.</p>
 </div>
 </div>
 <div class="section" id="models-in-c">
 <h2>15.5. Models in C++<a class="headerlink" href="#models-in-c" title="Permalink to this headline">¶</a></h2>
 <p>Models in QML serve the purpose to provide data to <code class="docutils literal"><span class="pre">ListViews</span></code>, <code class="docutils literal"><span class="pre">PathViews</span></code> and other views which take a model and create for each entry in the model an instance of a delegate. The view is smart enough to only create these instances which are visible or in the cache range. Which makes it possible to have large models with tens of throusands of entries but still a very slick user interface. The delegate acts like a template to be rendered with the model entries data. So in summary: a view renders entries from the model using a delegate as a template. The model is a data provider to views.</p>
-<p>When you do not want ot use C++ you can also define models in pure QML you have several ways to provide a model to the view. For handling of data coming from C++ or large amount of data  the C++ model is more suitable as these pure QML approaches. But often you only need a few entries then these QML models are well suited.</p>
+<p>When you do not want to use C++ you can also define models in pure QML. You have several ways to provide a model to the view. For handling of data coming from C++ or large amount of data  the C++ model is more suitable than these pure QML approaches. But often you only need a few entries then these QML models are well suited.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">ListView</span> <span class="p">{</span>
     <span class="c1">// using a integer as model</span>
     <span class="k">model:</span> <span class="mi">5</span>
@@ -963,7 +963,7 @@
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">ListDelegate</span></code> is a custom type to display some text. The <code class="docutils literal"><span class="pre">ListHighlight</span></code> is just a rectangle. The code was extracted to keep the example compact.</p>
-<p>The view can now display a list of strings using the C++ model and the display property of the model. It is still very simple, but already usable in QML. Normally the data is provided from outside the model and the model would acts as an interface to the view.</p>
+<p>The view can now display a list of strings using the C++ model and the display property of the model. It is still very simple, but already usable in QML. Normally the data is provided from outside the model and the model would act as an interface to the view.</p>
 </div>
 <div class="section" id="more-complex-data">
 <h3>15.5.2. More Complex Data<a class="headerlink" href="#more-complex-data" title="Permalink to this headline">¶</a></h3>
@@ -1065,8 +1065,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The implemantation now has changed ony on two places. First in the initialization. We now initialize the data list with QColor data types. Additionally we define our role name map to be accessible for QML. This map is returned later in the <code class="docutils literal"><span class="pre">::roleNames</span></code> function.</p>
-<p>The second change is in the <code class="docutils literal"><span class="pre">::data</span></code> function. We extend the switch to cover the other roles (e.g hue, saturation, brightness). There is no way to return a SVG name from a color, as a color can take one any color and SVG names are limited. So we skip this. Storing the names would require to create a structure <code class="docutils literal"><span class="pre">struct</span> <span class="pre">{</span> <span class="pre">QColor,</span> <span class="pre">QString</span> <span class="pre">}</span></code> to be able to identify the named color.</p>
+<p>The implementation now has changed only in two places. First in the initialization. We now initialize the data list with QColor data types. Additionally we define our role name map to be accessible for QML. This map is returned later in the <code class="docutils literal"><span class="pre">::roleNames</span></code> function.</p>
+<p>The second change is in the <code class="docutils literal"><span class="pre">::data</span></code> function. We extend the switch to cover the other roles (e.g hue, saturation, brightness). There is no way to return a SVG name from a color, as a color can take any color and SVG names are limited. So we skip this. Storing the names would require to create a structure <code class="docutils literal"><span class="pre">struct</span> <span class="pre">{</span> <span class="pre">QColor,</span> <span class="pre">QString</span> <span class="pre">}</span></code> to be able to identify the named color.</p>
 <p>After registering the type we can use the model and its entries in our user interface.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">ListView</span> <span class="p">{</span>
     <span class="kd">id: view</span>
@@ -1088,7 +1088,7 @@
 </div>
 <div class="section" id="dynamic-data">
 <h3>15.5.3. Dynamic Data<a class="headerlink" href="#dynamic-data" title="Permalink to this headline">¶</a></h3>
-<p>Dynamic data covers the aspects of inserting, removing and clearing the data from the model. The <code class="docutils literal"><span class="pre">QAbstractListModel</span></code> expect a certain behavior when entries are removed or inserted. The behavior is expressed in signals which needs to be called before and after the manipulation. For example to insert a row into a model you need first emit the signal <code class="docutils literal"><span class="pre">beginInsertRows</span></code>, then manipulate the data and then finally emit <code class="docutils literal"><span class="pre">endInsertRows</span></code>.</p>
+<p>Dynamic data covers the aspects of inserting, removing and clearing the data from the model. The <code class="docutils literal"><span class="pre">QAbstractListModel</span></code> expect a certain behavior when entries are removed or inserted. The behavior is expressed in signals which needs to be called before and after the manipulation. For example to insert a row into a model you need first to emit the signal <code class="docutils literal"><span class="pre">beginInsertRows</span></code>, then manipulate the data and then finally emit <code class="docutils literal"><span class="pre">endInsertRows</span></code>.</p>
 <p>We will add the following functions to our headers. These functions are declared using <code class="docutils literal"><span class="pre">Q_INVOKABLE</span></code> to be able to call them from QML. Another way would be to declare them a public slots.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="c1">// inserts a color at the index (0 at begining, count-1 at end)</span>
 <span class="n">Q_INVOKABLE</span> <span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">colorValue</span><span class="p">);</span>
@@ -1100,7 +1100,7 @@
 <span class="n">Q_INVOKABLE</span> <span class="kt">void</span> <span class="nf">clear</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Additional we define a <code class="docutils literal"><span class="pre">count</span></code> property to get the size of the model and a <code class="docutils literal"><span class="pre">get</span></code> method to get a color at the given index. This is useful when you would like to iterate over the model content from QML.</p>
+<p>Additionally we define a <code class="docutils literal"><span class="pre">count</span></code> property to get the size of the model and a <code class="docutils literal"><span class="pre">get</span></code> method to get a color at the given index. This is useful when you would like to iterate over the model content from QML.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="c1">// gives the size of the model</span>
 <span class="n">Q_PROPERTY</span><span class="p">(</span><span class="kt">int</span> <span class="n">count</span> <span class="n">READ</span> <span class="n">count</span> <span class="n">NOTIFY</span> <span class="n">countChanged</span><span class="p">)</span>
 <span class="c1">// gets a color at the index</span>
@@ -1133,7 +1133,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Remove is similar to insert but it calls the remove opration protocol.</p>
+<p>Remove is similar to insert but it calls according to the remove operation protocol.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="n">DynamicEntryModel</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">m_data</span><span class="p">.</span><span class="n">count</span><span class="p">())</span> <span class="p">{</span>
@@ -1159,7 +1159,7 @@
 </div>
 <p>You need to be carefull that you only return a value which QML understands. If it is not one of the basic QML types or types kown to QML you need to register the type first with <code class="docutils literal"><span class="pre">qmlRegisterType</span></code> or <code class="docutils literal"><span class="pre">qmlRegisterUncreatableType</span></code>. You use <code class="docutils literal"><span class="pre">qmlRegisterUncreatableType</span></code> if the user shall not be able to instantiate its own object in QML.</p>
 <p>Now you can use the model in QML and insert, append, remove entries from the model. Here is a small example which allows the user to enter a color name or color hex value and the color is then appended onto the model and shown in the list view. The red circle on the delegate allows the user to remove this entry from the model. After the entry is remove the list view is notified by the model and updates its content.</p>
-<img alt="../../_images/modelview.png" src="../../_images/modelview.png" />
+<a class="reference internal image-reference" href="../../_images/modelview.png"><img alt="../../_images/modelview.png" src="../../_images/modelview.png" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1275,7 +1275,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Model view programming is one of the hardest tasks in Qt. It is one of the very few classes where you have to implement an interface as a normal application developer. All other classes you just use normally. The sketching of models should always start on the QML side. You should envision how your users shouls would your model inside QML. For this it is often a good idea to create a prototype first using the <code class="docutils literal"><span class="pre">ListModel</span></code> to see how this best works in QML. This is also true when it comes to defining QML APIs. Making data available from C++ to QML is not only a technology boundary it is also a programming paradigm change from imperative to declarative style programming. So be prepared for some set backs and aha moments:-).</p>
+<p>Model view programming is one of the hardest tasks in Qt. It is one of the very few classes where you have to implement an interface as a normal application developer. All other classes you just use normally. The sketching of models should always start on the QML side. You should envision how your users would use your model inside QML. For this it is often a good idea to create a prototype first using the <code class="docutils literal"><span class="pre">ListModel</span></code> to see how this best works in QML. This is also true when it comes to defining QML APIs. Making data available from C++ to QML is not only a technology boundary it is also a programming paradigm change from imperative to declarative style programming. So be prepared for some set backs and aha moments:-).</p>
 </div>
 <div class="section" id="advanced-techniques">
 <h3>15.5.4. Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Permalink to this headline">¶</a></h3>
@@ -1297,7 +1297,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on May 12, 2015.<br/>
+      Last updated on Jul 20, 2015.<br/>
     </p>
   </div>
 </footer>

@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
     <link rel="next" title="5. Fluid Elements" href="../ch05/index.html" />
@@ -206,10 +206,10 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23quick-starter&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: May 12, 2015 at 15:52 CET</p>
+<p>Last Build: July 20, 2015 at 11:08 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
-<p>This chapter provides an overview of QML, the declarative user interface language used in Qt5. We will discuss the QML syntax, which is a tree of elements, followed by an overview of the most important basic elements. Later we will briefly look at how to create our own elements, called components and how to transform elements using property manipulations. Towards the end we will look how to arrange elements together in a layout and finally have a look at elements where the user can provide input.</p>
+<p>This chapter provides an overview of QML, the declarative user interface language used in Qt 5. We will discuss the QML syntax, which is a tree of elements, followed by an overview of the most important basic elements. Later we will briefly look at how to create our own elements, called components and how to transform elements using property manipulations. Towards the end we will look how to arrange elements together in a layout and finally have a look at elements where the user can provide input.</p>
 <div class="section" id="qml-syntax">
 <h2>4.1. QML Syntax<a class="headerlink" href="#qml-syntax" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23qml-syntax&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p id="index-0">QML is a declarative language used to describe the user interface of your application. It breaks down the user interface into smaller elements, which can be combined to components. QML describes the look and the behavior of these user interface elements. This user interface description can be enriched with JavaScript code to provide simple but also more complex logic. In this perspective it follows the HTML-JavaScript pattern but QML is designed from the ground up to describe user interfaces not text-documents.</p>
@@ -272,7 +272,7 @@
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p>You can run the example using the QtQuick runtime from the command line from your OS like this:</p>
+<p>You can run the example using the Qt Quick runtime from the command line from your OS like this:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="nx">$</span> <span class="nx">$QTDIR</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">qmlscene</span> <span class="nx">rectangle</span><span class="p">.</span><span class="nx">qml</span>
 </pre></div>
 </div>
@@ -450,7 +450,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="section" id="rectangle-element">
 <h3>4.2.2. Rectangle Element<a class="headerlink" href="#rectangle-element" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23rectangle-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">Rectangle</span></code> extends <code class="docutils literal"><span class="pre">Item</span></code> and adds a fill color to it. Additional it supports borders defined by <code class="docutils literal"><span class="pre">border.color</span></code> and <code class="docutils literal"><span class="pre">border.width</span></code>. To create rounded rectangles you can use the <code class="docutils literal"><span class="pre">radius</span></code> property.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch04%2Findex.html%23rectangle-element&labels=ch04">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch04&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">Rectangle</span></code> extends <code class="docutils literal"><span class="pre">Item</span></code> and adds a fill color to it. Additionally it supports borders defined by <code class="docutils literal"><span class="pre">border.color</span></code> and <code class="docutils literal"><span class="pre">border.width</span></code>. To create rounded rectangles you can use the <code class="docutils literal"><span class="pre">radius</span></code> property.</p>
 <div class="highlight-qml"><div class="highlight"><pre>    <span class="nx">Rectangle</span> <span class="p">{</span>
         <span class="kd">id: rect1</span>
         <span class="k">x:</span> <span class="mi">12</span><span class="p">;</span> <span class="k">y:</span> <span class="mi">12</span>
@@ -493,7 +493,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It is not possible to create an angled gradient. For this it&#8217;s better to use predefined images. One possibility would be to just rotate the rectangle with the gradient, but be aware the geometry of an rotated rectangle will not change and thus will lead to confusion as the geometry is of the element is not the same as the visible area. From the authors perspective it&#8217;s really better to use designed gradient images in that case.</p>
+<p class="last">It is not possible to create an angled gradient. For this it&#8217;s better to use predefined images. One possibility would be to just rotate the rectangle with the gradient, but be aware the geometry of an rotated rectangle will not change and thus will lead to confusion as the geometry of the element is not the same as the visible area. From the authors perspective it&#8217;s really better to use designed gradient images in that case.</p>
 </div>
 </div>
 <div class="section" id="text-element">
@@ -611,7 +611,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This is an important aspect of QtQuick, the input handling is separated from the visual presentation. By this it allows you to show the user an interface element, but the interaction area can be larger.</p>
+<p class="last">This is an important aspect of Qt Quick, the input handling is separated from the visual presentation. By this it allows you to show the user an interface element, but the interaction area can be larger.</p>
 </div>
 </div>
 </div>
@@ -727,6 +727,11 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="last highlight-js"><div class="highlight"><pre><span class="nx">Item</span> <span class="p">{</span>
     <span class="nx">id</span><span class="o">:</span> <span class="nx">root</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">116</span><span class="p">;</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">26</span>
+
+    <span class="nx">property</span> <span class="nx">alias</span> <span class="nx">text</span><span class="o">:</span> <span class="nx">label</span><span class="p">.</span><span class="nx">text</span>
+    <span class="nx">signal</span> <span class="nx">clicked</span>
+
     <span class="nx">Rectangle</span> <span class="p">{</span>
         <span class="nx">anchors</span><span class="p">.</span><span class="nx">fill</span> <span class="nx">parent</span>
         <span class="nx">color</span><span class="o">:</span> <span class="s2">&quot;lightsteelblue&quot;</span>
@@ -992,7 +997,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined as child of the repeater. In the rectangle we chose the color by using JS math functions <code class="docutils literal"><span class="pre">Math.floor(Math.random()*3)</span></code>. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier JavaScript is a core part of QtQuick, as such the standard libraries are available for us.</p>
+<p>In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined as child of the repeater. In the rectangle we chose the color by using JS math functions <code class="docutils literal"><span class="pre">Math.floor(Math.random()*3)</span></code>. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier JavaScript is a core part of Qt Quick, as such the standard libraries are available for us.</p>
 <p>A repeater injects the <code class="docutils literal"><span class="pre">index</span></code> property into the repeater. It contains the current loop-index. (0,1,..15). We can use this to make our own decisions based on the index, or in our case to visualize the current index with the <code class="docutils literal"><span class="pre">Text</span></code> element.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1074,7 +1079,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">A element is centered on a parent element</p>
+<li><p class="first">An element is centered on a parent element</p>
 <blockquote>
 <div><div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">GreenSquare</span> <span class="p">{</span>
             <span class="nx">BlueSquare</span> <span class="p">{</span>
@@ -1087,7 +1092,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">A element is centered with an left-offset on a parent element using horizontal and vertical center lines</p>
+<li><p class="first">An element is centered with an left-offset on a parent element using horizontal and vertical center lines</p>
 <blockquote>
 <div><div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">GreenSquare</span> <span class="p">{</span>
             <span class="nx">BlueSquare</span> <span class="p">{</span>
@@ -1368,7 +1373,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on May 12, 2015.<br/>
+      Last updated on Jul 20, 2015.<br/>
     </p>
   </div>
 </footer>

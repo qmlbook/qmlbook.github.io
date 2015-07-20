@@ -13,7 +13,7 @@ Quick Starter
     The source code for this chapter can be found in the `assets folder <../../assets>`_.
 
 
-This chapter provides an overview of QML, the declarative user interface language used in Qt5. We will discuss the QML syntax, which is a tree of elements, followed by an overview of the most important basic elements. Later we will briefly look at how to create our own elements, called components and how to transform elements using property manipulations. Towards the end we will look how to arrange elements together in a layout and finally have a look at elements where the user can provide input.
+This chapter provides an overview of QML, the declarative user interface language used in Qt 5. We will discuss the QML syntax, which is a tree of elements, followed by an overview of the most important basic elements. Later we will briefly look at how to create our own elements, called components and how to transform elements using property manipulations. Towards the end we will look how to arrange elements together in a layout and finally have a look at elements where the user can provide input.
 
 QML Syntax
 ==========
@@ -48,7 +48,7 @@ Let's start with a simple example of a QML file to explain the different syntax.
 
 .. hint::
 
-    You can run the example using the QtQuick runtime from the command line from your OS like this::
+    You can run the example using the Qt Quick runtime from the command line from your OS like this::
 
         $ $QTDIR/bin/qmlscene rectangle.qml
 
@@ -169,7 +169,7 @@ Rectangle Element
 
 .. issues:: ch04
 
-The ``Rectangle`` extends ``Item`` and adds a fill color to it. Additional it supports borders defined by ``border.color`` and ``border.width``. To create rounded rectangles you can use the ``radius`` property.
+The ``Rectangle`` extends ``Item`` and adds a fill color to it. Additionally it supports borders defined by ``border.color`` and ``border.width``. To create rounded rectangles you can use the ``radius`` property.
 
 .. literalinclude:: src/concepts/rectangle2.qml
     :start-after: M1>>
@@ -198,7 +198,7 @@ A gradient is defined by a series of gradient stops. Each stop has a position an
 
 .. note::
 
-    It is not possible to create an angled gradient. For this it's better to use predefined images. One possibility would be to just rotate the rectangle with the gradient, but be aware the geometry of an rotated rectangle will not change and thus will lead to confusion as the geometry is of the element is not the same as the visible area. From the authors perspective it's really better to use designed gradient images in that case.
+    It is not possible to create an angled gradient. For this it's better to use predefined images. One possibility would be to just rotate the rectangle with the gradient, but be aware the geometry of an rotated rectangle will not change and thus will lead to confusion as the geometry of the element is not the same as the visible area. From the authors perspective it's really better to use designed gradient images in that case.
 
 Text Element
 ------------
@@ -285,7 +285,7 @@ To interact with these elements you often will use a ``MouseArea``. Its a rectan
 
 .. note::
 
-    This is an important aspect of QtQuick, the input handling is separated from the visual presentation. By this it allows you to show the user an interface element, but the interaction area can be larger.
+    This is an important aspect of Qt Quick, the input handling is separated from the visual presentation. By this it allows you to show the user an interface element, but the interaction area can be larger.
 
 Components
 ==========
@@ -348,6 +348,11 @@ Now you can use as many buttons as you like in your UI by just using ``Button { 
 
         Item {
             id: root
+            width: 116; height: 26
+
+            property alias text: label.text
+            signal clicked
+
             Rectangle {
                 anchors.fill parent
                 color: "lightsteelblue"
@@ -471,7 +476,7 @@ An element often used with positioners is the ``Repeater``. It works like a for-
     :start-after: M1>>
     :end-before: <<M1
 
-In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined as child of the repeater. In the rectangle we chose the color by using JS math functions ``Math.floor(Math.random()*3)``. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier JavaScript is a core part of QtQuick, as such the standard libraries are available for us.
+In this repeater example, we use some new magic. We define our own color property, which we use as an array of colors. The repeater creates a series of rectangles (16, as defined by the model). For each loop he creates the rectangle as defined as child of the repeater. In the rectangle we chose the color by using JS math functions ``Math.floor(Math.random()*3)``. This gives us a random number in the range from 0..2, which we use to select the color from our color array. As noted earlier JavaScript is a core part of Qt Quick, as such the standard libraries are available for us.
 
 A repeater injects the ``index`` property into the repeater. It contains the current loop-index. (0,1,..15). We can use this to make our own decisions based on the index, or in our case to visualize the current index with the ``Text`` element.
 
@@ -522,14 +527,14 @@ An element has 6 major anchor lines (top, bottom, left, right, horizontalCenter,
         :end-before: <<M4
 
 
-#. A element is centered on a parent element
+#. An element is centered on a parent element
 
     .. literalinclude:: src/anchors/anchors.qml
         :start-after: M5>>
         :end-before: <<M5
 
 
-#. A element is centered with an left-offset on a parent element using horizontal and vertical center lines
+#. An element is centered with an left-offset on a parent element using horizontal and vertical center lines
 
     .. literalinclude:: src/anchors/anchors.qml
         :start-after: M6>>

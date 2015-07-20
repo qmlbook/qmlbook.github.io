@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
     <link rel="next" title="14. JavaScript" href="../ch14/index.html" />
@@ -182,7 +182,7 @@
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23dynamic-qml&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: May 12, 2015 at 15:55 CET</p>
+<p>Last Build: July 20, 2015 at 11:08 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <p>Until now, we have treated QML as a tool for constructing a static set of scenes and navigating between them. Depending on various states and logic rules, a live and dynamic user interface is constructed. By working with QML and JavaScript in a more dynamic manner, the flexibility and possibilities expand even further. Components can be loaded and instantiated at run-time, elements can be destroyed. Dynamically created user interfaces can be saved to disk and later restored.</p>
@@ -191,8 +191,8 @@
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23loading-components-dynamically&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>The easiest way to dynamically load different parts of QML is to use the <code class="docutils literal"><span class="pre">Loader</span></code> element. It serves as a placeholder to the item that is being loaded. The item to load is controlled through either the <code class="docutils literal"><span class="pre">source</span></code> property or the <code class="docutils literal"><span class="pre">sourceComponent</span></code> property. The former loads the item from a given URL, while the latter instantiates a component.</p>
 <p>As the loader serves as a placeholder for the item being loaded, its size depends on the size of the item, and vise versa. If the <code class="docutils literal"><span class="pre">Loader</span></code> element has a size, either by having set <code class="docutils literal"><span class="pre">width</span></code> and <code class="docutils literal"><span class="pre">height</span></code> or through anchoring, the loaded item will be given the loader&#8217;s size. If the <code class="docutils literal"><span class="pre">Loader</span></code> has no size, it is resized in accordance to the size of the item being loaded.</p>
 <p>The example described below demonstrates how two separate user interface parts can be loaded into the same space using a <code class="docutils literal"><span class="pre">Loader</span></code> element. The idea is to have a speed dial that can be either digital or analog, as shown in the illustration below. The code surrounding the dial is unaffected by which item that is loaded for the moment.</p>
-<img alt="../../_images/loader-analog.png" src="../../_images/loader-analog.png" />
-<img alt="../../_images/loader-digital.png" src="../../_images/loader-digital.png" />
+<a class="reference internal image-reference" href="../../_images/loader-analog.png"><img alt="../../_images/loader-analog.png" src="../../_images/loader-analog.png" /></a>
+<a class="reference internal image-reference" href="../../_images/loader-digital.png"><img alt="../../_images/loader-digital.png" src="../../_images/loader-digital.png" /></a>
 <p>The first step in the application is to declare a <code class="docutils literal"><span class="pre">Loader</span></code> element. Notice that the <code class="docutils literal"><span class="pre">source</span></code> property is left out. This is because the <code class="docutils literal"><span class="pre">source</span></code> depends on which state the user interface is in.</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="nx">Loader</span> <span class="p">{</span>
     <span class="nx">id</span><span class="o">:</span> <span class="nx">dialLoader</span>
@@ -242,7 +242,7 @@
 <h3>13.1.1. Connecting Indirectly<a class="headerlink" href="#connecting-indirectly" title="Permalink to this headline">¶</a></h3>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23connecting-indirectly&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>When creating QML elements dynamically, you cannot connect to signals using the <code class="docutils literal"><span class="pre">onSignalName</span></code> approach used for static setup. Instead, the <code class="docutils literal"><span class="pre">Connections</span></code> element must be used. It connects to any number of signals of a <code class="docutils literal"><span class="pre">target</span></code> element.</p>
 <p>Having set the <code class="docutils literal"><span class="pre">target</span></code> property of a <code class="docutils literal"><span class="pre">Connections</span></code> element, the signals can be connected as usual, that is, using the <code class="docutils literal"><span class="pre">onSignalName</span></code> approach. However, by altering the <code class="docutils literal"><span class="pre">target</span></code> property, different elements can be monitored at different times.</p>
-<img alt="../../_images/connections.png" src="../../_images/connections.png" />
+<a class="reference internal image-reference" href="../../_images/connections.png"><img alt="../../_images/connections.png" src="../../_images/connections.png" /></a>
 <p>In the example show above, a user interface consisting of two clickable areas is presented to the user. When either area is clicked, it is flashed using an animation. The left area is shown in the code snippet below. In the <code class="docutils literal"><span class="pre">MouseArea</span></code>, the <code class="docutils literal"><span class="pre">leftClickedAnimation</span></code> is triggered, causing the area to flash.</p>
 <div class="highlight-js"><div class="highlight"><pre>        <span class="nx">Rectangle</span> <span class="p">{</span>
             <span class="nx">id</span><span class="o">:</span> <span class="nx">leftRectangle</span>
@@ -556,7 +556,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on May 12, 2015.<br/>
+      Last updated on Jul 20, 2015.<br/>
     </p>
   </div>
 </footer>

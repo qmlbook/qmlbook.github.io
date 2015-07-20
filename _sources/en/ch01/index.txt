@@ -12,7 +12,7 @@ Meet Qt 5
 
 This book shall provide you a walk through the different aspect of application development using Qt version 5.x. It focuses on the new Qt Quick technology but also provides necessary information of writing C++ back-ends and extension for Qt Quick.
 
-This chapter provides an high level overview of Qt 5. It shows the different application models available for developers and a Qt 5 showcase application to get a sneak preview of things to come. Additionally the chapter aims to provide a wide overview of the Qt 5 content and how to get in touch with the makers of Qt 5.
+This chapter provides a high level overview of Qt 5. It shows the different application models available for developers and a Qt 5 showcase application to get a sneak preview of things to come. Additionally the chapter aims to provide a wide overview of the Qt 5 content and how to get in touch with the makers of Qt 5.
 
 
 Preface
@@ -20,11 +20,11 @@ Preface
 
 .. rubric:: History
 
-Qt 4 has evolved since 2005 and provided a solid ground for thousands of applications and even full desktop and mobile systems. The usage patterns computer users changed in the recent years. From stationary PCs towards portable notebook and nowadays mobile computers. The classical desktop is more and more replaced with mobile touch-based always connected screens. With it the desktop UX paradigms also changes. Where as in the past Windows UI has dominated the world we spend more time nowadays on other screens with another UI language.
+Qt 4 has evolved since 2005 and provided a solid ground for thousands of applications and even full desktop and mobile systems. The usage patterns of computer users changed in the recent years. From stationary PCs towards portable notebook and nowadays mobile computers. The classical desktop is more and more replaced with mobile touch-based always connected screens. With it the desktop UX paradigms also changes. Where as in the past Windows UI has dominated the world we spend more time nowadays on other screens with another UI language.
 
-Qt 4 was designed to satisfy the desktop world to have a coherent set of UI widgets available on all major platforms. The challenge for Qt users has changed today and it lies more to provide a touch-based user interface for a customer driven user interface and to enable modern user interface on all major desktop and mobile systems. Qt 4.7 started to introduce the QtQuick technology which allows users to create a set of user interface components from simple elements to achieve a complete new UI, driven by customer demands.
+Qt 4 was designed to satisfy the desktop world to have a coherent set of UI widgets available on all major platforms. The challenge for Qt users has changed today and it lies more to provide a touch-based user interface for a customer driven user interface and to enable modern user interface on all major desktop and mobile systems. Qt 4.7 started to introduce the Qt Quick technology which allows users to create a set of user interface components from simple elements to achieve a complete new UI, driven by customer demands.
 
-Qt5 Focus
+Qt 5 Focus
 ---------
 
 Qt 5 is a complete refreshment of the very successful Qt 4 release. With Qt 4.8, the Qt 4 release is almost 7 years old. It's time to make an amazing toolkit even more amazing. Qt 5 is focused on the the following:
@@ -35,18 +35,18 @@ Qt 5 is a complete refreshment of the very successful Qt 4 release. With Qt 4.8,
 
 * **Cross-platform portability**: With the consolidated Qt Platform Abstraction, it is now possible to port Qt to a wider range of platforms easier and faster. Qt 5 is structured around the concept of Qt Essentials and Add-ons, which allows OS developer to focus on the essentials modules and leads to a smaller runtime altogether.
 
-* **Open Development**: Qt is now a truly open-governance project hosted at `Qt-Project <http://qt-project.org>`_. The development is open and community driven.
+* **Open Development**: Qt is now a truly open-governance project hosted at `qt.io <http://qt.io>`_. The development is open and community driven.
 
 
 
-Qt5 Introduction
-================
+Qt 5 Introduction
+=================
 
 
 Qt Quick
 --------
 
-Qt Quick is the umbrella term for the user interface technology used in Qt5. Qt Quick itself is a collection of several technologies:
+Qt Quick is the umbrella term for the user interface technology used in Qt 5. Qt Quick itself is a collection of several technologies:
 
 * QML - Markup language for user interfaces
 * JavaScript - The dynamic scripting language
@@ -55,7 +55,7 @@ Qt Quick is the umbrella term for the user interface technology used in Qt5. Qt 
 .. image:: assets/qt5_overview.png
 
 
-Similar to HTML, QML is a markup language. It is composed of tags called elements in QtQuick enclosed in curly brackets ``Item {}``. It was designed from the ground up for the creation of user interfaces, speed and easier reading for developers. The user interface can be enhanced using JavaScript code. Qt Quick is easily extend able with your own native functionality using Qt C++. In short the declarative UI is called the front-end and the native parts are called the back-end. This allows you to separate the computing intensive and native operation of your application from the user interface part.
+Similar to HTML, QML is a markup language. It is composed of tags called elements in Qt Quick enclosed in curly brackets ``Item {}``. It was designed from the ground up for the creation of user interfaces, speed and easier reading for developers. The user interface can be enhanced using JavaScript code. Qt Quick is easily extendable with your own native functionality using Qt C++. In short the declarative UI is called the front-end and the native parts are called the back-end. This allows you to separate the computing intensive and native operation of your application from the user interface part.
 
 In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.
 
@@ -63,7 +63,7 @@ In a typical project the front-end is developed in QML/JavaScript and the back-e
 Digesting an User Interface
 ---------------------------
 
-Let's create a simple user interface using QtQuick, which showcases some aspects of the QML language. At the end we will have a paper windmill with rotating blades.
+Let's create a simple user interface using Qt Quick, which showcases some aspects of the QML language. At the end we will have a paper windmill with rotating blades.
 
 
 .. image:: assets/scene.png
@@ -137,7 +137,7 @@ So we set the pinwheel to be centered in the parent our background.
 
 .. note::
 
-    Placing an image as a child element of our root rectangle element shows an important concept of a declarative language. You describe the user interface in the order of layers and grouping, where the topmost layer (our rectangle) is drawn first and the child layers are drawn on top of it in the local coordinate system of the containing element.
+    Placing an image as a child element of our root element (the ``Image`` element) shows an important concept of a declarative language. You describe the user interface in the order of layers and grouping, where the topmost layer (our rectangle) is drawn first and the child layers are drawn on top of it in the local coordinate system of the containing element.
 
 To make the showcase a little bit more interesting, we would like to make the scene interactive. The idea is to rotate the wheel when the user pressed the mouse somewhere in the scene.
 
@@ -166,7 +166,7 @@ The mouse area emit signals when a user clicks inside it covered area. You can h
 
     If a ``width`` property is changing you can observe it with ``onWidthChanged: print(width)`` for example.
 
-Now the wheel will rotate, but it is still not fluent yet. The rotation property changes immediately. What we would like that the property changes by 90 degree over time. Now animations come into play. An animation defines how a property change is distributed over a duration. To enable this we use an animation type called property behavior. The ``Behaviour`` does specify an animation for a defined property for every change applied to that property. In short every time the property changes, the animation is run. This is only one of several ways of declaring an animation in QML.
+Now the wheel will rotate, but it is still not fluid yet. The rotation property changes immediately. What we would like that the property changes by 90 degree over time. Now animations come into play. An animation defines how a property change is distributed over a duration. To enable this we use an animation type called property behavior. The ``Behaviour`` does specify an animation for a defined property for every change applied to that property. In short every time the property changes, the animation is run. This is only one of several ways of declaring an animation in QML.
 
 .. code-block:: qml
 
@@ -273,7 +273,7 @@ Supported Platforms
 
 Qt supports a variety of platforms. All major desktop and embedded platforms are supported. Through the Qt Application Abstraction, nowadays it's easier to port Qt over to your own platform if required.
 
-Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the qt-project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. Mind you though: no code is error free.
+Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the Qt Project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. Mind you though: no code is error free.
 
 
 
@@ -281,14 +281,14 @@ Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selecte
 Qt Project
 ==========
 
-From the `qt-project wiki <http://wiki.qt-project.org>`_:
+From the `Qt Project wiki <http://wiki.qt.io/>`_:
 
 "The Qt Project is a meritocratic consensus-based community interested in Qt. Anyone who shares that interest can join the community, participate in its decision making processes, and contribute to Qt’s development."
 
-The Qt-Project is an organisation which developes the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is DIGIA, which holds also the comercial rights to Qt.
+The Qt Project is an organisation which developes the open-source part of the Qt further. It forms the base for other users to contribute. The biggest contributor is DIGIA, which holds also the comercial rights to Qt.
 
-Qt has an open-source aspect and a comercial aspect for companies. The comercial aspect is for companies which can not or will not comply with the open-source licenses. Without the comercial aspect these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt-Project.
+Qt has an open-source aspect and a comercial aspect for companies. The comercial aspect is for companies which can not or will not comply with the open-source licenses. Without the comercial aspect these companies would not be able to use Qt and it would not allow DIGIA to contribute so much code to the Qt Project.
 
 There are many companies world-wide, which make their living out of consultancy and product development using Qt on the various platforms. There are many open-source projects and open-source developers, which rely on Qt as their major development library. It feels good to be part of this vibrant community and to work with this awesome tools and libraries. Does it make you a better person? Maybe:-)
 
-**Contribute here: http://wiki.qt-project.org**
+**Contribute here: http://wiki.qt.io/**

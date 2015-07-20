@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
     <link rel="next" title="8. Particle Simulations" href="../ch08/index.html" />
@@ -174,12 +174,12 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23canvas-element&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: May 12, 2015 at 15:52 CET</p>
+<p>Last Build: July 20, 2015 at 11:08 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <img alt="../../_images/glowlines.png" src="../../_images/glowlines.png" />
-<p>Early on when QML was introduced in Qt4 there where some discussions about if QtQuick needs an ellipse. The problem with the ellipse is that others can argue other shapes need also be supported. So there is no ellipse in Qt Quick only rectangular shapes. If you needed one in Qt4 you would need to use an image or write your own C++ ellipse element.</p>
-<p>To allow scripted drawings Qt5 introduces the canvas element. The canvas elements provides a resolution-dependent bitmap canvas, which can be used for graphics, games or to paint other visual images on the fly using JavaScript. The canvas element is based on the HTML5 canvas element.</p>
+<p>Early on when QML was introduced in Qt4 there where some discussions about if Qt Quick needs an ellipse. The problem with the ellipse is that others can argue other shapes need also be supported. So there is no ellipse in Qt Quick only rectangular shapes. If you needed one in Qt4 you would need to use an image or write your own C++ ellipse element.</p>
+<p>To allow scripted drawings Qt 5 introduces the canvas element. The canvas elements provides a resolution-dependent bitmap canvas, which can be used for graphics, games or to paint other visual images on the fly using JavaScript. The canvas element is based on the HTML5 canvas element.</p>
 <p>The fundamental idea of the canvas element is to render paths using a context 2D object. The context 2D object, contains the necessary graphics functions, whereas the canvas acts as the drawing canvas. The 2D context supports strokes, fills, gradients, text and a different sets of path creation commands.</p>
 <p>Let&#8217;s see an example of a simple path drawing:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
@@ -318,7 +318,7 @@
 <h2>7.3. Shadows<a class="headerlink" href="#shadows" title="Permalink to this headline">¶</a></h2>
 <div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23shadows&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">We had difficulties with shadows in the Qt5 alpha release.</p>
+<p class="last">We had difficulties with shadows in the Qt 5 alpha release.</p>
 </div>
 <p>A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you need can specify a <code class="docutils literal"><span class="pre">shadowColor</span></code>, <code class="docutils literal"><span class="pre">shadowOffsetX</span></code>, <code class="docutils literal"><span class="pre">shadowOffsetY</span></code> and a <code class="docutils literal"><span class="pre">shadowBlur</span></code>. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.</p>
 <p>A shadow can also be used to create a glow effect around a path. In the next example we create a text &#8220;Earth&#8221; with a white glow around. All this on a dark background for better visibility.</p>
@@ -344,7 +344,7 @@
 </div>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
-<p class="last">show screen-shot from example, when shadows will work on Qt5</p>
+<p class="last">show screen-shot from example, when shadows will work on Qt 5</p>
 </div>
 </div>
 <div class="section" id="images">
@@ -542,7 +542,7 @@
 <p>In our little example we paint every second a small circle in the left canvas. When the use clicks on the mouse area the canvas content is stored and a image url is retrieved. On the right side of our example the image is then displayed.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Retrieving image data seems not to work currently in the Qt5 Alpha SDK.</p>
+<p class="last">Retrieving image data seems not to work currently in the Qt 5 Alpha SDK.</p>
 </div>
 </div>
 <div class="section" id="canvas-paint">
@@ -872,7 +872,7 @@ setInterval(blank, 40);
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on May 12, 2015.<br/>
+      Last updated on Jul 20, 2015.<br/>
     </p>
   </div>
 </footer>

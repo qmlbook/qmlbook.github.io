@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
     <link rel="next" title="3. Qt Creator IDE" href="../ch03/index.html" />
@@ -181,7 +181,7 @@
 </div>
 <div class="section" id="installing-qt-5-sdk">
 <h2>2.1. Installing Qt 5 SDK<a class="headerlink" href="#installing-qt-5-sdk" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23installing-qt-5-sdk&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>The Qt SDK include the tools needed to build desktop or embedded applications. The latest version can be grabbed from the <a class="reference external" href="http://qt-project.org">Qt-Project homepage</a>. . This is the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23installing-qt-5-sdk&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>The Qt SDK include the tools needed to build desktop or embedded applications. The latest version can be grabbed from the <a class="reference external" href="http://qt.io">Qt-Project homepage</a>. . This is the recommended way to start. The SDK itself has a maintenance tool which will allow you to update the SDK to the latest version.</p>
 <p>The Qt SDK is easy to install and comes with its own IDE for rapid development called <em>Qt Creator</em>. The IDE is a highly productive environment for Qt coding and recommended to all readers. For any circumstances Qt can be used from the command line and you are free to use a code editor of your choice.</p>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
@@ -202,7 +202,7 @@
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">A typical Qt Quick application is made out of a runtime as well as either native plug-ins or native code which launches the runtime code. For the beginning we will not cover the native side of development and focus only of the runtime aspects of Qt5.</p>
+<p class="last">A typical Qt Quick application is made out of a runtime as well as either native plug-ins or native code which launches the runtime code. For the beginning we will not cover the native side of development and focus only of the runtime aspects of Qt 5.</p>
 </div>
 <div class="admonition-todo admonition" id="index-2">
 <p class="first admonition-title">Todo</p>
@@ -234,7 +234,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">HelloWord.qml</span></code> is written in the QML language. We will discuss the QML language in more depth in the next chapter, just so much it&#8217;s describes the user interface in a series of hierarchical elements. This code in particular show a rectangle of 360 x 360 pixel geometry with a centered text &#8220;Hello World&#8221;. A mouse area spans the whole rectangle and when the user clicks it, the application quits.</p>
+<p>The <code class="docutils literal"><span class="pre">HelloWord.qml</span></code> is written in the QML language. We will discuss the QML language in more depth in the next chapter. This example describes the user interface as a series of hierarchical elements. Specifically, a rectangle of 360 x 360 pixels with a centered text reading &#8220;Hello World&#8221;. A mouse area spans the whole rectangle and when the user clicks it, the application quits.</p>
 <div class="admonition-todo admonition" id="index-4">
 <p class="first admonition-title">Todo</p>
 <p class="last">&#8220;just so much it&#8217;s describes the user interface in a series of hierarchical elements&#8221;</p>
@@ -245,7 +245,7 @@
 <p class="first admonition-title">Todo</p>
 <p class="last">&#8220;If everything goes well&#8221;</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/example.png"><img alt="../../_images/example.png" src="../../_images/example.png" style="width: 220.0px; height: 231.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/example.png"><img alt="../../_images/example.png" src="../../_images/example.png" /></a>
 <p>Qt 5 seems to be working and we are ready to continue.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
@@ -253,7 +253,7 @@
 </div>
 <div class="topic">
 <p class="topic-title first">Build from Scratch</p>
-<p>If you&#8217;d like to build Qt5 from the command line, you&#8217;ll first need to grab a copy of the code repository and build it.</p>
+<p>If you&#8217;d like to build Qt 5 from the command line, you&#8217;ll first need to grab a copy of the code repository and build it.</p>
 <div class="highlight-sh"><div class="highlight"><pre>git clone git://gitorious.org/qt/qt5.git
 <span class="nb">cd </span>qt5
 ./init-repository
@@ -262,7 +262,7 @@ make -j4
 </pre></div>
 </div>
 <p>After a successful compilation and 2 cups of coffee, Qt 5 will be available in the <code class="docutils literal"><span class="pre">qtbase</span></code> folder. Any beverage will suffice, however, we suggest coffee for best results.</p>
-<p>If you want to test your compilation, simply start <code class="docutils literal"><span class="pre">qtbase/bin/qmlscene</span></code> and select a QtQuick example to run it ...or follow just us into the next chapter.</p>
+<p>If you want to test your compilation, simply start <code class="docutils literal"><span class="pre">qtbase/bin/qmlscene</span></code> and select a Qt Quick example to run it ...or follow just us into the next chapter.</p>
 <p>To test your installation, we will create a small hello world application. Please create a simple <code class="docutils literal"><span class="pre">example.qml</span></code> file using your favorite text editor and paste the following content inside:</p>
 <div class="highlight-js"><div class="highlight"><pre><span class="c1">// HelloWorld.qml</span>
 
@@ -273,7 +273,7 @@ make -j4
     <span class="nx">height</span><span class="o">:</span> <span class="mi">360</span>
     <span class="nx">Text</span> <span class="p">{</span>
         <span class="nx">anchors</span><span class="p">.</span><span class="nx">centerIn</span><span class="o">:</span> <span class="nx">parent</span>
-        <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;Greetings from Qt5&quot;</span>
+        <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;Greetings from Qt 5&quot;</span>
     <span class="p">}</span>
     <span class="nx">MouseArea</span> <span class="p">{</span>
         <span class="nx">anchors</span><span class="p">.</span><span class="nx">fill</span><span class="o">:</span> <span class="nx">parent</span>
@@ -292,10 +292,10 @@ make -j4
 </div>
 <div class="section" id="application-types">
 <h2>2.3. Application Types<a class="headerlink" href="#application-types" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23application-types&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>This section is a run through the different types of possible application types someone could write with Qt5. It&#8217;s not limited to the presented selection but it should give the reader a better idea about what could be done with Qt5 in general.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23application-types&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>This section is a run through the different types of possible application types someone could write with Qt 5. It&#8217;s not limited to the presented selection but it should give the reader a better idea about what could be done with Qt 5 in general.</p>
 <div class="section" id="console-application">
 <h3>2.3.1. Console Application<a class="headerlink" href="#console-application" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23console-application&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>A console application does not provide any graphical HMI and will normally be called as part of a system service or from the command line. Qt5 comes with a series of ready made components which help you to create console applications cross platform and very efficient. For example networking API or file API. Also string handling or since Qt 5.1 efficient command line parser. As Qt is a high-level API on top of C++ you get programming speed paired with execution speed. Don&#8217;t think as Qt being <em>just</em> as UI toolkit it has so much more to offer.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23console-application&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>A console application does not provide any graphical user interface and will normally be called as part of a system service or from the command line. Qt 5 comes with a series of ready made components which help you to create console applications cross platform and very efficient. For example networking API or file API. Also string handling or since Qt 5.1 efficient command line parser. As Qt is a high-level API on top of C++ you get programming speed paired with execution speed. Don&#8217;t think as Qt being <em>just</em> as UI toolkit it has so much more to offer.</p>
 <p class="rubric">String Handling</p>
 <p>In the fist example we demonstrate how someone could very simple add 2 constant strings. This is not a very useful application but gives you the idea how a native C++ application without an event loop could look like.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="c1">// module or class includes</span>
@@ -318,7 +318,7 @@ make -j4
 </pre></div>
 </div>
 <p class="rubric">Container Classes</p>
-<p>This example adds a lists and list iteration to the application. Qt comes with a large collections of container classes which are easy to use and use the same API paradigms then the rest of Qt classes.</p>
+<p>This example adds a lists and list iteration to the application. Qt comes with a large collections of container classes which are easy to use and use the same API paradigms than the rest of Qt classes.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">QString</span> <span class="nf">s1</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
 <span class="n">QString</span> <span class="nf">s2</span><span class="p">(</span><span class="s">&quot;Qt&quot;</span><span class="p">);</span>
 <span class="n">QList</span><span class="o">&lt;</span><span class="n">QString</span><span class="o">&gt;</span> <span class="n">list</span><span class="p">;</span>
@@ -454,7 +454,7 @@ make -j4
 </pre></div>
 </div>
 <p class="rubric">Desktop Widgets</p>
-<p>The Qt developers have done all of this for you already and provide a set of desktop widgets, which will look native an the different systems. Your job is then to arrange these different widgets in a widget container to larger panels. A widget in Qt can also be a container for other widgets. This is accomplished by the parent-child relationship. This mean we need to make our ready made widgets like buttons, check boxes, radio button but also lists and grids a child of another widget. One way to accomplish this is displayed below.</p>
+<p>The Qt developers have done all of this for you already and provide a set of desktop widgets, which will look native on different operating systems. Your job is then to arrange these different widgets in a widget container to larger panels. A widget in Qt can also be a container for other widgets. This is accomplished by the parent-child relationship. This mean we need to make our ready made widgets like buttons, check boxes, radio button but also lists and grids a child of another widget. One way to accomplish this is displayed below.</p>
 <p>Here is the header file for a so called widget container.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CustomWidget</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QWidget</span>
 <span class="p">{</span>
@@ -560,7 +560,7 @@ Here a short example. First the header file with the declaration of the view and
 <span class="n">model</span><span class="o">-&gt;</span><span class="n">setStringList</span><span class="p">(</span><span class="n">cities</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Another popular way to store or retrieve data is SQL. Qt comes with SQLLite embedded and has also support for other data base engines (e.g. MySQL, PostgresSQL, ...). First you need to create your database using a schema, like this:</p>
+<p>Another popular way to store or retrieve data is SQL. Qt comes with SQLite embedded and has also support for other data base engines (e.g. MySQL, PostgresSQL, ...). First you need to create your database using a schema, like this:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">city</span> <span class="p">(</span><span class="n">name</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">country</span> <span class="nb">TEXT</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">city</span> <span class="n">value</span> <span class="p">(</span><span class="ss">&quot;Munich&quot;</span><span class="p">,</span> <span class="ss">&quot;Germany&quot;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">city</span> <span class="n">value</span> <span class="p">(</span><span class="ss">&quot;Paris&quot;</span><span class="p">,</span> <span class="ss">&quot;France&quot;</span><span class="p">);</span>
@@ -571,7 +571,7 @@ Here a short example. First the header file with the declaration of the view and
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">QT</span> <span class="o">+=</span> <span class="n">sql</span>
 </pre></div>
 </div>
-<p>And then we can open our database using c++. First we need to retrieve a new data base object for the specified database engine. With this database object we open the database. For SQLLite  it&#8217;s enough to specify the path to the database file. Qt provides some high-level database model, one of them is the table model, which uses a table identifier and an option where clause to select the data. The resulting model can be attached to a list view as the other model before.</p>
+<p>And then we can open our database using C++. First we need to retrieve a new data base object for the specified database engine. With this database object we open the database. For SQLite  it&#8217;s enough to specify the path to the database file. Qt provides some high-level database model, one of them is the table model, which uses a table identifier and an option where clause to select the data. The resulting model can be attached to a list view as the other model before.</p>
 <div class="highlight-cpp"><div class="highlight"><pre>QSqlDatabase db = QSqlDatabase::addDatabase(&quot;QSQLITE&quot;);
 db.setDatabaseName(&#39;cities.db&#39;);
 if(!db.open()) {
@@ -603,14 +603,14 @@ m_model-&gt;select();
 <p>The filter proxy model is much more powerful than demonstrated here. For now it is enough to remember its exists.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>This was an overview of the different kind of classical application you could develop with Qt5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic then desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.</p>
+<p>This was an overview of the different kind of classical application you could develop with Qt 5. The desktop is moving and soon the mobile devices will be our desktop of tomorrow. Mobile devices have a different user interface design. They are much more simplistic than desktop applications. They do one thing and this simple and focused. Animations is an important part. A user interface needs to feel alive and fluent. The traditional Qt technologies are not well suited for this market.</p>
 <p class="last">Coming next: Qt Quick for the rescue.</p>
 </div>
 </div>
 <div class="section" id="qt-quick-application">
 <h3>2.3.4. Qt Quick Application<a class="headerlink" href="#qt-quick-application" title="Permalink to this headline">¶</a></h3>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23qt-quick-application&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>There is an inherent conflict in modern software development. The user interface is moving much faster then our back-end services. In a traditional technology you develop the so called front-end with the same pace as the back-end. Which results into conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods.</p>
-<p>Qt Quick provides a declarative environment where your user interface (the front-end) is declared like HTML and your back-end is in native c++ code. This allows you to get both from both worlds.</p>
+<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch02%2Findex.html%23qt-quick-application&labels=ch02">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch02&page=1&state=open">View</a></div><p>There is an inherent conflict in modern software development. The user interface is moving much faster than our back-end services. In a traditional technology you develop the so called front-end with the same pace as the back-end. Which results into conflicts when customers want to change the user interface during a project, or develop the idea of an user interface during the project. Agile projects, require agile methods.</p>
+<p>Qt Quick provides a declarative environment where your user interface (the front-end) is declared like HTML and your back-end is in native C++ code. This allows you to get both from both worlds.</p>
 <p>This is a simple Qt Quick UI below</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
@@ -624,14 +624,14 @@ m_model-&gt;select();
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The declaration language is called QML and it needs to runtime to run it. Qt provides a standard runtime called <code class="docutils literal"><span class="pre">qmlscene</span></code> but it&#8217;s also not so difficult to write a custom runtime. For this we need a quick view and set the main QML document as source. The only thing left is to show the user interface.</p>
+<p>The declaration language is called QML and it needs a runtime to execute in. Qt provides a standard runtime called <code class="docutils literal"><span class="pre">qmlscene</span></code> but it&#8217;s also not so difficult to write a custom runtime. For this we need a quick view and set the main QML document as source. The only thing left is to show the user interface.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">QQuickView</span><span class="o">*</span> <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QQuickView</span><span class="p">();</span>
 <span class="n">QUrl</span> <span class="n">source</span> <span class="o">=</span> <span class="n">Qurl</span><span class="o">::</span><span class="n">fromLocalUrl</span><span class="p">(</span><span class="s">&quot;main.qml&quot;</span><span class="p">);</span>
 <span class="n">view</span><span class="o">-&gt;</span><span class="n">setSource</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
 <span class="n">view</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Coming back to our earlier examples. In one example we used a c++ city model. It would be great if we could use this model inside our declarative QML code.</p>
+<p>Coming back to our earlier examples. In one example we used a C++ city model. It would be great if we could use this model inside our declarative QML code.</p>
 <p>To enable this we first code our front-end to see how we want to use a possible city model. In this case the front-end expects a object named <code class="docutils literal"><span class="pre">cityModel</span></code> which we can use inside a list view.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
 
@@ -658,7 +658,7 @@ m_model-&gt;select();
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. Please see <a class="reference external" href="http://qt-project.org/wiki/QML_and_QSqlTableModel">QML and QSqlTableModel</a> wiki page.</p>
+<p class="last">This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. Please see <a class="reference external" href="http://wiki.qt.io/QML_and_QSqlTableModel">QML and QSqlTableModel</a> wiki page.</p>
 </div>
 </div>
 </div>
@@ -682,7 +682,7 @@ m_model-&gt;select();
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on May 12, 2015.<br/>
+      Last updated on Jul 20, 2015.<br/>
     </p>
   </div>
 </footer>
