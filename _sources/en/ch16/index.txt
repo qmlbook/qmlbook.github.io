@@ -27,7 +27,7 @@ When running QML, it is being executed in a run-time environment. The run-time i
     :language: cpp
 
 
-In the example the ``QGuiApplication`` encapsulates all that is related to the application instance (e.g. application name, command line arguments and managing the event loop). The ``QQmlApplicationEngine`` manages the hierachical order of contexts and components. It requires typical a qml file to be loaded as the starting point of your application. In this case it is a ``main.qml`` containing a window and a text type.
+In the example the ``QGuiApplication`` encapsulates all that is related to the application instance (e.g. application name, command line arguments and managing the event loop). The ``QQmlApplicationEngine`` manages the hierarchical order of contexts and components. It requires typical a qml file to be loaded as the starting point of your application. In this case it is a ``main.qml`` containing a window and a text type.
 
 .. note::
 
@@ -80,7 +80,7 @@ Now you can use the current property everywhere in your application. Thanks to c
 
 .. code-block:: qml
 
-    import QtQuick 2.4
+    import QtQuick 2.5
     import QtQuick.Window 2.0
 
     Window {
@@ -106,7 +106,7 @@ Here are the different ways you can extend QML in general:
 
 **Registering QML types** allows the user to control the lifecycle of an c++ object from QML. This is not possible with the context properties. Also it does not pollute the global namespace. Still all types need to be registered first and by this all libraries need to be linked on application start, which in most cases is not really a problem.
 
-The most flexible system is provided by the **QML extension plugins**. They allow you to register types in a plugin which is loaded when the first QML file calls the import identifier. Also by using a QML singleton there is no need to pollute the global namespace anymore. Plugins allow you to reuse modules across projects, which comes quit handy when you do more than one project with Qt.
+The most flexible system is provided by the **QML extension plugins**. They allow you to register types in a plugin which is loaded when the first QML file calls the import identifier. Also by using a QML singleton there is no need to pollute the global namespace anymore. Plugins allow you to reuse modules across projects, which comes quite handy when you do more than one project with Qt.
 
 For the remainder of this chapter will focus on the qml extension plugins. As they provide the greates flexibility and reuse.
 
@@ -190,7 +190,7 @@ The plugin class is dervived from ``QQmlExtensionPlugin`` and implements the ``r
 
     #endif // FILEIO_PLUGIN_H
 
-In the implementation of the ``registerTypes`` we simple register our ``FileIO`` class using the ``qmlRegisterType`` function.
+In the implementation of the ``registerTypes`` we simply register our ``FileIO`` class using the ``qmlRegisterType`` function.
 
 .. code-block:: cpp
 
@@ -293,7 +293,7 @@ Using FileIO
 
 Now we can use our newly created file to access some nice data. For this example we want to read some city data in a JSON format and display it in a table. We will use two projects, one the extension plugin (called ``fileio``) which provides us a way to read and write text from a file and the other one, which displays the data in a table (``CityUI``) by using the file io for reading and writing of files. The data used in this example is in the ``cities.json`` file.
 
-.. image:: images/cityui_mock.png
+.. figure:: images/cityui_mock.png
 
 JSON is just text, which is formatted in such a way that it can be converted into a valid JS object/array and back to text. We use our ``FileIO`` to read the JSON formatted data and convert it into a JS object using ``JSON.parse()``. The data is later used as a model to the table view. This is roughly the content of our read document function. For saving we convert the data back into a text format and use the write function for saving.
 
@@ -321,7 +321,7 @@ The basic setup is an ``ApplicationWindow`` which can contain a toolbar, menubar
 
 .. code-block:: qml
 
-    import QtQuick 2.4
+    import QtQuick 2.5
     import QtQuick.Controls 1.3
     import QtQuick.Window 2.2
     import QtQuick.Dialogs 1.2
@@ -415,7 +415,7 @@ The content of the city data shall be displayed in a table. For this we use the 
 
 Now the application should show you a menubar with a file menu and an empty table with 4 table headers. The next step will be to populate the table with useful data using our *FileIO* extension.
 
-.. image:: images/cityui_empty.png
+.. figure:: images/cityui_empty.png
 
 The ``cities.json`` document is an array of city entries. Here is an example.
 
@@ -500,7 +500,7 @@ For saving the document, we hook up the save action to the ``saveDocument()`` fu
 
 This is basically the application with reading, writing and displaying a JSON document. Think about all the time spend by writing XML readers and writers. With JSON all you need is a way to read and write a text file or send receive a text buffer.
 
-.. image:: images/cityui_table.png
+.. figure:: images/cityui_table.png
 
 
 Finishing Touch
@@ -546,7 +546,7 @@ For the data removal operation we get hold on the view model and then remove one
 
 A JS array is unfortunately not so smart as a Qt model like the ``QAbstractItemModel``, which will notify the view about row changes or data changes. The view will not show any updated data by now as it is never notified about any changes. Only when we set the data back to the view, the view recognizes there is new data and refreshes the view content. Setting the model again using ``view.model = data`` is a way to let the view know there was a data change.
 
-.. image:: images/cityui_populated.png
+.. figure:: images/cityui_populated.png
 
 Summary
 =======

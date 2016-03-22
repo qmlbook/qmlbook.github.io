@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -163,20 +163,22 @@
 
         </div>
       </div>
-    <div class="col-md-9">
+    <div class="col-md-9 content">
       
   <div class="section" id="qt-creator-ide">
 <h1>3. Qt Creator IDE<a class="headerlink" href="#qt-creator-ide" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23qt-creator-ide&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>Qt Creator is the default integrated development environment for Qt. It&#8217;s written from Qt developers for Qt developers. The IDE is available on all major desktop platforms, e.g. Windows/Mac/Linux. We have already seen customers using Qt Creator on an embedded device. Qt Creator has a lean efficient user interface and it shines really in making the developer productive. Qt Creator can be used to run your Qt Quick user interface but also to compile c++ code and this for your host system or for another device using a cross-compiler.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23qt-creator-ide&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>Qt Creator is the default integrated development environment for Qt. It&#8217;s written from Qt developers for Qt developers. The IDE is available on all major desktop platforms, e.g. Windows/Mac/Linux. We have already seen customers using Qt Creator on an embedded device. Qt Creator has a lean efficient user interface and it really shines in making the developer productive. Qt Creator can be used to run your Qt Quick user interface but also to compile c++ code and this for your host system or for another device using a cross-compiler.</p>
+<div class="figure">
 <img alt="../../_images/qtcreator-screenshots.png" src="../../_images/qtcreator-screenshots.png" />
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The source code of this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <div class="section" id="the-user-interface">
 <h2>3.1. The User Interface<a class="headerlink" href="#the-user-interface" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23the-user-interface&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>When starting Qt Creator you are greeted by the <em>Welcome</em> screen. There you will find the most important hints how to continue inside Qt Creator but also your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23the-user-interface&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>When starting Qt Creator you are greeted by the <em>Welcome</em> screen. There you will find the most important hints on how to continue inside Qt Creator and your recently used projects. You will also see the sessions list, which might be empty for you. A session is a collection of projects stored for your reference. This comes really handy when you have several customers with larger projects.</p>
 <p>On the left side you will see the mode-selector. The mode selectors contain typical steps from your work flow.</p>
 <ul class="simple">
 <li>Welcome mode: For your orientation.</li>
@@ -188,13 +190,15 @@
 <li>Help mode: Easy access to the Qt documentation</li>
 </ul>
 <p>Below the mode-selectors you will find the actual project-configuration selector and the run/debug</p>
-<a class="reference internal image-reference" href="../../_images/creator-welcome.png"><img alt="../../_images/creator-welcome.png" src="../../_images/creator-welcome.png" /></a>
-<p>Most of the time you will be in the edit mode with the code-editor in the central panel. When you need to configure your project you will visit from time to time the Projects mode. And then you press Run. Qt Creator is smart enough to ensure you project is fully build before running it.</p>
-<p>In the bottom are the output panes for issues, application messages, compile messages and other messages.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/creator-welcome.png"><img alt="../../_images/creator-welcome.png" src="../../_images/creator-welcome.png" style="width: 607.0px; height: 400.5px;" /></a>
+</div>
+<p>Most of the time you will be in the edit mode with the code-editor in the central panel. From time to time, you will visit the Projects mode when you need to configure your project. And then you press <code class="docutils literal"><span class="pre">Run</span></code>. Qt Creator is smart enough to ensure you project is fully built before running it.</p>
+<p>In the bottom are the output panes for issues, application messages, compile messages, and other messages.</p>
 </div>
 <div class="section" id="registering-your-qt-kit">
 <h2>3.2. Registering your Qt Kit<a class="headerlink" href="#registering-your-qt-kit" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23registering-your-qt-kit&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>The Qt Kit is probably the most difficult aspect when it comes for working with Qt Creator initially. A Qt Kit is a set of a Qt version, compiler and device and some other settings. It is used to uniquely identify the combination of tools for your project build. A typical kit for the desktop would contain a GCC compiler and a Qt version (e.g. Qt 5.1.1) and a device (&#8220;Desktop&#8221;). After you have created a project you need to assign a kit to a project before qt creator can build the project. Before you are able to create a kit first you need to have a compiler installed and have a Qt version registered. A Qt version is registered by specifying the path to the <code class="docutils literal"><span class="pre">qmake</span></code> executable. Qt Creator then queries <code class="docutils literal"><span class="pre">qmake</span></code> for information required to identify the Qt version.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23registering-your-qt-kit&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>The Qt Kit is probably the most difficult aspect when it comes for working with Qt Creator initially. A Qt Kit is a set of a Qt version, compiler and device and some other settings. It is used to uniquely identify the combination of tools for your project build. A typical kit for the desktop would contain a GCC compiler and a Qt version (e.g. Qt 5.1.1) and a device (&#8220;Desktop&#8221;). After you have created a project you need to assign a kit to a project before qt creator can build the project. Before you are able to create a kit first you need to have a compiler installed and have a Qt version registered. A Qt version is registered by specifying the path to the <code class="docutils literal"><span class="pre">qmake</span></code> executable. Qt Creator then queries <code class="docutils literal"><span class="pre">qmake</span></code> for information required to identify the Qt version.</p>
 <p>Adding a kit and registering a Qt version is done in the <span class="menuselection">Settings ‣ Build &amp; Run</span> entry. There you can also see which compilers are registered.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -203,7 +207,7 @@
 </div>
 <div class="section" id="managing-projects">
 <h2>3.3. Managing Projects<a class="headerlink" href="#managing-projects" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23managing-projects&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>Qt Creator manages your source code in projects. You can create a new project by using <span class="menuselection">File ‣ New File or Project</span>. When you create a project you have many choices of application templates. Qt Creator is capable of creating desktop, mobile applications. Application which use Widgets or Qt Quick or Qt Quick and controls or even bare-bone projects. Also project for HTML5 and python are supported. For a beginner it is difficult to choose, so we pick three project types for you.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23managing-projects&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>Qt Creator manages your source code in projects. You can create a new project by using <span class="menuselection">File ‣ New File or Project</span>. When you create a project you have many choices of application templates. Qt Creator is capable of creating desktop, mobile applications. Application which use Widgets or Qt Quick or Qt Quick and controls or even bare-bone projects. Also project for HTML5 and python are supported. For a beginner it is difficult to choose, so we pick three project types for you.</p>
 <ul class="simple">
 <li><strong>Applications / Qt Quick 2.0 UI</strong>: This will create a QML/JS only project for you, without any C++ code. Take this if you want to sketch a new user interface or plan to create a modern UI application where the native parts are delivered by plug-ins.</li>
 <li><strong>Libraries / Qt Quick 2.0 Extension Plug-in</strong>: Use this wizard to create a stub for a plug-in for your Qt Quick UI. A plug-in is used to extend Qt Quick with native elements.</li>
@@ -216,20 +220,26 @@
 </div>
 <div class="section" id="using-the-editor">
 <h2>3.4. Using the Editor<a class="headerlink" href="#using-the-editor" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23using-the-editor&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>When you open a project or you just created a new project Qt Creator will switch to the edit mode. You should see on the left your project files and in the center area the code editor. Selecting files on the left will open them in the editor. The editor provides syntax highlighting, code-completion and quick-fixes. Also it supports several commands for code refactoring. When working with the editor you will have the feeling that everything reacts immediately. This is thanks to the developers of Qt Creator which made the tool feel really snappy.</p>
-<a class="reference internal image-reference" href="../../_images/creator-editor.png"><img alt="../../_images/creator-editor.png" src="../../_images/creator-editor.png" /></a>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23using-the-editor&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>When you open a project or you just created a new project Qt Creator will switch to the edit mode. You should see on the left your project files and in the center area the code editor. Selecting files on the left will open them in the editor. The editor provides syntax highlighting, code-completion and quick-fixes. Also it supports several commands for code refactoring. When working with the editor you will have the feeling that everything reacts immediately. This is thanks to the developers of Qt Creator which made the tool feel really snappy.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/creator-editor.png"><img alt="../../_images/creator-editor.png" src="../../_images/creator-editor.png" style="width: 480.0px; height: 314.5px;" /></a>
+</div>
 </div>
 <div class="section" id="locator">
 <h2>3.5. Locator<a class="headerlink" href="#locator" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23locator&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>The locator is a central component inside Qt Creator. It allows developers to navigate fast to specific locations inside the source code or inside the help. To open the locator press <code class="kbd docutils literal"><span class="pre">Ctrl+K</span></code>.</p>
-<a class="reference internal image-reference" href="../../_images/locator.png"><img alt="../../_images/locator.png" src="../../_images/locator.png" /></a>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23locator&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>The locator is a central component inside Qt Creator. It allows developers to navigate fast to specific locations inside the source code or inside the help. To open the locator press <code class="kbd docutils literal"><span class="pre">Ctrl+K</span></code>.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/locator.png"><img alt="../../_images/locator.png" src="../../_images/locator.png" style="width: 259.0px; height: 131.5px;" /></a>
+</div>
 <p>A pop-up is coming from the bottom left and shows a list of options. If you just search a file inside your project just hit the first letter from the file name. The locator also accepts wild-cards, so <code class="docutils literal"><span class="pre">*main.qml</span></code> will also work. Otherwise you can also prefix your search to search for specific content type.</p>
-<a class="reference internal image-reference" href="../../_images/creator-locator.png"><img alt="../../_images/creator-locator.png" src="../../_images/creator-locator.png" /></a>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/creator-locator.png"><img alt="../../_images/creator-locator.png" src="../../_images/creator-locator.png" style="width: 369.5px; height: 157.5px;" /></a>
+</div>
 <p>Please try it out. For example to open the help for the QML element Rectangle open the locator and type <code class="docutils literal"><span class="pre">?</span> <span class="pre">rectangle</span></code>. While you type the locator will update the suggestions until you found the reference you are looking for.</p>
 </div>
 <div class="section" id="debugging">
 <h2>3.6. Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23debugging&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>Qt Creator comes with C++ and QML debugging support.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23debugging&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>Qt Creator comes with C++ and QML debugging support.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Hmm, I just realized I have not used debugging a lot. I hope this is a good sign. Need to ask someone to help me out here. In the meantime have a look at the <a class="reference external" href="http://http://doc.qt.io/qtcreator/index.html">Qt Creator documentation</a>.</p>
@@ -237,7 +247,7 @@
 </div>
 <div class="section" id="shortcuts">
 <h2>3.7. Shortcuts<a class="headerlink" href="#shortcuts" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23shortcuts&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>Shortcuts are the difference between a nice to use system and a professional system. As a professional you spend hundred of hours in front of your application. Each shortcut which makes your work-flow faster counts. Luckily the developers of Qt Creator think the same and have added literally hundreds of shortcuts to the application.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch03%2Findex.html%23shortcuts&labels=ch03">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch03&page=1&state=open">View</a></div><p>Shortcuts are the difference between a nice to use system and a professional system. As a professional you spend hundred of hours in front of your application. Each shortcut which makes your work-flow faster counts. Luckily the developers of Qt Creator think the same and have added literally hundreds of shortcuts to the application.</p>
 <p>To get started we have collection some basic shortcuts (in Windows notation):</p>
 <ul class="simple">
 <li><code class="kbd docutils literal"><span class="pre">Ctrl+B</span></code> - Build project</li>
@@ -252,7 +262,9 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>You can edit the shortcuts from inside creator using the settings dialog.</p>
-<a class="last reference internal image-reference" href="../../_images/creator-edit-shortcuts.png"><img alt="../../_images/creator-edit-shortcuts.png" src="../../_images/creator-edit-shortcuts.png" /></a>
+<div class="last figure">
+<a class="reference internal image-reference" href="../../_images/creator-edit-shortcuts.png"><img alt="../../_images/creator-edit-shortcuts.png" src="../../_images/creator-edit-shortcuts.png" style="width: 507.0px; height: 293.0px;" /></a>
+</div>
 </div>
 </div>
 </div>
@@ -271,7 +283,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Jul 20, 2015.<br/>
+      Last updated on Mar 21, 2016.<br/>
     </p>
   </div>
 </footer>

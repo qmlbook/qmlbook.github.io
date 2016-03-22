@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -169,12 +169,12 @@
 
         </div>
       </div>
-    <div class="col-md-9">
+    <div class="col-md-9 content">
       
   <div class="section" id="conheca-o-framework-qt-5">
 <h1>1. Conheça o framework Qt 5<a class="headerlink" href="#conheca-o-framework-qt-5" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a>, <a class="reference external" href="https://github.com/micdoug">micdoug</a></em></p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+pt%2Fch01%2Findex.html%23conheca-o-framework-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+pt%2Fch01%2Findex.html%23conheca-o-framework-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">O código fonte referente a este capítulo pode ser encontrado na <a class="reference external" href="../assets">pasta assets</a>.</p>
 </div>
@@ -213,9 +213,9 @@
 <div class="section" id="construindo-uma-interface-de-usuario">
 <h3>1.2.2. Construindo uma Interface de Usuário<a class="headerlink" href="#construindo-uma-interface-de-usuario" title="Permalink to this headline">¶</a></h3>
 <p>Vamos criar uma interface de usuário simples utilizando o QtQuick, demonstrando alguns aspectos da linguagem QML. Vamos construir uma paisagem com um cata-vento que se movimenta.</p>
-<a class="reference internal image-reference" href="../../_images/scene4.png"><img alt="../../_images/scene4.png" src="../../_images/scene4.png" /></a>
+<a class="reference internal image-reference" href="../../_images/scene4.png"><img alt="../../_images/scene4.png" src="../../_images/scene4.png" style="width: 512.0px; height: 323.0px;" /></a>
 <p>Vamos começar criando um documento vazio chamado <code class="docutils literal"><span class="pre">main.qml</span></code>. Todos os arquivos QML devem terminar com a extensão <code class="docutils literal"><span class="pre">.qml</span></code>. Como uma linguagem de marcação (assim como HTML), um documento QML deve conter um e somente um elemento raiz, que no nosso caso é o elemento <code class="docutils literal"><span class="pre">Image</span></code> que tem suas dimensões (largura e altura) definida pela imagem exibida por ele:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
 
 <span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
@@ -236,7 +236,7 @@
 <img alt="../../_images/pinwheel2.png" src="../../_images/pinwheel2.png" />
 <p>A haste deve ser posicionada centralizada horizontalmente em relação a imagem de fundo, partindo da parte inferior da tela. E o cata-vento pode ser posicionado no centro da tela.</p>
 <p>Normalmente as interfaces de usuários serão compostas de vários tipos diferentes de elementos e não somente de imagens como neste exemplo.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
     <span class="nx">Image</span> <span class="p">{</span>
@@ -267,7 +267,7 @@
 </div>
 <p>Para tornar o nosso exemplo um pouco mais interessante, vamos adicionar um pouco de interatividade ao nosso aplicativo. A ideia é de rotacionar o cata-vento quando o usuário clicar no cenário.</p>
 <p>Nós utilizamos o elemento <code class="docutils literal"><span class="pre">MouseArea</span></code> e fazemos com que ele cubra toda a imagem de fundo.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
     <span class="nx">MouseArea</span> <span class="p">{</span>
@@ -287,7 +287,7 @@
 <p class="last">Por exemplo, você pode monitorar mudanças na propriedade <code class="docutils literal"><span class="pre">width</span></code> utilizando <code class="docutils literal"><span class="pre">onWidthChanged:</span> <span class="pre">print(width)</span></code>.</p>
 </div>
 <p>Agora o cata-vento irá se mexer, mas de forma brusca. A propriedade de rotação é modificada imediatamente após o clique. O que nós queremos é que o catavento rotacione 90 graus de forma suavizada durante um período de tempo. É aí que o uso de animações se torna útil. Uma animação define de que forma mudanças em uma propriedade são distribuídas durante um intervalo de tempo. Para habilitar este comportamento nós utilizamos um tipo de animação chamado <code class="docutils literal"><span class="pre">property</span> <span class="pre">behavior</span></code>. A palavra chave <code class="docutils literal"><span class="pre">Behaviour</span></code> especifica uma animação para uma propriedade que será aplicada toda vez que esta sofrer uma alteração de valor. Em resumo, toda vez que uma propriedade é alterada, a animação é executada. Esta é uma das diversas maneiras que podemos declarar uma animação em QML.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="nx">Image</span> <span class="p">{</span>
         <span class="kd">id: wheel</span>
@@ -301,7 +301,7 @@
 </pre></div>
 </div>
 <p>Agora quando a propriedade <code class="docutils literal"><span class="pre">rotation</span></code> do cata-vento for alterada ela será animada utilizando um <code class="docutils literal"><span class="pre">NumberAnimation</span></code> com uma duração de 250 ms. Então cada rotação de 90 graus levará 250 ms.</p>
-<a class="reference internal image-reference" href="../../_images/scene22.png"><img alt="../../_images/scene22.png" src="../../_images/scene22.png" /></a>
+<a class="reference internal image-reference" href="../../_images/scene22.png"><img alt="../../_images/scene22.png" src="../../_images/scene22.png" style="width: 512.0px; height: 323.0px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Você não verá o cata-vento distorcido como mostrado na imagem. A imagem está desta maneira somente para indicar o movimento de rotação. Porém existe uma imagem com este efeito no diretório <code class="docutils literal"><span class="pre">assets</span></code>. Talvez você queira utilizá-la.</p>
@@ -426,7 +426,7 @@ QtSql -&gt; QtCore
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Jul 20, 2015.<br/>
+      Last updated on Mar 21, 2016.<br/>
     </p>
   </div>
 </footer>

@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -169,12 +169,12 @@
 
         </div>
       </div>
-    <div class="col-md-9">
+    <div class="col-md-9 content">
       
   <div class="section" id="introduzione-a-qt-5">
 <h1>1. Introduzione a Qt 5<a class="headerlink" href="#introduzione-a-qt-5" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a>, <a class="reference external" href="https://github.com/marco-piccolino">marco-piccolino</a></em></p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+it%2Fch01%2Findex.html%23introduzione-a-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+it%2Fch01%2Findex.html%23introduzione-a-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Il codice sorgente associato a questo capitolo è disponibile nella cartella <a class="reference external" href="../../assets">assets</a>.</p>
 </div>
@@ -213,9 +213,9 @@
 <div class="section" id="assimilare-un-interfaccia-utente">
 <h3>1.2.2. Assimilare un&#8217;Interfaccia Utente<a class="headerlink" href="#assimilare-un-interfaccia-utente" title="Permalink to this headline">¶</a></h3>
 <p>Usando QtQuick, creeremo ora una semplice interfaccia utente che dimostra alcuni aspetti del linguaggio QML. Il risultato finale sarà una girandola con le pale che ruotano.</p>
-<a class="reference internal image-reference" href="../../_images/scene3.png"><img alt="../../_images/scene3.png" src="../../_images/scene3.png" /></a>
+<a class="reference internal image-reference" href="../../_images/scene3.png"><img alt="../../_images/scene3.png" src="../../_images/scene3.png" style="width: 512.0px; height: 323.0px;" /></a>
 <p>Cominciamo da un documento vuoto che chiamiamo <code class="docutils literal"><span class="pre">main.qml</span></code>. Tutti i file QML conterranno l&#8217;estensione <code class="docutils literal"><span class="pre">.qml</span></code>. Essendo un linguaggio di markup (come l&#8217;HTML) un documento QML deve avere uno e uno solo elemento radice che, nel nostro caso, è l&#8217;elemento <code class="docutils literal"><span class="pre">Image</span></code>, che ha larghezza e altezza basate sulla geometria dell&#8217;immagine di sfondo:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
 
 <span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
@@ -236,7 +236,7 @@
 <img alt="../../_images/pinwheel1.png" src="../../_images/pinwheel1.png" />
 <p>L&#8217;asta (pole) va posizionata al centro orizontale dello sfondo, verso il basso. E la girandola (pinwheel) va posizionata al centro dello sfondo.</p>
 <p>Di regola l&#8217;interfaccia utente sarà composta da molti elementi di tipo differente, e non solo immagini come in questo esempio.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
     <span class="nx">Image</span> <span class="p">{</span>
@@ -267,7 +267,7 @@
 </div>
 <p>Per rendere questa dimostrazione più interessante, potremmo ora rendere la scena interattiva. L&#8217;idea è quella di rotare la girandola quando l&#8217;utente preme il tasto del mouse da qualche parte nella scena.</p>
 <p>Per fare questo, utilizziamo l&#8217;elemento <code class="docutils literal"><span class="pre">MouseArea</span></code> e gli attribuiamo le stesse dimensioni dell&#8217;elemento radice.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
     <span class="nx">MouseArea</span> <span class="p">{</span>
@@ -287,7 +287,7 @@
 <p class="last">Per esempio, se una proprietà <code class="docutils literal"><span class="pre">width</span></code> cambia, è possibile osservarla con <code class="docutils literal"><span class="pre">onWidthChanged:</span> <span class="pre">print(width)</span></code>.</p>
 </div>
 <p>Ora la girandola ruota, ma non in modo fluido. La proprietà rotation cambia immediatamente. Invece, vorremmo che la proprietà cambiasse di 90 gradi in un arco di tempo. A questo punto entrano in gioco le animazioni. Un&#8217;animazione definisce come il cambio di una proprietà debba essere distribuito lungo un periodo di tempo. Per abilitare questo comportamento, utilizziamo un tipo di animazione chiamato property behavior. Il <code class="docutils literal"><span class="pre">Behaviour</span></code> (comportamento) specifica un&#8217;animazione per una certa proprietà che si applica ad ogni cambiamento di quella proprietà. In breve, ogni volta che la proprietà cambia, l&#8217;animazione viene lanciata. Questo è solo uno dei tanti modi che esistono per dichiarare un&#8217;animazione in QML.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="nx">Image</span> <span class="p">{</span>
         <span class="kd">id: wheel</span>
@@ -301,7 +301,7 @@
 </pre></div>
 </div>
 <p>Ora, ogniqualvolta la proprietà rotation della girandola cambia, essa verrà animata utilizzando una <code class="docutils literal"><span class="pre">NumberAnimation</span></code> della durata di 250 ms. Ovvero, ogni rotazione di 90 gradi impiegherà 250 ms.</p>
-<a class="reference internal image-reference" href="../../_images/scene21.png"><img alt="../../_images/scene21.png" src="../../_images/scene21.png" /></a>
+<a class="reference internal image-reference" href="../../_images/scene21.png"><img alt="../../_images/scene21.png" src="../../_images/scene21.png" style="width: 512.0px; height: 323.0px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">In realtà, la girandola non apparirà sfocata. Lo sfocamento serve solo ad indicare la rotazione. Tuttavia, nella cartella degli assets è presente una girandola sfocata. Forse vuoi provare ad utilizzarla.</p>
@@ -426,7 +426,7 @@ QtSql -&gt; QtCore
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Jul 20, 2015.<br/>
+      Last updated on Mar 21, 2016.<br/>
     </p>
   </div>
 </footer>

@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -179,12 +179,12 @@
 
         </div>
       </div>
-    <div class="col-md-9">
+    <div class="col-md-9 content">
       
   <div class="section" id="meet-qt-5">
 <h1>1. Meet Qt 5<a class="headerlink" href="#meet-qt-5" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch01%2Findex.html%23meet-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch01%2Findex.html%23meet-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The source code of this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
@@ -197,7 +197,7 @@
 <p>Qt 4 was designed to satisfy the desktop world to have a coherent set of UI widgets available on all major platforms. The challenge for Qt users has changed today and it lies more to provide a touch-based user interface for a customer driven user interface and to enable modern user interface on all major desktop and mobile systems. Qt 4.7 started to introduce the Qt Quick technology which allows users to create a set of user interface components from simple elements to achieve a complete new UI, driven by customer demands.</p>
 <div class="section" id="qt-5-focus">
 <h3>1.1.1. Qt 5 Focus<a class="headerlink" href="#qt-5-focus" title="Permalink to this headline">¶</a></h3>
-<p>Qt 5 is a complete refreshment of the very successful Qt 4 release. With Qt 4.8, the Qt 4 release is almost 7 years old. It&#8217;s time to make an amazing toolkit even more amazing. Qt 5 is focused on the the following:</p>
+<p>Qt 5 is a complete refreshing of the very successful Qt 4 release. With Qt 4.8, the Qt 4 release is almost 7 years old. It&#8217;s time to make an amazing toolkit even more amazing. Qt 5 is focused on the following:</p>
 <ul class="simple">
 <li><strong>Outstanding Graphics</strong>: Qt Quick 2 is based on OpenGL (ES) using a scene graph implementation. The recomposed graphics stack allows a new level of graphic effects combined with an ease of use never seen before in this field.</li>
 <li><strong>Developer Productivity</strong>: QML and JavaScript are the primary means for UI creation. The back-end will be driven by C++. The split between JavaScript and C++ allows a fast iteration for front-end developers concentrating on creating beautiful user interfaces and back-end C++ developers concentrating on stability, performance and extending the runtime.</li>
@@ -216,16 +216,20 @@
 <li>JavaScript - The dynamic scripting language</li>
 <li>Qt C++ - The highly portable enhanced c++ library</li>
 </ul>
+<div class="figure">
 <img alt="../../_images/qt5_overview.png" src="../../_images/qt5_overview.png" />
+</div>
 <p>Similar to HTML, QML is a markup language. It is composed of tags called elements in Qt Quick enclosed in curly brackets <code class="docutils literal"><span class="pre">Item</span> <span class="pre">{}</span></code>. It was designed from the ground up for the creation of user interfaces, speed and easier reading for developers. The user interface can be enhanced using JavaScript code. Qt Quick is easily extendable with your own native functionality using Qt C++. In short the declarative UI is called the front-end and the native parts are called the back-end. This allows you to separate the computing intensive and native operation of your application from the user interface part.</p>
-<p>In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.</p>
+<p>In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.</p>
 </div>
 <div class="section" id="digesting-an-user-interface">
 <h3>1.2.2. Digesting an User Interface<a class="headerlink" href="#digesting-an-user-interface" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s create a simple user interface using Qt Quick, which showcases some aspects of the QML language. At the end we will have a paper windmill with rotating blades.</p>
-<a class="reference internal image-reference" href="../../_images/scene.png"><img alt="../../_images/scene.png" src="../../_images/scene.png" /></a>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/scene.png"><img alt="../../_images/scene.png" src="../../_images/scene.png" style="width: 512.0px; height: 323.0px;" /></a>
+</div>
 <p>We start with an empty document called <code class="docutils literal"><span class="pre">main.qml</span></code>. All QML files will have the ending <code class="docutils literal"><span class="pre">.qml</span></code>. As a markup language (like HTML) a QML document needs to have one and only one root element, which in our case is the <code class="docutils literal"><span class="pre">Image</span></code> element with a width and height based on the background image geometry:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.3</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
@@ -234,19 +238,25 @@
 </pre></div>
 </div>
 <p>As QML does not make any restriction which element type is the root element we use an <code class="docutils literal"><span class="pre">Image</span></code> element with the source property set to our background image as the root element.</p>
+<div class="figure">
 <img alt="../../_images/background.png" src="../../_images/background.png" />
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Each element has properties, e.g. a image has a <code class="docutils literal"><span class="pre">width</span></code>, <code class="docutils literal"><span class="pre">height</span></code> but also other properties like a <code class="docutils literal"><span class="pre">source</span></code> property.  The size of the image element is automatically deducted from the image size. Otherwise we would need to set the <code class="docutils literal"><span class="pre">width</span></code> and <code class="docutils literal"><span class="pre">height</span></code> property to some useful pixel values.</p>
+<p>Each element has properties, e.g. an image has a <code class="docutils literal"><span class="pre">width</span></code>, <code class="docutils literal"><span class="pre">height</span></code> but also other properties like a <code class="docutils literal"><span class="pre">source</span></code> property.  The size of the image element is automatically deduced from the image size. Otherwise we would need to set the <code class="docutils literal"><span class="pre">width</span></code> and <code class="docutils literal"><span class="pre">height</span></code> property to some useful pixel values.</p>
 <p>The most standard elements are located in the <code class="docutils literal"><span class="pre">QtQuick</span></code> module which we include in the first line with the import statement.</p>
 <p class="last">The <code class="docutils literal"><span class="pre">id</span></code> special property is optional and contains an identifier to reference this element later in other places in the document. Important: An <code class="docutils literal"><span class="pre">id</span></code> property cannot be changed after it has been set and it cannot be set during runtime. Using <code class="docutils literal"><span class="pre">root</span></code> as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.</p>
 </div>
 <p>The foreground elements pole and pin wheel of our user interface are placed as separate images.</p>
+<div class="figure">
 <img alt="../../_images/pole.png" src="../../_images/pole.png" />
+</div>
+<div class="figure">
 <img alt="../../_images/pinwheel.png" src="../../_images/pinwheel.png" />
+</div>
 <p>The pole needs to be placed in the horizontal center of the background towards the bottom. And the pinwheel can be placed in the center of the background.</p>
 <p>Normally your user interface will be composed of many different element types and not only image elements like in this example.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
     <span class="nx">Image</span> <span class="p">{</span>
@@ -265,7 +275,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To place the pin wheel at the central location we use a complex property called <code class="docutils literal"><span class="pre">anchor</span></code>. Anchoring allows you to specify geometric relations between parent and sibling objects. E.g. Place me in the center of another element ( <code class="docutils literal"><span class="pre">anchors.centerIn:</span> <span class="pre">parent</span></code> ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Sure they need to match, it does not make sense to anchor my left side to the top side of an element.</p>
+<p>To place the pin wheel at the central location we use a complex property called <code class="docutils literal"><span class="pre">anchor</span></code>. Anchoring allows you to specify geometric relations between parent and sibling objects. E.g. Place me in the center of another element ( <code class="docutils literal"><span class="pre">anchors.centerIn:</span> <span class="pre">parent</span></code> ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Sure, they need to match.  It does not make sense to anchor my left side to the top side of an element.</p>
 <p>So we set the pinwheel to be centered in the parent our background.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -277,7 +287,7 @@
 </div>
 <p>To make the showcase a little bit more interesting, we would like to make the scene interactive. The idea is to rotate the wheel when the user pressed the mouse somewhere in the scene.</p>
 <p>We use the <code class="docutils literal"><span class="pre">MouseArea</span></code> element and make it as big as our root element.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
     <span class="nx">MouseArea</span> <span class="p">{</span>
@@ -297,7 +307,7 @@
 <p class="last">If a <code class="docutils literal"><span class="pre">width</span></code> property is changing you can observe it with <code class="docutils literal"><span class="pre">onWidthChanged:</span> <span class="pre">print(width)</span></code> for example.</p>
 </div>
 <p>Now the wheel will rotate, but it is still not fluid yet. The rotation property changes immediately. What we would like that the property changes by 90 degree over time. Now animations come into play. An animation defines how a property change is distributed over a duration. To enable this we use an animation type called property behavior. The <code class="docutils literal"><span class="pre">Behaviour</span></code> does specify an animation for a defined property for every change applied to that property. In short every time the property changes, the animation is run. This is only one of several ways of declaring an animation in QML.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">Image</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="nx">Image</span> <span class="p">{</span>
         <span class="kd">id: wheel</span>
@@ -311,7 +321,9 @@
 </pre></div>
 </div>
 <p>Now whenever the property rotation of the wheel changes it will be animated using a <code class="docutils literal"><span class="pre">NumberAnimation</span></code> with a duration of 250 ms. So each 90 degree turn will take 250 ms.</p>
-<a class="reference internal image-reference" href="../../_images/scene2.png"><img alt="../../_images/scene2.png" src="../../_images/scene2.png" /></a>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/scene2.png"><img alt="../../_images/scene2.png" src="../../_images/scene2.png" style="width: 512.0px; height: 323.0px;" /></a>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">You will not actually see the wheel blurred. This is just to indicate the rotation. But a blurred wheel is in the assets folder. Maybe you want to try to use that.</p>
@@ -436,7 +448,7 @@ QtSql -&gt; QtCore
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Jul 20, 2015.<br/>
+      Last updated on Mar 21, 2016.<br/>
     </p>
   </div>
 </footer>

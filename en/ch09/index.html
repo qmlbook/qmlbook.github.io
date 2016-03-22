@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -115,7 +115,7 @@
               
                 
   <li>
-    <a href="../ch08/index.html" title="Previous Chapter: 8. Particle Simulations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 8. Particle Simu...</span>
+    <a href="../ch08/index.html" title="Previous Chapter: 8. Particle Simulations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 8. Particle S...</span>
     </a>
   </li>
   <li>
@@ -163,21 +163,19 @@
 
         </div>
       </div>
-    <div class="col-md-9">
+    <div class="col-md-9 content">
       
   <div class="section" id="shader-effects">
 <h1>9. Shader Effects<a class="headerlink" href="#shader-effects" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23shader-effects&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><div class="admonition note">
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23shader-effects&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: July 20, 2015 at 11:08 CET</p>
+<p>Last Build: March 21, 2016 at 20:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <div class="topic">
 <p class="topic-title first">Objective</p>
 <ul class="simple">
-<li><a class="reference external" href="http://labs.qt.nokia.com/2012/02/02/qt-graphical-effects-in-qt-labs/">http://labs.qt.nokia.com/2012/02/02/qt-graphical-effects-in-qt-labs/</a></li>
-<li><a class="reference external" href="http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/">http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/</a></li>
 <li><a class="reference external" href="http://doc.qt.io/qt-5/qml-qtquick-shadereffect.html">http://doc.qt.io/qt-5/qml-qtquick-shadereffect.html</a></li>
 <li><a class="reference external" href="http://www.opengl.org/registry/doc/GLSLangSpec.4.20.6.clean.pdf">http://www.opengl.org/registry/doc/GLSLangSpec.4.20.6.clean.pdf</a></li>
 <li><a class="reference external" href="http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf">http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf</a></li>
@@ -192,15 +190,17 @@
 <p>Let&#8217;s first have a look what OpenGL shaders are.</p>
 <div class="section" id="opengl-shaders">
 <h2>9.1. OpenGL Shaders<a class="headerlink" href="#opengl-shaders" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23opengl-shaders&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>OpenGL uses a rendering pipeline split into stages. A simplified OpenGL pipeline would contain a vertex and fragment shader.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23opengl-shaders&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>OpenGL uses a rendering pipeline split into stages. A simplified OpenGL pipeline would contain a vertex and fragment shader.</p>
+<div class="figure">
 <img alt="../../_images/openglpipeline.png" src="../../_images/openglpipeline.png" />
+</div>
 <p>The vertex shader receives vertex data and must assign it to the <em>gl_Position</em> at the end of the routine. In the next stage the vertexes are clipped, transformed and rasterized for pixel output. From there the fragments (pixels) arrive in the fragment shader and can further be manipulated and the resulting color needs to be assigned to <em>gl_FragColor</em>. The vertex shader is called for each corner point of your polygon (vertex = point in 3D) and is responsible of any 3D manipulation of these points. The fragment (fragment = pixel) shader is called for each pixel and determines the color of that pixel.</p>
 </div>
 <div class="section" id="shader-elements">
 <h2>9.2. Shader Elements<a class="headerlink" href="#shader-elements" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23shader-elements&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>For programing shaders Qt Quick provides two elements. The ShaderEffectSource and the ShaderEffect. The shader effect applies custom shaders and the shader effect source renders a QML item into a texture and renders it. As shader effect can apply a custom shaders to it&#8217;s rectangular shape and can use sources for the shader operation. A source can be an image, which is used as a texture or a shader effect source.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23shader-elements&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>For programing shaders Qt Quick provides two elements. The ShaderEffectSource and the ShaderEffect. The shader effect applies custom shaders and the shader effect source renders a QML item into a texture and renders it. As shader effect can apply a custom shaders to it&#8217;s rectangular shape and can use sources for the shader operation. A source can be an image, which is used as a texture or a shader effect source.</p>
 <p>The default shader uses the source and renders it unmodified.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
     <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">240</span>
@@ -247,14 +247,16 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="figure">
 <img alt="../../_images/defaultshader.png" src="../../_images/defaultshader.png" />
+</div>
 <p>In the above example we have a row of 3 images. The first is the real image. The second is rendered using the default shader and the third is rendered using the default shader code for the fragment and vertex extracted from the Qt 5 source code.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you don&#8217;t want to see the source image and only the effected image you can set the <em>Image</em> to invisible (<code class="docutils literal"><span class="pre">visible</span> <span class="pre">:</span> <span class="pre">false</span></code>). The shader effects will still use the image data just the <em>Image</em> element will not be rendered.</p>
 </div>
 <p>Let&#8217;s have a closer look at the shader code.</p>
-<div class="highlight-js"><div class="highlight"><pre><span class="nx">vertexShader</span><span class="o">:</span> <span class="s2">&quot;</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">vertexShader</span><span class="o">:</span> <span class="s2">&quot;</span>
 <span class="s2">    uniform highp mat4 qt_Matrix;</span>
 <span class="s2">    attribute highp vec4 qt_Vertex;</span>
 <span class="s2">    attribute highp vec2 qt_MultiTexCoord0;</span>
@@ -312,7 +314,7 @@
 </ul>
 <p>So we have available the projection matrix, the current vertex and the texture coordinate. The texture coordinate relates to the texture given as source. In the <em>main()</em> function we store the texture coordinate for later use in the fragment shader. Every vertex shader need to assign the <em>gl_Position</em> this is done using here by multiplying the project matrix with the vertex, our point in 3D.</p>
 <p>The fragment shader receives our texture coordinate from the vertex shader and also the texture from our QML source property. It shall be noted how easy it is to pass variable between the shader code and QML. Beautiful. Additional we have the opacity of the shader effect available as <em>qt_Opacity</em>. Every fragment shader needs to assign the <em>gl_FragColor</em> variable, this is done in the default shader code by picking the pixel from the source texture and multiplying it with the opacity.</p>
-<div class="highlight-js"><div class="highlight"><pre><span class="nx">fragmentShader</span><span class="o">:</span> <span class="s2">&quot;</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">fragmentShader</span><span class="o">:</span> <span class="s2">&quot;</span>
 <span class="s2">    varying highp vec2 qt_TexCoord0;</span>
 <span class="s2">    uniform sampler2D source;</span>
 <span class="s2">    uniform lowp float qt_Opacity;</span>
@@ -325,10 +327,10 @@
 </div>
 <div class="section" id="fragment-shaders">
 <h2>9.3. Fragment Shaders<a class="headerlink" href="#fragment-shaders" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23fragment-shaders&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The fragment shader is called for every pixel to be rendered. We will develop a small red lens, which will increase the red color channel value of the image.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23fragment-shaders&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The fragment shader is called for every pixel to be rendered. We will develop a small red lens, which will increase the red color channel value of the image.</p>
 <p class="rubric">Setting up the scene</p>
 <p>First we setup our scene, with a grid centered in the field and our source image be displayed.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
     <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">240</span>
@@ -347,27 +349,25 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="figure">
 <img alt="../../_images/redlense1.png" src="../../_images/redlense1.png" />
+</div>
 <p class="rubric">A red shader</p>
-<p>Next we will add a shader, which displays a red rectangle. As we don&#8217;t need the texture for this we remove the texture from the vertex shader.</p>
-<div class="highlight-qml"><div class="highlight"><pre>            <span class="k">vertexShader:</span> <span class="s2">&quot;</span>
-<span class="s2">                uniform highp mat4 qt_Matrix;</span>
-<span class="s2">                attribute highp vec4 qt_Vertex;</span>
-<span class="s2">                void main() {</span>
-<span class="s2">                    gl_Position = qt_Matrix * qt_Vertex;</span>
-<span class="s2">                }&quot;</span>
-            <span class="k">fragmentShader:</span> <span class="s2">&quot;</span>
+<p>Next we will add a shader, which displays a red rectangle by providing for each fragment a red color value.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span></span>            <span class="k">fragmentShader:</span> <span class="s2">&quot;</span>
 <span class="s2">                uniform lowp float qt_Opacity;</span>
 <span class="s2">                void main() {</span>
 <span class="s2">                    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0) * qt_Opacity;</span>
 <span class="s2">                }&quot;</span>
 </pre></div>
 </div>
-<p>In the fragment shader we simple assign a <em>vec4(1.0, 0.0, 0.0, 1.0)</em> which represents a red color with full opacity (alpha=1.0) to the <em>gl_FragColor</em>.</p>
+<p>In the fragment shader we simply assign a <em>vec4(1.0, 0.0, 0.0, 1.0)</em> which represents a red color with full opacity (alpha=1.0) to the <em>gl_FragColor</em> for each fragment.</p>
+<div class="figure">
 <img alt="../../_images/redlense2.png" src="../../_images/redlense2.png" />
+</div>
 <p class="rubric">A red shader with texture</p>
 <p>Now we want to apply the red color to each texture pixel. For this we need the texture back in the vertex shader. As we don&#8217;t do anything else in the vertex shader the default vertex shader is enough for us.</p>
-<div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">ShaderEffect</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span>        <span class="nx">ShaderEffect</span> <span class="p">{</span>
             <span class="kd">id: effect2</span>
             <span class="k">width:</span> <span class="mi">80</span><span class="p">;</span> <span class="k">height:</span> <span class="nx">width</span>
             <span class="nx">property</span> <span class="nx">variant</span> <span class="k">source:</span> <span class="nx">sourceImage</span>
@@ -384,10 +384,12 @@
 </div>
 <p>The full shader contains now back our image source as variant property and we have left out the vertex shader, which if not specified is the default vertex shader.</p>
 <p>In the fragment shader we pick the texture fragment <em>texture2D(source, qt_TexCoord0)</em> and apply the red color to it.</p>
+<div class="figure">
 <img alt="../../_images/redlense3.png" src="../../_images/redlense3.png" />
+</div>
 <p class="rubric">The red channel property</p>
 <p>It&#8217;s not really nice to hard code the red channel value, so we would like to control the value from the QML side. For this we add a <em>redChannel</em> property to our shader effect and also declare a <em>uniform lowp float redChannel</em> inside our fragment shader. That&#8217;s all to make a value from the shader code available to the QML side. Very simple.</p>
-<div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">ShaderEffect</span> <span class="p">{</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span>        <span class="nx">ShaderEffect</span> <span class="p">{</span>
             <span class="kd">id: effect3</span>
             <span class="k">width:</span> <span class="mi">80</span><span class="p">;</span> <span class="k">height:</span> <span class="nx">width</span>
             <span class="nx">property</span> <span class="nx">variant</span> <span class="k">source:</span> <span class="nx">sourceImage</span>
@@ -405,10 +407,12 @@
 </pre></div>
 </div>
 <p>To make the lens really a lens, we change the <em>vec4</em> color to be <em>vec4(redChannel, 1.0, 1.0, 1.0)</em> so that the other colors are multiplied by 1.0 and only the red portion is multiplied by our <em>redChannel</em> variable.</p>
+<div class="figure">
 <img alt="../../_images/redlense4.png" src="../../_images/redlense4.png" />
+</div>
 <p class="rubric">The red channel animated</p>
-<p>As the <em>redChannel</em> property is just a normal property it can also be animated as all properties in QML. So we can use QML properties to animate values on the the GPU to influence our shaders. How cool is that!</p>
-<div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">ShaderEffect</span> <span class="p">{</span>
+<p>As the <em>redChannel</em> property is just a normal property it can also be animated as all properties in QML. So we can use QML properties to animate values on the GPU to influence our shaders. How cool is that!</p>
+<div class="highlight-qml"><div class="highlight"><pre><span></span>        <span class="nx">ShaderEffect</span> <span class="p">{</span>
             <span class="kd">id: effect4</span>
             <span class="k">width:</span> <span class="mi">80</span><span class="p">;</span> <span class="k">height:</span> <span class="nx">width</span>
             <span class="nx">property</span> <span class="nx">variant</span> <span class="k">source:</span> <span class="nx">sourceImage</span>
@@ -430,13 +434,15 @@
 </pre></div>
 </div>
 <p>Here the final result.</p>
+<div class="figure">
 <img alt="../../_images/redlense5.png" src="../../_images/redlense5.png" />
+</div>
 <p>The shader effect on the 2nd row is animated from 0.0 to 1.0 with a duration of 4 seconds. So the image goes from no red information (0.0 red) over to a normal image (1.0 red).</p>
 </div>
 <div class="section" id="wave-effect">
 <h2>9.4. Wave Effect<a class="headerlink" href="#wave-effect" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23wave-effect&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>In this more complex example we will create a wave effect with the fragment shader. The wave form is based on the sinus curve and it influences the texture coordinates used for the color.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23wave-effect&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>In this more complex example we will create a wave effect with the fragment shader. The wave form is based on the sinus curve and it influences the texture coordinates used for the color.</p>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
     <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">240</span>
@@ -478,25 +484,29 @@
 </pre></div>
 </div>
 <p>The wave calculation is based on a pulse and the texture coordinate manipulation. The pulse equation gives us a sine wave depending on the current time and the used texture coordinate:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">highp</span> <span class="nx">vec2</span> <span class="nx">pulse</span> <span class="o">=</span> <span class="nx">sin</span><span class="p">(</span><span class="nx">time</span> <span class="o">-</span> <span class="nx">frequency</span> <span class="o">*</span> <span class="nx">qt_TexCoord0</span><span class="p">);</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">highp</span> <span class="nx">vec2</span> <span class="nx">pulse</span> <span class="o">=</span> <span class="nx">sin</span><span class="p">(</span><span class="nx">time</span> <span class="o">-</span> <span class="nx">frequency</span> <span class="o">*</span> <span class="nx">qt_TexCoord0</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Without the time factor we would just have a distortion but not a traveling distortion, like waves are.</p>
 <p>For the color we use the color at a different texture coordinate:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">highp</span> <span class="nx">vec2</span> <span class="nx">coord</span> <span class="o">=</span> <span class="nx">qt_TexCoord0</span> <span class="o">+</span> <span class="nx">amplitude</span> <span class="o">*</span> <span class="nx">vec2</span><span class="p">(</span><span class="nx">pulse</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="o">-</span><span class="nx">pulse</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">highp</span> <span class="nx">vec2</span> <span class="nx">coord</span> <span class="o">=</span> <span class="nx">qt_TexCoord0</span> <span class="o">+</span> <span class="nx">amplitude</span> <span class="o">*</span> <span class="nx">vec2</span><span class="p">(</span><span class="nx">pulse</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="o">-</span><span class="nx">pulse</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The texture coordinate is influences by our pulse x-value. The result of this is a moving wave.</p>
+<div class="figure">
 <img alt="../../_images/wave.png" src="../../_images/wave.png" />
+</div>
 <p>Also if we haven&#8217;t moved pixels in this fragment shader the effect would look at first like a job for a vertex shader.</p>
 </div>
 <div class="section" id="vertex-shader">
 <h2>9.5. Vertex Shader<a class="headerlink" href="#vertex-shader" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23vertex-shader&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The vertex shader can be used to manipulated the vertexes provided by the shader effect. In normal cases the shader effect has 4 vertexes (top-left, top-right, bottom-left and bottom-right). Each vertex reported is from type vec4. To visualize the vertex shader we will program a genie effect. This effect is often used to let a rectangular window area vanish into one point.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23vertex-shader&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The vertex shader can be used to manipulated the vertexes provided by the shader effect. In normal cases the shader effect has 4 vertexes (top-left, top-right, bottom-left and bottom-right). Each vertex reported is from type vec4. To visualize the vertex shader we will program a genie effect. This effect is often used to let a rectangular window area vanish into one point.</p>
+<div class="figure">
 <img alt="../../_images/genieeffect.png" src="../../_images/genieeffect.png" />
+</div>
 <p class="rubric">Setting up the scene</p>
 <p>First we will setup our scene again.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
     <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">240</span>
@@ -528,11 +538,13 @@
 </pre></div>
 </div>
 <p>This provides as a scene with a dark background and a shader effect using an image as the source texture. The original image is not visible on the image produced by our genie effect. Additional we added a dark rectangle on the same geometry as the shader effect so we can better detect where we need to click to revert the effect.</p>
+<div class="figure">
 <img alt="../../_images/geniescene.png" src="../../_images/geniescene.png" />
+</div>
 <p>The effect is triggered by clicking on the image, this is defined by the mouse area covering the effect. In the <em>onClicked</em> handler we toggle the custom boolean property <em>minimized</em>. We will use this property later to toggle the effect.</p>
 <p class="rubric">Minimize and normalize</p>
 <p>After we have setup the scene, we define a property of type real called <em>minimize</em>, the property will contain the current value of our minimization. The value will vary from 0.0 to 1.0 and is controlled by a sequential animation.</p>
-<div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">property</span> <span class="nx">real</span> <span class="k">minimize:</span> <span class="mf">0.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span>        <span class="nx">property</span> <span class="nx">real</span> <span class="k">minimize:</span> <span class="mf">0.0</span>
 
         <span class="nx">SequentialAnimation</span> <span class="nx">on</span> <span class="nx">minimize</span> <span class="p">{</span>
             <span class="kd">id: animMinimize</span>
@@ -551,7 +563,7 @@
 </pre></div>
 </div>
 <p>The animation is triggered by the togling of the <em>minimized</em> property. Now that we have setup all our surroundings we finally can look at our vertex shader.</p>
-<div class="highlight-qml"><div class="highlight"><pre>        <span class="k">vertexShader:</span> <span class="s2">&quot;</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span>        <span class="k">vertexShader:</span> <span class="s2">&quot;</span>
 <span class="s2">            uniform highp mat4 qt_Matrix;</span>
 <span class="s2">            attribute highp vec4 qt_Vertex;</span>
 <span class="s2">            attribute highp vec2 qt_MultiTexCoord0;</span>
@@ -569,13 +581,15 @@
 </pre></div>
 </div>
 <p>The vertex shader is called for each vertex so four times, in our case. The default qt defined parameters are provided, like <em>qt_Matrix</em>, <em>qt_Vertex</em>, <em>qt_MultiTexCoord0</em>, <em>qt_TexCoord0</em>. We have discussed the variable already earlier. Additional we link the <em>minimize</em>, <em>width</em> and <em>height</em> variables from our shader effect into our vertex shader code. In the main function we store the current texture coordinate in our <em>qt_TexCoord0</em> to make it available to the fragment shader. Now we copy the current position and modify the x and y position of the vertex:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">highp</span> <span class="nx">vec4</span> <span class="nx">pos</span> <span class="o">=</span> <span class="nx">qt_Vertex</span><span class="p">;</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">highp</span> <span class="nx">vec4</span> <span class="nx">pos</span> <span class="o">=</span> <span class="nx">qt_Vertex</span><span class="p">;</span>
 <span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">mix</span><span class="p">(</span><span class="nx">qt_Vertex</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="nx">height</span><span class="p">,</span> <span class="nx">minimize</span><span class="p">);</span>
 <span class="nx">pos</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">mix</span><span class="p">(</span><span class="nx">qt_Vertex</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">minimize</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The <em>mix(...)</em> function provides a linear interpolation between the first 2 parameters on the point (0.0-1.0) provided by the 3rd parameter. So in our case we interpolate for y between the current y position and the hight based on the current minimize value, similar for x. Bear in mind the minimize value is animated by our sequential animation and travels from 0.0 to 1.0 (or vice versa).</p>
+<div class="figure">
 <img alt="../../_images/genieminimize.png" src="../../_images/genieminimize.png" />
+</div>
 <p>The resulting effect is not really the genie effect but is already a great step towards it.</p>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
@@ -583,13 +597,15 @@
 </div>
 <p class="rubric">Primitive Bending</p>
 <p>So minimized the x and y components of our vertexes. Now we would like to slightly modify the x manipulation and make it depending of the current y value. The needed changes are pretty small. The y-position is calculated as before. The interpolation of the x-position depends now on the vertexes y-position:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">highp</span> <span class="kr">float</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">/</span> <span class="nx">height</span><span class="p">;</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">highp</span> <span class="kr">float</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">/</span> <span class="nx">height</span><span class="p">;</span>
 <span class="nx">pos</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">mix</span><span class="p">(</span><span class="nx">qt_Vertex</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">t</span> <span class="o">*</span> <span class="nx">minimize</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>This results into an x-position tending towards the width when the y-position is larger. In other words the upper 2 vertexes are not affect ed at all as they have an y-position of 0 and the lower two vertexes x-positions both bend towards the width, so they bend towards the same x-position.</p>
+<div class="figure">
 <img alt="../../_images/geniebending.png" src="../../_images/geniebending.png" />
-<div class="highlight-qml"><div class="highlight"><pre>import QtQuick 2.0
+</div>
+<div class="highlight-qml"><div class="highlight"><pre><span></span>import QtQuick 2.5
 
 Rectangle {
     width: 480; height: 240
@@ -652,7 +668,7 @@ Rectangle {
 <p class="rubric">Better Bending</p>
 <p>As the bending is not really satisfying currently we will add several parts to improve the situation.
 First we enhance our animation to support an own bending property. This is necessary as the bending should happen immediately and the y-minimization should be delayed shortly. Both animation have in the sum the same duration (300+700+1000 and 700+1300).</p>
-<div class="highlight-qml"><div class="highlight"><pre>        <span class="nx">property</span> <span class="nx">real</span> <span class="k">bend:</span> <span class="mf">0.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span>        <span class="nx">property</span> <span class="nx">real</span> <span class="k">bend:</span> <span class="mf">0.0</span>
         <span class="nx">property</span> <span class="nx">bool</span> <span class="k">minimized:</span> <span class="kc">false</span>
 
 
@@ -681,23 +697,27 @@ First we enhance our animation to support an own bending property. This is neces
 </pre></div>
 </div>
 <p>Additional to make the bending a smooth curve the y-effect on the x-position is not modified by a curved function from 0..1 and the <code class="docutils literal"><span class="pre">pos.x</span></code> depends now on the new bend property animation:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="nx">highp</span> <span class="kr">float</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">/</span> <span class="nx">height</span><span class="p">;</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">highp</span> <span class="kr">float</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">/</span> <span class="nx">height</span><span class="p">;</span>
 <span class="nx">t</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.0</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="nx">t</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span> <span class="o">*</span> <span class="nx">t</span><span class="p">;</span>
 <span class="nx">pos</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">mix</span><span class="p">(</span><span class="nx">qt_Vertex</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">t</span> <span class="o">*</span> <span class="nx">bend</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The curve starts smooth at the 0.0 value, grows then and stops smoothly towards the 1.0 value. Here is a plot of the function in the specified range. For us only the range from 0..1 is from interest.</p>
+<div class="figure">
 <img alt="../../_images/curve.png" src="../../_images/curve.png" />
+</div>
 <p>The most visual change is by increasing our amount of vertex points. The vertex points used can be increased by using a mesh:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="k">mesh:</span> <span class="nx">GridMesh</span> <span class="p">{</span> <span class="k">resolution:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">size</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="p">}</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="k">mesh:</span> <span class="nx">GridMesh</span> <span class="p">{</span> <span class="k">resolution:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">size</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>The shader effect now has an equality distributed grid of 16x16 vertexes instead of the 2x2 vertexes used before. This makes the interpolation between the vertexes look much smoother.</p>
+<div class="figure">
 <img alt="../../_images/geniesmoothbending.png" src="../../_images/geniesmoothbending.png" />
+</div>
 <p>You can see also the influence of the curve being used, as the bending smoothes at the end nicely. This is where the bending has the strongest effect.</p>
 <p class="rubric">Choosing Sides</p>
 <p>As a final enhancement we want to be able to switch sides. The side is towards which point the genie effect vanishes. Till now it vanishes always towards the width. By adding a <em>side</em> property we are able to modify the point between 0 and width.</p>
-<div class="highlight-js"><div class="highlight"><pre><span class="nx">ShaderEffect</span> <span class="p">{</span>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">ShaderEffect</span> <span class="p">{</span>
     <span class="p">...</span>
     <span class="nx">property</span> <span class="nx">real</span> <span class="nx">side</span><span class="o">:</span> <span class="mf">0.5</span>
 
@@ -710,10 +730,12 @@ First we enhance our animation to support an own bending property. This is neces
 <span class="p">}</span>
 </pre></div>
 </div>
+<div class="figure">
 <img alt="../../_images/geniehalfside.png" src="../../_images/geniehalfside.png" />
+</div>
 <p class="rubric">Packaging</p>
 <p>The last thing to-do is package our effect nicely. For this we extract our genie effect code into an own component called <em>GenieEffect</em>. It has the shader effect as the root element. We removed the mouse area as this should not be inside the component as the triggering of the effect can be toggled by the <em>minimized</em> property.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">ShaderEffect</span> <span class="p">{</span>
     <span class="kd">id: genieEffect</span>
@@ -792,7 +814,7 @@ First we enhance our animation to support an own bending property. This is neces
 </pre></div>
 </div>
 <p>You can use now the effect simply like this:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
     <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">240</span>
@@ -812,15 +834,19 @@ First we enhance our animation to support an own bending property. This is neces
 </div>
 <div class="section" id="curtain-effect">
 <h2>9.6. Curtain Effect<a class="headerlink" href="#curtain-effect" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23curtain-effect&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>In the last example for custom shader effects I would like to bring you the curtain effect. This effect was published first in May 2011 as part of <a class="reference external" href="http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/">Qt labs for shader effects</a>.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23curtain-effect&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>In the last example for custom shader effects I would like to bring you the curtain effect. This effect was published first in May 2011 as part of <a class="reference external" href="http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/">Qt labs for shader effects</a>.</p>
+<div class="figure">
 <img alt="../../_images/curtain.png" src="../../_images/curtain.png" />
+</div>
 <p>At that time I really loved these effects and the curtain effect was my favorite out of them. I just love how the curtain opens and hide the background object.</p>
 <p>I took the code and adapted it towards Qt 5, which was straightforward. Also O did some simplifications to be able to use it better for a showcase. So if you are interested in the full example, please visit the labs blog.</p>
 <p>Just a little bot for the background, the curtain is actually an image called <em>fabric.jpg</em> and it is the source for a shader effect. The effect uses the vertex shader to swing the curtain and uses the fragment shader to provide some shades. Here is a simple diagram to make you hopefully better understand the code.</p>
+<div class="figure">
 <img alt="../../_images/curtain_diagram.png" src="../../_images/curtain_diagram.png" />
+</div>
 <p>The waved shades of the curtain are computed through a sin curve with 7 up/downs (7*PI=21.99...) on the width of the curtain. The other important part is the swing. The <em>topWidth</em> of the curtain is animated when the curtain is opened or closed. The <em>bottomWidth</em> follows the <em>topWidth</em> with a <em>SpringAnimation</em>. By this we create the effect of the swinging bottom part of the curtain. The calculated <em>swing</em> provides the strength of this swing interpolated over the y-component of the vertexes.</p>
 <p>The curtain effect is located in the <code class="docutils literal"><span class="pre">CurtainEffect.qml</span></code> component where the fabric image act as the texture source. There is nothing new on the use of shaders here, only a different way to manipulate the <em>gl_Position</em> in the vertex shader and the <em>gl_FragColor</em> in the fragment shader.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">ShaderEffect</span> <span class="p">{</span>
     <span class="k">anchors.fill:</span> <span class="nx">parent</span>
@@ -857,7 +883,7 @@ First we enhance our animation to support an own bending property. This is neces
     <span class="nx">Image</span> <span class="p">{</span>
         <span class="kd">id: effectImage</span>
         <span class="k">anchors.fill:</span> <span class="nx">parent</span>
-        <span class="k">source:</span> <span class="s2">&quot;assets/fabric.jpg&quot;</span>
+        <span class="k">source:</span> <span class="s2">&quot;assets/fabric.png&quot;</span>
         <span class="k">fillMode:</span> <span class="nx">Image</span><span class="p">.</span><span class="nx">Tile</span>
     <span class="p">}</span>
 
@@ -902,16 +928,24 @@ First we enhance our animation to support an own bending property. This is neces
 </pre></div>
 </div>
 <p>The effect is used in the <code class="docutils literal"><span class="pre">curtaindemo.qml</span></code> file.</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
-<span class="nx">Rectangle</span> <span class="p">{</span>
+<span class="nx">Item</span> <span class="p">{</span>
     <span class="kd">id: root</span>
-    <span class="k">width:</span> <span class="mi">480</span><span class="p">;</span> <span class="k">height:</span> <span class="mi">240</span>
-    <span class="k">color:</span> <span class="s1">&#39;#1e1e1e&#39;</span>
+    <span class="k">width:</span> <span class="nx">background</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span> <span class="k">height:</span> <span class="nx">background</span><span class="p">.</span><span class="nx">height</span>
+
 
     <span class="nx">Image</span> <span class="p">{</span>
+        <span class="kd">id: background</span>
         <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
-        <span class="k">source:</span> <span class="s1">&#39;assets/wiesn.jpg&#39;</span>
+        <span class="k">source:</span> <span class="s1">&#39;assets/background.png&#39;</span>
+    <span class="p">}</span>
+
+    <span class="nx">Text</span> <span class="p">{</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">font.pixelSize:</span> <span class="mi">48</span>
+        <span class="k">color:</span> <span class="s1">&#39;#efefef&#39;</span>
+        <span class="k">text:</span> <span class="s1">&#39;Qt5 Cadaques&#39;</span>
     <span class="p">}</span>
 
     <span class="nx">CurtainEffect</span> <span class="p">{</span>
@@ -930,10 +964,12 @@ First we enhance our animation to support an own bending property. This is neces
 </div>
 <div class="section" id="qt-graphicseffect-library">
 <h2>9.7. Qt GraphicsEffect Library<a class="headerlink" href="#qt-graphicseffect-library" title="Permalink to this headline">¶</a></h2>
-<div class="admonition issues">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23qt-graphicseffect-library&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The graphics effect library is a collection of shader effects. Ready made by the Qt developers. It&#8217;s a great tool-set to be used in your application but also a great source to learn how to build shaders.</p>
+<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23qt-graphicseffect-library&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The graphics effect library is a collection of shader effects. Ready made by the Qt developers. It&#8217;s a great tool-set to be used in your application but also a great source to learn how to build shaders.</p>
 <p>The graphics effects library comes with a so called manual testbed which is a great tool to interactively discover the different effects.</p>
 <p>The testbed is located under <code class="docutils literal"><span class="pre">$QTDIR/qtgraphicaleffects/tests/manual/testbed</span></code>.</p>
+<div class="figure">
 <img alt="../../_images/graphicseffectstestbed.png" src="../../_images/graphicseffectstestbed.png" />
+</div>
 <p>The effects library contains ca 20 effects. A list of the effect and a short description can be found below.</p>
 <p class="rubric">Graphics Effects List</p>
 <table border="1" class="docutils" id="id1">
@@ -1053,7 +1089,7 @@ First we enhance our animation to support an own bending property. This is neces
 </tbody>
 </table>
 <p>Here is a example using the <em>FastBlur</em> effect from the <em>Blur</em> category:</p>
-<div class="highlight-qml"><div class="highlight"><pre><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 <span class="kr">import</span> <span class="nx">QtGraphicalEffects</span> <span class="mf">1.0</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
@@ -1093,7 +1129,9 @@ First we enhance our animation to support an own bending property. This is neces
 </pre></div>
 </div>
 <p>The image to the left is the original image. Clicking the image on the right will toggle blurred property and animated the blur radius from 0 to 32 during 1 second. The image on the left show the blurred image.</p>
+<div class="figure">
 <img alt="../../_images/fastblur.png" src="../../_images/fastblur.png" />
+</div>
 </div>
 </div>
 
@@ -1111,7 +1149,7 @@ First we enhance our animation to support an own bending property. This is neces
     </p>
     <p>
         &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Jul 20, 2015.<br/>
+      Last updated on Mar 21, 2016.<br/>
     </p>
   </div>
 </footer>
