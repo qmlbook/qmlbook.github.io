@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8. Particle Simulations &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>8. Particle Simulations &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,9 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="9. Shader Effects" href="../ch09/index.html" />
     <link rel="prev" title="7. Canvas Element" href="../ch07/index.html" />
 <meta charset='utf-8'>
@@ -50,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,7 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch05/index.html">5. Fluid Elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch06/index.html">6. Model-View-Delegate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch07/index.html">7. Canvas Element</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">8. Particle Simulations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Particle Simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch09/index.html">9. Shader Effects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch10/index.html">10. Multimedia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch11/index.html">11. Networking</a></li>
@@ -82,7 +81,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -116,11 +114,11 @@
               
                 
   <li>
-    <a href="../ch07/index.html" title="Previous Chapter: 7. Canvas Element"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 7. Canvas Ele...</span>
+    <a href="../ch07/index.html" title="Previous Chapter: 7. Canvas Element"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 7. Canvas Element</span>
     </a>
   </li>
   <li>
-    <a href="../ch09/index.html" title="Next Chapter: 9. Shader Effects"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">9. Shader Eff... &raquo;</span>
+    <a href="../ch09/index.html" title="Next Chapter: 9. Shader Effects"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">9. Shader Effects &raquo;</span>
     </a>
   </li>
               
@@ -170,16 +168,16 @@
   <div class="section" id="particle-simulations">
 <h1>8. Particle Simulations<a class="headerlink" href="#particle-simulations" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-simulations&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><div class="admonition note">
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/index.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/index.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23particle-simulations" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch08&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 21, 2016 at 20:39 CET</p>
+<p>Last Build: June 19, 2018 at 14:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <p>Particles are a computer graphics techniques to visualize certain graphics effects. Typical effects could be: falling leaves, fire, explosions, meteors, clouds, etc.</p>
 <p>It differs from other graphics rendering as particles rendering is based on fuzzy aspects. The outcome is not exactly predictable on pixel-base. Parameters to the particle system describe the boundaries for the stochastic simulation. The phenomena rendered with particles is often difficult to visualize with traditional rendering techniques. The good thing is you can let QML elements interact with the particles systems. Also as parameters are expressed as properties they can be animated using the traditional animation techniques.</p>
 <div class="section" id="concept">
 <h2>8.1. Concept<a class="headerlink" href="#concept" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23concept&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>In the heart of the particle simulation is the <code class="docutils literal"><span class="pre">ParticleSystem</span></code> which controls the shared time-line. A scene can have several particles systems, each of them with an independent time-line. A particle is emitted using an <code class="docutils literal"><span class="pre">Emitter</span></code> element and visualized with a <code class="docutils literal"><span class="pre">ParticlePainter</span></code>, which can be an image, QML item or a shader item.
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23concept"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch08&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>In the heart of the particle simulation is the <code class="docutils literal"><span class="pre">ParticleSystem</span></code> which controls the shared time-line. A scene can have several particles systems, each of them with an independent time-line. A particle is emitted using an <code class="docutils literal"><span class="pre">Emitter</span></code> element and visualized with a <code class="docutils literal"><span class="pre">ParticlePainter</span></code>, which can be an image, QML item or a shader item.
 An emitter provides also the direction for particle using a vector space. A particle ones emitted can&#8217;t be manipulated by the emitter anymore. The particle module provides the <code class="docutils literal"><span class="pre">Affector</span></code>, which allows to manipulate parameters of the particle after is has been emitted.</p>
 <p>Particles in a system can share timed transitions using the <code class="docutils literal"><span class="pre">ParticleGroup</span></code> element. By default every particle is on the empty (&#8216;&#8217;) group.</p>
 <div class="figure">
@@ -196,7 +194,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <div class="section" id="simple-simulation">
 <h2>8.2. Simple Simulation<a class="headerlink" href="#simple-simulation" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23simple-simulation&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>Let us have a look at a very simple simulation to get started. Qt Quick makes it actually very simple to get started with particle rendering. For this we need:</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23simple-simulation"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch08&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Let us have a look at a very simple simulation to get started. Qt Quick makes it actually very simple to get started with particle rendering. For this we need:</p>
 <ul class="simple">
 <li>A <code class="docutils literal"><span class="pre">ParticleSystem</span></code> which binds all elements to an simulation</li>
 <li>An <code class="docutils literal"><span class="pre">Emitter</span></code> which emits particles into the system</li>
@@ -270,7 +268,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <div class="section" id="particle-parameters">
 <h2>8.3. Particle Parameters<a class="headerlink" href="#particle-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-parameters&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>We saw already how to change the behavior of the emitter to change our simulation. The particle painter used allows us how the particle image is visualized for each particle.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23particle-parameters"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch08&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>We saw already how to change the behavior of the emitter to change our simulation. The particle painter used allows us how the particle image is visualized for each particle.</p>
 <p>Coming back to our example we update our <code class="docutils literal"><span class="pre">ImageParticle</span></code>. First we change our particle image to a small sparking star image:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">ImageParticle</span> <span class="p">{</span>
     <span class="p">...</span>
@@ -315,7 +313,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <div class="section" id="directed-particles">
 <h2>8.4. Directed Particles<a class="headerlink" href="#directed-particles" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23directed-particles&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>We have seen particles can rotate. But particles can also have a trajectory. The trajectory is specified as the velocity or acceleration of particles defined by a stochastic direction also named a vector space.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23directed-particles"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch08&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>We have seen particles can rotate. But particles can also have a trajectory. The trajectory is specified as the velocity or acceleration of particles defined by a stochastic direction also named a vector space.</p>
 <p>There are different vector spaces available to define the velocity or acceleration of a particle:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">AngleDirection</span></code> - a direction that varies in angle</li>
@@ -449,7 +447,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <div class="section" id="particle-painters">
 <h2>8.5. Particle Painters<a class="headerlink" href="#particle-painters" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-painters&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>Till now we have only used the image based particle painter to visualize particles. Qt comes also with other particle painters:</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23particle-painters"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch08&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Till now we have only used the image based particle painter to visualize particles. Qt comes also with other particle painters:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">ItemParticle</span></code>: delegate based particle painter</li>
 <li><code class="docutils literal"><span class="pre">CustomParticle</span></code>: shader based particle painter</li>
@@ -485,7 +483,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <div class="section" id="affecting-particles">
 <h2>8.6. Affecting Particles<a class="headerlink" href="#affecting-particles" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23affecting-particles&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>Particles are emitted by the emitter. After a particle was emitted it can&#8217;t be changed anymore by the emitter. The affectors allows you to influence particles after they have been emitted.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23affecting-particles"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch08&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Particles are emitted by the emitter. After a particle was emitted it can&#8217;t be changed anymore by the emitter. The affectors allows you to influence particles after they have been emitted.</p>
 <p>Each type of affector affects particles in a different way:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">Age</span></code> - alter where the particle is in its life-cycle</li>
@@ -597,7 +595,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <div class="section" id="particle-groups">
 <h2>8.7. Particle Groups<a class="headerlink" href="#particle-groups" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23particle-groups&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>At the beginning of this chapter we stated particles are in groups, which is by default the empty group (&#8216;&#8217;). Using the <code class="docutils literal"><span class="pre">GroupGoal</span></code> affector is it possible to let the particle change groups. To visualize this we would like to create a small firework, where rockets start into space and explode in the air into a spectacular firework.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23particle-groups"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch08&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>At the beginning of this chapter we stated particles are in groups, which is by default the empty group (&#8216;&#8217;). Using the <code class="docutils literal"><span class="pre">GroupGoal</span></code> affector is it possible to let the particle change groups. To visualize this we would like to create a small firework, where rockets start into space and explode in the air into a spectacular firework.</p>
 <div class="figure">
 <img alt="../../_images/firework_teaser.png" src="../../_images/firework_teaser.png" />
 </div>
@@ -916,7 +914,7 @@ An emitter provides also the direction for particle using a vector space. A part
 </div>
 <div class="section" id="summary">
 <h2>8.8. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch08%2Findex.html%23summary&labels=ch08">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch08&page=1&state=open">View</a></div><p>Particles are a very powerful and fun way to express graphical phenomena like smoke. firework, random visual elements. The extended API in Qt 5 is very powerful and we have just scratched on the surface. There are several elements we haven&#8217;t yet played with like sprites, size tables or color tables. Also when the particles look very playful they have a great potential when used wisely to create some eye catcher in any user interface. Using to many particle effects inside an user interface will definitely lead to the impression towards a game. Creating games is also the real strength of the particles.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch08&body=back-link%3A+en%2Fch08%2Findex.html%23summary"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch08&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Particles are a very powerful and fun way to express graphical phenomena like smoke. firework, random visual elements. The extended API in Qt 5 is very powerful and we have just scratched on the surface. There are several elements we haven&#8217;t yet played with like sprites, size tables or color tables. Also when the particles look very playful they have a great potential when used wisely to create some eye catcher in any user interface. Using to many particle effects inside an user interface will definitely lead to the impression towards a game. Creating games is also the real strength of the particles.</p>
 </div>
 </div>
 
@@ -933,8 +931,8 @@ An emitter provides also the direction for particle using a vector space. A part
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>

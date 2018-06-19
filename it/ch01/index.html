@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Introduzione a Qt 5 &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>1. Introduzione a Qt 5 &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,9 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -48,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -80,7 +79,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../en/ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../en/ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../en/ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -174,7 +172,7 @@
   <div class="section" id="introduzione-a-qt-5">
 <h1>1. Introduzione a Qt 5<a class="headerlink" href="#introduzione-a-qt-5" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a>, <a class="reference external" href="https://github.com/marco-piccolino">marco-piccolino</a></em></p>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+it%2Fch01%2Findex.html%23introduzione-a-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch01&body=back-link%3A+it%2Fch01%2Findex.html%23introduzione-a-qt-5"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch01&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Il codice sorgente associato a questo capitolo è disponibile nella cartella <a class="reference external" href="../../assets">assets</a>.</p>
 </div>
@@ -317,7 +315,7 @@
 <p>I Qt Essentials modules sono obbligatori per ogni piattaforma che supporta Qt. Essi forniscono le basi per sviluppare un&#8217;applicazione Qt 5 moderna utilizzando Qt Quick 2.</p>
 <p class="rubric">Core-Essential Modules</p>
 <p>Il set minimo di moduli Qt 5 per iniziare la programmazione in QML.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
@@ -363,8 +361,7 @@
 </tr>
 </tbody>
 </table>
-<p class="graphviz">
-<img src="../../_images/graphviz-748fb340dd79a8004144bb8c91ec98bf1ed82cf3.png" alt="digraph essentials {
+<img src="../../_images/graphviz-216118737d7a658fe41f60bd8635980f055ad43c.png" alt="digraph essentials {
 QtGui -&gt; QtCore
 QtNetwork -&gt;QtCore
 QtMultimedia -&gt;QtGui
@@ -372,7 +369,6 @@ QtQml -&gt; QtCore
 QtQuick -&gt; QtQml
 QtSql -&gt; QtCore
 }" />
-</p>
 <p class="rubric">Moduli Addon Qt</p>
 <p>Oltre ai moduli essenziali, Qt offre agli sviluppatori software moduli addizionali che non fanno parte della distribuzione. Ecco un breve elenco di moduli addizionali disponibili.</p>
 <ul class="simple">
@@ -425,8 +421,8 @@ QtSql -&gt; QtCore
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>

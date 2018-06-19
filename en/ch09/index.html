@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9. Shader Effects &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>9. Shader Effects &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,9 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="10. Multimedia" href="../ch10/index.html" />
     <link rel="prev" title="8. Particle Simulations" href="../ch08/index.html" />
 <meta charset='utf-8'>
@@ -50,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -74,7 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch06/index.html">6. Model-View-Delegate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch07/index.html">7. Canvas Element</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch08/index.html">8. Particle Simulations</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">9. Shader Effects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Shader Effects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch10/index.html">10. Multimedia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch11/index.html">11. Networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
@@ -82,7 +81,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -168,9 +166,9 @@
   <div class="section" id="shader-effects">
 <h1>9. Shader Effects<a class="headerlink" href="#shader-effects" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23shader-effects&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><div class="admonition note">
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/index.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/index.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch09&body=back-link%3A+en%2Fch09%2Findex.html%23shader-effects" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch09&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 21, 2016 at 20:39 CET</p>
+<p>Last Build: June 19, 2018 at 14:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <div class="topic">
@@ -190,15 +188,15 @@
 <p>Let&#8217;s first have a look what OpenGL shaders are.</p>
 <div class="section" id="opengl-shaders">
 <h2>9.1. OpenGL Shaders<a class="headerlink" href="#opengl-shaders" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23opengl-shaders&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>OpenGL uses a rendering pipeline split into stages. A simplified OpenGL pipeline would contain a vertex and fragment shader.</p>
-<div class="figure">
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch09&body=back-link%3A+en%2Fch09%2Findex.html%23opengl-shaders"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch09&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>OpenGL uses a rendering pipeline split into stages. A simplified OpenGL pipeline would contain a vertex and fragment shader.</p>
+<div class="figure align-center">
 <img alt="../../_images/openglpipeline.png" src="../../_images/openglpipeline.png" />
 </div>
 <p>The vertex shader receives vertex data and must assign it to the <em>gl_Position</em> at the end of the routine. In the next stage the vertexes are clipped, transformed and rasterized for pixel output. From there the fragments (pixels) arrive in the fragment shader and can further be manipulated and the resulting color needs to be assigned to <em>gl_FragColor</em>. The vertex shader is called for each corner point of your polygon (vertex = point in 3D) and is responsible of any 3D manipulation of these points. The fragment (fragment = pixel) shader is called for each pixel and determines the color of that pixel.</p>
 </div>
 <div class="section" id="shader-elements">
 <h2>9.2. Shader Elements<a class="headerlink" href="#shader-elements" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23shader-elements&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>For programing shaders Qt Quick provides two elements. The ShaderEffectSource and the ShaderEffect. The shader effect applies custom shaders and the shader effect source renders a QML item into a texture and renders it. As shader effect can apply a custom shaders to it&#8217;s rectangular shape and can use sources for the shader operation. A source can be an image, which is used as a texture or a shader effect source.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch09&body=back-link%3A+en%2Fch09%2Findex.html%23shader-elements"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch09&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>For programing shaders Qt Quick provides two elements. The ShaderEffectSource and the ShaderEffect. The shader effect applies custom shaders and the shader effect source renders a QML item into a texture and renders it. As shader effect can apply a custom shaders to it&#8217;s rectangular shape and can use sources for the shader operation. A source can be an image, which is used as a texture or a shader effect source.</p>
 <p>The default shader uses the source and renders it unmodified.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
@@ -327,7 +325,7 @@
 </div>
 <div class="section" id="fragment-shaders">
 <h2>9.3. Fragment Shaders<a class="headerlink" href="#fragment-shaders" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23fragment-shaders&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The fragment shader is called for every pixel to be rendered. We will develop a small red lens, which will increase the red color channel value of the image.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch09&body=back-link%3A+en%2Fch09%2Findex.html%23fragment-shaders"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch09&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The fragment shader is called for every pixel to be rendered. We will develop a small red lens, which will increase the red color channel value of the image.</p>
 <p class="rubric">Setting up the scene</p>
 <p>First we setup our scene, with a grid centered in the field and our source image be displayed.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
@@ -441,7 +439,7 @@
 </div>
 <div class="section" id="wave-effect">
 <h2>9.4. Wave Effect<a class="headerlink" href="#wave-effect" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23wave-effect&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>In this more complex example we will create a wave effect with the fragment shader. The wave form is based on the sinus curve and it influences the texture coordinates used for the color.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch09&body=back-link%3A+en%2Fch09%2Findex.html%23wave-effect"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch09&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>In this more complex example we will create a wave effect with the fragment shader. The wave form is based on the sinus curve and it influences the texture coordinates used for the color.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">Rectangle</span> <span class="p">{</span>
@@ -500,7 +498,7 @@
 </div>
 <div class="section" id="vertex-shader">
 <h2>9.5. Vertex Shader<a class="headerlink" href="#vertex-shader" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23vertex-shader&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The vertex shader can be used to manipulated the vertexes provided by the shader effect. In normal cases the shader effect has 4 vertexes (top-left, top-right, bottom-left and bottom-right). Each vertex reported is from type vec4. To visualize the vertex shader we will program a genie effect. This effect is often used to let a rectangular window area vanish into one point.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch09&body=back-link%3A+en%2Fch09%2Findex.html%23vertex-shader"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch09&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The vertex shader can be used to manipulated the vertexes provided by the shader effect. In normal cases the shader effect has 4 vertexes (top-left, top-right, bottom-left and bottom-right). Each vertex reported is from type vec4. To visualize the vertex shader we will program a genie effect. This effect is often used to let a rectangular window area vanish into one point.</p>
 <div class="figure">
 <img alt="../../_images/genieeffect.png" src="../../_images/genieeffect.png" />
 </div>
@@ -834,7 +832,7 @@ First we enhance our animation to support an own bending property. This is neces
 </div>
 <div class="section" id="curtain-effect">
 <h2>9.6. Curtain Effect<a class="headerlink" href="#curtain-effect" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23curtain-effect&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>In the last example for custom shader effects I would like to bring you the curtain effect. This effect was published first in May 2011 as part of <a class="reference external" href="http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/">Qt labs for shader effects</a>.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch09&body=back-link%3A+en%2Fch09%2Findex.html%23curtain-effect"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch09&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>In the last example for custom shader effects I would like to bring you the curtain effect. This effect was published first in May 2011 as part of <a class="reference external" href="http://labs.qt.nokia.com/2011/05/03/qml-shadereffectitem-on-qgraphicsview/">Qt labs for shader effects</a>.</p>
 <div class="figure">
 <img alt="../../_images/curtain.png" src="../../_images/curtain.png" />
 </div>
@@ -964,7 +962,7 @@ First we enhance our animation to support an own bending property. This is neces
 </div>
 <div class="section" id="qt-graphicseffect-library">
 <h2>9.7. Qt GraphicsEffect Library<a class="headerlink" href="#qt-graphicseffect-library" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch09%2Findex.html%23qt-graphicseffect-library&labels=ch09">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch09&page=1&state=open">View</a></div><p>The graphics effect library is a collection of shader effects. Ready made by the Qt developers. It&#8217;s a great tool-set to be used in your application but also a great source to learn how to build shaders.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch09&body=back-link%3A+en%2Fch09%2Findex.html%23qt-graphicseffect-library"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch09&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The graphics effect library is a collection of shader effects. Ready made by the Qt developers. It&#8217;s a great tool-set to be used in your application but also a great source to learn how to build shaders.</p>
 <p>The graphics effects library comes with a so called manual testbed which is a great tool to interactively discover the different effects.</p>
 <p>The testbed is located under <code class="docutils literal"><span class="pre">$QTDIR/qtgraphicaleffects/tests/manual/testbed</span></code>.</p>
 <div class="figure">
@@ -972,7 +970,7 @@ First we enhance our animation to support an own bending property. This is neces
 </div>
 <p>The effects library contains ca 20 effects. A list of the effect and a short description can be found below.</p>
 <p class="rubric">Graphics Effects List</p>
-<table border="1" class="docutils" id="id1">
+<table border="1" class="colwidths-given docutils" id="id1">
 <caption><span class="caption-text">Graphics Effects List</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="27%" />
@@ -994,27 +992,27 @@ First we enhance our animation to support an own bending property. This is neces
 <td><em>BrightnessContrast</em></td>
 <td>adjusts brightness and contrast</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><em>Colorize</em></td>
 <td>sets color in the HSL color space</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><em>ColorOverlay</em></td>
 <td>applies a color layer</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><em>Desaturate</em></td>
 <td>reduces color saturation</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><em>GammaAdjust</em></td>
 <td>adjusts luminance</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><em>HueSaturation</em></td>
 <td>adjusts colors in the HSL color space</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><em>LevelAdjust</em></td>
 <td>adjusts colors in the RGB color space</td>
 </tr>
@@ -1022,11 +1020,11 @@ First we enhance our animation to support an own bending property. This is neces
 <td><em>ConicalGradient</em></td>
 <td>draws a conical gradient</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><em>LinearGradient</em></td>
 <td>draws a linear gradient</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><em>RadialGradient</em></td>
 <td>draws a radial gradient</td>
 </tr>
@@ -1038,7 +1036,7 @@ First we enhance our animation to support an own bending property. This is neces
 <td><em>DropShadow</em></td>
 <td>draws a drop shadow</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><em>InnerShadow</em></td>
 <td>draws an inner shadow</td>
 </tr>
@@ -1046,15 +1044,15 @@ First we enhance our animation to support an own bending property. This is neces
 <td><em>FastBlur</em></td>
 <td>applies a fast blur effect</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><em>GaussianBlur</em></td>
 <td>applies a higher quality blur effect</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><em>MaskedBlur</em></td>
 <td>applies a varying intensity blur effect</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><em>RecursiveBlur</em></td>
 <td>blurs repeatedly, providing a strong blur effect</td>
 </tr>
@@ -1062,11 +1060,11 @@ First we enhance our animation to support an own bending property. This is neces
 <td><em>DirectionalBlur</em></td>
 <td>applies a directional motion blur effect</td>
 </tr>
-<tr class="row-odd"><td>&nbsp;</td>
+<tr class="row-odd"><td>&#160;</td>
 <td><em>RadialBlur</em></td>
 <td>applies a radial motion blur effect</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><em>ZoomBlur</em></td>
 <td>applies a zoom motion blur effect</td>
 </tr>
@@ -1074,7 +1072,7 @@ First we enhance our animation to support an own bending property. This is neces
 <td><em>Glow</em></td>
 <td>draws an outer glow effect</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><em>RectangularGlow</em></td>
 <td>draws a rectangular outer glow effect</td>
 </tr>
@@ -1082,7 +1080,7 @@ First we enhance our animation to support an own bending property. This is neces
 <td><em>OpacityMask</em></td>
 <td>masks the source item with another item</td>
 </tr>
-<tr class="row-even"><td>&nbsp;</td>
+<tr class="row-even"><td>&#160;</td>
 <td><em>ThresholdMask</em></td>
 <td>masks the source item with another item and applies a threshold value</td>
 </tr>
@@ -1148,8 +1146,8 @@ First we enhance our animation to support an own bending property. This is neces
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>

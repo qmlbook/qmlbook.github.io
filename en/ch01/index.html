@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Meet Qt 5 &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>1. Meet Qt 5 &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,9 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. Get Started" href="../ch02/index.html" />
     <link rel="prev" title="A Book about Qt5" href="../../index.html" />
 <meta charset='utf-8'>
@@ -50,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -66,7 +65,7 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">1. Meet Qt 5</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Meet Qt 5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch02/index.html">2. Get Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch03/index.html">3. Qt Creator IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch04/index.html">4. Quick Starter</a></li>
@@ -82,7 +81,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -103,7 +101,7 @@
 </li>
 <li><a class="reference internal" href="#qt-5-introduction">1.2. Qt 5 Introduction</a><ul>
 <li><a class="reference internal" href="#qt-quick">1.2.1. Qt Quick</a></li>
-<li><a class="reference internal" href="#digesting-an-user-interface">1.2.2. Digesting an User Interface</a></li>
+<li><a class="reference internal" href="#digesting-a-user-interface">1.2.2. Digesting a User Interface</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#qt-building-blocks">1.3. Qt Building Blocks</a><ul>
@@ -164,7 +162,7 @@
 </li>
 <li><a class="reference internal" href="#qt-5-introduction">1.2. Qt 5 Introduction</a><ul>
 <li><a class="reference internal" href="#qt-quick">1.2.1. Qt Quick</a></li>
-<li><a class="reference internal" href="#digesting-an-user-interface">1.2.2. Digesting an User Interface</a></li>
+<li><a class="reference internal" href="#digesting-a-user-interface">1.2.2. Digesting a User Interface</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#qt-building-blocks">1.3. Qt Building Blocks</a><ul>
@@ -184,7 +182,7 @@
   <div class="section" id="meet-qt-5">
 <h1>1. Meet Qt 5<a class="headerlink" href="#meet-qt-5" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch01%2Findex.html%23meet-qt-5&labels=ch01">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch01&page=1&state=open">View</a></div><div class="admonition note">
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/index.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/index.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch01&body=back-link%3A+en%2Fch01%2Findex.html%23meet-qt-5" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch01&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The source code of this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
@@ -220,15 +218,15 @@
 <img alt="../../_images/qt5_overview.png" src="../../_images/qt5_overview.png" />
 </div>
 <p>Similar to HTML, QML is a markup language. It is composed of tags called elements in Qt Quick enclosed in curly brackets <code class="docutils literal"><span class="pre">Item</span> <span class="pre">{}</span></code>. It was designed from the ground up for the creation of user interfaces, speed and easier reading for developers. The user interface can be enhanced using JavaScript code. Qt Quick is easily extendable with your own native functionality using Qt C++. In short the declarative UI is called the front-end and the native parts are called the back-end. This allows you to separate the computing intensive and native operation of your application from the user interface part.</p>
-<p>In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt own unit testing framework and exported for the front-end developers to be used.</p>
+<p>In a typical project the front-end is developed in QML/JavaScript and the back-end code, which interfaces with the system and does the heavy lifting, is developed using Qt C++. This allows a natural split between the more design oriented developers and the functional developers. Typically the back-end is tested using Qt Test, the Qt unit testing framework, and exported for the front-end developers to be used.</p>
 </div>
-<div class="section" id="digesting-an-user-interface">
-<h3>1.2.2. Digesting an User Interface<a class="headerlink" href="#digesting-an-user-interface" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="digesting-a-user-interface">
+<h3>1.2.2. Digesting a User Interface<a class="headerlink" href="#digesting-a-user-interface" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s create a simple user interface using Qt Quick, which showcases some aspects of the QML language. At the end we will have a paper windmill with rotating blades.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../../_images/scene.png"><img alt="../../_images/scene.png" src="../../_images/scene.png" style="width: 512.0px; height: 323.0px;" /></a>
 </div>
-<p>We start with an empty document called <code class="docutils literal"><span class="pre">main.qml</span></code>. All QML files will have the ending <code class="docutils literal"><span class="pre">.qml</span></code>. As a markup language (like HTML) a QML document needs to have one and only one root element, which in our case is the <code class="docutils literal"><span class="pre">Image</span></code> element with a width and height based on the background image geometry:</p>
+<p>We start with an empty document called <code class="docutils literal"><span class="pre">main.qml</span></code>. All our QML files will have the suffix <code class="docutils literal"><span class="pre">.qml</span></code>. As a markup language (like HTML) a QML document needs to have one and only one root element, which in our case is the <code class="docutils literal"><span class="pre">Image</span></code> element with a width and height based on the background image geometry:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
 <span class="nx">Image</span> <span class="p">{</span>
@@ -237,25 +235,25 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>As QML does not make any restriction which element type is the root element we use an <code class="docutils literal"><span class="pre">Image</span></code> element with the source property set to our background image as the root element.</p>
+<p>As QML doesn&#8217;t restrict the choice of element type for the root element, we use an <code class="docutils literal"><span class="pre">Image</span></code> element with the source property set to our background image as the root element.</p>
 <div class="figure">
 <img alt="../../_images/background.png" src="../../_images/background.png" />
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Each element has properties, e.g. an image has a <code class="docutils literal"><span class="pre">width</span></code>, <code class="docutils literal"><span class="pre">height</span></code> but also other properties like a <code class="docutils literal"><span class="pre">source</span></code> property.  The size of the image element is automatically deduced from the image size. Otherwise we would need to set the <code class="docutils literal"><span class="pre">width</span></code> and <code class="docutils literal"><span class="pre">height</span></code> property to some useful pixel values.</p>
-<p>The most standard elements are located in the <code class="docutils literal"><span class="pre">QtQuick</span></code> module which we include in the first line with the import statement.</p>
-<p class="last">The <code class="docutils literal"><span class="pre">id</span></code> special property is optional and contains an identifier to reference this element later in other places in the document. Important: An <code class="docutils literal"><span class="pre">id</span></code> property cannot be changed after it has been set and it cannot be set during runtime. Using <code class="docutils literal"><span class="pre">root</span></code> as the id for the root-element is just a habit by the author and makes referencing the top-most element predictable in larger QML documents.</p>
+<p>Each element has properties, e.g., an image has <code class="docutils literal"><span class="pre">width</span></code> and <code class="docutils literal"><span class="pre">height</span></code> properties (each holding a count of pixels), and also other properties such as a <code class="docutils literal"><span class="pre">source</span></code> property.  Since the size of the image element is automatically derived from the image size, we don&#8217;t need to set the <code class="docutils literal"><span class="pre">width</span></code> and <code class="docutils literal"><span class="pre">height</span></code> properties ourselves.</p>
+<p>The most standard elements are located in the <code class="docutils literal"><span class="pre">QtQuick</span></code> module which is made available by the import statement at the start of the <code class="docutils literal"><span class="pre">.qml</span></code> file.</p>
+<p class="last">The <code class="docutils literal"><span class="pre">id</span></code> is a special optional property that contains an identifier which can be used to reference its associated element elsewhere in the document. Important: An <code class="docutils literal"><span class="pre">id</span></code> property cannot be changed after it has been set and it cannot be set during runtime. Using <code class="docutils literal"><span class="pre">root</span></code> as the id for the root-element is just a convention used in this book which makes referencing the top-most element predictable in larger QML documents.</p>
 </div>
-<p>The foreground elements pole and pin wheel of our user interface are placed as separate images.</p>
+<p>The foreground elements representing the pole and the pin wheel in the user interface are included as separate images.</p>
 <div class="figure">
 <img alt="../../_images/pole.png" src="../../_images/pole.png" />
 </div>
 <div class="figure">
 <img alt="../../_images/pinwheel.png" src="../../_images/pinwheel.png" />
 </div>
-<p>The pole needs to be placed in the horizontal center of the background towards the bottom. And the pinwheel can be placed in the center of the background.</p>
-<p>Normally your user interface will be composed of many different element types and not only image elements like in this example.</p>
+<p>We want to place the pole horizontally in the center of the background, but offset vertically towards the bottom. And we want to place the pinwheel in the middle of the background.</p>
+<p>Although this beginners example only uses image elements, as we progress you will create more sophisticated user interfaces that are composed of many different element types.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
@@ -275,18 +273,18 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To place the pin wheel at the central location we use a complex property called <code class="docutils literal"><span class="pre">anchor</span></code>. Anchoring allows you to specify geometric relations between parent and sibling objects. E.g. Place me in the center of another element ( <code class="docutils literal"><span class="pre">anchors.centerIn:</span> <span class="pre">parent</span></code> ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Sure, they need to match.  It does not make sense to anchor my left side to the top side of an element.</p>
-<p>So we set the pinwheel to be centered in the parent our background.</p>
+<p>To place the pin wheel in the middle we use a complex property called <code class="docutils literal"><span class="pre">anchor</span></code>. Anchoring allows you to specify geometric relations between parent and sibling objects. For example, place me in the center of another element ( <code class="docutils literal"><span class="pre">anchors.centerIn:</span> <span class="pre">parent</span></code> ). There are left, right, top, bottom, centerIn, fill, verticalCenter and horizontalCenter relations on both ends. Naturally, when two or more anchors are used together, they should complement each other: it wouldn&#8217;t make sense, for instance, to anchor an element&#8217;s left side to the top of another element.</p>
+<p>For the pinwheel, the anchoring only requires one simple anchor.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Sometime you will need to make small adjustments on the exact centering. This would be possible with <code class="docutils literal"><span class="pre">anchors.horizontalCenterOffset</span></code> or with <code class="docutils literal"><span class="pre">anchors.verticalCenterOffset</span></code>. Similar adjustments properties are also available to all the other anchors. Please consult the documentation for a full list of anchors properties.</p>
+<p class="last">Sometimes you will want to make small adjustments, for example, to nudge an element slightly off-center. This can be done with <code class="docutils literal"><span class="pre">anchors.horizontalCenterOffset</span></code> or with <code class="docutils literal"><span class="pre">anchors.verticalCenterOffset</span></code>. Similar adjustment properties are also available for all the other anchors. Please consult the documentation for a full list of anchors properties.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Placing an image as a child element of our root element (the <code class="docutils literal"><span class="pre">Image</span></code> element) shows an important concept of a declarative language. You describe the user interface in the order of layers and grouping, where the topmost layer (our rectangle) is drawn first and the child layers are drawn on top of it in the local coordinate system of the containing element.</p>
+<p class="last">Placing an image as a child element of our root element (the <code class="docutils literal"><span class="pre">Image</span></code> element) illustrates an important concept of a declarative language. You describe the visual appearance of the user interface in the order of layers and grouping, where the topmost layer (our background image) is drawn first and the child layers are drawn on top of it in the local coordinate system of the containing element.</p>
 </div>
-<p>To make the showcase a little bit more interesting, we would like to make the scene interactive. The idea is to rotate the wheel when the user pressed the mouse somewhere in the scene.</p>
-<p>We use the <code class="docutils literal"><span class="pre">MouseArea</span></code> element and make it as big as our root element.</p>
+<p>To make the showcase a bit more interesting, we would like to make the scene interactive. The idea is to rotate the wheel when the user presses the mouse somewhere in the scene.</p>
+<p>We use the <code class="docutils literal"><span class="pre">MouseArea</span></code> element and make it cover the entire area of our root element.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="p">...</span>
@@ -298,15 +296,15 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The mouse area emit signals when a user clicks inside it covered area. You can hook onto this signal overriding the <code class="docutils literal"><span class="pre">onClicked</span></code> function. In this case the reference the wheel image and change its rotation by +90 degree.</p>
+<p>The mouse area emits signals when a user clicks inside the area it covers. You can connect to this signal by overriding the <code class="docutils literal"><span class="pre">onClicked</span></code> function. When a signal is connected it means that the function or functions it corresponds to is called whenever the signal is emitted. In this case we have said that when the mouse area is clicked the element whose <code class="docutils literal"><span class="pre">id</span></code> is <code class="docutils literal"><span class="pre">wheel</span></code> (i.e., the pinwheel image) should rotate by +90 degrees.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>This works for every signal, the naming is <code class="docutils literal"><span class="pre">on</span></code> + <code class="docutils literal"><span class="pre">SignalName</span></code> in title cases. Also all properties emit a signal when their value changed. The naming is:</p>
+<p>This technique works for every signal, with the naming convention being <code class="docutils literal"><span class="pre">on</span></code> + <code class="docutils literal"><span class="pre">SignalName</span></code> in title cases. Also all properties emit a signal when their value changes. For these signals the naming convention is:</p>
 <blockquote>
 <div><code class="docutils literal"><span class="pre">on</span></code> + <code class="docutils literal"><span class="pre">PropertyName</span></code> + <code class="docutils literal"><span class="pre">Changed</span></code></div></blockquote>
-<p class="last">If a <code class="docutils literal"><span class="pre">width</span></code> property is changing you can observe it with <code class="docutils literal"><span class="pre">onWidthChanged:</span> <span class="pre">print(width)</span></code> for example.</p>
+<p class="last">For example, if a <code class="docutils literal"><span class="pre">width</span></code> property is changed you can observe it with <code class="docutils literal"><span class="pre">onWidthChanged:</span> <span class="pre">print(width)</span></code>.</p>
 </div>
-<p>Now the wheel will rotate, but it is still not fluid yet. The rotation property changes immediately. What we would like that the property changes by 90 degree over time. Now animations come into play. An animation defines how a property change is distributed over a duration. To enable this we use an animation type called property behavior. The <code class="docutils literal"><span class="pre">Behaviour</span></code> does specify an animation for a defined property for every change applied to that property. In short every time the property changes, the animation is run. This is only one of several ways of declaring an animation in QML.</p>
+<p>The wheel will now rotate whenever the user clicks, but the rotation takes place in one jump, rather than a fluid movement over time. We can achieve smooth movement using animation. An animation defines how a property change occurs over a period of time. To enable this we use an animation type called property behavior. The <code class="docutils literal"><span class="pre">Behaviour</span></code> specifies an animation for a defined property for every change applied to that property. In other words, whenever the property changes, the animation is run. This is only one of many ways of doing animation in QML.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">Image</span> <span class="p">{</span>
     <span class="kd">id: root</span>
     <span class="nx">Image</span> <span class="p">{</span>
@@ -320,26 +318,26 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now whenever the property rotation of the wheel changes it will be animated using a <code class="docutils literal"><span class="pre">NumberAnimation</span></code> with a duration of 250 ms. So each 90 degree turn will take 250 ms.</p>
+<p>Now whenever the wheel&#8217;s rotation property changes it will be animated using a <code class="docutils literal"><span class="pre">NumberAnimation</span></code> with a duration of 250 ms. So each 90 degree turn will take 250 ms, producing a nice smooth turn.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../../_images/scene2.png"><img alt="../../_images/scene2.png" src="../../_images/scene2.png" style="width: 512.0px; height: 323.0px;" /></a>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You will not actually see the wheel blurred. This is just to indicate the rotation. But a blurred wheel is in the assets folder. Maybe you want to try to use that.</p>
+<p class="last">You will not actually see the wheel blurred. This is just to indicate the rotation. (A blurred wheel is in the assets folder, in case you&#8217;d like to experiment with it.)</p>
 </div>
-<p>Now the wheel looks already much better. I hope this has given you a short idea of how Qt Quick programming works.</p>
+<p>Now the wheel looks much better and behaves nicely, as well as providing a very brief insight into the basics of how Qt Quick programming works.</p>
 </div>
 </div>
 <div class="section" id="qt-building-blocks">
 <h2>1.3. Qt Building Blocks<a class="headerlink" href="#qt-building-blocks" title="Permalink to this headline">¶</a></h2>
-<p>Qt 5 consists of a large amount of modules. A module in general is a library for the developer to use. Some modules are mandatory for a Qt enabled platform. They form a set called <em>Qt Essentials Modules</em>. Many modules are optional and form the <em>Qt Add-On Modules</em>. It&#8217;s expected that the majority of developers will not have the need to use them, but it&#8217;s good to know them as they provide invaluable solutions to common challenges.</p>
+<p>Qt 5 consists of a large number of modules. In general, a module is a library for the developer to use. Some modules are mandatory for a Qt enabled platform and form the set called <em>Qt Essentials Modules</em>. Many modules are optional and form the <em>Qt Add-On Modules</em>. It&#8217;s expected that the majority of developers will not need to use them, but it&#8217;s good to know them as they provide invaluable solutions to common challenges.</p>
 <div class="section" id="qt-modules">
 <h3>1.3.1. Qt Modules<a class="headerlink" href="#qt-modules" title="Permalink to this headline">¶</a></h3>
 <p>The Qt Essentials modules are mandatory for a Qt enabled platform. They offer the foundation to develop a modern Qt 5 Application using Qt Quick 2.</p>
 <p class="rubric">Core-Essential Modules</p>
 <p>The minimal set of Qt 5 modules to start QML programming.</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="20%" />
 <col width="80%" />
@@ -385,8 +383,7 @@
 </tr>
 </tbody>
 </table>
-<p class="graphviz">
-<img src="../../_images/graphviz-748fb340dd79a8004144bb8c91ec98bf1ed82cf3.png" alt="digraph essentials {
+<img src="../../_images/graphviz-216118737d7a658fe41f60bd8635980f055ad43c.png" alt="digraph essentials {
 QtGui -&gt; QtCore
 QtNetwork -&gt;QtCore
 QtMultimedia -&gt;QtGui
@@ -394,7 +391,6 @@ QtQml -&gt; QtCore
 QtQuick -&gt; QtQml
 QtSql -&gt; QtCore
 }" />
-</p>
 <p class="rubric">Qt Addon Modules</p>
 <p>Besides the essential modules, Qt offers additional modules for software developers, which are not part of the release. Here is a short list of add-on modules available.</p>
 <ul class="simple">
@@ -414,13 +410,13 @@ QtSql -&gt; QtCore
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">As these modules are not part of the release the state differ between modules, depending how many contributors are active and how well it&#8217;s get tested.</p>
+<p class="last">As these modules are not part of the release the state of each module may differ depending how many contributors are active and how well it&#8217;s tested.</p>
 </div>
 </div>
 <div class="section" id="supported-platforms">
 <h3>1.3.2. Supported Platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this headline">¶</a></h3>
-<p>Qt supports a variety of platforms. All major desktop and embedded platforms are supported. Through the Qt Application Abstraction, nowadays it&#8217;s easier to port Qt over to your own platform if required.</p>
-<p>Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the Qt Project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. Mind you though: no code is error free.</p>
+<p>Qt supports a variety of platforms including all major desktop and embedded platforms. Through the Qt Application Abstraction it&#8217;s now easier than ever to port Qt to your own platform if required.</p>
+<p>Testing Qt 5 on a platform is time consuming. A sub-set of platforms was selected by the Qt Project to build the reference platforms set. These platforms are thoroughly tested through the system testing to ensure the best quality. However, keep in mind that no code is error free.</p>
 </div>
 </div>
 <div class="section" id="qt-project">
@@ -447,8 +443,8 @@ QtSql -&gt; QtCore
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>

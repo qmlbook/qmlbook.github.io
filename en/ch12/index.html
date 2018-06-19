@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>12. Storage &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>12. Storage &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,9 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="13. Dynamic QML" href="../ch13/index.html" />
     <link rel="prev" title="11. Networking" href="../ch11/index.html" />
 <meta charset='utf-8'>
@@ -50,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -77,12 +76,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch09/index.html">9. Shader Effects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch10/index.html">10. Multimedia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch11/index.html">11. Networking</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">12. Storage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -159,10 +157,10 @@
       
   <div class="section" id="storage">
 <h1>12. Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h1>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch12%2Findex.html%23storage&labels=ch12">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch12&page=1&state=open">View</a></div><p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/index.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/index.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch12&body=back-link%3A+en%2Fch12%2Findex.html%23storage" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch12&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 21, 2016 at 20:39 CET</p>
+<p>Last Build: June 19, 2018 at 14:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <p>This chapter will cover storing data using Qt Quick in Qt 5. Qt Quick offers only limited ways of storing local data directly. In this sense it acts more like a browser. In many projects storing data is handled by the C++ backend and the required functionality is exported to the Qt Quick frontend side. Qt Quick does not provide you with access to the host file system to read and write files as you are used from the Qt C++ side. So it would be the task of the backend engineer to write such a plugin or maybe use a network channel to communicate with a local server, which provides these capabilities.</p>
@@ -183,7 +181,7 @@
         <span class="kd">id: settings</span>
         <span class="nx">property</span> <span class="nx">alias</span> <span class="k">color:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">color</span>
     <span class="p">}</span>
-    <span class="nx">MousArea</span> <span class="p">{</span>
+    <span class="nx">MouseArea</span> <span class="p">{</span>
         <span class="k">anchors.fill:</span> <span class="nx">parent</span>
         <span class="k">onClicked:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">hsla</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">(),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
     <span class="p">}</span>
@@ -227,7 +225,7 @@
 </div>
 <div class="section" id="local-storage-sql">
 <h2>12.2. Local Storage - SQL<a class="headerlink" href="#local-storage-sql" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch12%2Findex.html%23local-storage-sql&labels=ch12">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch12&page=1&state=open">View</a></div><p>Qt Quick supports an local storage API known from the web browsers the local storage API. the API is available under &#8220;import QtQuick.LocalStorage 2.0&#8221;.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch12&body=back-link%3A+en%2Fch12%2Findex.html%23local-storage-sql"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch12&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Qt Quick supports an local storage API known from the web browsers the local storage API. the API is available under &#8220;import QtQuick.LocalStorage 2.0&#8221;.</p>
 <p>In general it stores the content into a SQLITE database in system specific location in an unique ID based file based on the given database name and version. It is not possible to list or delete existing databases. You can find the storage location from <code class="docutils literal"><span class="pre">QQmlEngine::offlineStoragePath()</span></code>.</p>
 <p>You use the API by first creating a database object and then creating transactions on the database. Each transaction can contain one or more SQL queries. The transaction will roll-back when a SQL query will fail inside the transaction.</p>
 <p>For example to read from a simple notes table with a text column you could use the local storage like this:</p>
@@ -390,8 +388,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>

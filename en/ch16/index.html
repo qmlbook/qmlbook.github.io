@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>16. Extending QML with C++ &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>16. Extending QML with C++ &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,10 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
-    <link rel="next" title="16. Assets" href="../../assets/index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="15. Qt and C++" href="../ch15/index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -50,7 +48,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -81,8 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">16. Extending QML with C++</a></li>
 </ul>
 </ul>
 </li>
@@ -123,10 +120,6 @@
                 
   <li>
     <a href="../ch15/index.html" title="Previous Chapter: 15. Qt and C++"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 15. Qt and C++</span>
-    </a>
-  </li>
-  <li>
-    <a href="../../assets/index.html" title="Next Chapter: 16. Assets"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">16. Assets &raquo;</span>
     </a>
   </li>
               
@@ -182,15 +175,15 @@
   <div class="section" id="extending-qml-with-c">
 <h1>16. Extending QML with C++<a class="headerlink" href="#extending-qml-with-c" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch16%2Findex.html%23extending-qml-with-c&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><div class="admonition note">
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/index.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/index.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch16&body=back-link%3A+en%2Fch16%2Findex.html%23extending-qml-with-c" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch16&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 21, 2016 at 20:39 CET</p>
+<p>Last Build: June 19, 2018 at 14:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <p>Executing QML within the confined space that QML as a language offers can sometimes be limiting. By extending the QML run-time with native functionality written in C++, the application can utilize the full performance and freedom of the base platform.</p>
 <div class="section" id="understanding-the-qml-run-time">
 <h2>16.1. Understanding the QML Run-time<a class="headerlink" href="#understanding-the-qml-run-time" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch16%2Findex.html%23understanding-the-qml-run-time&labels=ch16">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch16&page=1&state=open">View</a></div><p>When running QML, it is being executed in a run-time environment. The run-time is implemented in C++ in the <code class="docutils literal"><span class="pre">QtQml</span></code> module. It consists of an engine, responsible for the execution of QML, contexts, holding the properties accessible for each component, and components, the instantiated QML elements.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch16&body=back-link%3A+en%2Fch16%2Findex.html%23understanding-the-qml-run-time"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch16&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>When running QML, it is being executed in a run-time environment. The run-time is implemented in C++ in the <code class="docutils literal"><span class="pre">QtQml</span></code> module. It consists of an engine, responsible for the execution of QML, contexts, holding the properties accessible for each component, and components, the instantiated QML elements.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;QtGui&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;QtQml&gt;</span><span class="cp"></span>
 
@@ -225,7 +218,7 @@
 </pre></div>
 </div>
 <p>In the qml file we declare our dependencies here it is <code class="docutils literal"><span class="pre">QtQuick</span></code> and <code class="docutils literal"><span class="pre">QtQuick.Window</span></code>. These declaration will trigger a lookup for these modules in the import paths and on success will load the required plugins by the engine. The newly loaded types will then be made available to the qml file controlled by a qmldir.</p>
-<p>Is it also possible to shortcut the plugin creation by adding our types directly to the engine. Here we assume we have a <code class="docutils literal"><span class="pre">CurrentTime</span></code> <code class="docutils literal"><span class="pre">QObject</span></code> based class.</p>
+<p>It is also possible to shortcut the plugin creation by adding our types directly to the engine. Here we assume we have a <code class="docutils literal"><span class="pre">CurrentTime</span></code> <code class="docutils literal"><span class="pre">QObject</span></code> based class.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">QQmlApplicationEngine</span> <span class="n">engine</span><span class="p">;</span>
 
 <span class="n">qmlRegisterType</span><span class="o">&lt;</span><span class="n">CurrentTime</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;org.example&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;CurrentTime&quot;</span><span class="p">);</span>
@@ -253,7 +246,7 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Do not mix up <code class="docutils literal"><span class="pre">setContextProperty()</span></code> and <code class="docutils literal"><span class="pre">setProperty()</span></code>. The first on sets a context property on a qml context, and <code class="docutils literal"><span class="pre">setProperty()</span></code> sets a dynamic property value on a <code class="docutils literal"><span class="pre">QObject</span></code> and will not help you.</p>
+<p class="last">Do not mix up <code class="docutils literal"><span class="pre">setContextProperty()</span></code> and <code class="docutils literal"><span class="pre">setProperty()</span></code>. The first one sets a context property on a qml context, and <code class="docutils literal"><span class="pre">setProperty()</span></code> sets a dynamic property value on a <code class="docutils literal"><span class="pre">QObject</span></code> and will not help you.</p>
 </div>
 <p>Now you can use the current property everywhere in your application. Thanks to context inheritance.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
@@ -284,7 +277,7 @@
 <div class="section" id="plugin-content">
 <h2>16.2. Plugin Content<a class="headerlink" href="#plugin-content" title="Permalink to this headline">¶</a></h2>
 <p>A plugin is a library with a defined interface, which is loaded on demand. This differs from a library as a library is linked and loaded on startup of the application. In the QML case the interface is called <code class="docutils literal"><span class="pre">QQmlExtensionPlugin</span></code>. There are two methods interesting for us <code class="docutils literal"><span class="pre">initializeEngine()</span></code> and <code class="docutils literal"><span class="pre">registerTypes()</span></code>. When the plugin is loaded first the <code class="docutils literal"><span class="pre">initializeEngine()</span></code> is called, which allows us to access the engine to expose plugin objects to the root context. In the majority you will only use the <code class="docutils literal"><span class="pre">registerTypes()</span></code> method. This allows you to register you custom QML types with the engine on the provided url.</p>
-<p>Let us step back a little bit and think about a potential file IO type which would allow us to read/write small text files form QML. A first iteration could look like this in a mocked QML implementation.</p>
+<p>Let us step back a little bit and think about a potential file IO type which would allow us to read/write small text files from QML. A first iteration could look like this in a mocked QML implementation.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="c1">// FileIO.qml (good)</span>
 <span class="nx">QtObject</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">write</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{};</span>
@@ -365,10 +358,10 @@
 <span class="nx">plugin</span> <span class="nx">fileio</span>
 </pre></div>
 </div>
-<p>The module is the URI under which your plugin is reachable by others and the plugin line must be identical with your plugin file name (under mac this would be <em>libfileio_debug.dylib</em> on the file system and <em>fileio</em> in the <em>qmldir</em>). These files where created by Qt Creator based on the given information. The module uri is also available in the .pro file. There is is used to build up the install directory.</p>
+<p>The module is the URI under which your plugin is reachable by others and the plugin line must be identical with your plugin file name (under mac this would be <em>libfileio_debug.dylib</em> on the file system and <em>fileio</em> in the <em>qmldir</em>). These files are created by Qt Creator based on the given information. The module uri is also available in the .pro file. There is is used to build up the install directory.</p>
 <p>When you call <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> in your build folder the library will be copied into the Qt <code class="docutils literal"><span class="pre">qml</span></code> folder (for Qt 5.4 on mac this would be <em>&#8220;~/Qt/5.4/clang_64/qml&#8221;</em>. The exact path depends on you Qt installation location and the used compiler on your system). There you will find a the library inside the &#8220;org/example/io&#8221; folder. The content are these two files currently</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span>libfileio_debug.dylib
-qmldir
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">libfileio_debug.dylib</span>
+<span class="na">qmldir</span>
 </pre></div>
 </div>
 <p>When importing a module called &#8220;org.example.io&#8221;, the qml engine will look in one of the import paths and tries to locate the &#8220;org/example/io&#8221; path with a qmldir. The qmldir then will tell the engine which library to load as a qml extension plugin using which module URI. Two modules with the same URI will override each other.</p>
@@ -677,8 +670,8 @@ qmldir
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>

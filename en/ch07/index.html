@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7. Canvas Element &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>7. Canvas Element &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,9 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8. Particle Simulations" href="../ch08/index.html" />
     <link rel="prev" title="6. Model-View-Delegate" href="../ch06/index.html" />
 <meta charset='utf-8'>
@@ -50,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -72,7 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch04/index.html">4. Quick Starter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch05/index.html">5. Fluid Elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch06/index.html">6. Model-View-Delegate</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">7. Canvas Element</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Canvas Element</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch08/index.html">8. Particle Simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch09/index.html">9. Shader Effects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch10/index.html">10. Multimedia</a></li>
@@ -82,7 +81,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -172,9 +170,9 @@
   <div class="section" id="canvas-element">
 <h1>7. Canvas Element<a class="headerlink" href="#canvas-element" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23canvas-element&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><div class="admonition note">
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/index.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/index.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23canvas-element" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch07&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 21, 2016 at 20:39 CET</p>
+<p>Last Build: June 19, 2018 at 14:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <div class="figure">
@@ -268,7 +266,7 @@
 </div>
 <div class="section" id="convenient-api">
 <h2>7.1. Convenient API<a class="headerlink" href="#convenient-api" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23convenient-api&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>For operations on rectangles a convenience API is provided which draws directly and does need a stroke or fill call.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23convenient-api"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>For operations on rectangles a convenience API is provided which draws directly and does need a stroke or fill call.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="c1">// convenient.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
@@ -303,7 +301,7 @@
 </div>
 <div class="section" id="gradients">
 <h2>7.2. Gradients<a class="headerlink" href="#gradients" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23gradients&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>Canvas can fill shapes with color but also with gradients or images.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23gradients"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Canvas can fill shapes with color but also with gradients or images.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span>    <span class="k">onPaint:</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">)</span>
 
@@ -326,7 +324,7 @@
 </div>
 <div class="section" id="shadows">
 <h2>7.3. Shadows<a class="headerlink" href="#shadows" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23shadows&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you need can specify a <code class="docutils literal"><span class="pre">shadowColor</span></code>, <code class="docutils literal"><span class="pre">shadowOffsetX</span></code>, <code class="docutils literal"><span class="pre">shadowOffsetY</span></code> and a <code class="docutils literal"><span class="pre">shadowBlur</span></code>. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23shadows"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>A path can be visually enhanced using shadows with the 2D context object. A shadow is an area around the path with an offset, color and specified blurring. For this you can specify a <code class="docutils literal"><span class="pre">shadowColor</span></code>, <code class="docutils literal"><span class="pre">shadowOffsetX</span></code>, <code class="docutils literal"><span class="pre">shadowOffsetY</span></code> and a <code class="docutils literal"><span class="pre">shadowBlur</span></code>. All of this needs to be defined using the 2D context. The 2D context is your only API to the drawing operations.</p>
 <p>A shadow can also be used to create a glow effect around a path. In the next example we create a text &#8220;Canvas&#8221; with a white glow around. All this on a dark background for better visibility.</p>
 <p>First we draw the dark background:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span>        <span class="c1">// setup a dark background</span>
@@ -355,7 +353,7 @@
 </div>
 <div class="section" id="images">
 <h2>7.4. Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23images&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>The QML canvas supports image drawing from several sources. To use an image inside the canvas the image needs to be loaded first. We will use the <code class="docutils literal"><span class="pre">Component.onCompleted</span></code> handler to load the image in our example.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23images"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The QML canvas supports image drawing from several sources. To use an image inside the canvas the image needs to be loaded first. We will use the <code class="docutils literal"><span class="pre">Component.onCompleted</span></code> handler to load the image in our example.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span>    <span class="k">onPaint:</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">getContext</span><span class="p">(</span><span class="s2">&quot;2d&quot;</span><span class="p">)</span>
 
@@ -395,7 +393,7 @@
 </div>
 <div class="section" id="transformation">
 <h2>7.5. Transformation<a class="headerlink" href="#transformation" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23transformation&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>The canvas allows you to transform the coordinate system in several ways. This is very similar to the transformation offered by QML items. You have the possibility to <code class="docutils literal"><span class="pre">scale</span></code>, <code class="docutils literal"><span class="pre">rotate</span></code>, <code class="docutils literal"><span class="pre">translate</span></code> the coordinate system. In difference to QML the transform origin is always the canvas origin. For example to scale a path around it&#8217;s center you would need to translate the canvas origin to the center of the path. It is also possible to apply a more complex transformation using the transform method.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23transformation"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The canvas allows you to transform the coordinate system in several ways. This is very similar to the transformation offered by QML items. You have the possibility to <code class="docutils literal"><span class="pre">scale</span></code>, <code class="docutils literal"><span class="pre">rotate</span></code>, <code class="docutils literal"><span class="pre">translate</span></code> the coordinate system. In difference to QML the transform origin is always the canvas origin. For example to scale a path around it&#8217;s center you would need to translate the canvas origin to the center of the path. It is also possible to apply a more complex transformation using the transform method.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="c1">// transform.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
@@ -435,7 +433,7 @@
 </div>
 <div class="section" id="composition-modes">
 <h2>7.6. Composition Modes<a class="headerlink" href="#composition-modes" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23composition-modes&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>Composition allows you to draw a shape and blend it with the existing pixels. The canvas supports several composition modes using the <code class="docutils literal"><span class="pre">globalCompositeOperation(mode)</span></code> operation.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23composition-modes"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Composition allows you to draw a shape and blend it with the existing pixels. The canvas supports several composition modes using the <code class="docutils literal"><span class="pre">globalCompositeOperation(mode)</span></code> operation.</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">source-over</span></code></li>
 <li><code class="docutils literal"><span class="pre">source-in</span></code></li>
@@ -493,7 +491,7 @@
 </div>
 <div class="section" id="pixel-buffers">
 <h2>7.7. Pixel Buffers<a class="headerlink" href="#pixel-buffers" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23pixel-buffers&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>When working with the canvas you are able to retrieve pixel data from the canvas to read or manipulate the pixels of your canvas. To read the image data use <code class="docutils literal"><span class="pre">createImageData(sw,sh)</span></code> or <code class="docutils literal"><span class="pre">getImageData(sx,sy,sw,sh)</span></code>. Both functions return an <code class="docutils literal"><span class="pre">ImageData</span></code> object with a <code class="docutils literal"><span class="pre">width</span></code>, <code class="docutils literal"><span class="pre">height</span></code> and a <code class="docutils literal"><span class="pre">data</span></code> variable. The data variable contains a one-dimensional array of the pixel data retrieved in the <em>RGBA</em> format, where each value varies in the range of 0 to 255. To set pixels on the canvas you can use the <code class="docutils literal"><span class="pre">putImageData(imagedata,,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> function.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23pixel-buffers"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>When working with the canvas you are able to retrieve pixel data from the canvas to read or manipulate the pixels of your canvas. To read the image data use <code class="docutils literal"><span class="pre">createImageData(sw,sh)</span></code> or <code class="docutils literal"><span class="pre">getImageData(sx,sy,sw,sh)</span></code>. Both functions return an <code class="docutils literal"><span class="pre">ImageData</span></code> object with a <code class="docutils literal"><span class="pre">width</span></code>, <code class="docutils literal"><span class="pre">height</span></code> and a <code class="docutils literal"><span class="pre">data</span></code> variable. The data variable contains a one-dimensional array of the pixel data retrieved in the <em>RGBA</em> format, where each value varies in the range of 0 to 255. To set pixels on the canvas you can use the <code class="docutils literal"><span class="pre">putImageData(imagedata,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> function.</p>
 <p>Another way to retrieve the content of the canvas is to store the data into an image. This can be achieved with the <code class="docutils literal"><span class="pre">Canvas</span></code> functions <code class="docutils literal"><span class="pre">save(path)</span></code> or <code class="docutils literal"><span class="pre">toDataURL(mimeType)</span></code>, where the later function returns an image url, which can be used to be loaded by an <code class="docutils literal"><span class="pre">Image</span></code> element.</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 
@@ -552,7 +550,7 @@
 </div>
 <div class="section" id="canvas-paint">
 <h2>7.8. Canvas Paint<a class="headerlink" href="#canvas-paint" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23canvas-paint&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><p>In this example we would like to create a small paint application using the <code class="docutils literal"><span class="pre">Canvas</span></code> element.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23canvas-paint"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>In this example we would like to create a small paint application using the <code class="docutils literal"><span class="pre">Canvas</span></code> element.</p>
 <div class="figure">
 <img alt="../../_images/canvaspaint.png" src="../../_images/canvaspaint.png" />
 </div>
@@ -626,7 +624,7 @@
 </div>
 <div class="section" id="porting-from-html5-canvas">
 <h2>7.9. Porting from HTML5 Canvas<a class="headerlink" href="#porting-from-html5-canvas" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch07%2Findex.html%23porting-from-html5-canvas&labels=ch07">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch07&page=1&state=open">View</a></div><ul class="simple">
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch07&body=back-link%3A+en%2Fch07%2Findex.html%23porting-from-html5-canvas"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch07&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><ul class="simple">
 <li><a class="reference external" href="https://developer.mozilla.org/en/Canvas_tutorial/Transformations">https://developer.mozilla.org/en/Canvas_tutorial/Transformations</a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Spirograph">http://en.wikipedia.org/wiki/Spirograph</a></li>
 </ul>
@@ -872,8 +870,8 @@ setInterval(blank, 40);
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>

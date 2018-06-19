@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>15. Qt and C++ &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>15. Qt and C++ &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,9 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="16. Extending QML with C++" href="../ch16/index.html" />
     <link rel="prev" title="14. JavaScript" href="../ch14/index.html" />
 <meta charset='utf-8'>
@@ -50,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -80,9 +79,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch13/index.html">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">15. Qt and C++</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -198,9 +196,9 @@
   <div class="section" id="qt-and-c">
 <h1>15. Qt and C++<a class="headerlink" href="#qt-and-c" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23qt-and-c&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><div class="admonition note">
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/index.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/index.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch15&body=back-link%3A+en%2Fch15%2Findex.html%23qt-and-c" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch15&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 21, 2016 at 20:39 CET</p>
+<p>Last Build: June 19, 2018 at 14:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <p>Qt is a C++ toolkit with an extension for QML and Javascript. There exists many language bindings for Qt, but as Qt is developed in C++, the spirit of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.</p>
@@ -216,7 +214,7 @@
 <p>For all platform, Qt offers a set of basic types, e.g. strings with full unicode support, lists, vectors, buffers. It also provides a common abstraction to the target platform&#8217;s main loop, and cross platform threading  and networking support. The general philosophy is that for an application developer Qt comes with all required functionality included. For domain specific tasks such as to interface to your native libraries Qt comes with several helper classes to make this easier.</p>
 <div class="section" id="a-boilerplate-application">
 <h2>15.1. A Boilerplate Application<a class="headerlink" href="#a-boilerplate-application" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23a-boilerplate-application&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The best way to understand Qt is to start from a small demonstration application. This application creates a simple <code class="docutils literal"><span class="pre">&quot;Hello</span> <span class="pre">World!&quot;</span></code> string and writes it into a file using unicode characters.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch15&body=back-link%3A+en%2Fch15%2Findex.html%23a-boilerplate-application"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch15&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The best way to understand Qt is to start from a small demonstration application. This application creates a simple <code class="docutils literal"><span class="pre">&quot;Hello</span> <span class="pre">World!&quot;</span></code> string and writes it into a file using unicode characters.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;QCoreApplication&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;QString&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;QFile&gt;</span><span class="cp"></span>
@@ -367,7 +365,7 @@
 </div>
 <div class="section" id="the-qobject">
 <h2>15.2. The QObject<a class="headerlink" href="#the-qobject" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23the-qobject&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>As described in the introduction, the <code class="docutils literal"><span class="pre">QObject</span></code> is what enables Qt&#8217;s introspection. It is the base class of almost all classes in Qt. Exceptions are value types such as <code class="docutils literal"><span class="pre">QColor</span></code>, <code class="docutils literal"><span class="pre">QString</span></code> and <code class="docutils literal"><span class="pre">QList</span></code>.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch15&body=back-link%3A+en%2Fch15%2Findex.html%23the-qobject"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch15&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>As described in the introduction, the <code class="docutils literal"><span class="pre">QObject</span></code> is what enables Qt&#8217;s introspection. It is the base class of almost all classes in Qt. Exceptions are value types such as <code class="docutils literal"><span class="pre">QColor</span></code>, <code class="docutils literal"><span class="pre">QString</span></code> and <code class="docutils literal"><span class="pre">QList</span></code>.</p>
 <p>A Qt object is a standard C++ object, but with more abilities. These can be divided into two groups: introspection and memory management. The first means that a Qt object is aware of its class name, its relationship to other classes, as well as its methods and properties. The memory management concept means that each Qt object can be the parent of child objects. The parent <em>owns</em> the children, and when the parent is destroyed, it is responsible for destroying its children.</p>
 <p>The best way of understanding how the <code class="docutils literal"><span class="pre">QObject</span></code> abilities affect a class is to take a standard C++ class and Qt enable it. The class shown below represents an ordinary such class.</p>
 <p>The person class is a data class with a name and gender properties. The person class uses Qt&#8217;s object system to add meta information to the c++ class. It allows users of a person object to connect to the slots and get notified when the properties get changed.</p>
@@ -440,7 +438,7 @@
 </div>
 <div class="section" id="build-systems">
 <h2>15.3. Build Systems<a class="headerlink" href="#build-systems" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23build-systems&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths, and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the <code class="docutils literal"><span class="pre">qmake</span></code> build file generator. <code class="docutils literal"><span class="pre">qmake</span></code> operates on a project file with the ending <code class="docutils literal"><span class="pre">.pro</span></code>. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate a <code class="docutils literal"><span class="pre">Makefile</span></code> for you on unix and mac and even under windows if the mingw compiler toolchain is being used. Otherwise it may create a visual studio project or an xcode project.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch15&body=back-link%3A+en%2Fch15%2Findex.html%23build-systems"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch15&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Building software reliably on different platforms can be a complex task. You will encounter different environments with different compilers, paths, and library variations. The purpose of Qt is to shield the application developer from these cross platform issues. For this Qt introduced the <code class="docutils literal"><span class="pre">qmake</span></code> build file generator. <code class="docutils literal"><span class="pre">qmake</span></code> operates on a project file with the ending <code class="docutils literal"><span class="pre">.pro</span></code>. This project file contains instructions about the application and the sources to be used. Running qmake on this project file will generate a <code class="docutils literal"><span class="pre">Makefile</span></code> for you on unix and mac and even under windows if the mingw compiler toolchain is being used. Otherwise it may create a visual studio project or an xcode project.</p>
 <p>A typical build flow in Qt under unix would be:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="nx">$</span> <span class="nx">edit</span> <span class="nx">myproject</span><span class="p">.</span><span class="nx">pro</span>
 <span class="nx">$</span> <span class="nx">qmake</span> <span class="c1">// generates Makefile</span>
@@ -457,7 +455,7 @@
 <p>When you are using Qt Creator it does these things behind the scenes for you and you do not have to worry about these steps usually. For larger projects and for adeeper understanding of the flow, it is recommended that you learn to build your qt project from the command line.</p>
 <div class="section" id="qmake">
 <h3>15.3.1. QMake<a class="headerlink" href="#qmake" title="Permalink to this headline">¶</a></h3>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23qmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configuration, external dependencies, and your source files. The simplest project file is probably this:</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch15&body=back-link%3A+en%2Fch15%2Findex.html%23qmake"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch15&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>QMake is the tool which reads your project file and generates the build file. A project file is a simplified write down of your project configuration, external dependencies, and your source files. The simplest project file is probably this:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="c1">// myproject.pro</span>
 
 <span class="nx">SOURCES</span> <span class="o">+=</span> <span class="nx">main</span><span class="p">.</span><span class="nx">cpp</span>
@@ -536,7 +534,7 @@
 </div>
 <div class="section" id="cmake">
 <h3>15.3.2. CMake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23cmake&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>CMake is a tool create by Kitware. Kitware is very well known for their 3D visualitation software VTK and also CMake, the cross platform makefile generator. It uses a series of <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code> files to generate platform specific make files. CMake is used by the KDE project and as such has a special relationship with the Qt community.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch15&body=back-link%3A+en%2Fch15%2Findex.html%23cmake"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch15&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>CMake is a tool create by Kitware. Kitware is very well known for their 3D visualitation software VTK and also CMake, the cross platform makefile generator. It uses a series of <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code> files to generate platform specific make files. CMake is used by the KDE project and as such has a special relationship with the Qt community.</p>
 <p>The <code class="docutils literal"><span class="pre">CMakeLists.txt</span></code> is the file used to store the project configuration. For a simple hello world using QtCore the project file would look like this:</p>
 <div class="highlight-qml"><div class="highlight"><pre><span></span><span class="c1">// ensure cmake version is at least 3.0</span>
 <span class="nx">cmake_minimum_required</span><span class="p">(</span><span class="nx">VERSION</span> <span class="mf">3.0</span><span class="p">)</span>
@@ -581,7 +579,7 @@
 </div>
 <div class="section" id="common-qt-classes">
 <h2>15.4. Common Qt Classes<a class="headerlink" href="#common-qt-classes" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23common-qt-classes&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">QObject</span></code> class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch15&body=back-link%3A+en%2Fch15%2Findex.html%23common-qt-classes"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch15&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The <code class="docutils literal"><span class="pre">QObject</span></code> class forms the foundations of Qt, but there are many more classes in the framework. Before we continue looking at QML and how to extend it, we will look at some basic Qt classes that are useful to know about.</p>
 <p>The code examples shown in this section are written using the Qt Test library. It offers a great way to explore the Qt API and store it for later reference. <code class="docutils literal"><span class="pre">QVERIFY</span></code>, <code class="docutils literal"><span class="pre">QCOMPARE</span></code> are functions provided by the test library to assert a certain condition. We will use <code class="docutils literal"><span class="pre">{}</span></code> scopes to avoid name collisions. So do not get confused.</p>
 <div class="section" id="qstring">
 <h3>15.4.1. QString<a class="headerlink" href="#qstring" title="Permalink to this headline">¶</a></h3>
@@ -819,7 +817,7 @@
 </div>
 <div class="section" id="more-classes">
 <h3>15.4.5. More Classes<a class="headerlink" href="#more-classes" title="Permalink to this headline">¶</a></h3>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch15%2Findex.html%23more-classes&labels=ch15">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch15&page=1&state=open">View</a></div><p>Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means you just copy and adapt these snippets. Also Qt&#8217;s examples in the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask, it is very helpful to ask exact questions and provide a simple example which displays your needs. This will drastically improve the response time of others. So invest a litte bit of time to make the life of others who want to help you easier :-).</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch15&body=back-link%3A+en%2Fch15%2Findex.html%23more-classes"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch15&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Qt is a rich application framework. As such it has thousands of classes. It takes some time to get used to all of these classes and how to use them. Luckily Qt has a very good documentation with many useful examples includes. Most of the time you search for a class and the most common use cases are already provided as snippets. Which means you just copy and adapt these snippets. Also Qt&#8217;s examples in the Qt source code are a great help. Make sure you have them available and searchable to make your life more productive. Do not waste time. The Qt community is always helpful. When you ask, it is very helpful to ask exact questions and provide a simple example which displays your needs. This will drastically improve the response time of others. So invest a litte bit of time to make the life of others who want to help you easier :-).</p>
 <p>Here some classes whose documentation the author thinks are a must read: <a class="reference external" href="http://doc.qt.io/qt-5//qobject.html">QObject</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qstring.html">QString</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qbytearray.html">QByteArray</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qfile.html">QFile</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdir.html">QDir</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qfileinfo.html">QFileInfo</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qiodevice.html">QIODevice</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtextstream.html">QTextStream</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdatastream.html">QDataStream</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qdebug.html">QDebug</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qloggingcategory.html">QLoggingCategory</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtcpserver.html">QTcpServer</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qtcpsocket.html">QTcpSocket</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qnetworkrequest.html">QNetworkRequest</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qnetworkreply.html">QNetworkReply</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qabstractitemmodel.html">QAbstractItemModel</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qregexp.html">QRegExp</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qlist.html">QList</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qhash.html">QHash</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qthread.html">QThread</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qprocess.html">QProcess</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qjsondocument.html">QJsonDocument</a>, <a class="reference external" href="http://doc.qt.io/qt-5//qjsvalue.html">QJSValue</a>.</p>
 <p>That should be enough for the beginning.</p>
 </div>
@@ -1302,8 +1300,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>

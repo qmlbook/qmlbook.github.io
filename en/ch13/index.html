@@ -5,20 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>13. Dynamic QML &mdash; Qt5 Cadaques Book v2015-03</title>
+    <title>13. Dynamic QML &#8212; Qt5 Cadaques Book v2018-06</title>
     
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2015-03',
+        VERSION:     '2018-06',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -26,9 +25,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Qt5 Cadaques Book v2015-03" href="../../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="14. JavaScript" href="../ch14/index.html" />
     <link rel="prev" title="12. Storage" href="../ch12/index.html" />
 <meta charset='utf-8'>
@@ -50,7 +49,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           QmlBook</a>
-        <span class="navbar-text navbar-version pull-left"><b>2015-03</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>2018-06</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -78,11 +77,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch10/index.html">10. Multimedia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch11/index.html">11. Networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch12/index.html">12. Storage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">13. Dynamic QML</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. Dynamic QML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch14/index.html">14. JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch15/index.html">15. Qt and C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch16/index.html">16. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../assets/index.html">16. Assets</a></li>
 </ul>
 </ul>
 </li>
@@ -180,15 +178,15 @@
   <div class="section" id="dynamic-qml">
 <h1>13. Dynamic QML<a class="headerlink" href="#dynamic-qml" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23dynamic-qml&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><div class="admonition note">
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/index.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/index.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23dynamic-qml" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch13&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: March 21, 2016 at 20:39 CET</p>
+<p>Last Build: June 19, 2018 at 14:39 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
 </div>
 <p>Until now, we have treated QML as a tool for constructing a static set of scenes and navigating between them. Depending on various states and logic rules, a live and dynamic user interface is constructed. By working with QML and JavaScript in a more dynamic manner, the flexibility and possibilities expand even further. Components can be loaded and instantiated at run-time, elements can be destroyed. Dynamically created user interfaces can be saved to disk and later restored.</p>
 <div class="section" id="loading-components-dynamically">
 <h2>13.1. Loading Components Dynamically<a class="headerlink" href="#loading-components-dynamically" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23loading-components-dynamically&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>The easiest way to dynamically load different parts of QML is to use the <code class="docutils literal"><span class="pre">Loader</span></code> element. It serves as a placeholder to the item that is being loaded. The item to load is controlled through either the <code class="docutils literal"><span class="pre">source</span></code> property or the <code class="docutils literal"><span class="pre">sourceComponent</span></code> property. The former loads the item from a given URL, while the latter instantiates a component.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23loading-components-dynamically"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The easiest way to dynamically load different parts of QML is to use the <code class="docutils literal"><span class="pre">Loader</span></code> element. It serves as a placeholder to the item that is being loaded. The item to load is controlled through either the <code class="docutils literal"><span class="pre">source</span></code> property or the <code class="docutils literal"><span class="pre">sourceComponent</span></code> property. The former loads the item from a given URL, while the latter instantiates a component.</p>
 <p>As the loader serves as a placeholder for the item being loaded, its size depends on the size of the item, and vise versa. If the <code class="docutils literal"><span class="pre">Loader</span></code> element has a size, either by having set <code class="docutils literal"><span class="pre">width</span></code> and <code class="docutils literal"><span class="pre">height</span></code> or through anchoring, the loaded item will be given the loader&#8217;s size. If the <code class="docutils literal"><span class="pre">Loader</span></code> has no size, it is resized in accordance to the size of the item being loaded.</p>
 <p>The example described below demonstrates how two separate user interface parts can be loaded into the same space using a <code class="docutils literal"><span class="pre">Loader</span></code> element. The idea is to have a speed dial that can be either digital or analog, as shown in the illustration below. The code surrounding the dial is unaffected by which item that is loaded for the moment.</p>
 <div class="figure">
@@ -244,7 +242,7 @@
 <p>The <code class="docutils literal"><span class="pre">onLoaded</span></code> signal lets the loading QML act when the item has been loaded. In a similar fashion, the QML being loaded can rely on the <code class="docutils literal"><span class="pre">Component.onCompleted</span></code> signal. This is signal actually available for all components, regardless how they are loaded. For instance, the root component of an entire application can us it to kick-start itself when the entire user interface has been loaded.</p>
 <div class="section" id="connecting-indirectly">
 <h3>13.1.1. Connecting Indirectly<a class="headerlink" href="#connecting-indirectly" title="Permalink to this headline">¶</a></h3>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23connecting-indirectly&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>When creating QML elements dynamically, you cannot connect to signals using the <code class="docutils literal"><span class="pre">onSignalName</span></code> approach used for static setup. Instead, the <code class="docutils literal"><span class="pre">Connections</span></code> element must be used. It connects to any number of signals of a <code class="docutils literal"><span class="pre">target</span></code> element.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23connecting-indirectly"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>When creating QML elements dynamically, you cannot connect to signals using the <code class="docutils literal"><span class="pre">onSignalName</span></code> approach used for static setup. Instead, the <code class="docutils literal"><span class="pre">Connections</span></code> element must be used. It connects to any number of signals of a <code class="docutils literal"><span class="pre">target</span></code> element.</p>
 <p>Having set the <code class="docutils literal"><span class="pre">target</span></code> property of a <code class="docutils literal"><span class="pre">Connections</span></code> element, the signals can be connected as usual, that is, using the <code class="docutils literal"><span class="pre">onSignalName</span></code> approach. However, by altering the <code class="docutils literal"><span class="pre">target</span></code> property, different elements can be monitored at different times.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../../_images/connections.png"><img alt="../../_images/connections.png" src="../../_images/connections.png" style="width: 622.0px; height: 422.0px;" /></a>
@@ -325,7 +323,7 @@
 </div>
 <div class="section" id="binding-indirectly">
 <h3>13.1.2. Binding Indirectly<a class="headerlink" href="#binding-indirectly" title="Permalink to this headline">¶</a></h3>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23binding-indirectly&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Just as it is not possible to connect to signals of dynamically created elements directly, nor it is possible to bind properties of a dynamically created element without working with a bridge element. To bind a property of any element, including dynamically created elements, the <code class="docutils literal"><span class="pre">Binding</span></code> element is used.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23binding-indirectly"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Just as it is not possible to connect to signals of dynamically created elements directly, nor it is possible to bind properties of a dynamically created element without working with a bridge element. To bind a property of any element, including dynamically created elements, the <code class="docutils literal"><span class="pre">Binding</span></code> element is used.</p>
 <p>The <code class="docutils literal"><span class="pre">Binding</span></code> element lets you specify a <code class="docutils literal"><span class="pre">target</span></code> element, a <code class="docutils literal"><span class="pre">property</span></code> to bind and a <code class="docutils literal"><span class="pre">value</span></code> to bind it to. Through using a <cite>Binding`</cite> element, it is, for instance, possible to bind properties of a dynamically loaded element. This was demonstrated in the introductory example in this chapter, as shown below.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span>    <span class="nx">Loader</span> <span class="p">{</span>
         <span class="nx">id</span><span class="o">:</span> <span class="nx">dialLoader</span>
@@ -352,12 +350,12 @@
 </div>
 <div class="section" id="creating-and-destroying-objects">
 <h2>13.2. Creating and Destroying Objects<a class="headerlink" href="#creating-and-destroying-objects" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23creating-and-destroying-objects&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>The <code class="docutils literal"><span class="pre">Loader</span></code> element makes it possible to populate part of a user interface dynamically. However, the overall structure of the interface is still static. Through JavaScript it is possible to take one more step and to instantiate QML elements completely dynamically.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23creating-and-destroying-objects"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The <code class="docutils literal"><span class="pre">Loader</span></code> element makes it possible to populate part of a user interface dynamically. However, the overall structure of the interface is still static. Through JavaScript it is possible to take one more step and to instantiate QML elements completely dynamically.</p>
 <p>Before we dive into the details of creating elements dynamically, we need to understand the workflow. When loading a piece of QML from a file or even over the Internet, a component is created. The component encapsulates the interpreted QML code and can be used to create items. This means that loading a piece of QML code and instantiating items from it is a two stage process. First the QML code is parsed into a component. Then the component is used to instantiate actual item objects.</p>
 <p>In addition to creating elements from QML code stored in files or on servers, it is also possible to create QML objects directly from text strings containing QML code. The dynamically created items are then treated in a similar fashion once instantiated.</p>
 <div class="section" id="dynamically-loading-and-instantiating-items">
 <h3>13.2.1. Dynamically Loading and Instantiating Items<a class="headerlink" href="#dynamically-loading-and-instantiating-items" title="Permalink to this headline">¶</a></h3>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23dynamically-loading-and-instantiating-items&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>When loading a piece of QML, it is first interpreted into a component. This includes loading dependencies and validating the code. The location of the QML being loaded can be either a local file, a Qt resource, or even a distance network location specified by a URL. This means that the loading time can be everything from instant, for instance a Qt resource located in RAM without any non-loaded dependencies, to very long, meaning a piece of code located on a slow server with multiple dependencies that needs to be loaded.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23dynamically-loading-and-instantiating-items"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>When loading a piece of QML, it is first interpreted into a component. This includes loading dependencies and validating the code. The location of the QML being loaded can be either a local file, a Qt resource, or even a distance network location specified by a URL. This means that the loading time can be everything from instant, for instance a Qt resource located in RAM without any non-loaded dependencies, to very long, meaning a piece of code located on a slow server with multiple dependencies that needs to be loaded.</p>
 <p>The status of a component being created can be tracked by its <code class="docutils literal"><span class="pre">status</span></code> property. The available values are <code class="docutils literal"><span class="pre">Component.Null</span></code>, <code class="docutils literal"><span class="pre">Component.Loading</span></code>, <code class="docutils literal"><span class="pre">Component.Ready</span></code> and <code class="docutils literal"><span class="pre">Component.Error</span></code>. The <code class="docutils literal"><span class="pre">Null</span></code> to <code class="docutils literal"><span class="pre">Loading</span></code> to <code class="docutils literal"><span class="pre">Ready</span></code> is the usual flow. At any stage the <code class="docutils literal"><span class="pre">status</span></code> can change to <code class="docutils literal"><span class="pre">Error</span></code>. In that case, the component cannot be used to create new object instances. The <code class="docutils literal"><span class="pre">Component.errorString()</span></code> function can be used to retrieve a user readable error description.</p>
 <p>When loading components over slow connections, the <code class="docutils literal"><span class="pre">progress</span></code> property can be of use. It ranges from <code class="docutils literal"><span class="pre">0.0</span></code>, meaning nothing has been loaded, to <code class="docutils literal"><span class="pre">1.0</span></code> indicating that all has been loaded. When the component&#8217;s <code class="docutils literal"><span class="pre">status</span></code> changes to <code class="docutils literal"><span class="pre">Ready</span></code>, the component can be used to instantiate objects. The code below demonstrates how that can be achieved, taking into account the event of the component becoming ready or failing to be created directly, as well as the case where to component is ready slightly later.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">component</span><span class="p">;</span>
@@ -409,7 +407,7 @@
 </div>
 <div class="section" id="dynamically-instantiating-items-from-text">
 <h3>13.2.2. Dynamically Instantiating Items from Text<a class="headerlink" href="#dynamically-instantiating-items-from-text" title="Permalink to this headline">¶</a></h3>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23dynamically-instantiating-items-from-text&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Sometimes, it is convenient to be able to instantiate an object from a text string of QML. If nothing else, it is quicker than putting the code in a separate source file. For this, the <code class="docutils literal"><span class="pre">Qt.createQmlObject</span></code> function is used.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23dynamically-instantiating-items-from-text"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Sometimes, it is convenient to be able to instantiate an object from a text string of QML. If nothing else, it is quicker than putting the code in a separate source file. For this, the <code class="docutils literal"><span class="pre">Qt.createQmlObject</span></code> function is used.</p>
 <p>qThe function takes three arguments: <code class="docutils literal"><span class="pre">qml</span></code>, <code class="docutils literal"><span class="pre">parent</span></code> and <code class="docutils literal"><span class="pre">filepath</span></code>. The <code class="docutils literal"><span class="pre">qml</span></code> argument contains the string of QML code to instantiate. The <code class="docutils literal"><span class="pre">parent</span></code> argument provides a parent object to the newly created object. The <code class="docutils literal"><span class="pre">filepath</span></code> argument is used when reporting any errors from the creation of the object. The result returned from the function is either a new object, or <code class="docutils literal"><span class="pre">null</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -435,7 +433,7 @@
 </div>
 <div class="section" id="managing-dynamically-created-elements">
 <h3>13.2.3. Managing Dynamically Created Elements<a class="headerlink" href="#managing-dynamically-created-elements" title="Permalink to this headline">¶</a></h3>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23managing-dynamically-created-elements&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Dynamically created objects can be treated as any other object in a QML scene. However, there are some pitfalls that needs to be handled. The most important is the concept of creation contexts.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23managing-dynamically-created-elements"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Dynamically created objects can be treated as any other object in a QML scene. However, there are some pitfalls that needs to be handled. The most important is the concept of creation contexts.</p>
 <p>The creation context of a dynamically created object is the context within it is being created. This is not necessarily the same context as the parent exists in. When the creation context is destroyed, so is the bindings concerning the object. This means that it is important to implement the creation of dynamic objects in a place in the code which will be instantiated during the entire life-time of the objects.</p>
 <p>Dynamically created objects can also be dynamically destroyed. When doing this, there is a rule of thumb: never attempt to destroy an object that you have not created. This also includes elements that you have created, but not using a dynamic mechanism such as <code class="docutils literal"><span class="pre">Component.createObject</span></code> or <code class="docutils literal"><span class="pre">createQmlObject</span></code>.</p>
 <p>An object is destroyed by calling its <code class="docutils literal"><span class="pre">destroy</span></code> function. The function takes an optional argument which is an integer specifying how many milliseconds the objects shall exist before being destroyed. This is useful to, for instance, let the object complete a final transition.</p>
@@ -452,7 +450,7 @@
 </div>
 <div class="section" id="tracking-dynamic-objects">
 <h2>13.3. Tracking Dynamic Objects<a class="headerlink" href="#tracking-dynamic-objects" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23tracking-dynamic-objects&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>Working with dynamic objects, it is often necessary to track the created objects. Another common feature is to be able to store and restore the state of the dynamic objects. Both these tasks are easily handled using a <code class="docutils literal"><span class="pre">ListModel</span></code> that we populate dynamically.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23tracking-dynamic-objects"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Working with dynamic objects, it is often necessary to track the created objects. Another common feature is to be able to store and restore the state of the dynamic objects. Both these tasks are easily handled using a <code class="docutils literal"><span class="pre">ListModel</span></code> that we populate dynamically.</p>
 <p>In the example shown below two types of elements, rockets and ufos, can be created and moved around by the user. In order to be able to manipulate the entire scene of dynamically created elements, we use a model to track the items.</p>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
@@ -541,7 +539,7 @@
 </div>
 <div class="section" id="summary">
 <h2>13.4. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<div class="alert">Issues: <a href="https://github.com/qmlbook/qmlbook/issues/new?body=back-link%3A+en%2Fch13%2Findex.html%23summary&labels=ch13">Create</a> | <a href="https://github.com/qmlbook/qmlbook/issues?labels=ch13&page=1&state=open">View</a></div><p>In this chapter we have looked at creating QML elements dynamically. This lets us create QML scenes freely, opening the door for user configurability and plug-in based architectures.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch13&body=back-link%3A+en%2Fch13%2Findex.html%23summary"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch13&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>In this chapter we have looked at creating QML elements dynamically. This lets us create QML scenes freely, opening the door for user configurability and plug-in based architectures.</p>
 <p>The easiest way to dynamically load a QML element is to use a <code class="docutils literal"><span class="pre">Loader</span></code> element. This acts as a placeholder for the contents being loaded.</p>
 <p>For a more dynamic approach, the <code class="docutils literal"><span class="pre">Qt.createQmlObject</span></code> function can be used to instantiate a string of QML. This approach does, however, have limitations. The full blown solution is to dynamically create a <code class="docutils literal"><span class="pre">Component</span></code> using the <code class="docutils literal"><span class="pre">Qt.createComponent</span></code> function. Objects are then created by calling the <code class="docutils literal"><span class="pre">createObject</span></code> function of a <code class="docutils literal"><span class="pre">Component</span></code>.</p>
 <p>As bindings and signal connections rely on the existence of an object <code class="docutils literal"><span class="pre">id</span></code>, or access to the object instantiation, an alternate approach must be used for dynamically created objects. To create a binding, the <code class="docutils literal"><span class="pre">Binding</span></code> element is used. The <code class="docutils literal"><span class="pre">Connections</span></code> element makes it possible to connect to signals of a dynamically created object.</p>
@@ -562,8 +560,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2012-2014 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Mar 21, 2016.<br/>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Jun 19, 2018.<br/>
     </p>
   </div>
 </footer>
