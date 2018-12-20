@@ -165,7 +165,7 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/networking.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/networking.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch11&body=back-link%3A+ch11-networking%2Fnetworking.html%23networking" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch11&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: December 19, 2018 at 20:27 CET</p>
+<p>Last Build: December 20, 2018 at 08:42 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>Qt 5 comes with a rich set of networking classes on the C++ side. There are for example high-level classes on the HTTP protocol layer in a request-reply fashion such as <code class="docutils literal notranslate"><span class="pre">QNetworkRequest</span></code>, <code class="docutils literal notranslate"><span class="pre">QNetworkReply</span></code> and <code class="docutils literal notranslate"><span class="pre">QNetworkAccessManager</span></code>. But also lower levels classes on the TCP/IP or UDP protocol layer such as <code class="docutils literal notranslate"><span class="pre">QTcpSocket</span></code>, <code class="docutils literal notranslate"><span class="pre">QTcpServer</span></code> and <code class="docutils literal notranslate"><span class="pre">QUdpSocket</span></code>. Additional classes exist to manage proxies, network cache and also the systems network configuration.</p>
@@ -184,18 +184,14 @@
 </pre></div>
 </div>
 <p>To serve this file we launch a small python script:</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nx">code</span><span class="o">-</span><span class="k">block:</span><span class="o">:</span> <span class="nx">sh</span>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span> <span class="nx">cd</span> <span class="o">&lt;</span><span class="nx">PROJECT</span><span class="o">&gt;</span>
+<span class="nx">$</span> <span class="nx">python</span> <span class="o">-</span><span class="nx">m</span> <span class="nx">SimpleHTTPServer</span> <span class="mi">8080</span>
 </pre></div>
 </div>
-<blockquote>
-<div>$ cd &lt;PROJECT&gt;
-# python -m SimpleHTTPServer 8080</div></blockquote>
 <p>Now our file should be reachable via <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/main.qml</span></code>. You can test it with:</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nx">code</span><span class="o">-</span><span class="k">block:</span><span class="o">:</span> <span class="nx">sh</span>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span> <span class="nx">curl</span> <span class="k">http:</span><span class="c1">//localhost:8080/main.qml</span>
 </pre></div>
 </div>
-<blockquote>
-<div>$ curl <a class="reference external" href="http://localhost:8080/main.qml">http://localhost:8080/main.qml</a></div></blockquote>
 <p>Or just point your browser to the location. Your browser does not understand QML and will not be able to render the document through. We need to create now such a browser for QML documents. To render the document we need to point our <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> to the location. Unfortunately the <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> is limited to local files only. We could overcome this limitation by writing our own <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> replacement or simple dynamically load it using QML. We choose the dynamic loading as it works just fine. For this, we use a loader element to retrieve for us the remote document.</p>
 <div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// remote.qml</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
@@ -210,8 +206,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now we can ask the <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> to load the local <code class="docutils literal notranslate"><span class="pre">remote.qml</span></code> loader document. There is one glitch still. The loader will resize to the size of the loaded item. And our <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> needs also to adapt to that size. This can be accomplished using the <code class="docutils literal notranslate"><span class="pre">--resize-to-root</span></code> option to the <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code>:</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span> <span class="nx">qmlscene</span> <span class="o">--</span><span class="nx">resize</span><span class="o">-</span><span class="nx">to</span><span class="o">-</span><span class="nx">root</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">qml</span>
+<p>Now we can ask the <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> to load the local <code class="docutils literal notranslate"><span class="pre">remote.qml</span></code> loader document. There is one glitch still. The loader will resize to the size of the loaded item. And our <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> needs also to adapt to that size. This can be accomplished using the <code class="docutils literal notranslate"><span class="pre">--resize-to-root</span></code> option to the <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code>,</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ qmlscene --resize-to-root remote.qml
 </pre></div>
 </div>
 <p>Resize to root tells the qml scene to resize its window to the size of the root element. The remote is now loading the <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> from our local server and resizes itself to the loaded user interface. Sweet and simple.</p>
@@ -240,8 +236,8 @@
 <div class="section" id="networked-components">
 <h3>11.1.1. Networked Components<a class="headerlink" href="#networked-components" title="Permalink to this headline">¶</a></h3>
 <p>Let us create a small experiment. We add to our remote side a small button as a reusable component.</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nx">src</span><span class="o">/</span><span class="nx">main</span><span class="p">.</span><span class="nx">qml</span>
-<span class="o">-</span> <span class="nx">src</span><span class="o">/</span><span class="nx">Button</span><span class="p">.</span><span class="nx">qml</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>- src/main.qml
+- src/Button.qml
 </pre></div>
 </div>
 <p>We modify our <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> to use the button and save it as <code class="docutils literal notranslate"><span class="pre">main2.qml</span></code>:</p>
@@ -260,19 +256,17 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>And launch our web-server again:</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nx">code</span><span class="o">-</span><span class="k">block:</span><span class="o">:</span> <span class="nx">sh</span>
+<p>And launch our web-server again</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> src
+$ python -m SimpleHTTPServer <span class="m">8080</span>
 </pre></div>
 </div>
-<blockquote>
-<div>$ cd src
-# python -m SimpleHTTPServer 8080</div></blockquote>
-<p>And our remote loader loads the main QML via HTTP again:</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span> <span class="nx">qmlscene</span> <span class="o">--</span><span class="nx">resize</span><span class="o">-</span><span class="nx">to</span><span class="o">-</span><span class="nx">root</span> <span class="nx">remote</span><span class="p">.</span><span class="nx">qml</span>
+<p>And our remote loader loads the main QML via HTTP again</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ qmlscene --resize-to-root remote.qml
 </pre></div>
 </div>
-<p>What we see is an error:</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="k">http:</span><span class="c1">//localhost:8080/main2.qml:11:5: Button is not a type</span>
+<p>What we see is an error</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>http://localhost:8080/main2.qml:11:5: Button is not a <span class="nb">type</span>
 </pre></div>
 </div>
 <p>So QML cannot resolve the button component when it is loaded remotely. If the code would be local <code class="docutils literal notranslate"><span class="pre">qmlscene</span> <span class="pre">src/main.qml</span></code> this would be no issue. Locally Qt can parse the directory and detect which components are available but remotely there is no “list-dir” function for HTTP. We can force QML to load the element using the import statement inside <code class="docutils literal notranslate"><span class="pre">main.qml</span></code>:</p>
@@ -572,7 +566,7 @@
 </pre></div>
 </div>
 <p>And we can test it with using curl again. For example to get the red color entry.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl -i -GET http://localhost:5000/colors/red
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ curl -i -GET http://localhost:5000/colors/red
 </pre></div>
 </div>
 <p>It will return one color entry as JSON data.</p>
@@ -1090,7 +1084,7 @@ $ npm install ws
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 19, 2018.<br/>
+      Last updated on Dec 20, 2018.<br/>
     </p>
   </div>
 </footer>
