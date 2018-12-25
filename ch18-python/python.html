@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>18. Qt for Python &#8212; Qt5 Cadaques Book vmaster</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom-styles.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Testing" href="../testing/testing.html" />
+    <link rel="prev" title="17. Extending QML with C++" href="../ch17-extensions/extensions.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          QmlBook</a>
+        <span class="navbar-text navbar-version pull-left"><b>master</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Chapters <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ch01-meetqt/meetqt.html">1. Meet Qt 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02-start/start.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03-qtcreator/qtcreator.html">3. Qt Creator IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04-qmlstart/qmlstart.html">4. Quick Starter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05-fluid/fluid.html">5. Fluid Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06-controls/controls.html">6. Qt Quick Controls 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07-modelview/modelview.html">7. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08-canvas/canvas.html">8. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09-particles/particles.html">9. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10-shaders/shaders.html">10. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11-multimedia/multimedia.html">11. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12-networking/networking.html">12. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13-storage/storage.html">13. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14-dynamicqml/dynamicqml.html">14. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15-javascript/javascript.html">15. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16-qtcpp/qtcpp.html">16. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch17-extensions/extensions.html">17. Extending QML with C++</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">18. Qt for Python</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">1. Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/deployment.html">2. Deploying QML Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../draganddrop/draganddrop.html">3. Drag and Drop</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">18. Qt for Python</a><ul>
+<li><a class="reference internal" href="#introduction">18.1. Introduction</a></li>
+<li><a class="reference internal" href="#installing">18.2. Installing</a></li>
+<li><a class="reference internal" href="#building-an-application">18.3. Building an Application</a><ul>
+<li><a class="reference internal" href="#running-qml-from-python">18.3.1. Running QML from Python</a></li>
+<li><a class="reference internal" href="#exposing-python-objects-to-qml">18.3.2. Exposing Python Objects to QML</a><ul>
+<li><a class="reference internal" href="#signals-and-slots">18.3.2.1. Signals and Slots</a></li>
+<li><a class="reference internal" href="#properties">18.3.2.2. Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exposing-a-python-class-to-qml">18.3.3. Exposing a Python class to QML</a></li>
+<li><a class="reference internal" href="#a-model-from-python">18.3.4. A Model from Python</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">18.4. Summary</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../ch17-extensions/extensions.html" title="Previous Chapter: 17. Extending QML with C++"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 17. Extending...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../testing/testing.html" title="Next Chapter: 1. Testing"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">1. Testing &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="qt-for-python">
+<h1>18. Qt for Python<a class="headerlink" href="#qt-for-python" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: <a class="reference external" href="https://github.com/e8johan">e8johan</a></em></p>
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch18-python/python.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch18-python/python.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch18&body=back-link%3A+ch18-python%2Fpython.html%23qt-for-python" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch18&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Last Build: December 25, 2018 at 14:24 CET</p>
+<p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
+</div>
+<p>This chapter describes the PySide2 module from the Qt for Python project. You will learn how to install it and how to leverage QML together with Python.</p>
+<div class="section" id="introduction">
+<h2>18.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The Qt for Python project provides the tooling to bind C++ and Qt to Python, and a complete Python API to Qt. This means that everything that you can do with Qt and C++, you can also do with Qt and Python. This ranges from headless services to widget based user interfaces. In this chapter, we will focus on how to integrate QML and Python.</p>
+<p>Currently, Qt for Python is available for all desktop platforms, but not for mobile. Depending on which platform you use, the setup of Python is slightly different, but as soon as you have a <a class="reference external" href="https://www.python.org/">Python</a> and <a class="reference external" href="https://www.pypa.io/en/latest/">PyPA</a> environment setup, you can install Qt for Python using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. This is discussed in more detail further down.</p>
+<p>As the Qt for Python project provides an entirely new language binding for Qt, it also comes with a new set of documentation. The following resources are good to know about when exploring this module.</p>
+<ul class="simple">
+<li>Reference documentation: <a class="reference external" href="https://doc.qt.io/qtforpython/">https://doc.qt.io/qtforpython/</a></li>
+<li>Qt for Python wiki: <a class="reference external" href="https://wiki.qt.io/Qt_for_Python">https://wiki.qt.io/Qt_for_Python</a></li>
+<li>Caveats: <a class="reference external" href="https://wiki.qt.io/Qt_for_Python/Considerations">https://wiki.qt.io/Qt_for_Python/Considerations</a></li>
+</ul>
+<p>The Qt for Python bindings are generated using the Shiboken tool. At times, it might be of interest to read about it as well to understand what is going on. The prefered point for finding information about Shiboken is the <a class="reference external" href="https://doc.qt.io/qtforpython/shiboken2/index.html">reference documentation</a>. If you want to mix your own C++ code with Python and QML, Shiboken is the tool that you need.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Through-out this chapter we will use Python 3.6.</p>
+</div>
+</div>
+<div class="section" id="installing">
+<h2>18.2. Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
+<p>Qt for Python is available through PyPA using <code class="docutils literal notranslate"><span class="pre">pip</span></code> under the name <code class="docutils literal notranslate"><span class="pre">pyside2</span></code>. In the example below we setup a <code class="docutils literal notranslate"><span class="pre">venv</span></code> environment in which we will install the latest version of Qt for Python:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir qt-for-python
+$ <span class="nb">cd</span> qt-for-python
+$ python3 -m venv .
+$ . bin/activate
+<span class="o">(</span>qt-for-python<span class="o">)</span> $ python --version
+Python <span class="m">3</span>.6.6
+</pre></div>
+</div>
+<p>When the environment is setup, we continue to install <code class="docutils literal notranslate"><span class="pre">pyside2</span></code> using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>qt-for-python<span class="o">)</span> $ pip install pyside2
+Collecting pyside2
+Downloading <span class="o">[</span> ... <span class="o">]</span> <span class="o">(</span><span class="m">166</span>.4MB<span class="o">)</span>
+
+<span class="o">[</span> ... <span class="o">]</span>
+
+Installing collected packages: pyside2
+Successfully installed pyside2-5.11.2
+</pre></div>
+</div>
+<p>After the installation, we can test it by running a <em>Hello World</em> example from the interactive Python prompt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>qt-for-python<span class="o">)</span> $ python
+Python <span class="m">3</span>.6.6 <span class="o">(</span>default, Jun <span class="m">27</span> <span class="m">2018</span>, <span class="m">14</span>:44:17<span class="o">)</span>
+<span class="o">[</span>GCC <span class="m">8</span>.1.0<span class="o">]</span> on linux
+Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
+&gt;&gt;&gt; from PySide2 import QtWidgets
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; <span class="nv">app</span> <span class="o">=</span> QtWidgets.QApplication<span class="o">(</span>sys.argv<span class="o">)</span>
+&gt;&gt;&gt; <span class="nv">widget</span> <span class="o">=</span> QtWidgets.QLabel<span class="o">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="o">)</span>
+&gt;&gt;&gt; widget.show<span class="o">()</span>
+&gt;&gt;&gt; app.exec_<span class="o">()</span>
+<span class="m">0</span>
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<p>The example results in a window such as the one shown below. To end the program, close the window.</p>
+<div class="figure" id="id1">
+<img alt="../_images/pyside2-hello-world.png" src="../_images/pyside2-hello-world.png" />
+<p class="caption"><span class="caption-text">A Qt Widgets based <em>Hello World</em> example using Qt for Python.</span></p>
+</div>
+</div>
+<div class="section" id="building-an-application">
+<h2>18.3. Building an Application<a class="headerlink" href="#building-an-application" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter we will look at how you can combine Python and QML. The most natural way to combine the two worlds is to do as with C++ and QML, i.e. implement the logic in Python and the presentation in QML.</p>
+<p>To do this, we need to understand how to combine QML and Python into a single program, and then how to implement interfaces between the two worlds. In the sub-sections below, we will look at how this is done. We will start simple and progress to an example exposing the capabilities of a Python module to QML through a Qt item model.</p>
+<div class="section" id="running-qml-from-python">
+<h3>18.3.1. Running QML from Python<a class="headerlink" href="#running-qml-from-python" title="Permalink to this headline">¶</a></h3>
+<p>The very first step is to create a Python program that can host the <em>Hello World</em> QML program shown below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.0</span>
+
+<span class="nx">Window</span> 
+<span class="p">{</span>
+    <span class="k">width:</span> <span class="mi">640</span>
+    <span class="k">height:</span> <span class="mi">480</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+    <span class="k">title:</span> <span class="s2">&quot;Hello Python World!&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To do this, we need a Qt mainloop provided by <code class="docutils literal notranslate"><span class="pre">QGuiApplication</span></code> from the <code class="docutils literal notranslate"><span class="pre">QtGui</span></code> module. We also need a <code class="docutils literal notranslate"><span class="pre">QQmlApplicationEngine</span></code> from the <code class="docutils literal notranslate"><span class="pre">QtQml</span></code> module. In order to pass the reference to the source file to the QML application engine, we also need the <code class="docutils literal notranslate"><span class="pre">QUrl</span></code> class from the <code class="docutils literal notranslate"><span class="pre">QtCore</span></code> module.</p>
+<p>In the code below we emulate the functionality of the boilerplate C++ code generated by Qt Creator for QML projects. It instanciates the application object, and creates a QML application engine. It then loads the QML and then ensures that the QML was loaded by checking if a root object was created. Finally, it exits and returns the value returned by the <code class="docutils literal notranslate"><span class="pre">exec_</span></code> method of the application object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">exec_</span></code> method ends with an underscore to avoid a name clash with Python. It corresponds to the C++ method named <code class="docutils literal notranslate"><span class="pre">exec</span></code>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="n">QGuiApplication</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtQml</span> <span class="kn">import</span> <span class="n">QQmlApplicationEngine</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QUrl</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">QQmlApplicationEngine</span><span class="p">()</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="s2">&quot;main.qml&quot;</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">engine</span><span class="o">.</span><span class="n">rootObjects</span><span class="p">():</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Executing the example results in a window with the title <em>Hello Python World</em>.</p>
+<div class="figure" id="id2">
+<img alt="../_images/qml-hello-world.png" src="../_images/qml-hello-world.png" />
+<p class="caption"><span class="caption-text">A QML window created from Python.</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The example assumes that it is executed from the directory containing the <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> source file. You can termine the location of the Python file being executed using the <code class="docutils literal notranslate"><span class="pre">__file__</span></code> variable. This can be used to locate the QML files relative to the Python file as shown in this <a class="reference external" href="http://blog.qt.io/blog/2018/05/14/qml-qt-python/">blog post</a>.</p>
+</div>
+</div>
+<div class="section" id="exposing-python-objects-to-qml">
+<h3>18.3.2. Exposing Python Objects to QML<a class="headerlink" href="#exposing-python-objects-to-qml" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to share information between Python and QML is to expose a Python object to QML. This is done by registering a <em>context property</em> through the <code class="docutils literal notranslate"><span class="pre">QQmlApplicationEngine</span></code>. Before we can do that, we need to define a class so that we have an object to expose.</p>
+<p>Qt classes comes with a number of features that we want to be able to use. These are: signals, slots and properties. In this first example, we will restrict ourselves to a pair of a basic signal and slot. The rest will be covered in the examples further on.</p>
+<div class="section" id="signals-and-slots">
+<h4>18.3.2.1. Signals and Slots<a class="headerlink" href="#signals-and-slots" title="Permalink to this headline">¶</a></h4>
+<p>We start with the class <code class="docutils literal notranslate"><span class="pre">NumberGenerator</span></code>. It has a constructor, a method called <code class="docutils literal notranslate"><span class="pre">giveNumber</span></code> and a signal called <code class="docutils literal notranslate"><span class="pre">nextNumber</span></code>. The idea is that when you call <code class="docutils literal notranslate"><span class="pre">giveNumber</span></code>, the signal <code class="docutils literal notranslate"><span class="pre">nextNumber</span></code> is emitted with a new random number. You can see the code for the class below, but first we will look at the details.</p>
+<p>First of all we make sure to call <code class="docutils literal notranslate"><span class="pre">QObject.__init__</span></code> from our constructor. This is very important, as the example will not work without it.</p>
+<p>Then we declare a signal by creating an instance of the <code class="docutils literal notranslate"><span class="pre">Signal</span></code> class from the <code class="docutils literal notranslate"><span class="pre">PySide2.QtCore</span></code> module. In this case, the signal carries an integer value, hence the <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Finally, we <em>decorate</em> the <code class="docutils literal notranslate"><span class="pre">giveNumber</span></code> method with the <code class="docutils literal notranslate"><span class="pre">&#64;Slot()</span></code> decorator, thus turning it into a slot. There is not concept of <em>invokables</em> in Qt for Python, so all callable methods must be slots.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">giveNumber</span></code> method we emit the <code class="docutils literal notranslate"><span class="pre">nextNumber</span></code> signal using the <code class="docutils literal notranslate"><span class="pre">emit</span></code> method. This is a bit different than the syntax for doing so from QML or C++ as the signal is represented by an object instead of being a callable function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span>
+
+<span class="k">class</span> <span class="nc">NumberGenerator</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    
+    <span class="n">nextNumber</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">giveNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextNumber</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Next up is to combine the class we just created with the boilerplate code for combining QML and Python from earlier. This gives us the following entry-point code.</p>
+<p>The interesting lines are the one where we first instatiate a <code class="docutils literal notranslate"><span class="pre">NumberGenerator</span></code>. This object is then exposed to QML using the <code class="docutils literal notranslate"><span class="pre">setContextProperty</span></code> method of the <code class="docutils literal notranslate"><span class="pre">rootContext</span></code> of the QML engine. This exposes the object to QML as a global variable under the name <code class="docutils literal notranslate"><span class="pre">numberGenerator</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">QQmlApplicationEngine</span><span class="p">()</span>
+    
+    <span class="n">number_generator</span> <span class="o">=</span> <span class="n">NumberGenerator</span><span class="p">()</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;numberGenerator&quot;</span><span class="p">,</span> <span class="n">number_generator</span><span class="p">)</span>
+    
+    <span class="n">engine</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="s2">&quot;main.qml&quot;</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">engine</span><span class="o">.</span><span class="n">rootObjects</span><span class="p">():</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>    
+    
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Continuing to the QML code, we can see that we’ve created a Qt Quick Controls 2 user interface consisting of a <code class="docutils literal notranslate"><span class="pre">Button</span></code> and a <code class="docutils literal notranslate"><span class="pre">Label</span></code>. In the button’s <code class="docutils literal notranslate"><span class="pre">onClicked</span></code> handler, the <code class="docutils literal notranslate"><span class="pre">numberGenerator.giveNumber()</span></code> function is called. This is the slot of the object instantiated on the Python side.</p>
+<p>To receive a signal from an object that has been instantiated outside of QML we need to use a <code class="docutils literal notranslate"><span class="pre">Connections</span></code> element. This allows us to attach a signal hanlder to an existing target.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>At the moment of writing, the name of a signal argument cannot be propagated from Python to QML. To work around this, the Python signal, <code class="docutils literal notranslate"><span class="pre">numberGenerator.nextNumber</span></code>, is connected to a QML defined signal, <code class="docutils literal notranslate"><span class="pre">reNextNumber</span></code>, that has the name <code class="docutils literal notranslate"><span class="pre">number</span></code> for the signal argument. This allows us to capture the value of the signal argument in the signal handler in the <code class="docutils literal notranslate"><span class="pre">Connections</span></code> element.</p>
+<p class="last">This is a workaround for issue <a class="reference external" href="https://bugreports.qt.io/browse/PYSIDE-634">PYSIDE-634</a>.</p>
+</div>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.0</span>
+
+<span class="nx">Window</span> 
+<span class="p">{</span>
+    <span class="kd">id: root</span>
+    
+    <span class="k">width:</span> <span class="mi">640</span>
+    <span class="k">height:</span> <span class="mi">480</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+    <span class="k">title:</span> <span class="s2">&quot;Hello Python World!&quot;</span>
+    
+    <span class="nx">Flow</span> <span class="p">{</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;Give me a number!&quot;</span>
+            <span class="k">onClicked:</span> <span class="nx">numberGenerator</span><span class="p">.</span><span class="nx">giveNumber</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="nx">Label</span> <span class="p">{</span>
+            <span class="kd">id: numberLabel</span>
+            <span class="k">text:</span> <span class="s2">&quot;no number&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Signal argument names are not propagated from Python to QML, so we need to re-emit the signal</span>
+    <span class="nx">signal</span> <span class="nx">reNextNumber</span><span class="p">(</span><span class="kr">int</span> <span class="nx">number</span><span class="p">)</span>
+    <span class="k">Component.onCompleted:</span> <span class="nx">numberGenerator</span><span class="p">.</span><span class="nx">nextNumber</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">reNextNumber</span><span class="p">)</span>
+    
+    <span class="nx">Connections</span> <span class="p">{</span>
+        <span class="k">target:</span> <span class="nx">root</span>
+        <span class="k">onReNextNumber:</span> <span class="nx">numberLabel</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">number</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="properties">
+<h4>18.3.2.2. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<p>Instead of relying soley on signals and slots, the common way to expose state to QML is through properties. A property is a combination of a setter, getter and notification signal. The setter is optional, as we can also have read-only properties.</p>
+<p>To try this out we will update the <code class="docutils literal notranslate"><span class="pre">NumberGenerator</span></code> from the last example to a property based version. It will have two properties: <code class="docutils literal notranslate"><span class="pre">number</span></code>, a read-only property holding the last random number, and <code class="docutils literal notranslate"><span class="pre">maxNumber</span></code>, a read-write property holding the maximum value that can be returned. It will also have a slot, <code class="docutils literal notranslate"><span class="pre">updateNumber</span></code> that updates the random number.</p>
+<p>Before we dive into the details of properties, we create a basic Python class for this. It consists of the relevant getters and setters, but not Qt signalling. As a matter of fact, the only Qt part here is the inheritance from <code class="docutils literal notranslate"><span class="pre">QObject</span></code>. Even the names of the methods are Python style, i.e. using underscores instead of camelCase.</p>
+<p>Take notice of the underscores (“<code class="docutils literal notranslate"><span class="pre">__</span></code>”) at the beginning of the <code class="docutils literal notranslate"><span class="pre">__set_number</span></code> method. This implies that it is a private method. So even when the <code class="docutils literal notranslate"><span class="pre">number</span></code> property is read-only, we provide a setter. We just don’t make it public. This allows us to take actions when changing the value (e.g. emitting the notification signal).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NumberGenerator</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__number</span> <span class="o">=</span> <span class="mi">42</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span> <span class="o">=</span> <span class="mi">99</span>
+    
+    <span class="k">def</span> <span class="nf">set_max_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span> <span class="o">!=</span> <span class="n">val</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span> <span class="o">=</span> <span class="n">val</span>
+            
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__set_number</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">get_max_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span>
+
+    <span class="k">def</span> <span class="nf">__set_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number</span> <span class="o">!=</span> <span class="n">val</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__number</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    
+    <span class="k">def</span> <span class="nf">get_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number</span>
+</pre></div>
+</div>
+<p>In order to define properties, we need to import the concepts of <code class="docutils literal notranslate"><span class="pre">Signal</span></code>, <code class="docutils literal notranslate"><span class="pre">Slot</span></code>, and <code class="docutils literal notranslate"><span class="pre">Property</span></code> from <code class="docutils literal notranslate"><span class="pre">PySide2.QtCore</span></code>. In the full example, there are more imports, but these are the ones relevant to the properties.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">Property</span>
+</pre></div>
+</div>
+<p>Now we are ready to define the first property, <code class="docutils literal notranslate"><span class="pre">number</span></code>. We start off by declaring the signal <code class="docutils literal notranslate"><span class="pre">numberChanged</span></code>, which we then invoke in the <code class="docutils literal notranslate"><span class="pre">__set_number</span></code> method so that the signal is emitted when the value is changed.</p>
+<p>After that, all that is left is to instantiate the <code class="docutils literal notranslate"><span class="pre">Property</span></code> object. The <code class="docutils literal notranslate"><span class="pre">Property</span></code> contructor takes three arguments in this case: the type (<code class="docutils literal notranslate"><span class="pre">int</span></code>), the getter (<code class="docutils literal notranslate"><span class="pre">get_number</span></code>) and the notification signal which is passed as a named argument (<code class="docutils literal notranslate"><span class="pre">notify=numberChanged</span></code>). Notice that the getter has a Python name, i.e. using underscore rather than camelCase, as it is used to read the value from Python. For QML, the property name, <code class="docutils literal notranslate"><span class="pre">number</span></code>, is used.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NumberGenerator</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+
+    <span class="c1"># ...</span>
+    
+    <span class="c1"># number</span>
+    
+    <span class="n">numberChanged</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">__set_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number</span> <span class="o">!=</span> <span class="n">val</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__number</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">numberChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__number</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">get_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number</span>
+    
+    <span class="n">number</span> <span class="o">=</span> <span class="n">Property</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">get_number</span><span class="p">,</span> <span class="n">notify</span><span class="o">=</span><span class="n">numberChanged</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This leads us to the next property, <code class="docutils literal notranslate"><span class="pre">maxNumber</span></code>. This is a read-write property, so we need to provide a setter, as well as everything that we did for the <code class="docutils literal notranslate"><span class="pre">number</span></code> property.</p>
+<p>First up we declare the <code class="docutils literal notranslate"><span class="pre">maxNumberChanged</span></code> signal. This time, using the <code class="docutils literal notranslate"><span class="pre">&#64;Signal</span></code> decorator instead of instantiating a <code class="docutils literal notranslate"><span class="pre">Signal</span></code> object. We also provide a setter slot, <code class="docutils literal notranslate"><span class="pre">setMaxNumber</span></code> with a Qt name (camelCase) that simply calls the Python method <code class="docutils literal notranslate"><span class="pre">set_max_number</span></code> alongside a getter with a Python name. Again, the setter emits the change signal when the value is updated.</p>
+<p>Finally we put the pieces together into a read-write property by instantiating a <code class="docutils literal notranslate"><span class="pre">Property</span></code> object taking the type, getter, setter and notification signal as arguments.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NumberGenerator</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+
+    <span class="c1"># ...</span>
+
+    <span class="c1"># maxNumber</span>
+
+    <span class="nd">@Signal</span>
+    <span class="k">def</span> <span class="nf">maxNumberChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@Slot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">setMaxNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_max_number</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_max_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span> <span class="o">!=</span> <span class="n">val</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span> <span class="o">=</span> <span class="n">val</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">maxNumberChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+            
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__set_number</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">get_max_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span>
+
+    <span class="n">maxNumber</span> <span class="o">=</span> <span class="n">Property</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">get_max_number</span><span class="p">,</span> <span class="n">set_max_number</span><span class="p">,</span> <span class="n">notify</span><span class="o">=</span><span class="n">maxNumberChanged</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we have properties for the current random number, <code class="docutils literal notranslate"><span class="pre">number</span></code>, and the maximum random number, <code class="docutils literal notranslate"><span class="pre">maxNumber</span></code>. All that is left is a slot to produce a new random number. It is called <code class="docutils literal notranslate"><span class="pre">updateNumber</span></code> and simply sets a new random number.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NumberGenerator</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+
+    <span class="c1"># ...</span>
+    
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">updateNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__set_number</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_number</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Finally, the number generator is exposed to QML through a root context property.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">QQmlApplicationEngine</span><span class="p">()</span>
+    
+    <span class="n">number_generator</span> <span class="o">=</span> <span class="n">NumberGenerator</span><span class="p">()</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;numberGenerator&quot;</span><span class="p">,</span> <span class="n">number_generator</span><span class="p">)</span>
+    
+    <span class="n">engine</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="s2">&quot;main.qml&quot;</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">engine</span><span class="o">.</span><span class="n">rootObjects</span><span class="p">():</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>    
+    
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>In QML, we can bind to the <code class="docutils literal notranslate"><span class="pre">number</span></code> as well as the <code class="docutils literal notranslate"><span class="pre">maxNumber</span></code> properties of the <code class="docutils literal notranslate"><span class="pre">numberGenerator</span></code> object. In the <code class="docutils literal notranslate"><span class="pre">onClicked</span></code> handler of the <code class="docutils literal notranslate"><span class="pre">Button</span></code> we call the <code class="docutils literal notranslate"><span class="pre">updateNumber</span></code> method to generate a new random number and in the <code class="docutils literal notranslate"><span class="pre">onValueChanged</span></code> handler of the <code class="docutils literal notranslate"><span class="pre">Slider</span></code> we set the <code class="docutils literal notranslate"><span class="pre">maxNumber</span></code> property using the <code class="docutils literal notranslate"><span class="pre">setMaxNumber</span></code> method. This is because altering the property directly through Javascript would destroy the bindings to the property. By using the setter method explicitly, this is avoided.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.0</span>
+<span class="nx">Window</span> 
+<span class="p">{</span>
+    <span class="kd">id: root</span>
+    
+    <span class="k">width:</span> <span class="mi">640</span>
+    <span class="k">height:</span> <span class="mi">480</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+    <span class="k">title:</span> <span class="s2">&quot;Hello Python World!&quot;</span>
+    
+    <span class="nx">Column</span> <span class="p">{</span>
+        <span class="nx">Flow</span> <span class="p">{</span>
+            <span class="nx">Button</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="s2">&quot;Give me a number!&quot;</span>
+                <span class="k">onClicked:</span> <span class="nx">numberGenerator</span><span class="p">.</span><span class="nx">updateNumber</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="nx">Label</span> <span class="p">{</span>
+                <span class="kd">id: numberLabel</span>
+                <span class="k">text:</span> <span class="nx">numberGenerator</span><span class="p">.</span><span class="nx">number</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Flow</span> <span class="p">{</span>
+            <span class="nx">Slider</span> <span class="p">{</span>
+                <span class="k">from:</span> <span class="mi">0</span>
+                <span class="k">to:</span> <span class="mi">99</span>
+                <span class="k">value:</span> <span class="nx">numberGenerator</span><span class="p">.</span><span class="nx">maxNumber</span>
+                <span class="k">onValueChanged:</span> <span class="nx">numberGenerator</span><span class="p">.</span><span class="nx">setMaxNumber</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exposing-a-python-class-to-qml">
+<h3>18.3.3. Exposing a Python class to QML<a class="headerlink" href="#exposing-a-python-class-to-qml" title="Permalink to this headline">¶</a></h3>
+<p>Up until now, we’ve instantiated an object Python and used the <code class="docutils literal notranslate"><span class="pre">setContextProperty</span></code> method of the <code class="docutils literal notranslate"><span class="pre">rootContext</span></code> to make it available to QML. Being able to instantiate the object from QML allows better control over object life-cycles from QML. To enable this, we need to expose the <em>class</em>, instead of the <em>object</em>, to QML.</p>
+<p>The class that is being exposed to QML is not affected by where it is intantiated. No change is needed to the class definition. However, instead of calling <code class="docutils literal notranslate"><span class="pre">setContextProperty</span></code>, the <code class="docutils literal notranslate"><span class="pre">qmlRegisterType</span></code> function is used. This function comes from the <code class="docutils literal notranslate"><span class="pre">PySide2.QtQml</span></code> module and takes five arguments:</p>
+<ul class="simple">
+<li>A reference to the class, <code class="docutils literal notranslate"><span class="pre">NumberGenerator</span></code> in the example below.</li>
+<li>A module name, <code class="docutils literal notranslate"><span class="pre">'Generators'</span></code>.</li>
+<li>A module version consisting of a major and minor number, <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code> meaning <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</li>
+<li>The QML name of the class, <code class="docutils literal notranslate"><span class="pre">'NumberGenerator'</span></code></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="n">QGuiApplication</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtQml</span> <span class="kn">import</span> <span class="n">QQmlApplicationEngine</span><span class="p">,</span> <span class="n">qmlRegisterType</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QUrl</span>
+
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span>
+
+<span class="k">class</span> <span class="nc">NumberGenerator</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QObject</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    
+    <span class="n">nextNumber</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">giveNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextNumber</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">QQmlApplicationEngine</span><span class="p">()</span>
+    
+    <span class="n">qmlRegisterType</span><span class="p">(</span><span class="n">NumberGenerator</span><span class="p">,</span> <span class="s1">&#39;Generators&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;NumberGenerator&#39;</span><span class="p">)</span>
+    
+    <span class="n">engine</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="s2">&quot;main.qml&quot;</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">engine</span><span class="o">.</span><span class="n">rootObjects</span><span class="p">():</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>    
+    
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>In QML, we need to import the module, e.g. <code class="docutils literal notranslate"><span class="pre">Generators</span> <span class="pre">1.0</span></code> and then instantiate the class as <code class="docutils literal notranslate"><span class="pre">NumberGenerator</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>. The instance now works like any other QML element.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.0</span>
+
+<span class="kr">import</span> <span class="nx">Generators</span> <span class="mf">1.0</span>
+
+<span class="nx">Window</span> 
+<span class="p">{</span>
+    <span class="kd">id: root</span>
+    
+    <span class="k">width:</span> <span class="mi">640</span>
+    <span class="k">height:</span> <span class="mi">480</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+    <span class="k">title:</span> <span class="s2">&quot;Hello Python World!&quot;</span>
+    
+    <span class="nx">Flow</span> <span class="p">{</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;Give me a number!&quot;</span>
+            <span class="k">onClicked:</span> <span class="nx">numberGenerator</span><span class="p">.</span><span class="nx">giveNumber</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="nx">Label</span> <span class="p">{</span>
+            <span class="kd">id: numberLabel</span>
+            <span class="k">text:</span> <span class="s2">&quot;no number&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">NumberGenerator</span> <span class="p">{</span>
+        <span class="kd">id: numberGenerator</span>
+        
+        <span class="c1">// Signal argument names are not propagated from Python to QML, so we need to re-emit the signal</span>
+        <span class="nx">signal</span> <span class="nx">reNextNumber</span><span class="p">(</span><span class="kr">int</span> <span class="nx">number</span><span class="p">)</span>
+        <span class="k">Component.onCompleted:</span> <span class="nx">numberGenerator</span><span class="p">.</span><span class="nx">nextNumber</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">reNextNumber</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">Connections</span> <span class="p">{</span>
+        <span class="k">target:</span> <span class="nx">numberGenerator</span>
+        <span class="k">onReNextNumber:</span> <span class="nx">numberLabel</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">number</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-model-from-python">
+<h3>18.3.4. A Model from Python<a class="headerlink" href="#a-model-from-python" title="Permalink to this headline">¶</a></h3>
+<p>One of the more interesting types of objects or classes to expose from Python to QML are item models. These are used with various views or the <code class="docutils literal notranslate"><span class="pre">Repeater</span></code> element to dynamically build a user interface from the model contents.</p>
+<p>In this section we will take an existing python utility for monitoring CPU load (and more), <code class="docutils literal notranslate"><span class="pre">psutil</span></code>, and expose it to QML via a custom made item model called <code class="docutils literal notranslate"><span class="pre">CpuLoadModel</span></code>. You can see the program in action below:</p>
+<div class="figure" id="id3">
+<img alt="../_images/cpu-load-model.png" src="../_images/cpu-load-model.png" />
+<p class="caption"><span class="caption-text">Showing the CPU load of eight cores through a custom item model using <em>psutil</em>.</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The psutil library can be found at <a class="reference external" href="https://pypi.org/project/psutil/">https://pypi.org/project/psutil/</a> .</p>
+<p><em>“psutil (process and system utilities) is a cross-platform library for retrieving information on running processes and system utilization (CPU, memory, disks, network, sensors) in Python.”</em></p>
+<p class="last">You can install psutil using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">psutil</span></code>.</p>
+</div>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">psutil.cpu_percent</span></code> function (<a class="reference external" href="https://psutil.readthedocs.io/en/latest/#psutil.cpu_percent">documentation</a>) to sample the CPU load per core every second. To drive the sampling we use a <code class="docutils literal notranslate"><span class="pre">QTimer</span></code>. All of this is exposed through the <code class="docutils literal notranslate"><span class="pre">CpuLoadModel</span></code> which is a <code class="docutils literal notranslate"><span class="pre">QAbstractListModel</span></code>.</p>
+<p>Item models are interesting. They allow you to represent a two dimensional data set, or even nested data sets, if using the <code class="docutils literal notranslate"><span class="pre">QAbstractItemModel</span></code>. The <code class="docutils literal notranslate"><span class="pre">QAbstractListModel</span></code> that we use allow us to represent a list of items, so a one dimensional set of data. It is possible to implement a nested set of lists, creating a tree, but we only create one level.</p>
+<p>To implement a <code class="docutils literal notranslate"><span class="pre">QAbstractListModel</span></code> it is necessary to implement the methods <code class="docutils literal notranslate"><span class="pre">rowCount</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code>. The <code class="docutils literal notranslate"><span class="pre">rowCount</span></code> returns the number of CPU cores which we get using the <code class="docutils literal notranslate"><span class="pre">psutil.cpu_count</span></code> method. The <code class="docutils literal notranslate"><span class="pre">data</span></code> method returns data for different <em>roles</em>. We only support the <code class="docutils literal notranslate"><span class="pre">Qt.DisplayRole</span></code>, which corresponds to what you get when you refer to <code class="docutils literal notranslate"><span class="pre">display</span></code> inside the deletage item from QML.</p>
+<p>Looking at the code for the model, you can see that the actual data is stored in the <code class="docutils literal notranslate"><span class="pre">__cpu_load</span></code> list. If a valid request is made to <code class="docutils literal notranslate"><span class="pre">data</span></code>, i.e. the row, column and role is correct, we return the right element from the <code class="docutils literal notranslate"><span class="pre">__cpu_load</span></code> list. Otherwise we return <code class="docutils literal notranslate"><span class="pre">None</span></code> which corresponds to an uninitialized <code class="docutils literal notranslate"><span class="pre">QVariant</span></code> on the Qt side.</p>
+<p>Every time the update timer (<code class="docutils literal notranslate"><span class="pre">__update_timer</span></code>) times out, the <code class="docutils literal notranslate"><span class="pre">__update</span></code> method is triggered. Here, the <code class="docutils literal notranslate"><span class="pre">__cpu_load</span></code> list is updated, but we also emit the <code class="docutils literal notranslate"><span class="pre">dataChanged</span></code> signal, indicating that all data was changed. We do not do a <code class="docutils literal notranslate"><span class="pre">modelReset</span></code> as that also implies that the number of items might have changed.</p>
+<p>Finally, the <code class="docutils literal notranslate"><span class="pre">CpuLoadModel</span></code> is exposed to QML are a registered type in the <code class="docutils literal notranslate"><span class="pre">PsUtils</span></code> module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">psutil</span>
+
+<span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="n">QGuiApplication</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtQml</span> <span class="kn">import</span> <span class="n">QQmlApplicationEngine</span><span class="p">,</span> <span class="n">qmlRegisterType</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QUrl</span><span class="p">,</span> <span class="n">QTimer</span><span class="p">,</span> <span class="n">QAbstractListModel</span>
+
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">Property</span><span class="p">,</span> <span class="n">Qt</span>
+
+<span class="k">class</span> <span class="nc">CpuLoadModel</span><span class="p">(</span><span class="n">QAbstractListModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QAbstractListModel</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cpu_count</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cpu_load</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cpu_count</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">__update_timer</span> <span class="o">=</span> <span class="n">QTimer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__update_timer</span><span class="o">.</span><span class="n">setInterval</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__update_timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__update</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__update_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        
+        <span class="c1"># The first call returns invalid data</span>
+        <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">(</span><span class="n">percpu</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="nf">__update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__cpu_load</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">(</span><span class="n">percpu</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cpu_count</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="nf">rowCount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cpu_count</span>
+    
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">role</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span> <span class="ow">and</span>
+            <span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span>
+            <span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cpu_load</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="n">index</span><span class="o">.</span><span class="n">column</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cpu_load</span><span class="p">[</span><span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">QQmlApplicationEngine</span><span class="p">()</span>
+    
+    <span class="n">qmlRegisterType</span><span class="p">(</span><span class="n">CpuLoadModel</span><span class="p">,</span> <span class="s1">&#39;PsUtils&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;CpuLoadModel&#39;</span><span class="p">)</span>
+    
+    <span class="n">engine</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="s2">&quot;main.qml&quot;</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">engine</span><span class="o">.</span><span class="n">rootObjects</span><span class="p">():</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>    
+    
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>On the QML side we use a <code class="docutils literal notranslate"><span class="pre">ListView</span></code> to show the CPU load. The model is bound to the <code class="docutils literal notranslate"><span class="pre">model</span></code> property. For each item in the model a <code class="docutils literal notranslate"><span class="pre">delegate</span></code> item will be instantiated. In this case that means a <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> with a green bar (another <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code>) and a <code class="docutils literal notranslate"><span class="pre">Text</span></code> element displaying the current load.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.0</span>
+
+<span class="kr">import</span> <span class="nx">PsUtils</span> <span class="mf">1.0</span>
+
+<span class="nx">Window</span> 
+<span class="p">{</span>
+    <span class="kd">id: root</span>
+    
+    <span class="k">width:</span> <span class="mi">640</span>
+    <span class="k">height:</span> <span class="mi">480</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+    <span class="k">title:</span> <span class="s2">&quot;CPU Load&quot;</span>
+    
+    <span class="nx">ListView</span> <span class="p">{</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">model:</span> <span class="nx">CpuLoadModel</span> <span class="p">{</span> <span class="p">}</span>
+        <span class="k">delegate:</span> <span class="nx">Rectangle</span> <span class="p">{</span> 
+            <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span> 
+            <span class="k">height:</span> <span class="mi">30</span><span class="p">;</span>
+            <span class="k">color:</span> <span class="s2">&quot;white&quot;</span>
+            
+            <span class="nx">Rectangle</span> <span class="p">{</span>
+                <span class="kd">id: bar</span>
+                
+                <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">display</span> <span class="o">/</span> <span class="mf">100.0</span>
+                <span class="k">height:</span> <span class="mi">30</span>
+                <span class="k">color:</span> <span class="s2">&quot;green&quot;</span>
+            <span class="p">}</span>
+            
+            <span class="nx">Text</span> <span class="p">{</span>
+                <span class="k">anchors.verticalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">verticalCenter</span>
+                <span class="k">x:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">bar</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="o">-</span><span class="nx">width</span><span class="p">)</span>
+                
+                <span class="k">text:</span> <span class="nx">display</span> <span class="o">+</span> <span class="s2">&quot;%&quot;</span>
+            <span class="p">}</span>   
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>18.4. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter we have looked at the PySide2 module from the Qt for Python project. After a brief look at installation, we focused on how Qt concepts are used from Python. This included slots, signals and properties. We also looked at a basic list model and how to expose both Python objects and classes from Python to QML.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Dec 25, 2018.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46104829-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>
