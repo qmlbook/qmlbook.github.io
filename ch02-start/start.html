@@ -58,17 +58,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch03-qtcreator/qtcreator.html">3. Qt Creator IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch04-qmlstart/qmlstart.html">4. Quick Starter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch05-fluid/fluid.html">5. Fluid Elements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch06-modelview/modelview.html">6. Model-View-Delegate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch07-canvas/canvas.html">7. Canvas Element</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch08-particles/particles.html">8. Particle Simulations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch09-shaders/shaders.html">9. Shader Effects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch10-multimedia/multimedia.html">10. Multimedia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch11-networking/networking.html">11. Networking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch12-storage/storage.html">12. Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch13-dynamicqml/dynamicqml.html">13. Dynamic QML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch14-javascript/javascript.html">14. JavaScript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch15-qtcpp/qtcpp.html">15. Qt and C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch16-extensions/extensions.html">16. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06-controls/controls.html">6. Qt Quick Controls 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07-modelview/modelview.html">7. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08-canvas/canvas.html">8. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09-particles/particles.html">9. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10-shaders/shaders.html">10. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11-multimedia/multimedia.html">11. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12-networking/networking.html">12. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13-storage/storage.html">13. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14-dynamicqml/dynamicqml.html">14. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15-javascript/javascript.html">15. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16-qtcpp/qtcpp.html">16. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch17-extensions/extensions.html">17. Extending QML with C++</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">1. Testing</a></li>
@@ -93,9 +94,11 @@
 <li><a class="reference internal" href="#hello-world">2.2. Hello World</a></li>
 <li><a class="reference internal" href="#application-types">2.3. Application Types</a><ul>
 <li><a class="reference internal" href="#console-application">2.3.1. Console Application</a></li>
-<li><a class="reference internal" href="#widget-application">2.3.2. Widget Application</a></li>
+<li><a class="reference internal" href="#c-widget-application">2.3.2. C++ Widget Application</a></li>
 <li><a class="reference internal" href="#adapting-data">2.3.3. Adapting Data</a></li>
 <li><a class="reference internal" href="#qt-quick-application">2.3.4. Qt Quick Application</a></li>
+<li><a class="reference internal" href="#qt-quick-controls-application">2.3.5. Qt Quick Controls Application</a></li>
+<li><a class="reference internal" href="#id1">2.3.6. Qt Quick Controls Application</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#summary">2.4. Summary</a></li>
@@ -299,8 +302,8 @@
 </div>
 <p>This concludes the section about console based applications with Qt.</p>
 </div>
-<div class="section" id="widget-application">
-<h3>2.3.2. Widget Application<a class="headerlink" href="#widget-application" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="c-widget-application">
+<h3>2.3.2. C++ Widget Application<a class="headerlink" href="#c-widget-application" title="Permalink to this headline">¶</a></h3>
 <p>Console based applications are very handy, but sometimes you need to have a graphical user interface (GUI). In addition, GUI-based applications will likely need a back-end to read/write files, communicate over the network, or keep data in a container.</p>
 <p>In this first snippet for widget-based applications, we do as little as needed to create a window and show it. In Qt, a widget without a parent is a window. We use a scoped pointer to ensure that the widget is deleted when the pointer goes out of scope. The application object encapsulates the Qt runtime, and we start the event loop with the <code class="docutils literal notranslate"><span class="pre">exec()</span></code> call. From there on, the application reacts only to events triggered by user input (such as mouse or keyboard), or other event providers, such as networking or file IO. The application only exits when the event loop is exited. This is done by calling <code class="docutils literal notranslate"><span class="pre">quit()</span></code> on the application or by closing the window.</p>
 <p>When you run the code, you will see a window with the size of 240 x 120 pixels. That’s all.</p>
@@ -583,6 +586,14 @@ Here is a short example. First the header file with the declaration of the view 
 <p class="last">This is not completely correct, as the SQL table model contains the data in columns and a QML model expects the data as roles. So there needs to be a mapping between columns and roles. See the <a class="reference external" href="http://wiki.qt.io/QML_and_QSqlTableModel">QML and QSqlTableModel</a> wiki page.</p>
 </div>
 </div>
+<div class="section" id="qt-quick-controls-application">
+<h3>2.3.5. Qt Quick Controls Application<a class="headerlink" href="#qt-quick-controls-application" title="Permalink to this headline">¶</a></h3>
+<p>tbd</p>
+</div>
+<div class="section" id="id1">
+<h3>2.3.6. Qt Quick Controls Application<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>tbd</p>
+</div>
 </div>
 <div class="section" id="summary">
 <h2>2.4. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
@@ -604,7 +615,7 @@ Here is a short example. First the header file with the declaration of the view 
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 20, 2018.<br/>
+      Last updated on Dec 25, 2018.<br/>
     </p>
   </div>
 </footer>

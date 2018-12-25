@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Model-View-Delegate" href="../ch06-modelview/modelview.html" />
+    <link rel="next" title="6. Qt Quick Controls 2" href="../ch06-controls/controls.html" />
     <link rel="prev" title="4. Quick Starter" href="../ch04-qmlstart/qmlstart.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -58,17 +58,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch03-qtcreator/qtcreator.html">3. Qt Creator IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch04-qmlstart/qmlstart.html">4. Quick Starter</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. Fluid Elements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch06-modelview/modelview.html">6. Model-View-Delegate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch07-canvas/canvas.html">7. Canvas Element</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch08-particles/particles.html">8. Particle Simulations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch09-shaders/shaders.html">9. Shader Effects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch10-multimedia/multimedia.html">10. Multimedia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch11-networking/networking.html">11. Networking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch12-storage/storage.html">12. Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch13-dynamicqml/dynamicqml.html">13. Dynamic QML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch14-javascript/javascript.html">14. JavaScript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch15-qtcpp/qtcpp.html">15. Qt and C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch16-extensions/extensions.html">16. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06-controls/controls.html">6. Qt Quick Controls 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07-modelview/modelview.html">7. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08-canvas/canvas.html">8. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09-particles/particles.html">9. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10-shaders/shaders.html">10. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11-multimedia/multimedia.html">11. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12-networking/networking.html">12. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13-storage/storage.html">13. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14-dynamicqml/dynamicqml.html">14. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15-javascript/javascript.html">15. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16-qtcpp/qtcpp.html">16. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch17-extensions/extensions.html">17. Extending QML with C++</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">1. Testing</a></li>
@@ -117,7 +118,7 @@
     </a>
   </li>
   <li>
-    <a href="../ch06-modelview/modelview.html" title="Next Chapter: 6. Model-View-Delegate"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">6. Model-View... &raquo;</span>
+    <a href="../ch06-controls/controls.html" title="Next Chapter: 6. Qt Quick Controls 2"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">6. Qt Quick C... &raquo;</span>
     </a>
   </li>
               
@@ -152,7 +153,7 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch05-fluid/fluid.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch05-fluid/fluid.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch05&body=back-link%3A+ch05-fluid%2Ffluid.html%23fluid-elements" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch05&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: December 20, 2018 at 10:19 CET</p>
+<p>Last Build: December 25, 2018 at 13:46 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>Till now, we have mostly looked at simple graphical elements and how to arrange and manipulate them. This chapter is about how to control these changes in a way that a value of a property not just changes instantly, it’s more how the value changes over time: an animation. This technology is one of the key foundations for modern slick user interfaces and can be extended with a system to describe your user interface using states and transitions. Each state defines a set of property changes and can be combined with animations on state changes, called transitions.</p>
@@ -933,7 +934,7 @@ The <em>X1</em> and <em>ROT1</em> animation are left as is with a linear curve.<
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 20, 2018.<br/>
+      Last updated on Dec 25, 2018.<br/>
     </p>
   </div>
 </footer>

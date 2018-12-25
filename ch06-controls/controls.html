@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>6. Qt Quick Controls 2 &#8212; Qt5 Cadaques Book vmaster</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom-styles.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Model-View-Delegate" href="../ch07-modelview/modelview.html" />
+    <link rel="prev" title="5. Fluid Elements" href="../ch05-fluid/fluid.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          QmlBook</a>
+        <span class="navbar-text navbar-version pull-left"><b>master</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Chapters <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ch01-meetqt/meetqt.html">1. Meet Qt 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02-start/start.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03-qtcreator/qtcreator.html">3. Qt Creator IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04-qmlstart/qmlstart.html">4. Quick Starter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05-fluid/fluid.html">5. Fluid Elements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Qt Quick Controls 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07-modelview/modelview.html">7. Model-View-Delegate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08-canvas/canvas.html">8. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09-particles/particles.html">9. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10-shaders/shaders.html">10. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11-multimedia/multimedia.html">11. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12-networking/networking.html">12. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13-storage/storage.html">13. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14-dynamicqml/dynamicqml.html">14. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15-javascript/javascript.html">15. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16-qtcpp/qtcpp.html">16. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch17-extensions/extensions.html">17. Extending QML with C++</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">1. Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/deployment.html">2. Deploying QML Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qtpython/qtpython.html">3. QML and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../draganddrop/draganddrop.html">4. Drag and Drop</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">6. Qt Quick Controls 2</a><ul>
+<li><a class="reference internal" href="#introduction-to-controls">6.1. Introduction to Controls</a></li>
+<li><a class="reference internal" href="#an-image-viewer">6.2. An Image Viewer</a><ul>
+<li><a class="reference internal" href="#the-desktop-version">6.2.1. The Desktop Version</a></li>
+<li><a class="reference internal" href="#moving-to-mobile">6.2.2. Moving to Mobile</a></li>
+<li><a class="reference internal" href="#a-shared-codebase">6.2.3. A Shared Codebase</a></li>
+<li><a class="reference internal" href="#native-dialogs">6.2.4. Native Dialogs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#common-patterns">6.3. Common Patterns</a><ul>
+<li><a class="reference internal" href="#nested-screens">6.3.1. Nested Screens</a></li>
+<li><a class="reference internal" href="#side-by-side-screens">6.3.2. Side by Side Screens</a></li>
+<li><a class="reference internal" href="#document-windows">6.3.3. Document Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-imagine-style">6.4. The Imagine Style</a></li>
+<li><a class="reference internal" href="#summary">6.5. Summary</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../ch05-fluid/fluid.html" title="Previous Chapter: 5. Fluid Elements"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 5. Fluid Elements</span>
+    </a>
+  </li>
+  <li>
+    <a href="../ch07-modelview/modelview.html" title="Next Chapter: 7. Model-View-Delegate"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">7. Model-View... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="qt-quick-controls-2">
+<h1>6. Qt Quick Controls 2<a class="headerlink" href="#qt-quick-controls-2" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: <a class="reference external" href="https://github.com/e8johan">e8johan</a></em></p>
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch06-controls/controls.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch06-controls/controls.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch105&body=back-link%3A+ch06-controls%2Fcontrols.html%23qt-quick-controls-2" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch105&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Last Build: December 25, 2018 at 13:46 CET</p>
+<p class="last">The source code for this chapter can be found in the <a class="reference external" href="../../assets">assets folder</a>.</p>
+</div>
+<p>This chapter introduces how to use Qt Quick Controls 2 to create a user interface built from standard components such as buttons, labels, sliders and so on. We will look at how various styles can be used to move user interfaces between platforms before diving into custom styling.</p>
+<div class="section" id="introduction-to-controls">
+<h2>6.1. Introduction to Controls<a class="headerlink" href="#introduction-to-controls" title="Permalink to this headline">¶</a></h2>
+<p>Using Qt Quick from scratch gives you primited graphical and interaction elements from which you can build your user interfaces. Using Qt Quick Controls 2 you start from a slightly more structured set of controls to build from. The controls range from simple text labels and buttons to more complex ones such as sliders and dials. These element are handy if you want to create a user interface based on classic interaction patterns as they provide a foundation to stand on.</p>
+<p>The Qt Quick Controls 2 comes with a number of styles out of the box that are shown in the table below. The <em>Default</em> style is a basic flat style. The <em>Universal</em> style is based on the Microsoft Universal Design Guidelines, while <em>Material</em> is based on Google’s Material Design Guidelines, and the <em>Fusion</em> style is a desktop oriented style.</p>
+<p>Some of the styles can be tweaked by tweaking the used palette. The <em>Imagine</em> is a style based on image assets, this allows a graphical designer to create a new style without writing any code at all, not even for palette colour codes.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Style</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Default</td>
+<td><img alt="../_images/style-default.png" class="first last" src="../_images/style-default.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>Universal</td>
+<td><img alt="../_images/style-universal.png" class="first last" src="../_images/style-universal.png" />
+</td>
+</tr>
+<tr class="row-even"><td>Material</td>
+<td><img alt="../_images/style-material.png" class="first last" src="../_images/style-material.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>Fusion</td>
+<td><img alt="../_images/style-fusion.png" class="first last" src="../_images/style-fusion.png" />
+</td>
+</tr>
+<tr class="row-even"><td>Imagine</td>
+<td><img alt="../_images/style-imagine.png" class="first last" src="../_images/style-imagine.png" />
+</td>
+</tr>
+</tbody>
+</table>
+<p>The Qt Quick Controls 2 is available from the <code class="docutils literal notranslate"><span class="pre">QtQuick.Controls</span></code> import module. In this module you will find the basic controls such as buttons, labels, checkboxes, sliders and so on. In addition to these controls, the following modules are also of interest:</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Module</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">QtQuick.Controls</span></code></td>
+<td>The basic controls.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">QtQuick.Templates</span></code></td>
+<td>Provides the non-visual part of the controls.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">QtQuick.Dialogs</span></code></td>
+<td>Provides standard dialogs for showing messages, picking files, picking colours, and picking fonts, as well as the base for custom dialogs.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">QtQuick.Controls.Universal</span></code></td>
+<td>Universal style theming support.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">QtQuick.Controls.Material</span></code></td>
+<td>Material style theming support.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">Qt.labs.calendar</span></code></td>
+<td>Controls for supporting date picking and other calendar related interactions.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">Qt.labs.platform</span></code></td>
+<td>Support for platform native dialogs for common tasks such as picking files, colours, etc, as well as system tray icons and standard paths.</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the <code class="docutils literal notranslate"><span class="pre">Qt.labs</span></code> modules are experimental, meaning that their APIs can have breaking changes between Qt versions.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">QtQuick.Dialogs</span></code> module is a Qt Quick Controls 1 module, but it is also the only way to do dialogs without depending on the <code class="docutils literal notranslate"><span class="pre">QtWidgets</span></code> module. See below for more details.</p>
+</div>
+</div>
+<div class="section" id="an-image-viewer">
+<h2>6.2. An Image Viewer<a class="headerlink" href="#an-image-viewer" title="Permalink to this headline">¶</a></h2>
+<p>Let’s look at a larger example of how Qt Quick Controls 2 is used. For this, we will create a simple image viewer.</p>
+<p>First, we create it for desktop using the Fusion style, then we will refactor it for a mobile experience before having a look at the final code base.</p>
+<div class="section" id="the-desktop-version">
+<h3>6.2.1. The Desktop Version<a class="headerlink" href="#the-desktop-version" title="Permalink to this headline">¶</a></h3>
+<p>The desktop version is based around a classic application window with a menu bar, a tool bar and a document area. The application can be seen in action below.</p>
+<div class="figure" id="id1">
+<img alt="../_images/viewer-window.png" src="../_images/viewer-window.png" />
+<p class="caption"><span class="caption-text">The image viewer main window.</span></p>
+</div>
+<p>We use the Qt Creator project template for an empty Qt Quick application as a starting point. However, we replace the default <code class="docutils literal notranslate"><span class="pre">Window</span></code> element from the template with a <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code> from the <code class="docutils literal notranslate"><span class="pre">QtQuick.Controls</span></code> module. The code below shows <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> where the window itself is created and setup with a default size and title.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.4</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Dialogs</span> <span class="mf">1.2</span>
+
+<span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+    <span class="k">width:</span> <span class="mi">640</span>
+    <span class="k">height:</span> <span class="mi">480</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code> consists of four main areas as shown below. The menu bar, tool bar and status bar are usually populated by instances of <code class="docutils literal notranslate"><span class="pre">MenuBar</span></code>, <code class="docutils literal notranslate"><span class="pre">ToolBar</span></code> or <code class="docutils literal notranslate"><span class="pre">TabBar</span></code> controls, while the contents area is where the children of the window goes. Notice that the image viewer application does not feature a status bar, that is why it is missing from the code show here, as well as from the figure above.</p>
+<div class="figure" id="id2">
+<img alt="../_images/applicationwindow-areas.png" src="../_images/applicationwindow-areas.png" />
+<p class="caption"><span class="caption-text">The main areas of the <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code></span></p>
+</div>
+<p>As we are targetting desktop, we enforce the use of the <em>Fusion</em> style. This can be done via environment variables, command line arguments, or programmatically in the C++ code. We do it the latter way by adding the following line to the <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code>:</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="k">QQuickStyle:</span><span class="o">:</span><span class="nx">setStyle</span><span class="p">(</span><span class="s2">&quot;Fusion&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We then start building the user interface in <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> by adding an <code class="docutils literal notranslate"><span class="pre">Image</span></code> element as the contents. This element will hold the images when the user opens them, so for now it is just a place holder. The <code class="docutils literal notranslate"><span class="pre">background</span></code> property is used to provide an element to the window to place behind the contents. This will be shown when there is no image loaded, and as borders around the image if the aspect ratio down not let it fill the contents area of the window.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="k">background:</span> <span class="nx">Rectangle</span> <span class="p">{</span>
+        <span class="k">color:</span> <span class="s2">&quot;darkGray&quot;</span>
+    <span class="p">}</span>
+
+    <span class="nx">Image</span> <span class="p">{</span>
+        <span class="kd">id: image</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">fillMode:</span> <span class="nx">Image</span><span class="p">.</span><span class="nx">PreserveAspectFit</span>
+        <span class="k">asynchronous:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We then continue by adding the <code class="docutils literal notranslate"><span class="pre">ToolBar</span></code>. This is done using the <code class="docutils literal notranslate"><span class="pre">toolBar</span></code> property of the window. Inside the tool bar we add a <code class="docutils literal notranslate"><span class="pre">Flow</span></code> element which will let the contents fill the width of the control before overflowing to a new row. Inside the flow we place a <code class="docutils literal notranslate"><span class="pre">ToolButton</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ToolButton</span></code> has a couple of interesting properties. The <code class="docutils literal notranslate"><span class="pre">text</span></code> is straight forward. However, the <code class="docutils literal notranslate"><span class="pre">icon.name</span></code> is taken from the <a class="reference external" href="https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html">freedesktop.org Icon Naming Specification</a>. In that document, a list of standard icons are listed by name. By refering to such a name, Qt will pick out the correct icon from the current desktop theme.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">onClicked</span></code> signal handler of the <code class="docutils literal notranslate"><span class="pre">ToolButton</span></code> is the final piece of code. It calls the <code class="docutils literal notranslate"><span class="pre">open</span></code> method on the <code class="docutils literal notranslate"><span class="pre">fileOpenDialog</span></code> element.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="k">header:</span> <span class="nx">ToolBar</span> <span class="p">{</span>
+        <span class="nx">Flow</span> <span class="p">{</span>
+            <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+            <span class="nx">ToolButton</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Open&quot;</span><span class="p">)</span>
+                <span class="k">icon.name:</span> <span class="s2">&quot;document-open&quot;</span>
+                <span class="k">onClicked:</span> <span class="nx">fileOpenDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">fileOpenDialog</span></code> element is a <code class="docutils literal notranslate"><span class="pre">FileDialog</span></code> control from the <code class="docutils literal notranslate"><span class="pre">QtQuick.Dialogs</span></code> module. The file dialog can be used to open or save files, as well as picking directories.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">QtQuick.Dialogs</span></code> module is a Qt Quick Controls 1 module, but it is also the only way to do dialogs without depending on the <code class="docutils literal notranslate"><span class="pre">QtWidgets</span></code> module. See how to implement native dialogs using <code class="docutils literal notranslate"><span class="pre">Qt.labs.platform</span></code> further down.</p>
+</div>
+<p>In the code we start by assigning a <code class="docutils literal notranslate"><span class="pre">title</span></code>. Then we set the starting folder using the <code class="docutils literal notranslate"><span class="pre">shortcut</span></code> property. The <code class="docutils literal notranslate"><span class="pre">shortcut</span></code> property holds links to common folders such as the user’s home, documents, and such. After that we set a name filter that controls what files the user can see and pick using the dialog.</p>
+<p>Finally, we reach the <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code> signal handler where the <code class="docutils literal notranslate"><span class="pre">Image</span></code> element that holds the window contents is set to show the the selected file. There is an <code class="docutils literal notranslate"><span class="pre">onRejected</span></code> signal as well, but we do not need to handle it in the image viewer application.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="nx">FileDialog</span> <span class="p">{</span>
+        <span class="kd">id: fileOpenDialog</span>
+        <span class="k">title:</span> <span class="s2">&quot;Select an image file&quot;</span>
+        <span class="k">folder:</span> <span class="nx">shortcuts</span><span class="p">.</span><span class="nx">documents</span>
+        <span class="k">nameFilters:</span> <span class="p">[</span>
+            <span class="s2">&quot;Image files (*.png *.jpeg *.jpg)&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">onAccepted:</span> <span class="p">{</span>
+            <span class="nx">image</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="nx">fileOpenDialog</span><span class="p">.</span><span class="nx">fileUrl</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We then continue with the <code class="docutils literal notranslate"><span class="pre">MenuBar</span></code>. To create a menu, one puts <code class="docutils literal notranslate"><span class="pre">Menu</span></code> elements inside the menu bar, and then populate each <code class="docutils literal notranslate"><span class="pre">Menu</span></code> with <code class="docutils literal notranslate"><span class="pre">MenuItem</span></code> elements.</p>
+<p>In the code below, we create two menus, <em>File</em> and <em>Help</em>. Under <em>File</em>, we place <em>Open</em> using the same icon and action as the tool button in the tool bar. Under <em>Help</em> you find <em>About</em> which triggers a call to the <code class="docutils literal notranslate"><span class="pre">open</span></code> method of the <code class="docutils literal notranslate"><span class="pre">aboutDialog</span></code> element.</p>
+<p>Notice that the ampersands (“&amp;”) in the <code class="docutils literal notranslate"><span class="pre">title</span></code> property of the <code class="docutils literal notranslate"><span class="pre">Menu</span></code> and the <code class="docutils literal notranslate"><span class="pre">text</span></code> property of the <code class="docutils literal notranslate"><span class="pre">MenuItem</span></code> turns the following character into a keyboard shortcut, e.g. you reach the file menu by pressing <em>Alt+F</em>, followed by <em>Alt+O</em> to trigger the open item.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="k">menuBar:</span> <span class="nx">MenuBar</span> <span class="p">{</span>
+        <span class="nx">Menu</span> <span class="p">{</span>
+            <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;File&quot;</span><span class="p">)</span>
+            <span class="nx">MenuItem</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;Open...&quot;</span><span class="p">)</span>
+                <span class="k">icon.name:</span> <span class="s2">&quot;document-open&quot;</span>
+                <span class="k">onTriggered:</span> <span class="nx">fileOpenDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nx">Menu</span> <span class="p">{</span>
+            <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;Help&quot;</span><span class="p">)</span>
+            <span class="nx">MenuItem</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;About...&quot;</span><span class="p">)</span>
+                <span class="k">onTriggered:</span> <span class="nx">aboutDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">aboutDialog</span></code> element is based on the <code class="docutils literal notranslate"><span class="pre">Dialog</span></code> control from the <code class="docutils literal notranslate"><span class="pre">QtQuick.Controls</span></code> module, which is the base for custom dialogs. The dialog we are about to create is shown in the figure below.</p>
+<div class="figure" id="id3">
+<img alt="../_images/viewer-about.png" src="../_images/viewer-about.png" />
+<p class="caption"><span class="caption-text">The about dialog.</span></p>
+</div>
+<p>The code for the <code class="docutils literal notranslate"><span class="pre">aboutDialog</span></code> can be split into three parts. First, we setup the dialog window with a title. Then we provide some contents for the dialog – in this case, a <code class="docutils literal notranslate"><span class="pre">Label</span></code> control. Finally, we opt to use a standard <em>Ok</em> button to close the dialog.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="nx">Dialog</span> <span class="p">{</span>
+        <span class="kd">id: aboutDialog</span>
+        <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;About&quot;</span><span class="p">)</span>
+        <span class="nx">Label</span> <span class="p">{</span>
+            <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+            <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;QML Image Viewer\nA part of the QmlBook\nhttp://qmlbook.org&quot;</span><span class="p">)</span>
+            <span class="k">horizontalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignHCenter</span>
+        <span class="p">}</span>
+
+        <span class="k">standardButtons:</span> <span class="nx">StandardButton</span><span class="p">.</span><span class="nx">Ok</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The end result of all this is an, albeit simple, desktop application for viewing images.</p>
+</div>
+<div class="section" id="moving-to-mobile">
+<h3>6.2.2. Moving to Mobile<a class="headerlink" href="#moving-to-mobile" title="Permalink to this headline">¶</a></h3>
+<p>There are a number of differences in how a user interface is expected to look an behave on a mobile device compared to a desktop application. The biggest difference for our application is how the actions are accessed. Instead of a menu bar and a tool bar, we will use a drawer from which the user can pick the actions. The drawer can swiped in from the side, but we also offer a hamburger button in the header. The resulting application with the drawer open can be seen below.</p>
+<div class="figure" id="id4">
+<img alt="../_images/viewer-mobile-drawer.png" src="../_images/viewer-mobile-drawer.png" />
+<p class="caption"><span class="caption-text">The image viewer with a drawer menu.</span></p>
+</div>
+<p>First of all, we need to change the style that is set in <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> from <em>Fusion</em> to <em>Material</em>:</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="k">QQuickStyle:</span><span class="o">:</span><span class="nx">setStyle</span><span class="p">(</span><span class="s2">&quot;Material&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then we start adapting the user interface. We start by replacing the menu with a drawer. In the code below, the <code class="docutils literal notranslate"><span class="pre">Drawer</span></code> component is added as a child to the <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code>. Inside the drawer, we put a <code class="docutils literal notranslate"><span class="pre">ListView</span></code> containing <code class="docutils literal notranslate"><span class="pre">ItemDelegate</span></code> instances. It also contains a <code class="docutils literal notranslate"><span class="pre">ScrollIndicator</span></code> used to show what part of a long list that is shown. As our list only consists of two items, this is not visible in this example.</p>
+<p>The drawer <code class="docutils literal notranslate"><span class="pre">ListView</span></code> is populated from a <code class="docutils literal notranslate"><span class="pre">ListModel</span></code> where each <code class="docutils literal notranslate"><span class="pre">ListItem</span></code> corresponds to a menu item. Each time an item is clicked, in the <code class="docutils literal notranslate"><span class="pre">onClicked</span></code> method, the <code class="docutils literal notranslate"><span class="pre">triggered</span></code> method of the corresponding <code class="docutils literal notranslate"><span class="pre">ListItem</span></code> is called. This way, we can use a single delegate to trigger different actions.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="kd">id: window</span>
+
+    <span class="nx">Drawer</span> <span class="p">{</span>
+        <span class="kd">id: drawer</span>
+
+        <span class="k">width:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="k">height:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">height</span>
+
+        <span class="nx">ListView</span> <span class="p">{</span>
+            <span class="k">focus:</span> <span class="kc">true</span>
+            <span class="k">currentIndex:</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+
+            <span class="k">delegate:</span> <span class="nx">ItemDelegate</span> <span class="p">{</span>
+                <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
+                <span class="k">text:</span> <span class="nx">model</span><span class="p">.</span><span class="nx">text</span>
+                <span class="k">highlighted:</span> <span class="nx">ListView</span><span class="p">.</span><span class="nx">isCurrentItem</span>
+                <span class="k">onClicked:</span> <span class="p">{</span>
+                    <span class="nx">drawer</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+                    <span class="nx">model</span><span class="p">.</span><span class="nx">triggered</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">model:</span> <span class="nx">ListModel</span> <span class="p">{</span>
+                <span class="nx">ListElement</span> <span class="p">{</span>
+                    <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Open...&quot;</span><span class="p">)</span>
+                    <span class="k">triggered:</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">fileOpenDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span> <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="nx">ListElement</span> <span class="p">{</span>
+                    <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;About...&quot;</span><span class="p">)</span>
+                    <span class="k">triggered:</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">aboutDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span> <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">ScrollIndicator.vertical:</span> <span class="nx">ScrollIndicator</span> <span class="p">{</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The next change is the <code class="docutils literal notranslate"><span class="pre">header</span></code> in the <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code>. Instead of a desktop style toolbar, we add a button to open the drawer and the title of our application.</p>
+<div class="figure" id="id5">
+<img alt="../_images/viewer-mobile.png" src="../_images/viewer-mobile.png" />
+<p class="caption"><span class="caption-text">The image viewer with the mobile header.</span></p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ToolBar</span></code> contains a two child child elements: a <code class="docutils literal notranslate"><span class="pre">ToolButton</span></code> and a <code class="docutils literal notranslate"><span class="pre">Label</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ToolButton</span></code> control opens the drawer. The corresponding close call can be found in the <code class="docutils literal notranslate"><span class="pre">ListView</span></code> delegate. When an item has been selected the drawer is closed. The icon used for the <code class="docutils literal notranslate"><span class="pre">ToolButton</span></code> comes from the <a class="reference external" href="https://material.io/tools/icons/?style=baseline">Material Design Icons page</a>.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="k">header:</span> <span class="nx">ToolBar</span> <span class="p">{</span>
+        <span class="nx">ToolButton</span> <span class="p">{</span>
+            <span class="kd">id: menuButton</span>
+            <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+            <span class="k">anchors.verticalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">verticalCenter</span>
+            <span class="k">icon.source:</span> <span class="s2">&quot;images/baseline-menu-24px.svg&quot;</span>
+            <span class="k">onClicked:</span> <span class="nx">drawer</span><span class="p">.</span><span class="nx">open</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="nx">Label</span> <span class="p">{</span>
+            <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+            <span class="k">text:</span> <span class="s2">&quot;Image Viewer&quot;</span>
+            <span class="k">font.pixelSize:</span> <span class="mi">20</span>
+            <span class="k">elide:</span> <span class="nx">Label</span><span class="p">.</span><span class="nx">ElideRight</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally we make the background of the toolbar pretty — or at least orange. To do this, we alter the <code class="docutils literal notranslate"><span class="pre">Material.background</span></code> attached property. This comes from the <code class="docutils literal notranslate"><span class="pre">QtQuick.Controls.Material</span> <span class="pre">2.1</span></code> module and only affects the Material style.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span><span class="p">.</span><span class="nx">Material</span> <span class="mf">2.1</span>
+
+<span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="k">header:</span> <span class="nx">ToolBar</span> <span class="p">{</span>
+        <span class="k">Material.background:</span> <span class="nx">Material</span><span class="p">.</span><span class="nx">Orange</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With these few changes we have converted our desktop image viewer to a mobile friendly version.</p>
+</div>
+<div class="section" id="a-shared-codebase">
+<h3>6.2.3. A Shared Codebase<a class="headerlink" href="#a-shared-codebase" title="Permalink to this headline">¶</a></h3>
+<p>In the past two sections we have looked at an image viewer developed for desktop use and then adapted it to mobile.</p>
+<p>Looking at the code base, much of the code is still shared. The parts that are shared are mostly associated with the document of the application, i.e. the image. The changes has affected individual interaction patterns of desktop and mobile respectively. Naturally, we would want to unify these code bases. QML supports this through the use of <em>file selectors</em>.</p>
+<p>A file selector lets us replace individual files based on which selectors are active. The Qt documentation maintains a list of selectors in the documentation for the <code class="docutils literal notranslate"><span class="pre">QFileSelector</span></code> class (<a class="reference external" href="https://doc.qt.io/qt-5/qfileselector.html">link</a>). In our case we will make the desktop version the default and replace selected files when the <em>android</em> selector is encountered. During the development you can set the environment variable <code class="docutils literal notranslate"><span class="pre">QT_FILE_SELECTORS</span></code> to <code class="docutils literal notranslate"><span class="pre">android</span></code> to simulate this.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The file selector works by replacing files with an alternative when a <em>selector</em> is present.</p>
+<p>By creating a directory named <code class="docutils literal notranslate"><span class="pre">+selector</span></code>, where <code class="docutils literal notranslate"><span class="pre">selector</span></code> represents the name of a selector, in parallel to the files that you want to replace, you can then place files with the same name as the file you want to replace inside the directory. When the selector is present, the file in the directory will be picked instead of the original file.</p>
+<p>The selectors are based on the platform, e.g. android, ios, osx, linux, qnx, and so on. They can also include the name of the Linux distribution used (if identified), e.g. debian, ubuntu, fedora. Finally, they also include the locale, e.g. en_US, sv_SE, etc.</p>
+<p class="last">It is also possible to add your own, custom, selectors.</p>
+</div>
+<p>The first step to do this change is to isolate the shared code. We do this by creating the <code class="docutils literal notranslate"><span class="pre">ImageViewerWindow</span></code> element which will be used instead of the <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code> for both our variants. This will consist of the dialogs, the <code class="docutils literal notranslate"><span class="pre">Image</span></code> element and the background. In order to make the open methods of the dialogs available to the platform specific code, we need to expose them through the functions <code class="docutils literal notranslate"><span class="pre">openFileDialog</span></code> and <code class="docutils literal notranslate"><span class="pre">openAboutDialog</span></code>.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.4</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Dialogs</span> <span class="mf">1.2</span>
+
+<span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">openFileDialog</span><span class="p">()</span> <span class="p">{</span> <span class="nx">fileOpenDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span> <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">openAboutDialog</span><span class="p">()</span> <span class="p">{</span> <span class="nx">aboutDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span> <span class="p">}</span>
+
+    <span class="k">visible:</span> <span class="kc">true</span>
+    <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Image Viewer&quot;</span><span class="p">)</span>
+
+    <span class="k">background:</span> <span class="nx">Rectangle</span> <span class="p">{</span>
+        <span class="k">color:</span> <span class="s2">&quot;darkGray&quot;</span>
+    <span class="p">}</span>
+
+    <span class="nx">Image</span> <span class="p">{</span>
+        <span class="kd">id: image</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">fillMode:</span> <span class="nx">Image</span><span class="p">.</span><span class="nx">PreserveAspectFit</span>
+        <span class="k">asynchronous:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+
+    <span class="nx">FileDialog</span> <span class="p">{</span>
+        <span class="kd">id: fileOpenDialog</span>
+
+        <span class="c1">// ...</span>
+
+    <span class="p">}</span>
+
+    <span class="nx">Dialog</span> <span class="p">{</span>
+        <span class="kd">id: aboutDialog</span>
+
+        <span class="c1">// ...</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next, we create a new <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> for our default style <em>Fusion</em>, i.e. the desktop version of the user interface.</p>
+<p>Here, we base the user interface around the <code class="docutils literal notranslate"><span class="pre">ImageViewerWindow</span></code> instead of the <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code>. Then we add the platform specific parts to it, e.g. the <code class="docutils literal notranslate"><span class="pre">MenuBar</span></code> and <code class="docutils literal notranslate"><span class="pre">ToolBar</span></code>. The only changes to these is that the calls to open the respective dialogs are made to the new functions instead of directly to the dialog controls.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.4</span>
+
+<span class="nx">ImageViewerWindow</span> <span class="p">{</span>
+    <span class="kd">id: window</span>
+    
+    <span class="k">width:</span> <span class="mi">640</span>
+    <span class="k">height:</span> <span class="mi">480</span>
+    
+    <span class="k">menuBar:</span> <span class="nx">MenuBar</span> <span class="p">{</span>
+        <span class="nx">Menu</span> <span class="p">{</span>
+            <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;File&quot;</span><span class="p">)</span>
+            <span class="nx">MenuItem</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;Open...&quot;</span><span class="p">)</span>
+                <span class="k">icon.name:</span> <span class="s2">&quot;document-open&quot;</span>
+                <span class="k">onTriggered:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openFileDialog</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nx">Menu</span> <span class="p">{</span>
+            <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;Help&quot;</span><span class="p">)</span>
+            <span class="nx">MenuItem</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;About...&quot;</span><span class="p">)</span>
+                <span class="k">onTriggered:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openAboutDialog</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">header:</span> <span class="nx">ToolBar</span> <span class="p">{</span>
+        <span class="nx">Flow</span> <span class="p">{</span>
+            <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+            <span class="nx">ToolButton</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Open&quot;</span><span class="p">)</span>
+                <span class="k">icon.name:</span> <span class="s2">&quot;document-open&quot;</span>
+                <span class="k">onClicked:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openFileDialog</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next, we have to create a mobile specific <code class="docutils literal notranslate"><span class="pre">main.qml</span></code>. This will be based around the <em>Material</em> theme. Here, we keep the <code class="docutils literal notranslate"><span class="pre">Drawer</span></code> and the mobile specific toolbar. Again, the only change is how the dialogs are opened.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.4</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span><span class="p">.</span><span class="nx">Material</span> <span class="mf">2.1</span>
+
+<span class="nx">ImageViewerWindow</span> <span class="p">{</span>
+    <span class="kd">id: window</span>
+
+    <span class="k">width:</span> <span class="mi">360</span>
+    <span class="k">height:</span> <span class="mi">520</span>
+
+    <span class="nx">Drawer</span> <span class="p">{</span>
+        <span class="kd">id: drawer</span>
+
+        <span class="c1">// ...</span>
+
+        <span class="nx">ListView</span> <span class="p">{</span>
+
+            <span class="c1">// ...</span>
+
+            <span class="k">model:</span> <span class="nx">ListModel</span> <span class="p">{</span>
+                <span class="nx">ListElement</span> <span class="p">{</span>
+                    <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Open...&quot;</span><span class="p">)</span>
+                    <span class="k">triggered:</span> <span class="kd">function</span><span class="p">(){</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openFileDialog</span><span class="p">();</span> <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="nx">ListElement</span> <span class="p">{</span>
+                    <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;About...&quot;</span><span class="p">)</span>
+                    <span class="k">triggered:</span> <span class="kd">function</span><span class="p">(){</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openAboutDialog</span><span class="p">();</span> <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="c1">// ...</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">header:</span> <span class="nx">ToolBar</span> <span class="p">{</span>
+
+        <span class="c1">// ...</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The two <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> files are placed in the file system as shown below. This lets the file selector that the QML engine automatically creates pick the right file. By default, the <em>Fusion</em> <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> is loaded, unless the <code class="docutils literal notranslate"><span class="pre">android</span></code> selector is present. Then the <em>Material</em> <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> is loaded instead.</p>
+<img src="../_images/graphviz-583992f5c066cda137cd9aabc4881bebe428172d.png" alt="digraph selector_files {
+&quot;Project Root&quot; -&gt; &quot;main.qml\n(Fusion)&quot;
+&quot;Project Root&quot; -&gt; &quot;+android&quot;
+&quot;+android&quot; -&gt; &quot;main.qml\n(Material)&quot;
+}" />
+<p>Until now the style has been set in in <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code>. We could continue doing this and use <code class="docutils literal notranslate"><span class="pre">#ifdef</span></code> expressions to set different styles for different platform. Instead we will use the file selector mechanism again and set the style using a configuration file. Below, you can see the file for the <em>Material</em> style, but the <em>Fusion</em> file is equally simple.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Controls]</span>
+<span class="na">Style</span><span class="o">=</span><span class="s">Material</span>
+</pre></div>
+</div>
+<p>These changes has given us a joined codebase where all the document code is shared and only the differences in user interaction patterns differ. There are different ways to do this, e.g. keeping the document in a specific component that is included in the platform specific interfaces, or as in this example, by creating a common base that is extended by each platform. The best approach is best determined when you know how your specific code base looks and can decide how to separate the common from the unique.</p>
+</div>
+<div class="section" id="native-dialogs">
+<h3>6.2.4. Native Dialogs<a class="headerlink" href="#native-dialogs" title="Permalink to this headline">¶</a></h3>
+<p>When using the image viewer you will notice that it uses a non-standard file selector dialog. This makes it look out of place.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Qt.labs.platform</span></code> module can help us solve this. It provides QML bindings to native dialogs such as the file selector, font selector and colour selector. It also provides APIs to create system tray icons, as well as system global menus that sits on top of the screen (e.g. as in OS X). The cost of this is a dependency on the <code class="docutils literal notranslate"><span class="pre">QtWidgets</span></code> module, as the widget based dialog is used as a fallback where the native support is missing.</p>
+<p>In order to integrate a native file dialog into the image viewer, we need to import the <code class="docutils literal notranslate"><span class="pre">Qt.labs.platform</span></code> module. As this module has name clashes with the module it replaces, <code class="docutils literal notranslate"><span class="pre">QtQuick.Dialogs</span></code>, it is important to remove the old import statement.</p>
+<p>In the actual file dialog element, we have to change how the <code class="docutils literal notranslate"><span class="pre">folder</span></code> property is set, and ensure that the <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code> handler uses the <code class="docutils literal notranslate"><span class="pre">file</span></code> property instead of the <code class="docutils literal notranslate"><span class="pre">fileUrl</span></code> property. Apart from these details, the usage is identical to the <code class="docutils literal notranslate"><span class="pre">FileDialog</span></code> from <code class="docutils literal notranslate"><span class="pre">QtQuick.Dialogs</span></code>.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.4</span>
+<span class="kr">import</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">labs</span><span class="p">.</span><span class="nx">platform</span> <span class="mf">1.0</span>
+
+<span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    
+    <span class="c1">// ...</span>
+    
+    <span class="nx">FileDialog</span> <span class="p">{</span>
+        <span class="kd">id: fileOpenDialog</span>
+        <span class="k">title:</span> <span class="s2">&quot;Select an image file&quot;</span>
+        <span class="k">folder:</span> <span class="nx">StandardPaths</span><span class="p">.</span><span class="nx">writableLocation</span><span class="p">(</span><span class="nx">StandardPaths</span><span class="p">.</span><span class="nx">DocumentsLocation</span><span class="p">)</span>
+        <span class="k">nameFilters:</span> <span class="p">[</span>
+            <span class="s2">&quot;Image files (*.png *.jpeg *.jpg)&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">onAccepted:</span> <span class="p">{</span>
+            <span class="nx">image</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="nx">fileOpenDialog</span><span class="p">.</span><span class="nx">file</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In addition to the QML changes, we also need to alter the project file of the image viewer to include the <code class="docutils literal notranslate"><span class="pre">widgets</span></code> module.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">QT</span> <span class="o">+=</span> <span class="nx">quick</span> <span class="nx">quickcontrols2</span> <span class="nx">widgets</span>
+</pre></div>
+</div>
+<p>And we need to update <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> to instantiate a <code class="docutils literal notranslate"><span class="pre">QApplication</span></code> object instead of a <code class="docutils literal notranslate"><span class="pre">QGuiApplication</span></code> object. This is because the <code class="docutils literal notranslate"><span class="pre">QGuiApplication</span></code> class contains the minimal environment needed for a graphical application, while <code class="docutils literal notranslate"><span class="pre">QApplication</span></code> extends <code class="docutils literal notranslate"><span class="pre">QGuiApplication</span></code> with features needed to support <code class="docutils literal notranslate"><span class="pre">QtWidgets</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;QApplication&gt;</span><span class="cp"></span>
+
+<span class="c1">// ...</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">QApplication</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With these changes, the image viewer will now use native dialogs on most platforms. The platforms supported are iOS, Linux (with a GTK+ platform theme), macOS, Windows and WinRT. For Android, it will use a default Qt dialog provided by the <code class="docutils literal notranslate"><span class="pre">QtWidgets</span></code> module.</p>
+</div>
+</div>
+<div class="section" id="common-patterns">
+<h2>6.3. Common Patterns<a class="headerlink" href="#common-patterns" title="Permalink to this headline">¶</a></h2>
+<p>There a number of common user interface patterns that can be implemented using Qt Quick Controls 2. In this section, we try to demonstrate how some of the more common ones can be built.</p>
+<div class="section" id="nested-screens">
+<h3>6.3.1. Nested Screens<a class="headerlink" href="#nested-screens" title="Permalink to this headline">¶</a></h3>
+<p>For this example we will create a tree of pages that can be reached from the previous level of screens. The structure is pictured below.</p>
+<img src="../_images/graphviz-0c716d193f09d9c4dbbad46f8109d58f3b310a6a.png" alt="digraph nested_screens {
+&quot;Home&quot; -&gt; &quot;Profile&quot;
+&quot;Profile&quot; -&gt; &quot;Edit Profile&quot;
+&quot;Home&quot; -&gt; &quot;About&quot;
+}" />
+<p>The key component in this type of user interface is the <code class="docutils literal notranslate"><span class="pre">StackView</span></code>. It allows us to place pages on a stack which then can be poped when the user wants to go back. In the example here, we will show how this can be implemented.</p>
+<p>The initial home screen of the application is shown in the figure below.</p>
+<div class="figure" id="id6">
+<img alt="../_images/interface-stack-home.png" src="../_images/interface-stack-home.png" />
+<p class="caption"><span class="caption-text">The home screen page.</span></p>
+</div>
+<p>The application start in <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> where we have an <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code> containing a <code class="docutils literal notranslate"><span class="pre">ToolBar</span></code>, a <code class="docutils literal notranslate"><span class="pre">Drawer</span></code>, a <code class="docutils literal notranslate"><span class="pre">StackView</span></code> and a home page element, <code class="docutils literal notranslate"><span class="pre">Home</span></code>. We will look into each of the components below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.9</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.2</span>
+
+<span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">header:</span> <span class="nx">ToolBar</span> <span class="p">{</span>
+
+        <span class="c1">// ...</span>
+
+    <span class="p">}</span>
+
+    <span class="nx">Drawer</span> <span class="p">{</span>
+
+        <span class="c1">// ...</span>
+
+    <span class="p">}</span>
+
+    <span class="nx">StackView</span> <span class="p">{</span>
+        <span class="kd">id: stackView</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">initialItem:</span> <span class="nx">Home</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The home page, <code class="docutils literal notranslate"><span class="pre">Home.qml</span></code> consists of a <code class="docutils literal notranslate"><span class="pre">Page</span></code>, which is an control element that support headers and footers. In this example we simply center a <code class="docutils literal notranslate"><span class="pre">Label</span></code> with the text <em>Home Screen</em> on the page. This works because the contents of a <code class="docutils literal notranslate"><span class="pre">StackView</span></code> automatically fills the stack view, so the page has the right size for this to work.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.9</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.2</span>
+
+<span class="nx">Page</span> <span class="p">{</span>
+    <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Home&quot;</span><span class="p">)</span>
+
+    <span class="nx">Label</span> <span class="p">{</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Home Screen&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Returning back to the <code class="docutils literal notranslate"><span class="pre">main.qml</span></code>, we now look at the drawer part. This is where the navigation to the pages begin. The active parts of the user interface is the <code class="docutils literal notranslate"><span class="pre">ÌtemDelegate</span></code> items. In the <code class="docutils literal notranslate"><span class="pre">onClicked</span></code> handler, the next page is pushed onto the <code class="docutils literal notranslate"><span class="pre">stackView</span></code>.</p>
+<p>As shown in the code below, it possible to push either a <code class="docutils literal notranslate"><span class="pre">Component</span></code> or a reference to a specific QML file. Either way results in that a new instance is created and is pushed onto the stack.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nx">Drawer</span> <span class="p">{</span>
+        <span class="kd">id: drawer</span>
+        <span class="k">width:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="mf">0.66</span>
+        <span class="k">height:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">height</span>
+
+        <span class="nx">Column</span> <span class="p">{</span>
+            <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+
+            <span class="nx">ItemDelegate</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Profile&quot;</span><span class="p">)</span>
+                <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
+                <span class="k">onClicked:</span> <span class="p">{</span>
+                    <span class="nx">stackView</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;Profile.qml&quot;</span><span class="p">)</span>
+                    <span class="nx">drawer</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="nx">ItemDelegate</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;About&quot;</span><span class="p">)</span>
+                <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
+                <span class="k">onClicked:</span> <span class="p">{</span>
+                    <span class="nx">stackView</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">aboutPage</span><span class="p">)</span>
+                    <span class="nx">drawer</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nx">Component</span> <span class="p">{</span>
+        <span class="kd">id: aboutPage</span>
+
+        <span class="nx">About</span> <span class="p">{}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The other half of the puzzle is the toolbar. The idea is that a back button is shown when the <code class="docutils literal notranslate"><span class="pre">stackView</span></code> contains more than one page, otherwise a menu button is shown. The logic for this can be seen on the <code class="docutils literal notranslate"><span class="pre">text</span></code> property where the <code class="docutils literal notranslate"><span class="pre">&quot;\u...&quot;</span></code> strings represents the unicode symbols that we need.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">onClicked</span></code> handler, we can see that when there is more than one page on the stack, the stack is poped, i.e. the top page is removed. If the stack contains only one item, i.e. the home screen, the drawer is opened.</p>
+<p>Below the <code class="docutils literal notranslate"><span class="pre">ToolBar</span></code>, you find a <code class="docutils literal notranslate"><span class="pre">Label</span></code>. This element shows the title of each page in the center of the header.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">header:</span> <span class="nx">ToolBar</span> <span class="p">{</span>
+        <span class="k">contentHeight:</span> <span class="nx">toolButton</span><span class="p">.</span><span class="nx">implicitHeight</span>
+
+        <span class="nx">ToolButton</span> <span class="p">{</span>
+            <span class="kd">id: toolButton</span>
+            <span class="k">text:</span> <span class="nx">stackView</span><span class="p">.</span><span class="nx">depth</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">?</span> <span class="s2">&quot;\u25C0&quot;</span> <span class="o">:</span> <span class="s2">&quot;\u2630&quot;</span>
+            <span class="k">font.pixelSize:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">application</span><span class="p">.</span><span class="nx">font</span><span class="p">.</span><span class="nx">pixelSize</span> <span class="o">*</span> <span class="mf">1.6</span>
+            <span class="k">onClicked:</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">stackView</span><span class="p">.</span><span class="nx">depth</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">stackView</span><span class="p">.</span><span class="nx">pop</span><span class="p">()</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">drawer</span><span class="p">.</span><span class="nx">open</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nx">Label</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="nx">stackView</span><span class="p">.</span><span class="nx">currentItem</span><span class="p">.</span><span class="nx">title</span>
+            <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we’ve seen how to reach the <em>About</em> and <em>Profile</em> pages, but we also want to make it possible to reach the <em>Edit Profile</em> page from the <em>Profile</em> page. This is done via the <code class="docutils literal notranslate"><span class="pre">Button</span></code> on the <em>Profile</em> page. When the button is clicked, the <code class="docutils literal notranslate"><span class="pre">EditProfile.qml</span></code> file is pushed onto the <code class="docutils literal notranslate"><span class="pre">StackView</span></code>.</p>
+<div class="figure" id="id7">
+<img alt="../_images/interface-stack-profile.png" src="../_images/interface-stack-profile.png" />
+<p class="caption"><span class="caption-text">The profile page with the <em>Edit</em> button.</span></p>
+</div>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.9</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.2</span>
+
+<span class="nx">Page</span> <span class="p">{</span>
+    <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Profile&quot;</span><span class="p">)</span>
+
+    <span class="nx">Column</span> <span class="p">{</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">spacing:</span> <span class="mi">10</span>
+        <span class="nx">Label</span> <span class="p">{</span>
+            <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+            <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Profile&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+            <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Edit&quot;</span><span class="p">);</span>
+            <span class="k">onClicked:</span> <span class="nx">stackView</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;EditProfile.qml&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="side-by-side-screens">
+<h3>6.3.2. Side by Side Screens<a class="headerlink" href="#side-by-side-screens" title="Permalink to this headline">¶</a></h3>
+<p>For this example we create a user interface consisting of three pages that the user can shift through. The pages are shown in the diagram below. This could be the interface of a health tracking app, tracking the current state, the user’s statistics and the overall statistics.</p>
+<img src="../_images/graphviz-5b63a6c1686810801d8ee00bfe174936e8cd36b7.png" alt="digraph side_by_side_screens {
+&quot;Current&quot; -&gt; &quot;Your Statistics&quot;
+&quot;Your Statistics&quot; -&gt; &quot;Community Statistics&quot;
+}" />
+<p>The illustration below shows how the <em>Current</em> page looks in the application. The main part of the screen is managed by a <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code>, which is what enables the side by side screens interaction pattern. The title and text shown in the figure come from the page inside the <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code>, while the <code class="docutils literal notranslate"><span class="pre">PageIndicator</span></code> (the three dots at the bottom) come from <code class="docutils literal notranslate"><span class="pre">main.qml</span></code> and sit under the <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code>. The page indicator shows the user which page that is currently active, helping when navigating.</p>
+<div class="figure" id="id8">
+<img alt="../_images/interface-side-by-side-current.png" src="../_images/interface-side-by-side-current.png" />
+<p class="caption"><span class="caption-text">The <em>Current</em> page in the side-by-side app.</span></p>
+</div>
+<p>Diving into <code class="docutils literal notranslate"><span class="pre">main.qml</span></code>, it consists of an <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code> with the <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code>.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.9</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.2</span>
+
+<span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+    <span class="k">width:</span> <span class="mi">640</span>
+    <span class="k">height:</span> <span class="mi">480</span>
+
+    <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Side-by-side&quot;</span><span class="p">)</span>
+
+    <span class="nx">SwipeView</span> <span class="p">{</span>
+
+        <span class="c1">// ...</span>
+
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Inside the <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code> each of the child pages are instantiated in the order they are to appear. They are <code class="docutils literal notranslate"><span class="pre">Current</span></code>, <code class="docutils literal notranslate"><span class="pre">UserStats</span></code> and <code class="docutils literal notranslate"><span class="pre">TotalStats</span></code>.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nx">SwipeView</span> <span class="p">{</span>
+        <span class="kd">id: swipeView</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+
+        <span class="nx">Current</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="nx">UserStats</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="nx">TotalStats</span> <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally the <code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">currentIndex</span></code> properties of the <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code> are bound to the <code class="docutils literal notranslate"><span class="pre">PageIndicator</span></code> element. This completes the structure around the pages.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nx">SwipeView</span> <span class="p">{</span>
+        <span class="kd">id: swipeView</span>
+
+        <span class="c1">// ...</span>
+
+    <span class="p">}</span>
+
+    <span class="nx">PageIndicator</span> <span class="p">{</span>
+        <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+        <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+
+        <span class="k">currentIndex:</span> <span class="nx">swipeView</span><span class="p">.</span><span class="nx">currentIndex</span>
+        <span class="k">count:</span> <span class="nx">swipeView</span><span class="p">.</span><span class="nx">count</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each page consists of a <code class="docutils literal notranslate"><span class="pre">Page</span></code> with a <code class="docutils literal notranslate"><span class="pre">header</span></code> consisting of a <code class="docutils literal notranslate"><span class="pre">Label</span></code> and some contents. For the <em>Current</em> and <em>User Stats</em> pages the contents is a simple <code class="docutils literal notranslate"><span class="pre">Label</span></code>, but for the <em>Community Stats</em> page, a back button is included.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.9</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.2</span>
+
+<span class="nx">Page</span> <span class="p">{</span>
+    <span class="k">header:</span> <span class="nx">Label</span> <span class="p">{</span>
+        <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Community Stats&quot;</span><span class="p">)</span>
+        <span class="k">font.pixelSize:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">application</span><span class="p">.</span><span class="nx">font</span><span class="p">.</span><span class="nx">pixelSize</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="k">padding:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="figure" id="id9">
+<img alt="../_images/interface-side-by-side-community.png" src="../_images/interface-side-by-side-community.png" />
+<p class="caption"><span class="caption-text">The <em>Back</em> button in the side-by-side app.</span></p>
+</div>
+<p>The back button explicitly calls the <code class="docutils literal notranslate"><span class="pre">setCurrentIndex</span></code> of the <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code> to set the index to zero, returning the user directly to the <em>Current</em> page. During each transition between pages the <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code> provides a transition, so even when explicitly changing the index the user is given a sense of direction.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When navigating in a <code class="docutils literal notranslate"><span class="pre">SwipeView</span></code> programatically it is important not to set the <code class="docutils literal notranslate"><span class="pre">currentIndex</span></code> by assignment in Javascript. This is because doing so will break any QML bindings it overrides. Instead use the methods <code class="docutils literal notranslate"><span class="pre">setCurrentIndex</span></code>, <code class="docutils literal notranslate"><span class="pre">incrementCurrentIndex</span></code>, and <code class="docutils literal notranslate"><span class="pre">decrementCurrentIndex</span></code>. This preserves the QML bindings.</p>
+</div>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">Page</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nx">Column</span> <span class="p">{</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">spacing:</span> <span class="mi">10</span>
+        <span class="nx">Label</span> <span class="p">{</span>
+            <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+            <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Community statistics&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">Button</span> <span class="p">{</span>
+            <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+            <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Back&quot;</span><span class="p">)</span>
+            <span class="k">onClicked:</span> <span class="nx">swipeView</span><span class="p">.</span><span class="nx">setCurrentIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="document-windows">
+<h3>6.3.3. Document Windows<a class="headerlink" href="#document-windows" title="Permalink to this headline">¶</a></h3>
+<p>This example shows how to implement a desktop oriented, document centric user interface. The idea is to have one window per document. When opening a new document, a new window is opened. To the user, each window is a self contained world with a single document.</p>
+<div class="figure" id="id10">
+<img alt="../_images/interface-document-window.png" src="../_images/interface-document-window.png" />
+<p class="caption"><span class="caption-text">Two document windows and the close warning dialog.</span></p>
+</div>
+<p>The code starts from an <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code> with a <em>File</em> menu with the standard operations: <em>New</em>, <em>Open</em>, <em>Save</em> and <em>Save As</em>. We put this in the file <code class="docutils literal notranslate"><span class="pre">DocumentWindow.qml</span></code>.</p>
+<p>We import the <code class="docutils literal notranslate"><span class="pre">Qt.labs.platform</span></code> for native dialogs and have made the subsequent changes to the project file and <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> as described in the section on native dialogs above.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.4</span>
+<span class="kr">import</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">labs</span><span class="p">.</span><span class="nx">platform</span> <span class="mf">1.0</span> <span class="nx">as</span> <span class="nx">NativeDialogs</span>
+
+<span class="nx">ApplicationWindow</span> <span class="p">{</span>
+    <span class="kd">id: root</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">menuBar:</span> <span class="nx">MenuBar</span> <span class="p">{</span>
+        <span class="nx">Menu</span> <span class="p">{</span>
+            <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;File&quot;</span><span class="p">)</span>
+            <span class="nx">MenuItem</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;New&quot;</span><span class="p">)</span>
+                <span class="k">icon.name:</span> <span class="s2">&quot;document-new&quot;</span>
+                <span class="k">onTriggered:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">newDocument</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="nx">MenuSeparator</span> <span class="p">{}</span>
+            <span class="nx">MenuItem</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;Open&quot;</span><span class="p">)</span>
+                <span class="k">icon.name:</span> <span class="s2">&quot;document-open&quot;</span>
+                <span class="k">onTriggered:</span> <span class="nx">openDocument</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="nx">MenuItem</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;&amp;Save&quot;</span><span class="p">)</span>
+                <span class="k">icon.name:</span> <span class="s2">&quot;document-save&quot;</span>
+                <span class="k">onTriggered:</span> <span class="nx">saveDocument</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="nx">MenuItem</span> <span class="p">{</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Save &amp;As...&quot;</span><span class="p">)</span>
+                <span class="k">icon.name:</span> <span class="s2">&quot;document-save-as&quot;</span>
+                <span class="k">onTriggered:</span> <span class="nx">saveAsDocument</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To bootstrap the program, we create the first <code class="docutils literal notranslate"><span class="pre">DocumentWindow</span></code> instance from the <code class="docutils literal notranslate"><span class="pre">main.qml</span></code>, which is the entrypoint of the application.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">DocumentWindow</span> <span class="p">{</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the example at the beginning of this chapter, each <code class="docutils literal notranslate"><span class="pre">MenuItem</span></code> results in a call to a corresponding function when triggered. Let’s start with the <em>New</em> item, which ends up in the <code class="docutils literal notranslate"><span class="pre">newDocument</span></code> function.</p>
+<p>The function, in turn, relies on the <code class="docutils literal notranslate"><span class="pre">_createNewDocument</span></code> function, which dynamically creates a new element instance from the <code class="docutils literal notranslate"><span class="pre">DocumentWindow.qml</span></code> file, i.e. a new <code class="docutils literal notranslate"><span class="pre">DocumentWindow</span></code> instance. The reason for breaking out this part of the new function is that we use it when opening documents as well.</p>
+<p>Notice that we do not provide a parent element when creating the new instance using <code class="docutils literal notranslate"><span class="pre">createObject</span></code>. This way, we create new top level elements. If we would have provided the current document as parent to the next, the destruction of the parent window would lead to the destruction of the child windows.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="kd">function</span> <span class="nx">_createNewDocument</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">component</span> <span class="o">=</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">createComponent</span><span class="p">(</span><span class="s2">&quot;DocumentWindow.qml&quot;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nb">window</span> <span class="o">=</span> <span class="nx">component</span><span class="p">.</span><span class="nx">createObject</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nb">window</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">newDocument</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kd">var</span> <span class="nb">window</span> <span class="o">=</span> <span class="nx">_createNewDocument</span><span class="p">();</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Looking at the <em>Open</em> item results in a call to <code class="docutils literal notranslate"><span class="pre">openDocument</span></code> function. The function simply opens the <code class="docutils literal notranslate"><span class="pre">openDialog</span></code> which let’s the user pick a file to open. As we don’t have a document format, file extension or anything like that, the dialog has most properties set to their default value. In a real world application, this would be better configured.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code> handler a new document window is instantiated using the <code class="docutils literal notranslate"><span class="pre">_createNewDocument</span></code> method, but then a file name is set before the window is shown. In this case, no real loading takes place.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We imported the <code class="docutils literal notranslate"><span class="pre">Qt.labs.platform</span></code> module as <code class="docutils literal notranslate"><span class="pre">NativeDialogs</span></code>. This is because it provides a <code class="docutils literal notranslate"><span class="pre">MenuItem</span></code> that clashes with the <code class="docutils literal notranslate"><span class="pre">MenuItem</span></code> provided by the <code class="docutils literal notranslate"><span class="pre">QtQuick.Controls</span></code> module.</p>
+</div>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="kd">function</span> <span class="nx">openDocument</span><span class="p">(</span><span class="nx">fileName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">openDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">FileDialog</span> <span class="p">{</span>
+        <span class="kd">id: openDialog</span>
+        <span class="k">title:</span> <span class="s2">&quot;Open&quot;</span>
+        <span class="k">folder:</span> <span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">StandardPaths</span><span class="p">.</span><span class="nx">writableLocation</span><span class="p">(</span><span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">StandardPaths</span><span class="p">.</span><span class="nx">DocumentsLocation</span><span class="p">)</span>
+        <span class="k">onAccepted:</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nb">window</span> <span class="o">=</span> <span class="nx">root</span><span class="p">.</span><span class="nx">_createNewDocument</span><span class="p">();</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">_fileName</span> <span class="o">=</span> <span class="nx">openDialog</span><span class="p">.</span><span class="nx">file</span><span class="p">;</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The file name belogs to a pair of properties describing the document: <code class="docutils literal notranslate"><span class="pre">_fileName</span></code> and <code class="docutils literal notranslate"><span class="pre">_isDirty</span></code>. The <code class="docutils literal notranslate"><span class="pre">_fileName</span></code> holds the file name of the document name and <code class="docutils literal notranslate"><span class="pre">_isDirty</span></code> is set when the document has unsaved changes. This is used by the save and save as logic, which is shown below.</p>
+<p>When trying to save a document without a name, the <code class="docutils literal notranslate"><span class="pre">saveAsDocument</span></code> is invoked. This results in a round-trip over the <code class="docutils literal notranslate"><span class="pre">saveAsDialog</span></code>, which sets a file name and then tries to save again in the <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code> handler.</p>
+<p>Notice that the <code class="docutils literal notranslate"><span class="pre">saveAsDocument</span></code> and <code class="docutils literal notranslate"><span class="pre">saveDocument</span></code> functions correspond to the <em>Save As</em> and <em>Save</em> menu items.</p>
+<p>After having saved the document, in the <code class="docutils literal notranslate"><span class="pre">saveDocument</span></code> function, the <code class="docutils literal notranslate"><span class="pre">_tryingToClose</span></code> property is checked. This flag is set if the save is the result of the user wanting to save a document when the window is being closed. As a consequence, the window is closed after the save operation has been performed. Again, no actual saving takes place in this example.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nx">property</span> <span class="nx">bool</span> <span class="nx">_isDirty</span><span class="o">:</span> <span class="kc">true</span>        <span class="c1">// Has the document got unsaved changes?</span>
+    <span class="nx">property</span> <span class="nx">string</span> <span class="nx">_fileName</span>           <span class="c1">// The filename of the document</span>
+    <span class="nx">property</span> <span class="nx">bool</span> <span class="nx">_tryingToClose</span><span class="o">:</span> <span class="kc">false</span> <span class="c1">// Is the window trying to close (but needs a file name first)?</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="kd">function</span> <span class="nx">saveAsDocument</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">saveAsDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">saveDocument</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">_fileName</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">saveAsDocument</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="c1">// Save document here</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Saving document&quot;</span><span class="p">)</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">_isDirty</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">root</span><span class="p">.</span><span class="nx">_tryingToClose</span><span class="p">)</span>
+                <span class="nx">root</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">FileDialog</span> <span class="p">{</span>
+        <span class="kd">id: saveAsDialog</span>
+        <span class="k">title:</span> <span class="s2">&quot;Save As&quot;</span>
+        <span class="k">folder:</span> <span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">StandardPaths</span><span class="p">.</span><span class="nx">writableLocation</span><span class="p">(</span><span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">StandardPaths</span><span class="p">.</span><span class="nx">DocumentsLocation</span><span class="p">)</span>
+        <span class="k">onAccepted:</span> <span class="p">{</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">_fileName</span> <span class="o">=</span> <span class="nx">saveAsDialog</span><span class="p">.</span><span class="nx">file</span>
+            <span class="nx">saveDocument</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">onRejected:</span> <span class="p">{</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">_tryingToClose</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This leads us to the closing of windows. When a window is being closed, the <code class="docutils literal notranslate"><span class="pre">onClosing</span></code> handler is invoked. Here, the code can choose not to accept the request to close. If the document has unsaved changes, we open the <code class="docutils literal notranslate"><span class="pre">closeWarningDialog</span></code> and reject the request to close.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">closeWarningDialog</span></code> asks the user if the changes should be changed, but the user also has the option to cancel the close operation. The cancelling, handeled in <code class="docutils literal notranslate"><span class="pre">onRejected</span></code>, is the easiest case, as we rejected the closing when the dialog was opened.</p>
+<p>When the user does not want to save the changes, i.e. in <code class="docutils literal notranslate"><span class="pre">onNoClicked</span></code>, the <code class="docutils literal notranslate"><span class="pre">_isDirty</span></code> flag is set to <code class="docutils literal notranslate"><span class="pre">false</span></code> and the window is closed again. This time around, the <code class="docutils literal notranslate"><span class="pre">onClosing</span></code> will accept the closing as the <code class="docutils literal notranslate"><span class="pre">_isDirty</span></code> is false.</p>
+<p>Finally, when the user wants to save the changes, we set the <code class="docutils literal notranslate"><span class="pre">_tryingToClose</span></code> flag to true before calling save. This leads us to the save - save as logic.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">onClosing:</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">root</span><span class="p">.</span><span class="nx">_isDirty</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">closeWarningDialog</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+            <span class="nx">close</span><span class="p">.</span><span class="nx">accepted</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">MessageDialog</span> <span class="p">{</span>
+        <span class="kd">id: closeWarningDialog</span>
+        <span class="k">title:</span> <span class="s2">&quot;Closing document&quot;</span>
+        <span class="k">text:</span> <span class="s2">&quot;You have unsaved changed. Do you want to save your changes?&quot;</span>
+        <span class="k">buttons:</span> <span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">MessageDialog</span><span class="p">.</span><span class="nx">Yes</span> <span class="o">|</span> <span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">MessageDialog</span><span class="p">.</span><span class="nx">No</span> <span class="o">|</span> <span class="nx">NativeDialogs</span><span class="p">.</span><span class="nx">MessageDialog</span><span class="p">.</span><span class="nx">Cancel</span>
+        <span class="k">onYesClicked:</span> <span class="p">{</span>
+            <span class="c1">// Attempt to save the document</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">_tryingToClose</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">saveDocument</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">onNoClicked:</span> <span class="p">{</span>
+            <span class="c1">// Close the window</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">_isDirty</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="nx">root</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">onRejected:</span> <span class="p">{</span>
+            <span class="c1">// Do nothing, aborting the closing of the window</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The entire flow for the close and save - save as logic is shown below. The system is entered at the <em>close</em> state, while <em>closed</em> and <em>not closed</em> states are outcomes.</p>
+<p>This looks complicated compared to implementing this using <code class="docutils literal notranslate"><span class="pre">QtWidgets</span></code> and C++. This is because the dialogs are not blocking to QML. This means that we cannot wait for the outcome of a dialog in a <code class="docutils literal notranslate"><span class="pre">switch</span></code> statement. Instead we need to remember the state and continue the operation in the respective <code class="docutils literal notranslate"><span class="pre">onYesClicked</span></code>, <code class="docutils literal notranslate"><span class="pre">onNoClicked</span></code>, <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code>, and <code class="docutils literal notranslate"><span class="pre">onRejected</span></code> handlers.</p>
+<img src="../_images/graphviz-f3fb4d1949843afca3912036b980b68da9a0facb.png" alt="digraph close_logic {
+entry -&gt; close
+close -&gt; onClose [label=&quot;Request to close&quot;]
+onClose -&gt; closeWarningDialog [label=&quot;_isDirty == true&quot;]
+onClose -&gt; closed [label=&quot;_isDirty == false\nWindow is closed&quot;]
+closeWarningDialog -&gt; &quot;Not closed&quot; [label=&quot;onRejected\nWindow is not closed&quot;]
+closeWarningDialog -&gt; saveDocument [label=&quot;onYesClicked\nSet _tryingToClose to true&quot;]
+closeWarningDialog -&gt; close [label=&quot;onNoClicked\nSet _isDirty to false&quot;]
+saveDocument -&gt; closed [label=&quot;_fileName is set\n&amp;&amp;\n_tryingToClose == true&quot;]
+saveDocument -&gt; saveAsDialog [label=&quot;_fileName is empty&quot;]
+saveAsDialog -&gt; &quot;Not closed&quot; [label=&quot;onRejected\nWindow is not closed&quot;]
+saveAsDialog -&gt; saveDocument [label=&quot;onAccepted\n_fileName is set&quot;]
+close [shape=oval]
+onClose [shape=oval]
+closeWarningDialog [shape=oval]
+saveDocument [shape=oval]
+saveAsDialog [shape=oval]
+&quot;Not closed&quot; [shape=rect]
+closed [shape=rect]
+entry [shape=point]
+}" />
+<p>The final piece of the puzzle is the window title. It is composed form the <code class="docutils literal notranslate"><span class="pre">_fileName</span></code> and <code class="docutils literal notranslate"><span class="pre">_isDirty</span></code>.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">title:</span> <span class="p">(</span><span class="nx">_fileName</span><span class="p">.</span><span class="nx">length</span><span class="o">===</span><span class="mi">0</span><span class="o">?</span><span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Document&quot;</span><span class="p">)</span><span class="o">:</span><span class="nx">_fileName</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">_isDirty</span><span class="o">?</span><span class="s2">&quot;*&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1">// ...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example is far from complete. For instance, the document is never loaded or saved. Another missing piece is handling the case of closing all the windows in one go, i.e. exiting the application. For this function, a singleton maintaining a list of all current <code class="docutils literal notranslate"><span class="pre">DocumentWindow</span></code> instances is needed. However, this would only be another way to trigger the closing of a window, so the logic flow shown here is still valid.</p>
+</div>
+</div>
+<div class="section" id="the-imagine-style">
+<h2>6.4. The Imagine Style<a class="headerlink" href="#the-imagine-style" title="Permalink to this headline">¶</a></h2>
+<p>One of the goals with Qt Quick Controls 2 is to separate the logic of a control from its appearance. For most of the styles, the implementation of the appearance consists of a mix of QML code and graphical assets. However, using the <em>Imagine</em> style, it is possible to customize the appearance of a Qt Quick Controls 2 based application using only graphical assets.</p>
+<p>The imagine style is based on <a class="reference external" href="https://developer.android.com/guide/topics/graphics/drawables#nine-patch">9-patch images</a>. This allows the images to carry information on how they are stretched and what parts are to be considered as a part of the element and what is outside, e.g. a shadow. For each control, the style supports several elements, and for each element a large number of states are available. By providing assets for certain combinations of these elements and states, you can control the appearance of each control in detail.</p>
+<p>The details of 9-patch images, and how each control can be styled is covered in great detail in the <a class="reference external" href="https://doc.qt.io/qt-5/qtquickcontrols2-imagine.html">Imagine style documentation</a>. Here, we will create a custom style to an imaginary device interface to demonstrate how the style is used.</p>
+<p>The application consists of a custom style of the <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code> and <code class="docutils literal notranslate"><span class="pre">Button</span></code> controls. For the buttons, the normal case, as well as <em>pressed</em> and <em>checked</em> are handled. The demonstration application is shown below.</p>
+<div class="figure" id="id11">
+<img alt="../_images/style-imagine-example.png" src="../_images/style-imagine-example.png" />
+<p class="caption"><span class="caption-text">The custom imagine button style.</span></p>
+</div>
+<p>The code for this uses a <code class="docutils literal notranslate"><span class="pre">Column</span></code> for the clickable buttons, and a <code class="docutils literal notranslate"><span class="pre">Grid</span></code> for the checkable ones. The clickable buttons also stretch with the window width.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">ApplicationWindow</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nx">Column</span> <span class="p">{</span>
+
+        <span class="c1">// ...</span>
+
+        <span class="nx">Repeater</span> <span class="p">{</span>
+            <span class="k">model:</span> <span class="mi">5</span>
+            <span class="k">delegate:</span> <span class="nx">Button</span> <span class="p">{</span>
+                <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
+                <span class="k">height:</span> <span class="mi">70</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Click me!&quot;</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">Grid</span> <span class="p">{</span>
+
+        <span class="c1">// ...</span>
+
+        <span class="nx">Repeater</span> <span class="p">{</span>
+            <span class="k">model:</span> <span class="mi">10</span>
+
+            <span class="k">delegate:</span> <span class="nx">Button</span> <span class="p">{</span>
+                <span class="k">height:</span> <span class="mi">70</span>
+                <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Check me!&quot;</span><span class="p">)</span>
+                <span class="k">checkable:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As we are using the <em>Imagine</em> style, all controls that we want to use needs to be styled using a graphical asset. The easiest is the background for the <code class="docutils literal notranslate"><span class="pre">ApplicationWindow</span></code>. This is a single pixel texture defining the background colour. By naming the file <code class="docutils literal notranslate"><span class="pre">applicationwindow-background.png</span></code> and then pointing the style to it using the <code class="docutils literal notranslate"><span class="pre">qtquickcontrols2.conf</span></code> file, the file is picked up.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">qtquickcontrols2.conf</span></code> file shown below, you can see how we set the <code class="docutils literal notranslate"><span class="pre">Style</span></code> to <code class="docutils literal notranslate"><span class="pre">Imagine</span></code>, and then setup a <code class="docutils literal notranslate"><span class="pre">Path</span></code> for the style where it can look for the assets. Finally we set some palette properties as well. The available palette properties can be found on the <a class="reference external" href="https://doc.qt.io/qt-5/qml-palette.html#qtquickcontrols2-palette">palette QML Basic Type</a> page.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Controls]</span>
+<span class="na">Style</span><span class="o">=</span><span class="s">Imagine</span>
+
+<span class="k">[Imagine]</span>
+<span class="na">Path</span><span class="o">=</span><span class="s">:images/imagine</span>
+
+<span class="k">[Imagine\Palette]</span>
+<span class="na">Text</span><span class="o">=</span><span class="s">#ffffff</span>
+<span class="na">ButtonText</span><span class="o">=</span><span class="s">#ffffff</span>
+<span class="na">BrightText</span><span class="o">=</span><span class="s">#ffffff</span>
+</pre></div>
+</div>
+<p>The assets for the <code class="docutils literal notranslate"><span class="pre">Button</span></code> control are <code class="docutils literal notranslate"><span class="pre">button-background.9.png</span></code>, <code class="docutils literal notranslate"><span class="pre">button-background-pressed.9.png</span></code> and <code class="docutils literal notranslate"><span class="pre">button-background-checked.9.png</span></code>. These follow the <em>control</em>-<em>element</em>-<em>state</em> pattern. The stateless file, <code class="docutils literal notranslate"><span class="pre">button-background.9.png</span></code> is used for all states without a specific asset. According to the <a class="reference external" href="https://doc.qt.io/qt-5/qtquickcontrols2-imagine.html#element-reference">Imagine style element reference table</a>, a button can have the following states:</p>
+<ul class="simple">
+<li>disabled</li>
+<li>pressed</li>
+<li>checked</li>
+<li>checkable</li>
+<li>focused</li>
+<li>highlighted</li>
+<li>flat</li>
+<li>mirrored</li>
+<li>hovered</li>
+</ul>
+<p>Which ones that are needed depends on your user interface. For instance, the hovered style is never used for touch based interfaces.</p>
+<div class="figure" id="id12">
+<img alt="../_images/button-background-checked-enlarged.9.png" src="../_images/button-background-checked-enlarged.9.png" />
+<p class="caption"><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">button-background-checked.9.png</span></code> asset enlarged.</span></p>
+</div>
+<p>Looking at an enlarged version of <code class="docutils literal notranslate"><span class="pre">button-background-checked.9.png</span></code> above you can see the 9-patch guide lines along the sides. The purple background has been added for visibility reasons. This area is actually transparent in the asset used in the example.</p>
+<p>The pixes along the edges of the image can be either white/transparent, black, or red. These have different meanings that we will go through one by one.</p>
+<ul class="simple">
+<li><strong>Black</strong> lines along the <strong>left</strong> and <strong>top</strong> sides of the asset mark the stretchable parts of the image. This means that the rounded corners and the white marker in the example are not affected when the button is stretched.</li>
+<li><strong>Black</strong> lines along the <strong>right</strong> and <strong>bottom</strong> sides of the asset mark the area used for the control’s contents. That means what part of the button is used for text in the example.</li>
+<li><strong>Red</strong> lines along the <strong>right</strong> and <strong>bottom</strong> sides of the asset mark <em>inset</em> areas. These areas are a part of the image, but not considered a part of the control. For the checked image above, this is used for a soft halo extending outside the button.</li>
+</ul>
+<p>A demonstration of the usage of an <em>inset</em> areas is how the <code class="docutils literal notranslate"><span class="pre">button-background.9.png</span></code> (below) and <code class="docutils literal notranslate"><span class="pre">button-background-checked.9.png</span></code> (above) result in an image that seems to light up, but not move, in the example.</p>
+<div class="figure" id="id13">
+<img alt="../_images/button-background-enlarged.9.png" src="../_images/button-background-enlarged.9.png" />
+<p class="caption"><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">button-background.9.png</span></code> asset enlarged.</span></p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>6.5. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter we have looked at the Qt Quick Controls 2. They offer set of elements that provide more high level concepts than the basic QML elements. For most scenarios, you will save memory and gain performance by using the Qt Quick Controls 2, as they are based around an optimized C++ logic instead of Javascript and QML.</p>
+<p>In the chapter we’ve demonstrated how different styles can be used, and how a common code base can be developed using file selectors. This way, a single code base can address multiple platforms with user interactions and visual styles.</p>
+<p>Finally, we have looked at the Imagine style that allows you to completely customize the look of a QML application through the use of graphical assets. This way an application can be reskinned without any code change what so ever.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Dec 25, 2018.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46104829-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>
