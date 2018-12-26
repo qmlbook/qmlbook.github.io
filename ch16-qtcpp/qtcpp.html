@@ -162,7 +162,7 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch16-qtcpp/qtcpp.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch16-qtcpp/qtcpp.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch16&body=back-link%3A+ch16-qtcpp%2Fqtcpp.html%23qt-and-c" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch16&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: December 25, 2018 at 14:24 CET</p>
+<p>Last Build: December 26, 2018 at 11:37 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>Qt is a C++ toolkit with an extension for QML and Javascript. There exist many language bindings for Qt, but as Qt is developed in C++, the spirit of C++ can be found throughout the classes. In this section, we will look at Qt from a C++ perspective to build a better understanding of how to extend QML with native plugins developed using C++. Through C++, it is possible to extend and control the execution environment provided to QML.</p>
@@ -399,6 +399,10 @@
 </pre></div>
 </div>
 <p>There are many more features which can be accessed by the <code class="docutils literal notranslate"><span class="pre">QObject</span></code> base class and the meta object. Please check out the <code class="docutils literal notranslate"><span class="pre">QMetaObject</span></code> documentation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">QObject</span></code>, and the <code class="docutils literal notranslate"><span class="pre">Q_OBJECT</span></code> macro has a lightweight sibling: <code class="docutils literal notranslate"><span class="pre">Q_GADGET</span></code>. The <code class="docutils literal notranslate"><span class="pre">Q_GADGET</span></code> macro can be inserted in the private section of non-<code class="docutils literal notranslate"><span class="pre">QObject</span></code>-derived classes to expose properties and invokable methods. Beware that a <code class="docutils literal notranslate"><span class="pre">Q_GADGET</span></code> object cannot have signals, so the properties cannot provide a change notification signal. Still, this can be useful to provide a QML-like interface to data structures exposed from C++ to QML without invoking the cost of a fully fledged <code class="docutils literal notranslate"><span class="pre">QObject</span></code>.</p>
+</div>
 </div>
 <div class="section" id="build-systems">
 <h2>16.3. Build Systems<a class="headerlink" href="#build-systems" title="Permalink to this headline">¶</a></h2>
@@ -815,7 +819,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The QML views know how to handle these different models. For models coming from the C++ world, the view expects a specific protocol to be followed. This protocol is defined in an API (<code class="docutils literal notranslate"><span class="pre">QAbstractItemModel</span></code>) together with documentation for the dynamic behavior. The API was developed for the desktop widget world and is flexible enough to act as a base for trees, or multi-column tables as well as lists. In QML, we almost only use the list version of the API (<code class="docutils literal notranslate"><span class="pre">QAbstractListModel</span></code>). The API contains some mandatory functions to be implemented and some are optional. The optional parts mostly handle the dynamic use case of adding or removing of data.</p>
+<p>The QML views know how to handle these different models. For models coming from the C++ world, the view expects a specific protocol to be followed. This protocol is defined in an API (<code class="docutils literal notranslate"><span class="pre">QAbstractItemModel</span></code>) together with documentation for the dynamic behavior. The API was developed for the desktop widget world and is flexible enough to act as a base for trees, or multi-column tables as well as lists. In QML, we use either the list variant of the API (<code class="docutils literal notranslate"><span class="pre">QAbstractListModel</span></code>) or, for the <code class="docutils literal notranslate"><span class="pre">TableView</span></code> element, the table variant of the API (<code class="docutils literal notranslate"><span class="pre">QAbstractTableModel</span></code>). The API contains some mandatory functions to be implemented and some are optional. The optional parts mostly handle the dynamic use case of adding or removing of data.</p>
 <div class="section" id="a-simple-model">
 <h3>16.5.1. A simple model<a class="headerlink" href="#a-simple-model" title="Permalink to this headline">¶</a></h3>
 <p>A typical QML C++ model derives from <code class="docutils literal notranslate"><span class="pre">QAbstractListModel</span></code> and implements at least the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">rowCount</span></code> function. In this example, we will use a series of SVG color names provided by the <code class="docutils literal notranslate"><span class="pre">QColor</span></code> class and display them using our model. The data is stored into a <code class="docutils literal notranslate"><span class="pre">QList&lt;QString&gt;</span></code> data container.</p>
@@ -930,6 +934,10 @@
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">ListDelegate</span></code> is a custom type to display some text. The <code class="docutils literal notranslate"><span class="pre">ListHighlight</span></code> is just a rectangle. The code was extracted to keep the example compact.</p>
 <p>The view can now display a list of strings using the C++ model and the display property of the model. It is still very simple, but already usable in QML. Normally the data is provided from outside the model and the model would act as an interface to the view.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To expose a table of data instead of a list, the <code class="docutils literal notranslate"><span class="pre">QAbstractTableModel</span></code> is used. The only difference compared to implementing a <code class="docutils literal notranslate"><span class="pre">QAbstractListModel</span></code> is that you must also provide the <code class="docutils literal notranslate"><span class="pre">columnCount</span></code> method.</p>
+</div>
 </div>
 <div class="section" id="more-complex-data">
 <h3>16.5.2. More Complex Data<a class="headerlink" href="#more-complex-data" title="Permalink to this headline">¶</a></h3>
@@ -1265,7 +1273,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 25, 2018.<br/>
+      Last updated on Dec 26, 2018.<br/>
     </p>
   </div>
 </footer>

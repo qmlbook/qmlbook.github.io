@@ -95,7 +95,7 @@
 <li><a class="reference internal" href="#video-streams">11.3. Video Streams</a></li>
 <li><a class="reference internal" href="#capturing-images">11.4. Capturing Images</a></li>
 <li><a class="reference internal" href="#advanced-techniques">11.5. Advanced Techniques</a><ul>
-<li><a class="reference internal" href="#implementing-a-playlist">11.5.1. Implementing a Playlist</a></li>
+<li><a class="reference internal" href="#using-a-playlist">11.5.1. Using a Playlist</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#summary">11.6. Summary</a></li>
@@ -149,7 +149,7 @@
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch11-multimedia/multimedia.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch11-multimedia/multimedia.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch11&body=back-link%3A+ch11-multimedia%2Fmultimedia.html%23multimedia" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch11&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: December 25, 2018 at 14:24 CET</p>
+<p>Last Build: December 26, 2018 at 11:37 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>The multimedia elements in the QtMultimedia makes it possible to playback and record media such as sound, video or pictures. Decoding and encoding are handled through platform-specific backends. For instance, the popular GStreamer framework is used on Linux, while DirectShow is used on Windows and QuickTime on OS X.</p>
@@ -339,6 +339,10 @@
     <span class="p">}</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more control over the camera behaviour, for instance to control exposure or focus settings, use the <code class="docutils literal notranslate"><span class="pre">exposure</span></code> and <code class="docutils literal notranslate"><span class="pre">focus</span></code> properties of the <code class="docutils literal notranslate"><span class="pre">Camera</span></code> object. These expose a whole range of settings made available through the <a class="reference external" href="http://doc.qt.io/qt-5/qml-qtmultimedia-cameraexposure.html">CameraExposure</a> and <a class="reference external" href="http://doc.qt.io/qt-5/qml-qtmultimedia-camerafocus.html">CameraFocus</a> elements.</p>
+</div>
 <p>The list of photos is a <code class="docutils literal notranslate"><span class="pre">ListView</span></code> oriented horizontally shows images from a <code class="docutils literal notranslate"><span class="pre">ListModel</span></code> called <code class="docutils literal notranslate"><span class="pre">imagePaths</span></code>. In the background, a semi-transparent black <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> is used.</p>
 <div class="highlight-qml notranslate"><div class="highlight"><pre><span></span>    <span class="nx">ListModel</span> <span class="p">{</span>
         <span class="kd">id: imagePaths</span>
@@ -442,13 +446,9 @@
 </div>
 <div class="section" id="advanced-techniques">
 <h2>11.5. Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Permalink to this headline">¶</a></h2>
-<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch10&body=back-link%3A+ch11-multimedia%2Fmultimedia.html%23advanced-techniques"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch10&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last">The Camera API of Qt 5 is really lacking in documentation right now. I would love to cover more advanced camera controls such as exposure and focusing, but there are no ranges or values, nor clear guides to how to use the APIs in the reference docs right now.</p>
-</div>
-<div class="section" id="implementing-a-playlist">
-<h3>11.5.1. Implementing a Playlist<a class="headerlink" href="#implementing-a-playlist" title="Permalink to this headline">¶</a></h3>
-<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch10&body=back-link%3A+ch11-multimedia%2Fmultimedia.html%23implementing-a-playlist"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch10&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The Qt 5 multimedia API does not provide support for playlists. Luckily, it is easy to build one. The idea is to be able to set it up with a model of items and a <code class="docutils literal notranslate"><span class="pre">MediaPlayer</span></code> element, as shown below. The <code class="docutils literal notranslate"><span class="pre">Playlist</span></code> element is responsible for setting the <code class="docutils literal notranslate"><span class="pre">source</span></code> of the <code class="docutils literal notranslate"><span class="pre">MediaPlayer</span></code>, while the play state is controlled via the player.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch10&body=back-link%3A+ch11-multimedia%2Fmultimedia.html%23advanced-techniques"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch10&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="section" id="using-a-playlist">
+<h3>11.5.1. Using a Playlist<a class="headerlink" href="#using-a-playlist" title="Permalink to this headline">¶</a></h3>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch10&body=back-link%3A+ch11-multimedia%2Fmultimedia.html%23using-a-playlist"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch10&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Since Qt 5.6 the QML multimedia API supports playlists. Simply assign a <code class="docutils literal notranslate"><span class="pre">Playlist</span></code> instance to the <code class="docutils literal notranslate"><span class="pre">playlist</span></code> property of your <code class="docutils literal notranslate"><span class="pre">MediaPlayer</span></code>. The <code class="docutils literal notranslate"><span class="pre">Playlist</span></code> element will then take care of setting the <code class="docutils literal notranslate"><span class="pre">source</span></code> of the <code class="docutils literal notranslate"><span class="pre">MediaPlayer</span></code>, while the play state is controlled via the player.</p>
 <div class="highlight-qml notranslate"><div class="highlight"><pre><span></span>    <span class="nx">MediaPlayer</span> <span class="p">{</span>
         <span class="kd">id: player</span>
         <span class="k">playlist:</span> <span class="nx">Playlist</span> <span class="p">{</span>
@@ -459,50 +459,10 @@
     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The first half of the <code class="docutils literal notranslate"><span class="pre">Playlist</span></code> element, shown below, takes care of setting the <code class="docutils literal notranslate"><span class="pre">source</span></code> element given an index in the <code class="docutils literal notranslate"><span class="pre">setIndex</span></code> function. It also implements the <code class="docutils literal notranslate"><span class="pre">next</span></code> and <code class="docutils literal notranslate"><span class="pre">previous</span></code> functions to navigate the list.</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">Item</span> <span class="p">{</span>
-    <span class="kd">id: root</span>
-
-    <span class="nx">property</span> <span class="kr">int</span> <span class="k">index:</span> <span class="mi">0</span>
-    <span class="nx">property</span> <span class="nx">MediaPlayer</span> <span class="nx">mediaPlayer</span>
-    <span class="nx">property</span> <span class="nx">ListModel</span> <span class="k">items:</span> <span class="nx">ListModel</span> <span class="p">{}</span>
-
-    <span class="kd">function</span> <span class="nx">setIndex</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;setting index to: &quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>
-
-        <span class="nx">index</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">index</span> <span class="o">&gt;=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-            <span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">index</span><span class="p">).</span><span class="nx">source</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">setIndex</span><span class="p">(</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="kd">function</span> <span class="nx">previous</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">setIndex</span><span class="p">(</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="p">}</span>
-</pre></div>
-</div>
-<p>The trick to making the playlist continue to the next element at the end of each element is to monitor the <code class="docutils literal notranslate"><span class="pre">status</span></code> property of the <code class="docutils literal notranslate"><span class="pre">MediaPlayer</span></code>. As soon as the <code class="docutils literal notranslate"><span class="pre">MediaPlayer.EndOfMedia</span></code> state is reached, the index is increased and playback resumed, or, if the end of the list is reached, the playback is stopped.</p>
-<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span>    <span class="nx">Connections</span> <span class="p">{</span>
-        <span class="k">target:</span> <span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span>
-
-        <span class="k">onStopped:</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="nx">MediaPlayer</span><span class="p">.</span><span class="nx">EndOfMedia</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">root</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">root</span><span class="p">.</span><span class="nx">index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">root</span><span class="p">.</span><span class="nx">mediaPlayer</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+<p>To make the player start playing, simply set the playlist <code class="docutils literal notranslate"><span class="pre">currentIndex</span></code> and tell the <code class="docutils literal notranslate"><span class="pre">MediaPlayer</span></code> to start playing.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span>    <span class="k">Component.onCompleted:</span> <span class="p">{</span>
+        <span class="nx">player</span><span class="p">.</span><span class="nx">playlist</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -528,7 +488,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 25, 2018.<br/>
+      Last updated on Dec 26, 2018.<br/>
     </p>
   </div>
 </footer>

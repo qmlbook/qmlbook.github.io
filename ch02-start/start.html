@@ -163,34 +163,27 @@
 </div>
 <div class="section" id="hello-world">
 <h2>2.2. Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
-<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch02&body=back-link%3A+ch02-start%2Fstart.html%23hello-world"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch02&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>To test your installation, create a small <em>hello world</em> application. Open Qt Creator and create a Qt Quick Application project ( <span class="menuselection">File &gt; New File or Project &gt; Application &gt; Qt Quick Application</span> ) and name the project <code class="docutils literal notranslate"><span class="pre">HelloWorld</span></code>.</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch02&body=back-link%3A+ch02-start%2Fstart.html%23hello-world"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch02&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>To test your installation, we will create a small <em>hello world</em> application. Please, open Qt Creator and create a Qt Quick UI Project ( <span class="menuselection">File ‣ New File or Project ‣ Other Project ‣ Qt Quick UI prototype</span> ) and name the project <code class="docutils literal notranslate"><span class="pre">HelloWorld</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The Qt Creator IDE lets you create various types of applications. Unless stated otherwise, we always use the <span class="guilabel">Qt Quick Application</span> project type in this book.</p>
+<p class="last">The Qt Creator IDE allows you to create various types of applications. If not otherwise stated, we always use a <span class="guilabel">Qt Quick UI prototype</span> project.</p>
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">A typical Qt Quick application is made out of a runtime called the QmlEngine which loads the initial QML code. The developer can register C++ types with the runtime to interface with the native code. These C++ types can also be bundled into a plugin, and then dynamically loaded using an import statement. The <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> and <code class="docutils literal notranslate"><span class="pre">qml</span></code> tools are pre-made runtimes, which can be used directly. For the beginning, we will not cover the native side of development, and focus only on the QML aspects of Qt 5.</p>
+<p class="last">A typical Qt Quick application is made out of a runtime called the QmlEngine which loads the initial QML code. The developer can register C++ types with the runtime to interface with the native code. These C++ types can also be bundled into a plugin and then dynamically loaded using an import statement. The <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> and <code class="docutils literal notranslate"><span class="pre">qml</span></code> tool are pre-made runtimes, which can be used directly. For the beginning, we will not cover the native side of development and focus only on the QML aspects of Qt 5. This is why we start from a <em>prototype</em> project.</p>
 </div>
 <p>Qt Creator creates several files for you. The <code class="docutils literal notranslate"><span class="pre">HelloWorld.qmlproject</span></code> file is the project file, where the relevant project configuration is stored. This file is managed by Qt Creator, so don’t edit it yourself.</p>
 <p>Another file, <code class="docutils literal notranslate"><span class="pre">HelloWorld.qml</span></code>, is our application code. Open it and try to understand what the application does before you read on.</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// HelloWorld.qml</span>
 
 <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.12</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span> <span class="mf">2.12</span>
 
-<span class="nx">Rectangle</span> <span class="p">{</span>
-    <span class="nx">width</span><span class="o">:</span> <span class="mi">360</span>
-    <span class="nx">height</span><span class="o">:</span> <span class="mi">360</span>
-    <span class="nx">Text</span> <span class="p">{</span>
-        <span class="nx">anchors</span><span class="p">.</span><span class="nx">centerIn</span><span class="o">:</span> <span class="nx">parent</span>
-        <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;Hello World&quot;</span>
-    <span class="p">}</span>
-    <span class="nx">MouseArea</span> <span class="p">{</span>
-        <span class="nx">anchors</span><span class="p">.</span><span class="nx">fill</span><span class="o">:</span> <span class="nx">parent</span>
-        <span class="nx">onClicked</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">Qt</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<span class="nx">Window</span> <span class="p">{</span>
+    <span class="nx">visible</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">640</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">480</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -198,7 +191,7 @@
 <p>To run the application on your own, press the <img alt="creatorrun" src="../_images/qtcreator-run.png" /> <span class="guilabel">Run</span> tool on the left side, or select <span class="menuselection">Build &gt; Run</span> from the menu.</p>
 <p>In the background, Qt Creator runs <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> and passes your QML document as the first argument. The <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> application parses the document, and launches the user interface. You should see something like this:</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/example.png"><img alt="../_images/example.png" src="../_images/example.png" style="width: 220.0px; height: 231.0px;" /></a>
+<img alt="../_images/example.png" src="../_images/example.png" />
 </div>
 <p>Qt 5 works! That means we’re ready to continue.</p>
 <div class="admonition tip">
@@ -615,7 +608,7 @@ Here is a short example. First the header file with the declaration of the view 
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 25, 2018.<br/>
+      Last updated on Dec 26, 2018.<br/>
     </p>
   </div>
 </footer>

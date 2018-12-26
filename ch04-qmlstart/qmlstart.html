@@ -114,7 +114,10 @@
 <li><a class="reference internal" href="#keys-element">4.7.4. Keys Element</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#advanced-techniques">4.8. Advanced Techniques</a></li>
+<li><a class="reference internal" href="#advanced-techniques">4.8. Advanced Techniques</a><ul>
+<li><a class="reference internal" href="#performance-of-qml">4.8.1. Performance of QML</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -165,7 +168,7 @@
 <p><em>Section author: <a class="reference external" href="https://github.com/jryannel">jryannel</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch04-qmlstart/qmlstart.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch04-qmlstart/qmlstart.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch04&body=back-link%3A+ch04-qmlstart%2Fqmlstart.html%23quick-starter" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch04&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: December 25, 2018 at 14:24 CET</p>
+<p>Last Build: December 26, 2018 at 11:37 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>This chapter provides an overview of QML, the declarative user interface language used in Qt 5. We will discuss the QML syntax, which is a tree of elements, followed by an overview of the most important basic elements. Later we will briefly look at how to create our own elements, called components and how to transform elements using property manipulations. Towards the end, we will look at how to arrange elements together in a layout and finally have a look at elements where the user can provide input.</p>
@@ -220,7 +223,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>The <code class="docutils literal notranslate"><span class="pre">import</span></code> statement imports a module in a specific version. In general, you always want to import <em>QtQuick 2.0</em> as your initial set of elements</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">import</span></code> statement imports a module in a specific version.</li>
 <li>Comments can be made using <code class="docutils literal notranslate"><span class="pre">//</span></code> for single line comments or <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">*/</span></code> for multi-line comments. Just like in C/C++ and JavaScript</li>
 <li>Every QML file needs to have exactly one root element, like HTML</li>
 <li>An element is declared by its type followed by <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code></li>
@@ -228,6 +231,7 @@
 <li>Arbitrary elements inside a QML document can be accessed by using their <code class="docutils literal notranslate"><span class="pre">id</span></code> (an unquoted identifier)</li>
 <li>Elements can be nested, meaning a parent element can have child elements. The parent element can be accessed using the <code class="docutils literal notranslate"><span class="pre">parent</span></code> keyword</li>
 </ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">import</span></code> statement you import a specific version of a module. For the QML modules that comes with Qt the version is linked to the Qt version you intend to use. The lower the version number, the earlier Qt version can be used. The minor version of the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement matches the minor version of the Qt release, so Qt 5.11 corresponds to <code class="docutils literal notranslate"><span class="pre">QtQuick</span></code> 2.11, Qt 5.12 to <code class="docutils literal notranslate"><span class="pre">QtQuick</span></code> 5.12 and so on. Prior to Qt 5.11, the QML modules shipped with Qt had their own versioning sequences, meaning that <code class="docutils literal notranslate"><span class="pre">QtQuick</span></code> followed the Qt versions, while <code class="docutils literal notranslate"><span class="pre">QtQuick.Controls</span></code> started with version 2.0 at Qt 5.7 and was at version 2.4 by Qt 5.11.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">Often you want to access a particular element by id or a parent element using the <code class="docutils literal notranslate"><span class="pre">parent</span></code> keyword. So it’s good practice to name your root element “root” using <code class="docutils literal notranslate"><span class="pre">id:</span> <span class="pre">root</span></code>. Then you don’t have to think about how the root element is named in your QML document.</p>
@@ -586,6 +590,10 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This is an important aspect of Qt Quick, the input handling is separated from the visual presentation. By this it allows you to show the user an interface element, but the interaction area can be larger.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more complex interaction, <a class="reference external" href="https://doc-snapshots.qt.io/qt5-dev/qtquickhandlers-index.html">Qt Quick Input Handlers</a> where introduced with Qt 5.12. They are intended to be used instead of elements such as <code class="docutils literal notranslate"><span class="pre">MouseArea</span></code> and <code class="docutils literal notranslate"><span class="pre">Flickable</span></code> and offer greater control and flexibility. The idea is to handle one interaction aspect in each handler instance instead of centralizing the handling of all events from a given source in a single element, which was the case before.</p>
 </div>
 </div>
 </div>
@@ -1234,7 +1242,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 <div class="figure">
 <img alt="../_images/textinput3.png" src="../_images/textinput3.png" />
 </div>
-<p>And try the tab key for navigation. You will experience the focus does not change to <code class="docutils literal notranslate"><span class="pre">input2</span></code>. The simple use of <code class="docutils literal notranslate"><span class="pre">focus:</span> <span class="pre">true</span></code> is not sufficient. The problem arises, that the focus was transferred to the <code class="docutils literal notranslate"><span class="pre">input2</span></code> element the top-level item inside the TlineEditV1 (our Rectangle) received focus and did not forward the focus to the TextInput. To prevent this QML offers the FocusScope.</p>
+<p>And try the tab key for navigation. You will experience the focus does not change to <code class="docutils literal notranslate"><span class="pre">input2</span></code>. The simple use of <code class="docutils literal notranslate"><span class="pre">focus:</span> <span class="pre">true</span></code> is not sufficient. The problem arises, that the focus was transferred to the <code class="docutils literal notranslate"><span class="pre">input2</span></code> element the top-level item inside the <code class="docutils literal notranslate"><span class="pre">TlineEditV1</span></code> (our <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code>) received focus and did not forward the focus to the <code class="docutils literal notranslate"><span class="pre">TextInput</span></code>. To prevent this QML offers the <code class="docutils literal notranslate"><span class="pre">FocusScope</span></code>.</p>
 </div>
 <div class="section" id="focusscope">
 <h3>4.7.2. FocusScope<a class="headerlink" href="#focusscope" title="Permalink to this headline">¶</a></h3>
@@ -1372,9 +1380,11 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
 </div>
 <div class="section" id="advanced-techniques">
 <h2>4.8. Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Permalink to this headline">¶</a></h2>
-<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch04&body=back-link%3A+ch04-qmlstart%2Fqmlstart.html%23advanced-techniques"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch04&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition-todo admonition" id="index-8">
-<p class="first admonition-title">Todo</p>
-<p class="last">To be written</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch04&body=back-link%3A+ch04-qmlstart%2Fqmlstart.html%23advanced-techniques"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch04&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="section" id="performance-of-qml">
+<h3>4.8.1. Performance of QML<a class="headerlink" href="#performance-of-qml" title="Permalink to this headline">¶</a></h3>
+<p>QML and Javascript are interpreted languages. This means that they do not have to be processed by a compiler before being executed. Instead, they are being run inside an execution engine. However, as interpretation is a costly operation various techniques are used to improvide performance.</p>
+<p>The QML engine uses just-in-time (JIT) compilation to improve performance. It also caches the intermediate output to avoid having to recompile. This works seamlessly for you as a developer. The only trace of this is that files ending with <code class="docutils literal notranslate"><span class="pre">qmlc</span></code> and <code class="docutils literal notranslate"><span class="pre">jsc</span></code> can be found next to the source files.</p>
+<p>If you want to avoid the initial start-up penalty induced by the initial parsing you can also pre-compile your QML and Javascript. This requires you to put your code into a Qt resource file and is described in detail in the <a class="reference external" href="http://doc.qt.io/qt-5/qtquick-deployment.html#compiling-qml-ahead-of-time">Compiling QML Ahead of Time</a> chapter in the Qt documentation.</p>
 </div>
 </div>
 </div>
@@ -1393,7 +1403,7 @@ The lifetime of a binding ends, when a new binding is set to the property or eve
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 25, 2018.<br/>
+      Last updated on Dec 26, 2018.<br/>
     </p>
   </div>
 </footer>

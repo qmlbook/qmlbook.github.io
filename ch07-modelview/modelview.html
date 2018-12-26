@@ -106,9 +106,12 @@
 </li>
 <li><a class="reference internal" href="#advanced-techniques">7.5. Advanced Techniques</a><ul>
 <li><a class="reference internal" href="#the-pathview">7.5.1. The PathView</a></li>
-<li><a class="reference internal" href="#a-model-from-xml">7.5.2. A Model from XML</a></li>
-<li><a class="reference internal" href="#lists-with-sections">7.5.3. Lists with Sections</a></li>
-<li><a class="reference internal" href="#tuning-performance">7.5.4. Tuning Performance</a></li>
+<li><a class="reference internal" href="#table-models">7.5.2. Table Models</a></li>
+<li><a class="reference internal" href="#a-model-from-xml">7.5.3. A Model from XML</a></li>
+<li><a class="reference internal" href="#lists-with-sections">7.5.4. Lists with Sections</a></li>
+<li><a class="reference internal" href="#the-objectmodel">7.5.5. The ObjectModel</a></li>
+<li><a class="reference internal" href="#models-with-actions">7.5.6. Models with Actions</a></li>
+<li><a class="reference internal" href="#tuning-performance">7.5.7. Tuning Performance</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#summary">7.6. Summary</a></li>
@@ -162,7 +165,7 @@
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch07-modelview/modelview.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch07-modelview/modelview.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch07&body=back-link%3A+ch07-modelview%2Fmodelview.html%23model-view-delegate" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch07&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: December 25, 2018 at 14:24 CET</p>
+<p>Last Build: December 26, 2018 at 11:37 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>In Qt Quick, data is separated from the presentation through a model-view separation. For each view, the visualization of each data element is separated into a delegate. Qt Quick comes with a set of predefined models and views. To utilize the system, one must understand these classes and know how to create appropriate delegates to get the right look and feel.</p>
@@ -300,7 +303,7 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
 <div class="figure">
 <a class="reference internal image-reference" href="../_images/gridview-basic.png"><img alt="../_images/gridview-basic.png" src="../_images/gridview-basic.png" style="width: 222.0px; height: 302.0px;" /></a>
 </div>
-<p>The two elements are similar in their usage. Thus, we will begin with the <code class="docutils literal notranslate"><span class="pre">ListView</span></code> and then describe the <code class="docutils literal notranslate"><span class="pre">GridView</span></code> with the former as the starting point of the comparison.</p>
+<p>The two elements are similar in their usage. Thus, we will begin with the <code class="docutils literal notranslate"><span class="pre">ListView</span></code> and then describe the <code class="docutils literal notranslate"><span class="pre">GridView</span></code> with the former as the starting point of the comparison. Notice that the <code class="docutils literal notranslate"><span class="pre">GridView</span></code> places a list of items into a two-dimensional grid, left-to-right or top-to-bottom. If you want to show a table of data you need to use the <code class="docutils literal notranslate"><span class="pre">TableView</span></code> which is described in the <a class="reference internal" href="#table-models">Table Models</a> section.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">ListView</span></code> is similar to the <code class="docutils literal notranslate"><span class="pre">Repeater</span></code> element. It uses a <code class="docutils literal notranslate"><span class="pre">model</span></code>, instantiates a <code class="docutils literal notranslate"><span class="pre">delegate</span></code> and between the delegates, there can be <code class="docutils literal notranslate"><span class="pre">spacing</span></code>. The listing below shows how a simple setup can look.</p>
 <div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 <span class="kr">import</span> <span class="s2">&quot;../common&quot;</span>
@@ -1038,17 +1041,80 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
 </pre></div>
 </div>
 <p>When transforming images or other complex elements on in <code class="docutils literal notranslate"><span class="pre">PathView</span></code>, a performance optimization trick that is common to use is to bind the <code class="docutils literal notranslate"><span class="pre">smooth</span></code> property of the <code class="docutils literal notranslate"><span class="pre">Image</span></code> element to the attached property <code class="docutils literal notranslate"><span class="pre">PathView.view.moving</span></code>. This means that the images are less pretty while moving but smoothly transformed when stationary. There is no point spending processing power on smooth scaling when the view is in motion, as the user will not be able to see this anyway.</p>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">PathView</span></code> and changing the <code class="docutils literal notranslate"><span class="pre">currentIndex</span></code> programatically you might want to control the direction that the path moves in. You can do this using the <code class="docutils literal notranslate"><span class="pre">movementDirection</span></code> property. It can be set to <code class="docutils literal notranslate"><span class="pre">PathView.Shortest</span></code>, which is the default value. This means that the movement can be either direction, depending on which way is the closest way to move to the target value. The direction can instead be restricted by setting <code class="docutils literal notranslate"><span class="pre">movementDirection</span></code> to <code class="docutils literal notranslate"><span class="pre">PathView.Negative</span></code> or <code class="docutils literal notranslate"><span class="pre">PathView.Positive</span></code>.</p>
+</div>
+<div class="section" id="table-models">
+<h3>7.5.2. Table Models<a class="headerlink" href="#table-models" title="Permalink to this headline">¶</a></h3>
+<p>All views discussed until now present an array of items one way or another. Even the <code class="docutils literal notranslate"><span class="pre">GridView</span></code> expects the model to provide a one dimensional list of items. For two dimensional tables of data you need to use the <code class="docutils literal notranslate"><span class="pre">TableView</span></code> element.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">TableView</span></code> is similar to other views in that it combines a <code class="docutils literal notranslate"><span class="pre">model</span></code> with a <code class="docutils literal notranslate"><span class="pre">delegate</span></code> to form a grid. If given a list oriented model, it displays a single column, making it very similar to the <code class="docutils literal notranslate"><span class="pre">ListView</span></code> element. However, it can also display two-dimensional models that explicitly define both columns and rows.</p>
+<p>In the example below, we set up a simple <code class="docutils literal notranslate"><span class="pre">TableView</span></code> with a custom model exposed from C++. At the moment, it is not possible to create table oriented models directly from QML, but in the ‘Qt and C++’ chapter the concept is explained. The running example is shown in the figure below.</p>
+<div class="figure">
+<img alt="../_images/tableview.png" src="../_images/tableview.png" />
+</div>
+<p>Before we can use the <code class="docutils literal notranslate"><span class="pre">TableView</span></code> element, we must make sure that the <code class="docutils literal notranslate"><span class="pre">2.12</span></code> version of <code class="docutils literal notranslate"><span class="pre">QtQuick</span></code> is imported. After that, we can set it up. In this example below, we set the <code class="docutils literal notranslate"><span class="pre">rowSpacing</span></code> and <code class="docutils literal notranslate"><span class="pre">columnSpacing</span></code> to control the horizontal and vertical gaps between delegates. The rest of the properties are set up as for any other type of view.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.12</span>
+</pre></div>
+</div>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">TableView</span> <span class="p">{</span>
+    <span class="kd">id: view</span>
+    <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+    <span class="k">anchors.margins:</span> <span class="mi">20</span>
+
+    <span class="k">rowSpacing:</span> <span class="mi">5</span>
+    <span class="k">columnSpacing:</span> <span class="mi">5</span>
+
+    <span class="k">clip:</span> <span class="kc">true</span>
+
+    <span class="k">model:</span> <span class="nx">tableModel</span>
+
+    <span class="k">delegate:</span> <span class="nx">cellDelegate</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The delegate itself can carry an implicit size through the <code class="docutils literal notranslate"><span class="pre">implicitWidth</span></code> and <code class="docutils literal notranslate"><span class="pre">implicitHeight</span></code>. This is what we do in the example below. The actual data contents, i.e. the data returned from the model’s <code class="docutils literal notranslate"><span class="pre">display</span></code> role.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">Component</span> <span class="p">{</span>
+    <span class="kd">id: cellDelegate</span>
+
+    <span class="nx">GreenBox</span> <span class="p">{</span>
+        <span class="k">implicitHeight:</span> <span class="mi">40</span>
+        <span class="k">implicitWidth:</span> <span class="mi">40</span>
+
+        <span class="nx">Text</span> <span class="p">{</span>
+            <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+            <span class="k">text:</span> <span class="nx">display</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It is possible to provide delegates with different sizes depending on the model contents, e.g.:</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">GreenBox</span> <span class="p">{</span>
+    <span class="k">implicitHeight:</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="nx">row</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice that both the width and the height must be greater than zero.</p>
+<p>When providing an implicit size from the delegate, the tallest delegate of each row and the widest delegate of each column controls the size. This can create interesting behaviour if the width of items depend on the row, or if the height depends on the column. This is because not all delegates are instantiated at all times, so the width of a column might change as the user scrolls through the table.</p>
+<p>To avoid the issues with specifying column widths and row heights using implicit delegate sizes, you can provide functions that calculate these sizes. This is done using the <code class="docutils literal notranslate"><span class="pre">columnWidthProvider</span></code> and <code class="docutils literal notranslate"><span class="pre">rowHeightProvider</span></code> . These functions return the size of the width and row respectively as shown below:</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">TableView</span> <span class="p">{</span>
+    <span class="k">columnWidthProvider:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">column</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span><span class="o">*</span><span class="p">(</span><span class="nx">column</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="p">}</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you need to dynamically change the column widths or row heights you must notify the view of this by calling the <code class="docutils literal notranslate"><span class="pre">forceLayout</span></code> method. This will make the view re-calculate the size and position of all cells.</p>
 </div>
 <div class="section" id="a-model-from-xml">
-<h3>7.5.2. A Model from XML<a class="headerlink" href="#a-model-from-xml" title="Permalink to this headline">¶</a></h3>
+<h3>7.5.3. A Model from XML<a class="headerlink" href="#a-model-from-xml" title="Permalink to this headline">¶</a></h3>
 <p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch06&body=back-link%3A+ch07-modelview%2Fmodelview.html%23a-model-from-xml"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch06&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>As XML is a ubiquitous data format, QML provides the <code class="docutils literal notranslate"><span class="pre">XmlListModel</span></code> element that exposes XML data as a model. The element can fetch XML data locally or remotely and then processes the data using XPath expressions.</p>
 <p>The example below demonstrates fetching images from an RSS flow. The <code class="docutils literal notranslate"><span class="pre">source</span></code> property refers to a remote location over HTTP, and the data is automatically downloaded.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/xmllistmodel-images.png"><img alt="../_images/xmllistmodel-images.png" src="../_images/xmllistmodel-images.png" style="width: 302.0px; height: 482.0px;" /></a>
+<img alt="../_images/xmllistmodel-images.png" src="../_images/xmllistmodel-images.png" />
 </div>
 <p>When the data has been downloaded, it is processed into model items and roles. The <code class="docutils literal notranslate"><span class="pre">query</span></code> property is an XPath representing the base query for creating model items. In this example, the path is <code class="docutils literal notranslate"><span class="pre">/rss/channel/item</span></code>, so for every item tag, inside a channel tag, inside an RSS tag, a model item is created.</p>
 <p>For every model item, a number of roles are extracted. These are represented by <code class="docutils literal notranslate"><span class="pre">XmlRole</span></code> elements. Each role is given a name, which the delegate can access through an attached property. The actual value of each such property is determined through the XPath query for each role. For instance, the <code class="docutils literal notranslate"><span class="pre">title</span></code> property corresponds to the <code class="docutils literal notranslate"><span class="pre">title/string()</span></code> query, returning the contents between the <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;/title&gt;</span></code> tags.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">imageSource</span></code> property is more interesting as it not only extracts a string from the XML but also processes it. In the stream provided, every item contains an image, represented by an <code class="docutils literal notranslate"><span class="pre">&lt;img</span> <span class="pre">src=</span></code> tag. Using the <code class="docutils literal notranslate"><span class="pre">substring-after</span></code> and <code class="docutils literal notranslate"><span class="pre">substring-before</span></code> XPath functions, the location of the image is extracted and returned. Thus the <code class="docutils literal notranslate"><span class="pre">imageSource</span></code> property can be used directly as the <code class="docutils literal notranslate"><span class="pre">source</span></code> for an <code class="docutils literal notranslate"><span class="pre">Image</span></code> element.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">imageSource</span></code> property extracts the value of an attribute of a tag instead of the contents of the tag. In this case, the <code class="docutils literal notranslate"><span class="pre">url</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">enclosure</span></code> tag is extracted as a string. The <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is used to indicate that an attribute is requested. The <code class="docutils literal notranslate"><span class="pre">imageSource</span></code> property can then be used directly as the <code class="docutils literal notranslate"><span class="pre">source</span></code> for an <code class="docutils literal notranslate"><span class="pre">Image</span></code> element, which loads the image from the given URL.</p>
 <div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.5</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">XmlListModel</span> <span class="mf">2.0</span>
 <span class="kr">import</span> <span class="s2">&quot;../common&quot;</span>
@@ -1083,11 +1149,11 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
     <span class="nx">XmlListModel</span> <span class="p">{</span>
         <span class="kd">id: imageModel</span>
 
-        <span class="k">source:</span> <span class="s2">&quot;http://feeds.nationalgeographic.com/ng/photography/photo-of-the-day/&quot;</span>
+        <span class="k">source:</span> <span class="s2">&quot;https://www.nasa.gov/rss/dyn/image_of_the_day.rss&quot;</span>
         <span class="k">query:</span> <span class="s2">&quot;/rss/channel/item&quot;</span>
 
         <span class="nx">XmlRole</span> <span class="p">{</span> <span class="k">name:</span> <span class="s2">&quot;title&quot;</span><span class="p">;</span> <span class="k">query:</span> <span class="s2">&quot;title/string()&quot;</span> <span class="p">}</span>
-        <span class="nx">XmlRole</span> <span class="p">{</span> <span class="k">name:</span> <span class="s2">&quot;imageSource&quot;</span><span class="p">;</span> <span class="k">query:</span> <span class="s2">&quot;substring-before(substring-after(description/string(), &#39;img src=\&quot;&#39;), &#39;\&quot;&#39;)&quot;</span> <span class="p">}</span>
+        <span class="nx">XmlRole</span> <span class="p">{</span> <span class="k">name:</span> <span class="s2">&quot;imageSource&quot;</span><span class="p">;</span> <span class="k">query:</span> <span class="s2">&quot;enclosure/string(@url)&quot;</span> <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="nx">ListView</span> <span class="p">{</span>
@@ -1101,7 +1167,7 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
 </div>
 </div>
 <div class="section" id="lists-with-sections">
-<h3>7.5.3. Lists with Sections<a class="headerlink" href="#lists-with-sections" title="Permalink to this headline">¶</a></h3>
+<h3>7.5.4. Lists with Sections<a class="headerlink" href="#lists-with-sections" title="Permalink to this headline">¶</a></h3>
 <p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch06&body=back-link%3A+ch07-modelview%2Fmodelview.html%23lists-with-sections"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch06&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Sometimes, the data in a list can be divided into sections. It can be as simple as dividing a list of contacts into sections under each letter of the alphabet or music tracks under albums. Using a <code class="docutils literal notranslate"><span class="pre">ListView</span></code> it is possible to divide a flat list into categories, providing more depth to the experience.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../_images/listview-sections.png"><img alt="../_images/listview-sections.png" src="../_images/listview-sections.png" style="width: 302.0px; height: 292.0px;" /></a>
@@ -1182,19 +1248,141 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
 </pre></div>
 </div>
 </div>
+<div class="section" id="the-objectmodel">
+<h3>7.5.5. The ObjectModel<a class="headerlink" href="#the-objectmodel" title="Permalink to this headline">¶</a></h3>
+<p>In some cases you might want to use a list view for a large set of different items. You can solve this using dynamic QML and <code class="docutils literal notranslate"><span class="pre">Loader</span></code>, but another options is to use an <code class="docutils literal notranslate"><span class="pre">ObjectModel</span></code> from the <code class="docutils literal notranslate"><span class="pre">QtQml.Models</span></code> module. The object model is different from other models as it lets you put the actual visual elements side the model. That way, the view does not need any <code class="docutils literal notranslate"><span class="pre">delegate</span></code>.</p>
+<div class="figure">
+<img alt="../_images/delegates-objectmodel.png" src="../_images/delegates-objectmodel.png" />
+</div>
+<p>In the example below we put three <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> elements into the <code class="docutils literal notranslate"><span class="pre">ObjectModel</span></code>. However, one rectangle has a <code class="docutils literal notranslate"><span class="pre">Text</span></code> element child while the last one has rounded corners. This would have resulted in a table-style model using something like a <code class="docutils literal notranslate"><span class="pre">ListModel</span></code>. It would also have resulted in empty <code class="docutils literal notranslate"><span class="pre">Text</span></code> elements in the model.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">QtQml</span><span class="p">.</span><span class="nx">Models</span> <span class="mf">2.1</span>
+
+<span class="nx">Rectangle</span> <span class="p">{</span>
+    <span class="k">width:</span> <span class="mi">320</span>
+    <span class="k">height:</span> <span class="mi">320</span>
+    
+    <span class="k">gradient:</span> <span class="nx">Gradient</span> <span class="p">{</span>
+        <span class="nx">GradientStop</span> <span class="p">{</span> <span class="k">position:</span> <span class="mf">0.0</span><span class="p">;</span> <span class="k">color:</span> <span class="s2">&quot;#f6f6f6&quot;</span> <span class="p">}</span>
+        <span class="nx">GradientStop</span> <span class="p">{</span> <span class="k">position:</span> <span class="mf">1.0</span><span class="p">;</span> <span class="k">color:</span> <span class="s2">&quot;#d7d7d7&quot;</span> <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">ObjectModel</span> <span class="p">{</span>
+        <span class="kd">id: itemModel</span>
+        
+        <span class="nx">Rectangle</span> <span class="p">{</span> <span class="k">height:</span> <span class="mi">60</span><span class="p">;</span> <span class="k">width:</span> <span class="mi">80</span><span class="p">;</span> <span class="k">color:</span> <span class="s2">&quot;#157efb&quot;</span> <span class="p">}</span>
+        <span class="nx">Rectangle</span> <span class="p">{</span> <span class="k">height:</span> <span class="mi">20</span><span class="p">;</span> <span class="k">width:</span> <span class="mi">300</span><span class="p">;</span> <span class="k">color:</span> <span class="s2">&quot;#53d769&quot;</span> 
+            <span class="nx">Text</span> <span class="p">{</span> <span class="k">anchors.centerIn:</span> <span class="nx">parent</span><span class="p">;</span> <span class="k">color:</span> <span class="s2">&quot;black&quot;</span><span class="p">;</span> <span class="k">text:</span> <span class="s2">&quot;Hello QML&quot;</span> <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">Rectangle</span> <span class="p">{</span> <span class="k">height:</span> <span class="mi">40</span><span class="p">;</span> <span class="k">width:</span> <span class="mi">40</span><span class="p">;</span> <span class="k">radius:</span> <span class="mi">10</span><span class="p">;</span> <span class="k">color:</span> <span class="s2">&quot;#fc1a1c&quot;</span> <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">ListView</span> <span class="p">{</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">anchors.margins:</span> <span class="mi">10</span>
+        <span class="k">spacing:</span> <span class="mi">5</span>
+        
+        <span class="k">model:</span> <span class="nx">itemModel</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Another aspect of the <code class="docutils literal notranslate"><span class="pre">ObjectModel</span></code> is that is can be dynamically populated using the <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">insert</span></code>, <code class="docutils literal notranslate"><span class="pre">move</span></code>, <code class="docutils literal notranslate"><span class="pre">remove</span></code>, and <code class="docutils literal notranslate"><span class="pre">clear</span></code> methods. This way, the contents of the model can be dynamically generated from various sources and still easily shown in a single view.</p>
+</div>
+<div class="section" id="models-with-actions">
+<h3>7.5.6. Models with Actions<a class="headerlink" href="#models-with-actions" title="Permalink to this headline">¶</a></h3>
+<p>Since 5.11, the <code class="docutils literal notranslate"><span class="pre">ListElement</span></code> type supports the binding of Javascript functions to properties. This means that you can put functions into a model. This is very useful when building menus with actions and similar constructs.</p>
+<p>The example below demonstrates this by having a model of cities that greet you in different ways. The <code class="docutils literal notranslate"><span class="pre">actionModel</span></code> is a model of four cities, but the <code class="docutils literal notranslate"><span class="pre">hello</span></code> property is bound to functions. Each function takes an argument <code class="docutils literal notranslate"><span class="pre">value</span></code>, but you can have any number arguments.</p>
+<p>In the delegate <code class="docutils literal notranslate"><span class="pre">actionDelegate</span></code>, the <code class="docutils literal notranslate"><span class="pre">MouseArea</span></code> calls the function <code class="docutils literal notranslate"><span class="pre">hello</span></code> as an ordinary function and this results a call to the corresponding <code class="docutils literal notranslate"><span class="pre">hello</span></code> property in the model.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.11</span>
+
+<span class="nx">Rectangle</span> <span class="p">{</span>
+    <span class="k">width:</span> <span class="mi">120</span>
+    <span class="k">height:</span> <span class="mi">300</span>
+
+    <span class="k">gradient:</span> <span class="nx">Gradient</span> <span class="p">{</span>
+        <span class="nx">GradientStop</span> <span class="p">{</span> <span class="k">position:</span> <span class="mf">0.0</span><span class="p">;</span> <span class="k">color:</span> <span class="s2">&quot;#f6f6f6&quot;</span> <span class="p">}</span>
+        <span class="nx">GradientStop</span> <span class="p">{</span> <span class="k">position:</span> <span class="mf">1.0</span><span class="p">;</span> <span class="k">color:</span> <span class="s2">&quot;#d7d7d7&quot;</span> <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">ListModel</span> <span class="p">{</span>
+        <span class="kd">id: actionModel</span>
+        
+        <span class="nx">ListElement</span> <span class="p">{</span>
+            <span class="k">name:</span> <span class="s2">&quot;Copenhagen&quot;</span>
+            <span class="k">hello:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span> <span class="o">+</span> <span class="s2">&quot;: You clicked Copenhagen!&quot;</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">ListElement</span> <span class="p">{</span>
+            <span class="k">name:</span> <span class="s2">&quot;Helsinki&quot;</span>
+            <span class="k">hello:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span> <span class="o">+</span> <span class="s2">&quot;: Helsinki here!&quot;</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">ListElement</span> <span class="p">{</span>
+            <span class="k">name:</span> <span class="s2">&quot;Oslo&quot;</span>
+            <span class="k">hello:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span> <span class="o">+</span> <span class="s2">&quot;: Hei Hei fra Oslo!&quot;</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">ListElement</span> <span class="p">{</span>
+            <span class="k">name:</span> <span class="s2">&quot;Stockholm&quot;</span>
+            <span class="k">hello:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span> <span class="o">+</span> <span class="s2">&quot;: Stockholm calling!&quot;</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">ListView</span> <span class="p">{</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">anchors.margins:</span> <span class="mi">20</span>
+
+        <span class="k">clip:</span> <span class="kc">true</span>
+
+        <span class="k">model:</span> <span class="nx">actionModel</span>
+
+        <span class="k">delegate:</span> <span class="nx">actionDelegate</span>
+        <span class="k">spacing:</span> <span class="mi">5</span>
+
+        <span class="k">focus:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+
+    <span class="nx">Component</span> <span class="p">{</span>
+        <span class="kd">id: actionDelegate</span>
+
+        <span class="nx">Rectangle</span> <span class="p">{</span>
+            <span class="k">width:</span> <span class="nx">ListView</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">width</span>
+            <span class="k">height:</span> <span class="mi">40</span>
+
+            <span class="k">color:</span> <span class="s2">&quot;#157efb&quot;</span>
+
+            <span class="nx">Text</span> <span class="p">{</span>
+                <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+                <span class="k">font.pixelSize:</span> <span class="mi">10</span>
+                <span class="k">text:</span> <span class="nx">name</span>
+            <span class="p">}</span>
+            
+            <span class="nx">MouseArea</span> <span class="p">{</span>
+                <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+                <span class="k">onClicked:</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="tuning-performance">
-<h3>7.5.4. Tuning Performance<a class="headerlink" href="#tuning-performance" title="Permalink to this headline">¶</a></h3>
+<h3>7.5.7. Tuning Performance<a class="headerlink" href="#tuning-performance" title="Permalink to this headline">¶</a></h3>
 <p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch06&body=back-link%3A+ch07-modelview%2Fmodelview.html%23tuning-performance"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch06&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>The perceived performance of a view of a model depends very much on the time needed to prepare new delegates. For instance, when scrolling downwards through a ListView, delegates are added just outside the view from the bottom and are removed just as they leave sight over the top of the view. This becomes apparent if the <code class="docutils literal notranslate"><span class="pre">clip</span></code> property is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>. If the delegates take too much time to initialize, it will become apparent to the user as soon as the view is scrolled too quickly.</p>
 <p>To work around this issue you can tune the margins, in pixels, on the sides of a scrolling view. This is done using the <code class="docutils literal notranslate"><span class="pre">cacheBuffer</span></code> property. In the case described above, vertical scrolling, it will control how many pixels above and below the ListView that will contain prepared delegates. Combining this with asynchronously loading <code class="docutils literal notranslate"><span class="pre">Image</span></code> elements can, for instance, give the images time to load before they are brought into view.</p>
 <p>Having more delegates sacrifices memory for a smoother experience and slightly more time to initialize each delegate. This does not solve the problem of complex delegates. Each time a delegate is instantiated, its contents are evaluated and compiled. This takes time, and if it takes too much time, it will lead to a poor scrolling experience. Having many elements in a delegate will also degrade the scrolling performance. It simply costs cycles to move many elements.</p>
-<p>To remedy the two later issues, it is recommended to use <code class="docutils literal notranslate"><span class="pre">Loader</span></code> elements. These can be used to instantiate additional elements when they are needed. For instance, an expanding delegate may use a <code class="docutils literal notranslate"><span class="pre">Loader</span></code> to postpone the instantiation of its detailed view until it is needed. For the same reason, it is good to keep the amount of JavaScript to a minimum in each delegate. It is better to let them call complex pieced of JavaScript that resides outside each delegate. This reduces the time spent compiling JavaScript each time a delegate is created.</p>
+<p>To remedy the two latter issues, it is recommended to use <code class="docutils literal notranslate"><span class="pre">Loader</span></code> elements. These can be used to instantiate additional elements when they are needed. For instance, an expanding delegate may use a <code class="docutils literal notranslate"><span class="pre">Loader</span></code> to postpone the instantiation of its detailed view until it is needed. For the same reason, it is good to keep the amount of JavaScript to a minimum in each delegate. It is better to let them call complex pieced of JavaScript that resides outside each delegate. This reduces the time spent compiling JavaScript each time a delegate is created.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be aware that using a <code class="docutils literal notranslate"><span class="pre">Loader</span></code> to postpone initialization does just that - it postpones a performance issue. This means that the scrolling performance will be improved, but the actual contents will still take time to appear.</p>
+</div>
 </div>
 </div>
 <div class="section" id="summary">
 <h2>7.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=ch06&body=back-link%3A+ch07-modelview%2Fmodelview.html%23summary"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=ch06&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>In this chapter, we have looked at models, views, and delegates. For each data entry in a model, a view instantiates a delegate visualizing the data. This separates the data from the presentation.</p>
 <p>A model can be a single integer, where the <code class="docutils literal notranslate"><span class="pre">index</span></code> variable is provided to the delegate. If a JavaScript array is used as a model, the <code class="docutils literal notranslate"><span class="pre">modelData</span></code> variable represents the data of the current index of the array, while <code class="docutils literal notranslate"><span class="pre">index</span></code> holds the index. For more complex cases, where multiple values need to be provided by each data item, a <code class="docutils literal notranslate"><span class="pre">ListModel</span></code> populated with <code class="docutils literal notranslate"><span class="pre">ListElement</span></code> items is a better solution.</p>
-<p>For static models, a <code class="docutils literal notranslate"><span class="pre">Repeater</span></code> can be used as the view. It is easy to combine it with a positioner such as <code class="docutils literal notranslate"><span class="pre">Row</span></code>, <code class="docutils literal notranslate"><span class="pre">Column</span></code>, <code class="docutils literal notranslate"><span class="pre">Grid</span></code> or <code class="docutils literal notranslate"><span class="pre">Flow</span></code> to build user interface parts. For dynamic or large data models, a view such as <code class="docutils literal notranslate"><span class="pre">ListView</span></code> or <code class="docutils literal notranslate"><span class="pre">GridView</span></code> is more appropriate. These create delegate instances on the fly as they are needed, reducing the number of elements live in the scene at once.</p>
+<p>For static models, a <code class="docutils literal notranslate"><span class="pre">Repeater</span></code> can be used as the view. It is easy to combine it with a positioner such as <code class="docutils literal notranslate"><span class="pre">Row</span></code>, <code class="docutils literal notranslate"><span class="pre">Column</span></code>, <code class="docutils literal notranslate"><span class="pre">Grid</span></code> or <code class="docutils literal notranslate"><span class="pre">Flow</span></code> to build user interface parts. For dynamic or large data models, a view such as <code class="docutils literal notranslate"><span class="pre">ListView</span></code>, <code class="docutils literal notranslate"><span class="pre">GridView</span></code>, or <code class="docutils literal notranslate"><span class="pre">TableView</span></code> is more appropriate. These create delegate instances on the fly as they are needed, reducing the number of elements live in the scene at once.</p>
+<p>The difference between <code class="docutils literal notranslate"><span class="pre">GridView</span></code> and <code class="docutils literal notranslate"><span class="pre">TableView</span></code> is that the table view expects a table type model with multiple columns of data while the grid view shows a list type model in a grid.</p>
 <p>The delegates used in the views can be static items with properties bound to data from the model, or they can be dynamic, with states depending on if they are in focus or not. Using the <code class="docutils literal notranslate"><span class="pre">onAdd</span></code> and <code class="docutils literal notranslate"><span class="pre">onRemove</span></code> signals of the view, they can even be animated as they appear and disappear.</p>
 </div>
 </div>
@@ -1213,7 +1401,7 @@ View -&gt; Delegate [label=&quot;Creates and Places&quot;]
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Dec 25, 2018.<br/>
+      Last updated on Dec 26, 2018.<br/>
     </p>
   </div>
 </footer>
