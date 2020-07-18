@@ -149,14 +149,39 @@
 
 <div class="container">
   <div class="row">
-    <div class="body col-md-12 content" role="main">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">14. Dynamic QML</a><ul>
+<li><a class="reference internal" href="#loading-components-dynamically">14.1. Loading Components Dynamically</a><ul>
+<li><a class="reference internal" href="#connecting-indirectly">14.1.1. Connecting Indirectly</a></li>
+<li><a class="reference internal" href="#binding-indirectly">14.1.2. Binding Indirectly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-and-destroying-objects">14.2. Creating and Destroying Objects</a><ul>
+<li><a class="reference internal" href="#dynamically-loading-and-instantiating-items">14.2.1. Dynamically Loading and Instantiating Items</a><ul>
+<li><a class="reference internal" href="#incubating-components">14.2.1.1. Incubating Components</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dynamically-instantiating-items-from-text">14.2.2. Dynamically Instantiating Items from Text</a></li>
+<li><a class="reference internal" href="#managing-dynamically-created-elements">14.2.3. Managing Dynamically Created Elements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tracking-dynamic-objects">14.3. Tracking Dynamic Objects</a></li>
+<li><a class="reference internal" href="#summary">14.4. Summary</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
       
   <div class="section" id="dynamic-qml">
 <h1>14. Dynamic QML<a class="headerlink" href="#dynamic-qml" title="Permalink to this headline">¶</a></h1>
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch14-dynamicqml/dynamicqml.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch14-dynamicqml/dynamicqml.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch14&body=back-link%3A+ch14-dynamicqml%2Fdynamicqml.html%23dynamic-qml" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch14&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: June 26, 2019 at 07:15 CET</p>
+<p>Last Build: July 18, 2020 at 13:03 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <p>Until now, we have treated QML as a tool for constructing a static set of scenes and navigating between them. Depending on various states and logic rules, a living and dynamic user interface is constructed. By working with QML and JavaScript in a more dynamic manner, the flexibility and possibilities expand even further. Components can be loaded and instantiated at run-time, elements can be destroyed. Dynamically created user interfaces can be saved to disk and later restored.</p>
@@ -562,7 +587,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Jun 26, 2019.<br/>
+      Last updated on Jul 18, 2020.<br/>
     </p>
   </div>
 </footer>
