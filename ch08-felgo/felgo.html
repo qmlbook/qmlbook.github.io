@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>8. Felgo &#8212; Qt5 Cadaques Book vmaster</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom-styles.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Canvas Element" href="../ch09-canvas/canvas.html" />
+    <link rel="prev" title="7. Model-View-Delegate" href="../ch07-modelview/modelview.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          QmlBook</a>
+        <span class="navbar-text navbar-version pull-left"><b>master</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Chapters <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ch01-meetqt/meetqt.html">1. Meet Qt 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch02-start/start.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch03-qtcreator/qtcreator.html">3. Qt Creator IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch04-qmlstart/qmlstart.html">4. Quick Starter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch05-fluid/fluid.html">5. Fluid Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch06-controls/controls.html">6. Qt Quick Controls 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch07-modelview/modelview.html">7. Model-View-Delegate</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Felgo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09-canvas/canvas.html">9. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10-particles/particles.html">10. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11-shaders/shaders.html">11. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12-multimedia/multimedia.html">12. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13-networking/networking.html">13. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14-storage/storage.html">14. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15-dynamicqml/dynamicqml.html">15. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16-javascript/javascript.html">16. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch17-qtcpp/qtcpp.html">17. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch18-extensions/extensions.html">18. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch19-felgo-plugins/felgo-plugins.html">19. Felgo Plugins and QML Hot Reloading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch20-python/python.html">20. Qt for Python</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">1. Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/deployment.html">2. Deploying QML Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../draganddrop/draganddrop.html">3. Drag and Drop</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">8. Felgo</a><ul>
+<li><a class="reference internal" href="#why-choose-felgo">8.1. Why choose Felgo?</a></li>
+<li><a class="reference internal" href="#installing-felgo">8.2. Installing Felgo</a><ul>
+<li><a class="reference internal" href="#installing-the-companion-apps">8.2.1. Installing the Companion Apps</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hello-world-with-felgo">8.3. Hello World with Felgo</a></li>
+<li><a class="reference internal" href="#a-messaging-app">8.4. A Messaging App</a><ul>
+<li><a class="reference internal" href="#a-skeleton">8.4.1. A Skeleton</a></li>
+<li><a class="reference internal" href="#showing-conversations">8.4.2. Showing Conversations</a></li>
+<li><a class="reference internal" href="#sending-messages">8.4.3. Sending Messages</a></li>
+<li><a class="reference internal" href="#storing-data">8.4.4. Storing Data</a></li>
+<li><a class="reference internal" href="#refactoring">8.4.5. Refactoring</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-topics">8.5. Advanced Topics</a><ul>
+<li><a class="reference internal" href="#theming">8.5.1. Theming</a><ul>
+<li><a class="reference internal" href="#styling-items">8.5.1.1. Styling Items</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model-sorting-and-filtering">8.5.2. Model Sorting and Filtering</a></li>
+<li><a class="reference internal" href="#native-app-features">8.5.3. Native App Features</a><ul>
+<li><a class="reference internal" href="#native-dialogs">8.5.3.1. Native Dialogs</a></li>
+<li><a class="reference internal" href="#notch-support">8.5.3.2. Notch Support</a></li>
+<li><a class="reference internal" href="#native-apis">8.5.3.3. Native APIs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#networking">8.5.4. Networking</a><ul>
+<li><a class="reference internal" href="#httprequest">8.5.4.1. HttpRequest</a></li>
+<li><a class="reference internal" href="#working-with-json-data">8.5.4.2. Working with JSON data</a></li>
+<li><a class="reference internal" href="#download-resources-files-and-pdfs">8.5.4.3. Download Resources, Files and PDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">8.6. Summary</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../ch07-modelview/modelview.html" title="Previous Chapter: 7. Model-View-Delegate"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 7. Model-View...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../ch09-canvas/canvas.html" title="Next Chapter: 9. Canvas Element"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">9. Canvas Element &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">8. Felgo</a><ul>
+<li><a class="reference internal" href="#why-choose-felgo">8.1. Why choose Felgo?</a></li>
+<li><a class="reference internal" href="#installing-felgo">8.2. Installing Felgo</a><ul>
+<li><a class="reference internal" href="#installing-the-companion-apps">8.2.1. Installing the Companion Apps</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hello-world-with-felgo">8.3. Hello World with Felgo</a></li>
+<li><a class="reference internal" href="#a-messaging-app">8.4. A Messaging App</a><ul>
+<li><a class="reference internal" href="#a-skeleton">8.4.1. A Skeleton</a></li>
+<li><a class="reference internal" href="#showing-conversations">8.4.2. Showing Conversations</a></li>
+<li><a class="reference internal" href="#sending-messages">8.4.3. Sending Messages</a></li>
+<li><a class="reference internal" href="#storing-data">8.4.4. Storing Data</a></li>
+<li><a class="reference internal" href="#refactoring">8.4.5. Refactoring</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-topics">8.5. Advanced Topics</a><ul>
+<li><a class="reference internal" href="#theming">8.5.1. Theming</a><ul>
+<li><a class="reference internal" href="#styling-items">8.5.1.1. Styling Items</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model-sorting-and-filtering">8.5.2. Model Sorting and Filtering</a></li>
+<li><a class="reference internal" href="#native-app-features">8.5.3. Native App Features</a><ul>
+<li><a class="reference internal" href="#native-dialogs">8.5.3.1. Native Dialogs</a></li>
+<li><a class="reference internal" href="#notch-support">8.5.3.2. Notch Support</a></li>
+<li><a class="reference internal" href="#native-apis">8.5.3.3. Native APIs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#networking">8.5.4. Networking</a><ul>
+<li><a class="reference internal" href="#httprequest">8.5.4.1. HttpRequest</a></li>
+<li><a class="reference internal" href="#working-with-json-data">8.5.4.2. Working with JSON data</a></li>
+<li><a class="reference internal" href="#download-resources-files-and-pdfs">8.5.4.3. Download Resources, Files and PDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">8.6. Summary</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="felgo">
+<h1>8. Felgo<a class="headerlink" href="#felgo" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
+<p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch08-felgo/felgo.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch08-felgo/felgo.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch08&body=back-link%3A+ch08-felgo%2Ffelgo.html%23felgo" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch08&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Last Build: September 16, 2020 at 19:44 CET</p>
+<p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/felgo-logo.png"><img alt="../_images/felgo-logo.png" src="../_images/felgo-logo.png" style="width: 210.0px; height: 42.0px;" /></a>
+</div>
+<p>Felgo is a cross-platform application development solution, based on the Qt framework and greatly extending it. Felgo offers unique Qt/QML tooling, cloud services, and the Felgo SDK that adds more than 200 APIs extending Qt with capabilities such as:</p>
+<ul class="simple">
+<li>Advanced controls and native navigation</li>
+<li>Theming and style</li>
+<li>Density independence</li>
+<li>Responsive layout</li>
+<li>File handling (local/remote)</li>
+<li>Data management and model/view</li>
+<li>Multimedia</li>
+<li>REST networking</li>
+<li>Native dialogs and features</li>
+</ul>
+<p>The screenshot below showcases how a single code base can be themed to look native on both Android and iOS.</p>
+<div class="figure">
+<img alt="../_images/felgo-showcase-themes.jpg" src="../_images/felgo-showcase-themes.jpg" />
+</div>
+<p>Felgo is a Qt Technology Partner, and the SDK, which we will use in this chapter, can greatly help you save time and money when developing Qt applications. As the Felgo SDK extends Qt, it is possible to mix Felgo APIs with existing Qt and QML code. This means that you can add Felgo to your existing applications. In addition to the Felgo SDK, Felgo also provides consulting and training.</p>
+<div class="section" id="why-choose-felgo">
+<h2>8.1. Why choose Felgo?<a class="headerlink" href="#why-choose-felgo" title="Permalink to this headline">¶</a></h2>
+<p>Felgo takes the cross platform story one step further. It lets you get more done from QML and reduces the need to write complex C++ code. For instance, the <a class="reference external" href="https://github.com/FelgoSDK/Qt-World-Summit-Conference-App">Felgo Qt World Summit Conference</a> App, used at the annual Qt World Summit conference, has saved 90% code compared to the pure <a class="reference external" href="https://github.com/ekke/c2gQtCon_x">Qt/QML implementation</a>.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/felgo-code-saving.png"><img alt="../_images/felgo-code-saving.png" src="../_images/felgo-code-saving.png" style="width: 500.25px; height: 232.5px;" /></a>
+</div>
+<p>Code savings are not limited to the Qt world, but Felgo is a lot less verbose also compared to native development and competing cross-platform solutions.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/felgo-code-saving-property-cross.png"><img alt="../_images/felgo-code-saving-property-cross.png" src="../_images/felgo-code-saving-property-cross.png" style="width: 450.0px; height: 375.0px;" /></a>
+</div>
+</div>
+<div class="section" id="installing-felgo">
+<h2>8.2. Installing Felgo<a class="headerlink" href="#installing-felgo" title="Permalink to this headline">¶</a></h2>
+<p>In order to use Felgo you need to perform the following steps:</p>
+<ol class="arabic simple">
+<li>Sign-up to felgo.com. There are different purchasing options including a free tier which grants access to most features. In this text we will only use the free tier features.</li>
+<li>Depending on your OS of choice, install the requirements: <a class="reference external" href="https://felgo.com/doc/felgo-installation/#install-requirements">https://felgo.com/doc/felgo-installation/#install-requirements</a></li>
+<li>Download Felgo: <a class="reference external" href="https://felgo.com/download/">https://felgo.com/download/</a></li>
+<li>Run the installer and proceed to install Felgo.</li>
+</ol>
+<p>This installs the Felgo SDK, development tools and several demo applications. Felgo also comes with a specific version of Qt and an own QtCreator that includes useful Felgo plugins. It is possible to install the Felgo SDK in addition to other Qt installations on your system. If you have Qt installed already and only want to add Felgo to your installation take a look here: <a class="reference external" href="https://felgo.com/doc/felgo-installation/#add-felgo-to-existing-qt-installation">https://felgo.com/doc/felgo-installation/#add-felgo-to-existing-qt-installation</a>.</p>
+<div class="section" id="installing-the-companion-apps">
+<h3>8.2.1. Installing the Companion Apps<a class="headerlink" href="#installing-the-companion-apps" title="Permalink to this headline">¶</a></h3>
+<p>Felgo comes with a companion app that makes it easier to develop mobile apps, the the Felgo Live Client for <a class="reference external" href="https://play.google.com/store/apps/details?id=net.vplay.apps.QMLLive&amp;hl=en">Android</a> and <a class="reference external" href="https://apps.apple.com/us/app/qml-live-scripting-by-felgo/id1157319191">iOS</a>.</p>
+<p>You can connect the client apps to the Felgo Live Server tool that comes with the SDK. This allows you to directly test how your app works on mobile without having to build and deploy an app. With QML Hot Reload, you can see QML and JavaScript code changes applied instantly on all your devices.</p>
+</div>
+</div>
+<div class="section" id="hello-world-with-felgo">
+<h2>8.3. Hello World with Felgo<a class="headerlink" href="#hello-world-with-felgo" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have everything in place we can test the setup with our very first Felgo application: the mandatory <em>Hello World</em>. To do this, fire up the Felgo SDK Qt Creator and create a new project.</p>
+<p>You will be faced by the ordinary project and file creation dialog, but with the <em>Felgo Apps</em> and <em>Felgo Games</em> categories for both projects and files. In this case, choose the <em>Single-Page Application</em> from the Felgo Apps project category.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/new-project-1a.png"><img alt="../_images/new-project-1a.png" src="../_images/new-project-1a.png" style="width: 654.0px; height: 386.5px;" /></a>
+</div>
+<p>This will take you through the new project wizard, with some additional Felgo steps. Ensure that you pick the <em>Felgo Desktop</em> kit, especially if you have multiple versions of Qt installed. Also do not pick any additional plugins for now.</p>
+<div class="topic">
+<p class="topic-title">Felgo Plugins</p>
+<p>Felgo comes with a large set of plugins focused at mobile app developers. These include integrations of various frameworks for ads, in-app purchasing as well as analytics. If you activate any of the plugins, the SDK will provide you with a link further outlining how to integrate the service selected.</p>
+<p><a class="reference internal" href="../_images/new-project-4.png"><img alt="Plugin Selection" src="../_images/new-project-4.png" style="width: 327.0px; height: 193.25px;" /></a> <a class="reference internal" href="../_images/new-project-5b.png"><img alt="Plugin Integration" src="../_images/new-project-5b.png" style="width: 327.0px; height: 193.25px;" /></a></p>
+</div>
+<p>Once the project has been created, replace the contents of the <code class="docutils literal notranslate"><span class="pre">Main.qml</span></code> with the following Hello World code:</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="nx">NavigationStack</span> <span class="p">{</span>
+    <span class="nx">Page</span> <span class="p">{</span>
+      <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Welcome to Felgo&quot;</span><span class="p">)</span>
+
+      <span class="nx">AppText</span> <span class="p">{</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">text:</span> <span class="s2">&quot;Hello World&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You will notice that the live reloader will show a preview of your project looking like the figure below. The Live server and client will start when you load a project into Qt Creator, so if you’re quick, you will notice when you changed the source code and saved, the live view was updated. If the Live Server is not running, you can start it via the <em>Live Run</em> button. It is placed on top of the <em>Build and Run</em> button in the left sidebar. The button starts the Felgo Live Server in addition to the Desktop version of the app.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/live-hello-world.png"><img alt="../_images/live-hello-world.png" src="../_images/live-hello-world.png" style="width: 264.0px; height: 473.5px;" /></a>
+</div>
+<p>The code above should look familiar if you’ve worked through the earlier chapters introducing QML. There is a new import of <code class="docutils literal notranslate"><span class="pre">Felgo</span> <span class="pre">3.0</span></code> which includes every component of the FelgoSDK.</p>
+<p>The root element is the <a class="reference external" href="https://felgo.com/doc/felgo-app/">App</a> element with a nested <a class="reference external" href="https://felgo.com/doc/felgo-navigationstack/">NavigationStack</a>. This component takes care of managing all the different <a class="reference external" href="https://felgo.com/doc/felgo-page/">Page</a> instances your application is going to present.</p>
+<p>Within the Page you can find an <a class="reference external" href="https://felgo.com/doc/felgo-apptext/">AppText</a> element, which inherits from QtQuick.Text, but also manages proper font scaling. It offers a fontSize property that ensures the same physical size on all devices, avoiding the need to manually adapt the font.pixelSize setting of QtQuick.Text to the pixel density of your device.</p>
+<p>In the Live Client view, you can you can change simulated resolutions or the application theme from the menu bar. You can test different screen formats and see how the app looks on an Android, iOS or Desktop device.</p>
+</div>
+<div class="section" id="a-messaging-app">
+<h2>8.4. A Messaging App<a class="headerlink" href="#a-messaging-app" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have familiarized ourselves with the Felgo environment and run the Hello World code, let’s transform the Hello World application into a messaging app. It will provide an overview page of all conversations, as well as one page per conversation showing the individual messages.</p>
+<div class="section" id="a-skeleton">
+<h3>8.4.1. A Skeleton<a class="headerlink" href="#a-skeleton" title="Permalink to this headline">¶</a></h3>
+<p>We start with defining the skeleton of our application. It initially shows a page with the most recent conversations. Put the following code into the <code class="docutils literal notranslate"><span class="pre">Main.qml</span></code> of a new project (or replace the contents of the Hello World project’s <code class="docutils literal notranslate"><span class="pre">Main.qml</span></code>)</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="nx">Navigation</span> <span class="p">{</span>
+    <span class="nx">NavigationItem</span> <span class="p">{</span>
+          <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Recent&quot;</span><span class="p">)</span>
+          <span class="k">icon:</span> <span class="nx">IconType</span><span class="p">.</span><span class="nx">clocko</span>
+
+      <span class="nx">NavigationStack</span> <span class="p">{</span>
+        <span class="nx">ListPage</span> <span class="p">{</span>
+            <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Recent&quot;</span><span class="p">)</span>
+            <span class="k">emptyText.text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;No conversations yet!&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can already see two new components: <code class="docutils literal notranslate"><span class="pre">Navigation</span></code>, and <code class="docutils literal notranslate"><span class="pre">NavigationItem</span></code>. The <a class="reference external" href="https://felgo.com/doc/felgo-navigation/">Navigation</a> presents you with a single component for platform-specific navigation patterns. On Android or Desktop it will be displayed as a side menu, while on iOS it will use a bottom tab bar by default.</p>
+<p>Now test it on Desktop: in the Live Client, make sure to select the Desktop theme and increase the window size by dragging at the window edges. Over a certain threshold the side-menu automatically gets visible. Felgo implements responsive design by default, meaning that the layout of the application adapts to the screen size and orientation.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/messaging-stage-1.png"><img alt="../_images/messaging-stage-1.png" src="../_images/messaging-stage-1.png" style="width: 264.0px; height: 473.5px;" /></a>
+</div>
+<p>The other new component: <a class="reference external" href="https://felgo.com/doc/felgo-navigationitem/">NavigationItem</a> represents a root entry in the main navigation of your application. You can have multiple <code class="docutils literal notranslate"><span class="pre">NavigationItem</span></code> elements in your <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> element. In the example code we define an icon and a title for the <em>Recent</em> page. Felgo comes with comprehensive icon font out of the box.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NavigationStack</span></code> is a component which allows stacking pages on top of each other. At the moment we only have one <code class="docutils literal notranslate"><span class="pre">Page</span></code> that feels a bit empty. Let’s include some mock data by creating a new file.</p>
+<p>To display lists of items you can rely on the <a class="reference external" href="https://felgo.com/doc/felgo-applistview/">AppListView</a>, or you can take a shortcut and use the <a class="reference external" href="https://felgo.com/doc/felgo-listpage/">ListPage</a>.
+This last component is a <code class="docutils literal notranslate"><span class="pre">Page</span></code> with a single <code class="docutils literal notranslate"><span class="pre">AppListView</span></code> as a child, with some properties of <code class="docutils literal notranslate"><span class="pre">AppListView</span></code> aliased for convenience such as <code class="docutils literal notranslate"><span class="pre">model</span></code> and <code class="docutils literal notranslate"><span class="pre">delegate</span></code>.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// Inside the ListPage</span>
+<span class="k">model:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Tom McEloy&quot;</span><span class="p">,</span> <span class="k">detailText:</span> <span class="s2">&quot;Sorry for the late reply ...&quot;</span><span class="p">,</span> <span class="k">image:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">resolvedUrl</span><span class="p">(</span><span class="s2">&quot;../assets/portrait0.jpg&quot;</span><span class="p">)</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Leah Douglas&quot;</span><span class="p">,</span> <span class="k">detailText:</span> <span class="s2">&quot;Hahaha :D&quot;</span><span class="p">,</span> <span class="k">image:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">resolvedUrl</span><span class="p">(</span><span class="s2">&quot;../assets/portrait1.jpg&quot;</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The model property is a standard QML <a class="reference external" href="https://doc.qt.io/qt-5/qml-qtqml-models-listmodel.html">ListModel</a>. In this case we are just passing a javascript array. You can use any Qt/QML <code class="docutils literal notranslate"><span class="pre">ListModel</span></code>, or the <a class="reference external" href="https://felgo.com/doc/felgo-jsonlistmodel/">JsonListModel</a> from Felgo, optimized to handle JSON data in a performant way.</p>
+<p>Now let’s attach a delegate to show the model contents. The result is shown in the figure below, followed by the source code.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/messaging-stage-2.png"><img alt="../_images/messaging-stage-2.png" src="../_images/messaging-stage-2.png" style="width: 264.0px; height: 473.5px;" /></a>
+</div>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// Inside the ListPage</span>
+<span class="k">delegate:</span> <span class="nx">SimpleRow</span> <span class="p">{</span>
+    <span class="k">image.radius:</span> <span class="nx">image</span><span class="p">.</span><span class="nx">height</span>
+    <span class="k">image.fillMode:</span> <span class="nx">Image</span><span class="p">.</span><span class="nx">PreserveAspectCrop</span>
+    <span class="k">autoSizeImage:</span> <span class="kc">true</span>
+    <span class="k">style.showDisclosure:</span> <span class="kc">false</span>
+    <span class="k">imageMaxSize:</span> <span class="nx">dp</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span>
+    <span class="k">detailTextItem.maximumLineCount:</span> <span class="mi">1</span>
+    <span class="k">detailTextItem.elide:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">ElideRight</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://felgo.com/doc/felgo-simplerow/">SimpleRow</a> is a flexible Felgo component which represents a single entry in a list. It has many useful properties such as image, primary text and subtext. It also tries to be smart and picks out the corresponding model keys automatically. In the example, the <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">detailText</span></code>, and <code class="docutils literal notranslate"><span class="pre">image</span></code> are set this way. Check out the <a class="reference external" href="https://felgo.com/doc/felgo-simplerow/">element documentation</a> for a complete list of what model properties are picked up automatically by <code class="docutils literal notranslate"><span class="pre">SimpleRow</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SimpleRow</span></code> is composed of different QML items that are exposed through properties. You can tweak each item if the default setup is not satisfying. In the example, we are overriding the <code class="docutils literal notranslate"><span class="pre">radius</span></code> property of the <code class="docutils literal notranslate"><span class="pre">image</span></code> item to create a rounded image.</p>
+<p>Another interesing detail in the example above is that <code class="docutils literal notranslate"><span class="pre">imageMaxSize</span></code> is defined as <code class="docutils literal notranslate"><span class="pre">dp(48)</span></code>. Felgo uses density independent sizes, meaning that elements have the same size regardless of the device screen. To benefit from this you should always use <code class="docutils literal notranslate"><span class="pre">dp()</span></code> for setting the size of visual items such as buttons, and <code class="docutils literal notranslate"><span class="pre">sp()</span></code> for texts which can also scale along to the preferred base size of a user. For details about how to create apps for multiple screen sizes and densities using Felgo, see: <a class="reference external" href="https://felgo.com/doc/apps-supporting-multiple-screens-and-screen-densities/">Supporting Multiple Screen Sizes &amp; Screen Densities with Felgo Apps</a>.</p>
+</div>
+<div class="section" id="showing-conversations">
+<h3>8.4.2. Showing Conversations<a class="headerlink" href="#showing-conversations" title="Permalink to this headline">¶</a></h3>
+<p>Now it is time to get interactive. When our user selects a conversation, we want to open a new page for that conversation. Let’s start by adding a new <code class="docutils literal notranslate"><span class="pre">Component</span></code> to the bottom of <code class="docutils literal notranslate"><span class="pre">Main.qml</span></code> of our app.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// Inside the App</span>
+<span class="nx">Component</span> <span class="p">{</span>
+    <span class="kd">id: conversationComponent</span>
+    <span class="nx">ListPage</span> <span class="p">{</span>
+        <span class="kd">id: conversationPage</span>
+        <span class="k">emptyText.text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;No messages&quot;</span><span class="p">)</span>
+        <span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>As you can see from the code above, each conversation is represented by a <code class="docutils literal notranslate"><span class="pre">ListPage</span></code> instance. When the user clicks on a conversation we can now push a new instance of the <code class="docutils literal notranslate"><span class="pre">conversationComponent</span></code> page onto our <code class="docutils literal notranslate"><span class="pre">navigationStack</span></code>. The <code class="docutils literal notranslate"><span class="pre">title</span></code> for each new page is the text of the selected item. This is done from the <code class="docutils literal notranslate"><span class="pre">onSelected</span></code> signal in our <code class="docutils literal notranslate"><span class="pre">SimpleRow</span></code> delegate that we showed earlier. We use the <a class="reference external" href="https://felgo.com/doc/felgo-navigationstack/#popAllExceptFirstAndPush-method">popAllExceptFirstAndPush</a> method to ensure that we only have one conversation at a time open.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// Inside the recent list delegate</span>
+<span class="k">onSelected:</span> <span class="p">{</span>
+    <span class="nx">navigationStack</span><span class="p">.</span><span class="nx">popAllExceptFirstAndPush</span><span class="p">(</span><span class="nx">conversationComponent</span><span class="p">,</span> <span class="p">{</span> <span class="k">title:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">text</span> <span class="p">})</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At this stage, you can navigate back and forth between the conversation list and details and see the title changing accordingly. We can fill up the conversation page by adding some mock messages as the model.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// Inside the conversationComponent ListPage</span>
+<span class="k">model:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">false</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">true</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">false</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">false</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">true</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">false</span> <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Similar to the list of conversations, this model for the messages acts as source for a <code class="docutils literal notranslate"><span class="pre">ListPage</span></code>, but for this page, we want a custom user interface to show the messages. We can do this by creating a custom <code class="docutils literal notranslate"><span class="pre">delegate</span></code> as shown below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// Inside the conversationComponent ListPage</span>
+<span class="k">delegate:</span> <span class="nx">Item</span> <span class="p">{</span>
+    <span class="kd">id: bubble</span>
+
+    <span class="nx">property</span> <span class="nx">real</span> <span class="k">spacing:</span> <span class="nx">dp</span><span class="p">(</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">contentPadding</span><span class="p">)</span>
+
+    <span class="k">width:</span> <span class="nx">conversationPage</span><span class="p">.</span><span class="nx">width</span>
+    <span class="k">height:</span> <span class="nx">bubbleBackground</span><span class="p">.</span><span class="nx">height</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">spacing</span>
+
+    <span class="nx">Rectangle</span> <span class="p">{</span>
+        <span class="kd">id: bubbleBackground</span>
+        <span class="k">color:</span> <span class="nx">modelData</span><span class="p">.</span><span class="nx">me</span> <span class="o">?</span> <span class="k">Theme.tintColor :</span> <span class="s2">&quot;#e9e9e9&quot;</span>
+        <span class="k">radius:</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">spacing</span>
+
+        <span class="k">x:</span> <span class="nx">modelData</span><span class="p">.</span><span class="nx">me</span> <span class="o">?</span> <span class="p">(</span><span class="nx">bubble</span><span class="p">.</span><span class="nx">width</span> <span class="o">-</span> <span class="nx">width</span> <span class="o">-</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">spacing</span><span class="p">)</span> <span class="o">:</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">spacing</span>
+        <span class="k">y:</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">spacing</span>
+        <span class="k">width:</span> <span class="nx">innerText</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">spacing</span>
+        <span class="k">height:</span> <span class="nx">innerText</span><span class="p">.</span><span class="nx">implicitHeight</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">spacing</span>
+
+        <span class="nx">AppText</span> <span class="p">{</span>
+            <span class="kd">id: innerText</span>
+            <span class="k">x:</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">spacing</span>
+            <span class="k">y:</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">spacing</span>
+            <span class="k">width:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">innerText</span><span class="p">.</span><span class="nx">implicitWidth</span><span class="p">,</span> <span class="nx">bubble</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="mf">0.75</span><span class="p">)</span>
+            <span class="k">wrapMode:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">WordWrap</span>
+            <span class="k">text:</span> <span class="nx">modelData</span><span class="p">.</span><span class="nx">text</span>
+            <span class="k">color:</span> <span class="nx">modelData</span><span class="p">.</span><span class="nx">me</span> <span class="o">?</span> <span class="s2">&quot;white&quot;</span> <span class="o">:</span> <span class="s2">&quot;black&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This delegate allows us to provide a custom look for our message list, as shown below.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/messaging-stage-3.png"><img alt="../_images/messaging-stage-3.png" src="../_images/messaging-stage-3.png" style="width: 264.0px; height: 473.5px;" /></a>
+</div>
+<p>The text is shown using the <a class="reference external" href="https://felgo.com/doc/felgo-apptext/">AppText</a> element, that ensures that the size of the text is device independent. The <code class="docutils literal notranslate"><span class="pre">AppText</span></code> relies on the application’s <a class="reference external" href="https://felgo.com/doc/felgo-theme/">Theme</a>. Each Felgo application has a theme, and inside the <code class="docutils literal notranslate"><span class="pre">Theme</span></code> object, the global styling styling options for the application are found. In the code above we use <code class="docutils literal notranslate"><span class="pre">Theme.tintColor</span></code> for the primary color and <code class="docutils literal notranslate"><span class="pre">Theme.contentPadding</span></code> for the system dependent padding size. By default, the <code class="docutils literal notranslate"><span class="pre">Theme</span></code> ensures a native look and feel across platforms.</p>
+</div>
+<div class="section" id="sending-messages">
+<h3>8.4.3. Sending Messages<a class="headerlink" href="#sending-messages" title="Permalink to this headline">¶</a></h3>
+<p>The last step is to let the user send messages. For this, let’s add a <a class="reference external" href="https://felgo.com/doc/felgo-apptextfield/">AppTextField</a> to the bottom of our conversation page.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// Inside the conversationComponent ListPage</span>
+<span class="k">listView.anchors.bottomMargin:</span> <span class="nx">inputBox</span><span class="p">.</span><span class="nx">height</span>
+
+<span class="c1">// horizontal separator line between input text and</span>
+<span class="nx">Rectangle</span> <span class="p">{</span>
+    <span class="k">height:</span> <span class="nx">px</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">anchors.bottom:</span> <span class="nx">inputBox</span><span class="p">.</span><span class="nx">top</span>
+    <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+    <span class="k">anchors.right:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">right</span>
+    <span class="k">color:</span> <span class="s2">&quot;#cccccc&quot;</span>
+<span class="p">}</span>
+
+<span class="nx">AppTextField</span> <span class="p">{</span>
+    <span class="kd">id: inputBox</span>
+    <span class="k">height:</span> <span class="nx">dp</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span>
+    <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+    <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
+    <span class="k">anchors.right:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">right</span>
+    <span class="k">anchors.leftMargin:</span> <span class="nx">Theme</span><span class="p">.</span><span class="nx">contentPadding</span>
+    <span class="k">anchors.rightMargin:</span> <span class="nx">Theme</span><span class="p">.</span><span class="nx">contentPadding</span>
+    <span class="k">font.pixelSize:</span> <span class="nx">sp</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">placeholderText:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Type a message ...&quot;</span><span class="p">)</span>
+    <span class="k">backgroundColor:</span> <span class="s2">&quot;white&quot;</span>
+    <span class="k">verticalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignVCenter</span>
+
+    <span class="k">onAccepted:</span> <span class="p">{</span>
+        <span class="c1">// Here we update the model</span>
+        <span class="kd">var</span> <span class="nx">newModel</span> <span class="o">=</span> <span class="nx">conversationPage</span><span class="p">.</span><span class="nx">model</span>
+        <span class="nx">newModel</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="k">me:</span> <span class="kc">true</span><span class="p">,</span> <span class="k">text:</span> <span class="nx">inputBox</span><span class="p">.</span><span class="nx">text</span><span class="p">})</span>
+        <span class="nx">conversationPage</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="nx">newModel</span>
+
+        <span class="nx">inputBox</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="nx">conversationPage</span><span class="p">.</span><span class="nx">listView</span><span class="p">.</span><span class="nx">positionViewAtEnd</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">AppTextField</span></code> let’s the user enter text, and provides the <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code> signal when the text is ready. Each time th user provides a new text, we update the model and clear the text field.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/messaging-stage-4.png"><img alt="../_images/messaging-stage-4.png" src="../_images/messaging-stage-4.png" style="width: 264.0px; height: 473.5px;" /></a>
+</div>
+</div>
+<div class="section" id="storing-data">
+<h3>8.4.4. Storing Data<a class="headerlink" href="#storing-data" title="Permalink to this headline">¶</a></h3>
+<p>At the moment, the application only uses mock data and does not connect to any backend. This means that all messages the user adds will disappear every time the application is closed. We can fix this by using a data storage API.</p>
+<p>QtQuick allows you to use an SQL database, which is a fast option even for large data, but it is rather inconvenient to use for our simple data structure. Instead, we will save our data as JSON data. Something that fits well into QML, as it is based on JavaScript.</p>
+<p>With the <a class="reference external" href="https://felgo.com/doc/felgo-storage/">Storage</a> item, Felgo provides a JSON-optimized component for this. You can access the database as a simple key-value store and there is no need for complex SQL queries. In its simplest form the API looks a bit like: <code class="docutils literal notranslate"><span class="pre">myStorage.setValue</span> <span class="pre">(key,</span> <span class="pre">value)</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">=</span> <span class="pre">myStorage.getValue(key)</span></code>.</p>
+<p>Felgo automatically calls JSON.stringify() when writing composed values, automatically serializing the data. You can also take direct control of the underlying database using SQL queries if needed.</p>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">Storage</span></code> class via the <code class="docutils literal notranslate"><span class="pre">app.settings</span></code> property, which is the central application settings store. In the example below, you can see how we populate the model with mock data if the model is empty, or use the stored data otherwise.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="c1">// Inside the conversationComponent ListPage</span>
+<span class="nx">Storage</span> <span class="p">{</span>
+    <span class="kd">id: storage</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">loadStorageMessages</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">messages</span> <span class="o">=</span> <span class="nx">storage</span><span class="p">.</span><span class="nx">getValue</span><span class="p">(</span><span class="s2">&quot;messages_&quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">messages</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">messages</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">false</span> <span class="p">},</span>
+                    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">true</span> <span class="p">},</span>
+                    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">false</span> <span class="p">},</span>
+                    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">false</span> <span class="p">},</span>
+                    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">true</span> <span class="p">},</span>
+                    <span class="p">{</span> <span class="k">text:</span> <span class="s2">&quot;All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.&quot;</span><span class="p">,</span> <span class="k">me:</span> <span class="kc">false</span> <span class="p">}</span>
+                <span class="p">]</span>
+    <span class="p">}</span>
+    <span class="nx">model</span> <span class="o">=</span> <span class="nx">messages</span>
+<span class="p">}</span>
+
+<span class="k">Component.onCompleted:</span> <span class="nx">loadStorageMessages</span><span class="p">()</span>
+
+<span class="kd">function</span> <span class="nx">storeNewMessages</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">storage</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="s2">&quot;messages_&quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">,</span> <span class="nx">model</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In addition to this snippet, the <code class="docutils literal notranslate"><span class="pre">conversationPage.storeNewMessages()</span></code> has to be called from the <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code> signal in the <code class="docutils literal notranslate"><span class="pre">AppTextField</span></code> so that each new message is stored as it is added.</p>
+<p>The screenshot below shows a stored message that has been saved between two executions of the app (you’ll have to trust me on that).</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/messaging-stage-5.png"><img alt="../_images/messaging-stage-5.png" src="../_images/messaging-stage-5.png" style="width: 264.0px; height: 473.5px;" /></a>
+</div>
+<p>If you want to take the messaging application to the next level, you can also use Felgo to directly integrate your QML to Google Firebase or the Felgo Cloud backend, to provide a proper, cloud based storage option. But that is a completely different story.</p>
+</div>
+<div class="section" id="refactoring">
+<h3>8.4.5. Refactoring<a class="headerlink" href="#refactoring" title="Permalink to this headline">¶</a></h3>
+<p>Up until now, we’ve created the entire messaging app in a single QML file. This works for smaller apps, but we are already way beyond a hundred lines of code in our example. For the interested reader, there is a refactored version of the app available in the chapter example source code tarball where the app has been split into <code class="docutils literal notranslate"><span class="pre">RecentsPage.qml</span></code>, <code class="docutils literal notranslate"><span class="pre">ConversationPage.qml</span></code>, and <code class="docutils literal notranslate"><span class="pre">Main.qml</span></code>. This way, the complexity in each file can be kept down and the various parts of the app can be kept separate from each other.</p>
+</div>
+</div>
+<div class="section" id="advanced-topics">
+<h2>8.5. Advanced Topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theming">
+<h3>8.5.1. Theming<a class="headerlink" href="#theming" title="Permalink to this headline">¶</a></h3>
+<p>Felgo comes with theming capabilities, making it easy to customize the look of your application. The <a class="reference external" href="https://felgo.com/doc/felgo-theme/">Theme</a> object contains a set of properties that control the appearance of the user interface. It can easily be controlled in the <a class="reference external" href="https://felgo.com/doc/felgo-app/#initTheme-signal">App::onInitTheme</a> signal.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">App</span> <span class="p">{</span>
+  <span class="k">onInitTheme:</span> <span class="p">{</span>
+     <span class="nx">Theme</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">textColor</span> <span class="o">=</span> <span class="s2">&quot;#000080&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the example above we change the tint color. This affects many parts of your UI such as the <code class="docutils literal notranslate"><span class="pre">ActionBar</span></code> color on Android and the highlight color on iOS.</p>
+<p>You can also customize the background color, as well as many other details such as the navigation bar color, or the main font. If you feel like it, you can completely change the platform style, as shown below, the Android theme is swapped for the iOS theme and the other way around.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">App</span> <span class="p">{</span>
+  <span class="k">onInitTheme:</span> <span class="p">{</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">na</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">&quot;#ff0000&quot;</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">&quot;#cccccc&quot;</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">colors</span><span class="p">.</span><span class="nx">secondaryBackgroundColor</span> <span class="o">=</span> <span class="s2">&quot;#cccccc&quot;</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">platform</span> <span class="o">=</span> <span class="p">(</span><span class="nx">Theme</span><span class="p">.</span><span class="nx">platform</span> <span class="o">===</span> <span class="s2">&quot;android&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="s2">&quot;ios&quot;</span> <span class="o">:</span> <span class="s2">&quot;android&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also lock the <code class="docutils literal notranslate"><span class="pre">Theme.platform</span></code> to a fixed style, and thus offer the same look and experience on all platforms. It all depends on what kind of user experience your are trying to create.</p>
+<div class="section" id="styling-items">
+<h4>8.5.1.1. Styling Items<a class="headerlink" href="#styling-items" title="Permalink to this headline">¶</a></h4>
+<p>If you want to dig deeper you can customize the look and feel of specific components. Each component has an entry in the theme object. In the example below we customize buttons so they have a red background and a with a border that creates a fake 3D effect.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">App</span> <span class="p">{</span>
+  <span class="k">onInitTheme:</span> <span class="p">{</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">appButton</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">appButton</span><span class="p">.</span><span class="nx">radius</span> <span class="o">=</span> <span class="nx">dp</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">appButton</span><span class="p">.</span><span class="nx">borderColor</span> <span class="o">=</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">darker</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">appButton</span><span class="p">.</span><span class="nx">flatTextColor</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">appButton</span><span class="p">.</span><span class="nx">borderColorPressed</span> <span class="o">=</span> <span class="nx">Theme</span><span class="p">.</span><span class="nx">appButton</span><span class="p">.</span><span class="nx">borderColor</span>
+    <span class="nx">Theme</span><span class="p">.</span><span class="nx">appButton</span><span class="p">.</span><span class="nx">borderWidth</span> <span class="o">=</span> <span class="nx">dp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/theming.png"><img alt="../_images/theming.png" src="../_images/theming.png" style="width: 264.0px; height: 473.5px;" /></a>
+</div>
+<p>While the Desktop and Android versions are going to have a raised style, the default iOS variant will be flat. That is why we also customize the <code class="docutils literal notranslate"><span class="pre">flatTextColor</span></code> to change the appearance. You can switch between platforms in the Felgo Live View to see how your styling appears on all platforms.</p>
+</div>
+</div>
+<div class="section" id="model-sorting-and-filtering">
+<h3>8.5.2. Model Sorting and Filtering<a class="headerlink" href="#model-sorting-and-filtering" title="Permalink to this headline">¶</a></h3>
+<p>A common use-case in Apps is to sort the contents of a model. Here, Felgo provides a QML version of the <a class="reference external" href="https://felgo.com/doc/felgo-sortfilterproxymodel/">SoftFilterProxyModel</a>. Using this element you cannot only sort and filter models from QML, you can provide both sorters and filters directly from QML.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+ <span class="nx">App</span> <span class="p">{</span>
+   <span class="nx">Page</span> <span class="p">{</span>
+     <span class="kd">id: page</span>
+
+     <span class="c1">//...</span>
+
+     <span class="nx">SortFilterProxyModel</span> <span class="p">{</span>
+     <span class="kd">id: filteredTodoModel</span>
+     <span class="k">sourceModel:</span> <span class="nx">jsonModel</span>
+
+     <span class="c1">// configure sorters</span>
+     <span class="k">sorters:</span> <span class="p">[</span>
+       <span class="nx">StringSorter</span> <span class="p">{</span>
+         <span class="kd">id: nameSorter</span>
+         <span class="k">roleName:</span> <span class="s2">&quot;title&quot;</span>
+       <span class="p">}]</span>
+   <span class="p">}</span>
+
+     <span class="nx">AppListView</span> <span class="p">{</span>
+       <span class="c1">//...</span>
+       <span class="k">model:</span> <span class="nx">filteredTodoModel</span>
+       <span class="c1">//...</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+ <span class="p">}</span>  
+</pre></div>
+</div>
+<p>In the example above, a <a class="reference external" href="https://felgo.com/doc/felgo-stringsorter/">StringSorter</a> is used, but Felgo comes with more sorters, as well as a range of filters.</p>
+</div>
+<div class="section" id="native-app-features">
+<h3>8.5.3. Native App Features<a class="headerlink" href="#native-app-features" title="Permalink to this headline">¶</a></h3>
+<p>There are many use cases which require accessing native features on every platform. Using Qt with C++ to bridge between QML, Java (Android) and Objective-C (iOS) can be quite complex. Manually writing this code requires a lot of time and effort, different implementations for each platform. Felgo provides many integrations which you can use out of the box to access native platform features.</p>
+<p>The platform native features are exposed through the <a class="reference external" href="https://felgo.com/doc/felgo-nativeutils/">NativeUtils</a> element, made available under the name <code class="docutils literal notranslate"><span class="pre">nativeUtils</span></code>.</p>
+<div class="section" id="native-dialogs">
+<h4>8.5.3.1. Native Dialogs<a class="headerlink" href="#native-dialogs" title="Permalink to this headline">¶</a></h4>
+<p>Qt allows displaying QML dialogs, but sometimes you need native dialogs that are better integrated with the platform. Felgo provides a number of methods to create them:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://felgo.com/doc/felgo-nativeutils/#displayAlertDialog-method">displayAlertDialog</a></li>
+<li><a class="reference external" href="https://felgo.com/doc/felgo-nativeutils/#displayAlertSheet-method">displayAlertSheet</a></li>
+<li><a class="reference external" href="https://felgo.com/doc/felgo-nativeutils/#displayDatePicker-method">displayDatePicker</a></li>
+<li><a class="reference external" href="https://felgo.com/doc/felgo-nativeutils/#displayMessageBox-method">displayMessageBox</a></li>
+<li><a class="reference external" href="https://felgo.com/doc/felgo-nativeutils/#displayTextInput-method">displayTextInput</a></li>
+</ul>
+<p>Once one of the methods above are invoked, you can connect to the result in a slot for nativeUtils. Let’s see an example in action:</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="nx">Page</span> <span class="p">{</span>
+
+    <span class="nx">AppButton</span> <span class="p">{</span>
+      <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Click me&quot;</span><span class="p">)</span>
+      <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+      <span class="k">onClicked:</span> <span class="nx">nativeUtils</span><span class="p">.</span><span class="nx">displayTextInput</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Insert your name&quot;</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="nx">Connections</span> <span class="p">{</span>
+      <span class="k">target:</span> <span class="nx">nativeUtils</span>
+      <span class="k">onTextInputFinished:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">accepted</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Here&#39;s the result &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also retrieve pictures from your camera or your gallery using <code class="docutils literal notranslate"><span class="pre">nativeUtils</span></code> methods.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://felgo.com/doc/felgo-nativeutils/#displayImagePicker-method">displayImagePicker</a></li>
+<li><a class="reference external" href="https://felgo.com/doc/felgo-nativeutils/#displayCameraPicker-method">displayCameraPicker</a></li>
+</ul>
+<p>Usage is very similar to working with native dialogs: call the method and wait for a signal on completion.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+<span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+
+<span class="nx">Page</span> <span class="p">{</span>
+  <span class="nx">Column</span> <span class="p">{</span>
+    <span class="kd">id: column</span>
+    <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+
+    <span class="nx">AppButton</span> <span class="p">{</span>
+      <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Pick from Gallery&quot;</span><span class="p">)</span>
+      <span class="k">onClicked:</span> <span class="nx">nativeUtils</span><span class="p">.</span><span class="nx">displayImagePicker</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">AppButton</span> <span class="p">{</span>
+      <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Pick from Camera&quot;</span><span class="p">)</span>
+      <span class="k">onClicked:</span> <span class="nx">nativeUtils</span><span class="p">.</span><span class="nx">displayCameraPicker</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">Connections</span> <span class="p">{</span>
+    <span class="k">target:</span> <span class="nx">nativeUtils</span>
+    <span class="k">onImagePickFinished:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">accepted</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Here&#39;s the picked image: &quot;</span> <span class="o">+</span> <span class="nx">filePath</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">onCameraPickFinished:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">accepted</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Here&#39;s the camera image:&quot;</span> <span class="o">+</span> <span class="nx">filePath</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The original images will be copied into your application data directory and you’ll get the path. This avoids all the complications introduced by the scoped storage policies on mobile devices.</p>
+</div>
+<div class="section" id="notch-support">
+<h4>8.5.3.2. Notch Support<a class="headerlink" href="#notch-support" title="Permalink to this headline">¶</a></h4>
+<p>Modern phones sometimes come with the camera placed in a notch inside the screen. Felgo introduces the concept of a <code class="docutils literal notranslate"><span class="pre">safeArea</span></code>. Anything inside this item is guaranteed not to be overlapped with various notch and gesture areas on both on Android and iOS. The safe area is enabled by default, but sometimes, you might feel the need to disable it, as shown below.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/safeArea-page-portrait-example.png"><img alt="../_images/safeArea-page-portrait-example.png" src="../_images/safeArea-page-portrait-example.png" style="width: 500.0px; height: 423.0px;" /></a>
+</div>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">Page</span> <span class="p">{</span>
+   <span class="k">useSafeArea:</span> <span class="kc">false</span> <span class="c1">// page content can cover whole screen</span>
+
+   <span class="c1">// This will be drawn under the cutout or gesture areas</span>
+   <span class="nx">Rectangle</span> <span class="p">{</span>
+     <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+     <span class="k">color:</span> <span class="s2">&quot;red&quot;</span>
+   <span class="p">}</span>
+
+   <span class="c1">// This is anchored to the safe area so it won’t be cut</span>
+   <span class="nx">Rectangle</span> <span class="p">{</span>
+     <span class="k">anchors.fill:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">safeArea</span>
+     <span class="k">color:</span> <span class="s2">&quot;lightgreen&quot;</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>This allows full-screen designs, but you need to make sure that important parts of your UI are not affected by notches and gesture areas. To do so, you can rely on <code class="docutils literal notranslate"><span class="pre">nativeUtils.safeAreaInsets</span></code>, which contains the inset sizes in pixel values:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">nativeUtils.safeAreaInsets.left</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">nativeUtils.safeAreaInsets.top</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">nativeUtils.safeAreaInsets.right</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">nativeUtils.safeAreaInsets.bottom</span></code></li>
+</ul>
+</div>
+<div class="section" id="native-apis">
+<h4>8.5.3.3. Native APIs<a class="headerlink" href="#native-apis" title="Permalink to this headline">¶</a></h4>
+<p>Some APIs are less visual than dialogs and notches. For instance, the <code class="docutils literal notranslate"><span class="pre">nativeUtils.contacts</span></code> provides access to the contact information from the device’s address book. It is represented by a JavaScript object, and you can display all your contacts in a QML view as shown below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+
+ <span class="nx">App</span> <span class="p">{</span>
+   <span class="nx">Page</span> <span class="p">{</span>
+     <span class="nx">AppListView</span> <span class="p">{</span>
+       <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+       <span class="k">model:</span> <span class="nx">nativeUtils</span><span class="p">.</span><span class="nx">contacts</span>
+
+       <span class="k">delegate:</span> <span class="nx">SimpleRow</span> <span class="p">{</span>
+         <span class="k">text:</span> <span class="nx">modelData</span><span class="p">.</span><span class="nx">name</span>
+         <span class="k">detailText:</span> <span class="nx">modelData</span><span class="p">.</span><span class="nx">phoneNumbers</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span> <span class="c1">// Join all numbers into a string separated by a comma</span>
+       <span class="p">}</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also share links and texts using <code class="docutils literal notranslate"><span class="pre">nativeUtils.share</span></code> or interact with files using <code class="docutils literal notranslate"><span class="pre">fileUtils</span></code>. In addition, there are many Felgo Plugins that simplify working with 3rd party Frameworks and libraries that target mobile platforms.</p>
+</div>
+</div>
+<div class="section" id="networking">
+<h3>8.5.4. Networking<a class="headerlink" href="#networking" title="Permalink to this headline">¶</a></h3>
+<p>Felgo comes with a number of utily functions that come in handy. In this section we will show some of them that come in handy when building a modern, connected, application.</p>
+<div class="section" id="httprequest">
+<h4>8.5.4.1. HttpRequest<a class="headerlink" href="#httprequest" title="Permalink to this headline">¶</a></h4>
+<p>With vanilla Qt/QML it is possible to perform network requests using the JavaScript <code class="docutils literal notranslate"><span class="pre">XMLHttpRequest</span></code> call. Felgo provides the <a class="reference external" href="https://felgo.com/doc/felgo-httprequest/">HttpRequest</a> that provides an easier to use interface.</p>
+<p>In the example below, a request with a time-out is made, with one function called on success and another one on failure.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+ <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+ <span class="nx">App</span> <span class="p">{</span>
+   <span class="k">Component.onCompleted:</span> <span class="p">{</span>
+     <span class="nx">HttpRequest</span>
+       <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+       <span class="p">.</span><span class="nx">timeout</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+       <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
+       <span class="p">})</span>
+       <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">response</span><span class="p">)</span>
+       <span class="p">});</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>Compared to <code class="docutils literal notranslate"><span class="pre">XMLHttpRequest</span></code>, the <code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code> approach is more straight forward. All the <a class="reference external" href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">HTTP CRUD</a> operations are supported (get, post, put, patch, del). There also advanced features like request caching that can be enabled globally in <code class="docutils literal notranslate"><span class="pre">config</span></code>, as shown below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">HttpRequest</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span> <span class="k">cache:</span> <span class="kc">true</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>Or for a specific request, as shown here.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">HttpRequest</span>
+    <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">cacheSave</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// cache the result of this request, regardless of global cache setting</span>
+    <span class="p">.</span><span class="nx">cacheLoad</span><span class="p">(</span><span class="nx">HttpCacheControl</span><span class="p">.</span><span class="nx">PreferNetwork</span><span class="p">)</span> <span class="c1">// use network if possible, otherwise load from cache</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">))</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span>
+    <span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-json-data">
+<h4>8.5.4.2. Working with JSON data<a class="headerlink" href="#working-with-json-data" title="Permalink to this headline">¶</a></h4>
+<p>Very often applications display data coming from remote endpoints. The data is exposed via JSON REST APIs. You can use it as the model for your lists, but a QML ListModel is the preferred and performant way. It allows to track changes and apply view updates on an entry-level, instead of just refreshing the whole list.</p>
+<p>Felgo comes with the <a class="reference external" href="https://felgo.com/doc/felgo-jsonlistmodel/">JsonListModel</a> that provides a model with good performance and Qt integration, while working with JSON data.</p>
+<p>In the example below, we populate the <code class="docutils literal notranslate"><span class="pre">jsonModel</span></code> with hardcoded JSON data , but we could just as easily have provided it with data from a remote server.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+ <span class="nx">App</span> <span class="p">{</span>
+   <span class="nx">Page</span> <span class="p">{</span>
+     <span class="kd">id: page</span>
+
+     <span class="c1">// property with json data</span>
+     <span class="nx">property</span> <span class="kd">var</span> <span class="k">jsonData:</span> <span class="p">[</span>
+       <span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Entry 1&quot;</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+         <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Entry 2&quot;</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+         <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Entry 3&quot;</span>
+       <span class="p">}</span>
+     <span class="p">]</span>
+
+     <span class="c1">// list model for json data</span>
+     <span class="nx">JsonListModel</span> <span class="p">{</span>
+       <span class="kd">id: jsonModel</span>
+       <span class="k">source:</span> <span class="nx">page</span><span class="p">.</span><span class="nx">jsonData</span>
+       <span class="k">keyField:</span> <span class="s2">&quot;id&quot;</span>
+     <span class="p">}</span>
+
+     <span class="c1">// list view</span>
+     <span class="nx">AppListView</span> <span class="p">{</span>
+       <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+       <span class="k">model:</span> <span class="nx">jsonModel</span>
+       <span class="k">delegate:</span> <span class="nx">SimpleRow</span> <span class="p">{</span>
+         <span class="k">text:</span> <span class="nx">model</span><span class="p">.</span><span class="nx">title</span>
+       <span class="p">}</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-resources-files-and-pdfs">
+<h4>8.5.4.3. Download Resources, Files and PDFs<a class="headerlink" href="#download-resources-files-and-pdfs" title="Permalink to this headline">¶</a></h4>
+<p>A lot of platform and file system specifics play into how you can interact with files on certain systems. The <a class="reference external" href="https://felgo.com/doc/felgo-fileutils/">FileUtils</a> element, provided through the global <code class="docutils literal notranslate"><span class="pre">fileUtils</span></code> item that is available as a context property from all QML components encapsulates methods that allow you to read, write and list files.</p>
+<p>In the example below, we show how to download a PDF file and then open it with the native PDF viewer application using <a class="reference external" href="https://felgo.com/doc/felgo-fileutils/#openFile-method">FileUtils::openFile()</a>. It also uses the <code class="docutils literal notranslate"><span class="pre">DownloadableResource</span></code> type to download the PDF from a web location and store it on the device.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span> <span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+ <span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+ <span class="nx">App</span> <span class="p">{</span>
+   <span class="kd">id: app</span>
+   <span class="c1">// uncomment this to remove the resources on startup, so you can test the downloading again</span>
+   <span class="c1">//Component.onCompleted: pdfResource.remove()</span>
+   <span class="nx">NavigationStack</span> <span class="p">{</span>
+     <span class="nx">Page</span> <span class="p">{</span>
+       <span class="k">title:</span> <span class="s2">&quot;Download PDF&quot;</span>
+
+       <span class="nx">Column</span> <span class="p">{</span>
+         <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+
+         <span class="nx">AppButton</span> <span class="p">{</span>
+           <span class="k">text:</span> <span class="s2">&quot;Download / Open&quot;</span>
+           <span class="k">onClicked:</span> <span class="p">{</span>
+             <span class="k">if</span><span class="p">(</span><span class="nx">pdfResource</span><span class="p">.</span><span class="nx">available</span><span class="p">)</span> <span class="nx">openPdf</span><span class="p">()</span>
+             <span class="k">else</span> <span class="nx">pdfResource</span><span class="p">.</span><span class="nx">download</span><span class="p">()</span>
+           <span class="p">}</span>
+         <span class="p">}</span>
+         <span class="nx">AppText</span> <span class="p">{</span>
+           <span class="k">text:</span> <span class="s2">&quot;Status: &quot;</span> <span class="o">+</span> <span class="nx">pdfResource</span><span class="p">.</span><span class="nx">status</span>
+         <span class="p">}</span>
+       <span class="p">}</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="nx">DownloadableResource</span> <span class="p">{</span>
+     <span class="kd">id: pdfResource</span>
+     <span class="k">source:</span> <span class="s2">&quot;http://www.orimi.com/pdf-test.pdf&quot;</span>
+     <span class="k">storageLocation:</span> <span class="nx">FileUtils</span><span class="p">.</span><span class="nx">DocumentsLocation</span>
+     <span class="k">storageName:</span> <span class="s2">&quot;pdf-test.pdf&quot;</span>
+     <span class="k">extractAsPackage:</span> <span class="kc">false</span>
+     <span class="c1">// if the download is competed, available will be set to true</span>
+     <span class="k">onAvailableChanged:</span> <span class="k">if</span><span class="p">(</span><span class="nx">available</span><span class="p">)</span> <span class="nx">openPdf</span><span class="p">()</span>
+   <span class="p">}</span>
+   <span class="kd">function</span> <span class="nx">openPdf</span><span class="p">()</span> <span class="p">{</span>
+     <span class="c1">// you can also open files with nativeUtils.openUrl() now (for paths starting with &quot;file://&quot;)</span>
+     <span class="c1">//nativeUtils.openUrl(pdfResource.storagePath)</span>
+     <span class="nx">fileUtils</span><span class="p">.</span><span class="nx">openFile</span><span class="p">(</span><span class="nx">pdfResource</span><span class="p">.</span><span class="nx">storagePath</span><span class="p">)</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>8.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter you learned what benefits the Felgo SDK brings.</p>
+<p>You have learned how to create a cross-platform application that looks native on Android, iOS and Desktop, while handling different screen sizes and densities.</p>
+<p>You learned how to leverage the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> components to guide the user in a hierarchy of different pages. Felgo controls and themes simplify the design of your QML applications.</p>
+<p>You also saw how to use platform specific features such as contacts or dialogs, to handle and store JSON data without using C++ or system dependent apis.</p>
+<p>All these features will help you save time and code, and if you want to dig deeper into the rich selection of plugins.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
+      Last updated on Sep 16, 2020.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46104829-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

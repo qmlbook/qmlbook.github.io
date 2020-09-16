@@ -60,17 +60,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../ch05-fluid/fluid.html">5. Fluid Elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch06-controls/controls.html">6. Qt Quick Controls 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ch07-modelview/modelview.html">7. Model-View-Delegate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch08-canvas/canvas.html">8. Canvas Element</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch09-particles/particles.html">9. Particle Simulations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch10-shaders/shaders.html">10. Shader Effects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch11-multimedia/multimedia.html">11. Multimedia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch12-networking/networking.html">12. Networking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch13-storage/storage.html">13. Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch14-dynamicqml/dynamicqml.html">14. Dynamic QML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch15-javascript/javascript.html">15. JavaScript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch16-qtcpp/qtcpp.html">16. Qt and C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch17-extensions/extensions.html">17. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ch18-python/python.html">18. Qt for Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch08-felgo/felgo.html">8. Felgo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch09-canvas/canvas.html">9. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch10-particles/particles.html">10. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch11-shaders/shaders.html">11. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch12-multimedia/multimedia.html">12. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch13-networking/networking.html">13. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch14-storage/storage.html">14. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch15-dynamicqml/dynamicqml.html">15. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch16-javascript/javascript.html">16. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch17-qtcpp/qtcpp.html">17. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch18-extensions/extensions.html">18. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch19-felgo-plugins/felgo-plugins.html">19. Felgo Plugins and QML Hot Reloading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ch20-python/python.html">20. Qt for Python</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">1. Testing</a></li>
@@ -202,8 +204,8 @@
 
 <span class="nx">Window</span> <span class="p">{</span>
     <span class="nx">visible</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="nx">width</span><span class="o">:</span> <span class="mi">640</span>
-    <span class="nx">height</span><span class="o">:</span> <span class="mi">480</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mf">640</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mf">480</span>
     <span class="nx">title</span><span class="o">:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -291,7 +293,7 @@
 <span class="c1">// file operations</span>
 <span class="n">QFile</span> <span class="nf">file</span><span class="p">(</span><span class="s">&quot;sample.csv&quot;</span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">QIODevice</span><span class="o">::</span><span class="n">ReadOnly</span><span class="p">))</span> <span class="p">{</span>
-    <span class="n">QTextStream</span> <span class="n">stream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
+    <span class="n">QTextStream</span> <span class="nf">stream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">);</span>
     <span class="c1">// loop forever macro</span>
     <span class="n">forever</span> <span class="p">{</span>
         <span class="n">QString</span> <span class="n">line</span> <span class="o">=</span> <span class="n">stream</span><span class="p">.</span><span class="n">readLine</span><span class="p">();</span>
@@ -365,8 +367,8 @@
 
 <span class="kt">void</span> <span class="n">CustomWidget</span><span class="o">::</span><span class="n">paintEvent</span><span class="p">(</span><span class="n">QPaintEvent</span> <span class="o">*</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">QPainter</span> <span class="n">painter</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-    <span class="n">QRect</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">rect</span><span class="p">().</span><span class="n">adjusted</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">QPainter</span> <span class="nf">painter</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="n">QRect</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">rect</span><span class="p">().</span><span class="n">adjusted</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">-10</span><span class="p">,</span><span class="mi">-10</span><span class="p">);</span>
     <span class="n">painter</span><span class="p">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="s">&quot;#33B5E5&quot;</span><span class="p">));</span>
     <span class="n">painter</span><span class="p">.</span><span class="n">drawRect</span><span class="p">(</span><span class="n">r1</span><span class="p">);</span>
 
@@ -629,7 +631,7 @@ Here is a short example. First the header file with the declaration of the view 
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Jul 18, 2020.<br/>
+      Last updated on Sep 16, 2020.<br/>
     </p>
   </div>
 </footer>

@@ -59,17 +59,19 @@
 <li class="toctree-l1"><a class="reference internal" href="ch05-fluid/fluid.html">5. Fluid Elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch06-controls/controls.html">6. Qt Quick Controls 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ch07-modelview/modelview.html">7. Model-View-Delegate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch08-canvas/canvas.html">8. Canvas Element</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch09-particles/particles.html">9. Particle Simulations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch10-shaders/shaders.html">10. Shader Effects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch11-multimedia/multimedia.html">11. Multimedia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch12-networking/networking.html">12. Networking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch13-storage/storage.html">13. Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch14-dynamicqml/dynamicqml.html">14. Dynamic QML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch15-javascript/javascript.html">15. JavaScript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch16-qtcpp/qtcpp.html">16. Qt and C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch17-extensions/extensions.html">17. Extending QML with C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ch18-python/python.html">18. Qt for Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch08-felgo/felgo.html">8. Felgo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch09-canvas/canvas.html">9. Canvas Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch10-particles/particles.html">10. Particle Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch11-shaders/shaders.html">11. Shader Effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch12-multimedia/multimedia.html">12. Multimedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch13-networking/networking.html">13. Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch14-storage/storage.html">14. Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch15-dynamicqml/dynamicqml.html">15. Dynamic QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch16-javascript/javascript.html">16. JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch17-qtcpp/qtcpp.html">17. Qt and C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch18-extensions/extensions.html">18. Extending QML with C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch19-felgo-plugins/felgo-plugins.html">19. Felgo Plugins and QML Hot Reloading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch20-python/python.html">20. Qt for Python</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="testing/testing.html">1. Testing</a></li>
@@ -161,7 +163,7 @@
       
   <div class="section" id="a-book-about-qt5">
 <h1>A Book about Qt5<a class="headerlink" href="#a-book-about-qt5" title="Permalink to this headline">¶</a></h1>
-<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=master&body=back-link%3A+index.html%23a-book-about-qt5"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=master&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Last Build: July 18, 2020 at 13:03 CET</p>
+<p><div class="btn-group" role="group"><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook//new?labels=master&body=back-link%3A+index.html%23a-book-about-qt5"><i class="glyphicon glyphicon-plus"></i> Issue</a><a class="btn btn-link btn-xs" href="https://github.com/qmlbook/qmlbook/?labels=master&page=1&state=open"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><p>Last Build: September 16, 2020 at 19:44 CET</p>
 <a href="https://github.com/qmlbook/qmlbook"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" /></a><p>Welcome to the online book of Qt5 Cadaques! Why Qt5? Because Qt5 is awesome! Why Cadaques? Because one of the authors had a great holiday in this rocky coastline in the north-east of Spain.</p>
 <p>The entire collection of chapters covering Qt5 programming, written by Jürgen Bocklage-Ryannel and Johan Thelin, is available here. All book content is licensed under the <a class="reference external" href="http://creativecommons.org/licenses/by-nc/4.0">Creative Commons Attribution Non-Commercial Share Alike 4.0</a> license and examples are licensed under the <a class="reference external" href="http://en.wikipedia.org/wiki/BSD_licenses">BSD</a> license.</p>
 <div class="admonition-personal-note admonition">
@@ -232,102 +234,112 @@ While the company is slowly forming, Jürgen is available for freelancing, ideal
 <li class="toctree-l2"><a class="reference internal" href="ch07-modelview/modelview.html#summary">7.6. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch08-canvas/canvas.html">8. Canvas Element</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#convenient-api">8.1. Convenient API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#gradients">8.2. Gradients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#shadows">8.3. Shadows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#images">8.4. Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#transformation">8.5. Transformation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#composition-modes">8.6. Composition Modes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#pixel-buffers">8.7. Pixel Buffers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#canvas-paint">8.8. Canvas Paint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch08-canvas/canvas.html#porting-from-html5-canvas">8.9. Porting from HTML5 Canvas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch08-felgo/felgo.html">8. Felgo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch08-felgo/felgo.html#why-choose-felgo">8.1. Why choose Felgo?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08-felgo/felgo.html#installing-felgo">8.2. Installing Felgo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08-felgo/felgo.html#hello-world-with-felgo">8.3. Hello World with Felgo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08-felgo/felgo.html#a-messaging-app">8.4. A Messaging App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08-felgo/felgo.html#advanced-topics">8.5. Advanced Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch08-felgo/felgo.html#summary">8.6. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch09-particles/particles.html">9. Particle Simulations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch09-particles/particles.html#concept">9.1. Concept</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch09-particles/particles.html#simple-simulation">9.2. Simple Simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch09-particles/particles.html#particle-parameters">9.3. Particle Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch09-particles/particles.html#directed-particles">9.4. Directed Particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch09-particles/particles.html#particle-painters">9.5. Particle Painters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch09-particles/particles.html#affecting-particles">9.6. Affecting Particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch09-particles/particles.html#particle-groups">9.7. Particle Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch09-particles/particles.html#summary">9.8. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch09-canvas/canvas.html">9. Canvas Element</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#convenient-api">9.1. Convenient API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#gradients">9.2. Gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#shadows">9.3. Shadows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#images">9.4. Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#transformation">9.5. Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#composition-modes">9.6. Composition Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#pixel-buffers">9.7. Pixel Buffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#canvas-paint">9.8. Canvas Paint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch09-canvas/canvas.html#porting-from-html5-canvas">9.9. Porting from HTML5 Canvas</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch10-shaders/shaders.html">10. Shader Effects</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch10-shaders/shaders.html#opengl-shaders">10.1. OpenGL Shaders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch10-shaders/shaders.html#shader-elements">10.2. Shader Elements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch10-shaders/shaders.html#fragment-shaders">10.3. Fragment Shaders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch10-shaders/shaders.html#wave-effect">10.4. Wave Effect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch10-shaders/shaders.html#vertex-shader">10.5. Vertex Shader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch10-shaders/shaders.html#curtain-effect">10.6. Curtain Effect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch10-shaders/shaders.html#qt-graphicseffect-library">10.7. Qt GraphicsEffect Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch10-particles/particles.html">10. Particle Simulations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch10-particles/particles.html#concept">10.1. Concept</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch10-particles/particles.html#simple-simulation">10.2. Simple Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch10-particles/particles.html#particle-parameters">10.3. Particle Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch10-particles/particles.html#directed-particles">10.4. Directed Particles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch10-particles/particles.html#particle-painters">10.5. Particle Painters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch10-particles/particles.html#affecting-particles">10.6. Affecting Particles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch10-particles/particles.html#particle-groups">10.7. Particle Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch10-particles/particles.html#summary">10.8. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch11-multimedia/multimedia.html">11. Multimedia</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch11-multimedia/multimedia.html#playing-media">11.1. Playing Media</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch11-multimedia/multimedia.html#sound-effects">11.2. Sound Effects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch11-multimedia/multimedia.html#video-streams">11.3. Video Streams</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch11-multimedia/multimedia.html#capturing-images">11.4. Capturing Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch11-multimedia/multimedia.html#advanced-techniques">11.5. Advanced Techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch11-multimedia/multimedia.html#summary">11.6. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch11-shaders/shaders.html">11. Shader Effects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch11-shaders/shaders.html#opengl-shaders">11.1. OpenGL Shaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch11-shaders/shaders.html#shader-elements">11.2. Shader Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch11-shaders/shaders.html#fragment-shaders">11.3. Fragment Shaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch11-shaders/shaders.html#wave-effect">11.4. Wave Effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch11-shaders/shaders.html#vertex-shader">11.5. Vertex Shader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch11-shaders/shaders.html#curtain-effect">11.6. Curtain Effect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch11-shaders/shaders.html#qt-graphicseffect-library">11.7. Qt GraphicsEffect Library</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch12-networking/networking.html">12. Networking</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch12-networking/networking.html#serving-ui-via-http">12.1. Serving UI via HTTP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch12-networking/networking.html#templating">12.2. Templating</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch12-networking/networking.html#http-requests">12.3. HTTP Requests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch12-networking/networking.html#local-files">12.4. Local files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch12-networking/networking.html#rest-api">12.5. REST API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch12-networking/networking.html#authentication-using-oauth">12.6. Authentication using OAuth</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch12-networking/networking.html#web-sockets">12.7. Web Sockets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch12-networking/networking.html#summary">12.8. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch12-multimedia/multimedia.html">12. Multimedia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch12-multimedia/multimedia.html#playing-media">12.1. Playing Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch12-multimedia/multimedia.html#sound-effects">12.2. Sound Effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch12-multimedia/multimedia.html#video-streams">12.3. Video Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch12-multimedia/multimedia.html#capturing-images">12.4. Capturing Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch12-multimedia/multimedia.html#advanced-techniques">12.5. Advanced Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch12-multimedia/multimedia.html#summary">12.6. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch13-storage/storage.html">13. Storage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch13-storage/storage.html#settings">13.1. Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch13-storage/storage.html#local-storage-sql">13.2. Local Storage - SQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch13-storage/storage.html#other-storage-apis">13.3. Other Storage APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch13-networking/networking.html">13. Networking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch13-networking/networking.html#serving-ui-via-http">13.1. Serving UI via HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch13-networking/networking.html#templating">13.2. Templating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch13-networking/networking.html#http-requests">13.3. HTTP Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch13-networking/networking.html#local-files">13.4. Local files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch13-networking/networking.html#rest-api">13.5. REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch13-networking/networking.html#authentication-using-oauth">13.6. Authentication using OAuth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch13-networking/networking.html#web-sockets">13.7. Web Sockets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch13-networking/networking.html#summary">13.8. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch14-dynamicqml/dynamicqml.html">14. Dynamic QML</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch14-dynamicqml/dynamicqml.html#loading-components-dynamically">14.1. Loading Components Dynamically</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch14-dynamicqml/dynamicqml.html#creating-and-destroying-objects">14.2. Creating and Destroying Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch14-dynamicqml/dynamicqml.html#tracking-dynamic-objects">14.3. Tracking Dynamic Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch14-dynamicqml/dynamicqml.html#summary">14.4. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch14-storage/storage.html">14. Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch14-storage/storage.html#settings">14.1. Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch14-storage/storage.html#local-storage-sql">14.2. Local Storage - SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch14-storage/storage.html#other-storage-apis">14.3. Other Storage APIs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch15-javascript/javascript.html">15. JavaScript</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch15-javascript/javascript.html#browser-html-vs-qtquick-qml">15.1. Browser/HTML vs QtQuick/QML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch15-javascript/javascript.html#the-language">15.2. The Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch15-javascript/javascript.html#js-objects">15.3. JS Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch15-javascript/javascript.html#creating-a-js-console">15.4. Creating a JS Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch15-dynamicqml/dynamicqml.html">15. Dynamic QML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch15-dynamicqml/dynamicqml.html#loading-components-dynamically">15.1. Loading Components Dynamically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch15-dynamicqml/dynamicqml.html#creating-and-destroying-objects">15.2. Creating and Destroying Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch15-dynamicqml/dynamicqml.html#tracking-dynamic-objects">15.3. Tracking Dynamic Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch15-dynamicqml/dynamicqml.html#summary">15.4. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch16-qtcpp/qtcpp.html">16. Qt and C++</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch16-qtcpp/qtcpp.html#a-boilerplate-application">16.1. A Boilerplate Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16-qtcpp/qtcpp.html#the-qobject">16.2. The QObject</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16-qtcpp/qtcpp.html#build-systems">16.3. Build Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16-qtcpp/qtcpp.html#common-qt-classes">16.4. Common Qt Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch16-qtcpp/qtcpp.html#models-in-c">16.5. Models in C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch16-javascript/javascript.html">16. JavaScript</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch16-javascript/javascript.html#browser-html-vs-qtquick-qml">16.1. Browser/HTML vs QtQuick/QML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch16-javascript/javascript.html#the-language">16.2. The Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch16-javascript/javascript.html#js-objects">16.3. JS Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch16-javascript/javascript.html#creating-a-js-console">16.4. Creating a JS Console</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch17-extensions/extensions.html">17. Extending QML with C++</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch17-extensions/extensions.html#understanding-the-qml-run-time">17.1. Understanding the QML Run-time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch17-extensions/extensions.html#plugin-content">17.2. Plugin Content</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch17-extensions/extensions.html#creating-the-plugin">17.3. Creating the plugin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch17-extensions/extensions.html#fileio-implementation">17.4. FileIO Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch17-extensions/extensions.html#using-fileio">17.5. Using FileIO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch17-extensions/extensions.html#summary">17.6. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch17-qtcpp/qtcpp.html">17. Qt and C++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch17-qtcpp/qtcpp.html#a-boilerplate-application">17.1. A Boilerplate Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch17-qtcpp/qtcpp.html#the-qobject">17.2. The QObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch17-qtcpp/qtcpp.html#build-systems">17.3. Build Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch17-qtcpp/qtcpp.html#common-qt-classes">17.4. Common Qt Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch17-qtcpp/qtcpp.html#models-in-c">17.5. Models in C++</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ch18-python/python.html">18. Qt for Python</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ch18-python/python.html#introduction">18.1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch18-python/python.html#installing">18.2. Installing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch18-python/python.html#building-an-application">18.3. Building an Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch18-python/python.html#limitations">18.4. Limitations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ch18-python/python.html#summary">18.5. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch18-extensions/extensions.html">18. Extending QML with C++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch18-extensions/extensions.html#understanding-the-qml-run-time">18.1. Understanding the QML Run-time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch18-extensions/extensions.html#plugin-content">18.2. Plugin Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch18-extensions/extensions.html#creating-the-plugin">18.3. Creating the plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch18-extensions/extensions.html#fileio-implementation">18.4. FileIO Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch18-extensions/extensions.html#using-fileio">18.5. Using FileIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch18-extensions/extensions.html#summary">18.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ch19-felgo-plugins/felgo-plugins.html">19. Felgo Plugins and QML Hot Reloading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch20-python/python.html">20. Qt for Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ch20-python/python.html#introduction">20.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch20-python/python.html#installing">20.2. Installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch20-python/python.html#building-an-application">20.3. Building an Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch20-python/python.html#limitations">20.4. Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ch20-python/python.html#summary">20.5. Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -349,17 +361,18 @@ While the company is slowly forming, Jürgen is available for freelancing, ideal
 <li><a class="reference external" href="assets/ch05-fluid-assets.tgz">Chapter 5 examples (ch05-fluid-assets.tgz)</a></li>
 <li><a class="reference external" href="assets/ch06-controls-assets.tgz">Chapter 6 examples (ch06-controls-assets.tgz)</a></li>
 <li><a class="reference external" href="assets/ch07-modelview-assets.tgz">Chapter 7 examples (ch07-modelview-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch08-canvas-assets.tgz">Chapter 8 examples (ch08-canvas-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch09-particles-assets.tgz">Chapter 9 examples (ch09-particles-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch10-shaders-assets.tgz">Chapter 10 examples (ch10-shaders-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch11-multimedia-assets.tgz">Chapter 11 examples (ch11-multimedia-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch12-networking-assets.tgz">Chapter 12 examples (ch12-networking-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch13-storage-assets.tgz">Chapter 13 examples (ch13-storage-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch14-dynamicqml-assets.tgz">Chapter 14 examples (ch14-dynamicqml-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch15-javascript-assets.tgz">Chapter 15 examples (ch15-javascript-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch16-qtcpp-assets.tgz">Chapter 16 examples (ch16-qtcpp-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch17-extensions-assets.tgz">Chapter 17 examples (ch17-extensions-assets.tgz)</a></li>
-<li><a class="reference external" href="assets/ch18-python-assets.tgz">Chapter 18 examples (ch18-python-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch08-felgo-assets.tgz">Chapter 8 examples (ch08-felgo-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch09-canvas-assets.tgz">Chapter 9 examples (ch09-canvas-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch10-particles-assets.tgz">Chapter 10 examples (ch10-particles-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch11-shaders-assets.tgz">Chapter 11 examples (ch11-shaders-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch12-multimedia-assets.tgz">Chapter 12 examples (ch12-multimedia-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch13-networking-assets.tgz">Chapter 13 examples (ch13-networking-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch14-storage-assets.tgz">Chapter 14 examples (ch14-storage-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch15-dynamicqml-assets.tgz">Chapter 15 examples (ch15-dynamicqml-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch16-javascript-assets.tgz">Chapter 16 examples (ch16-javascript-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch17-qtcpp-assets.tgz">Chapter 17 examples (ch17-qtcpp-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch18-extensions-assets.tgz">Chapter 18 examples (ch18-extensions-assets.tgz)</a></li>
+<li><a class="reference external" href="assets/ch20-python-assets.tgz">Chapter 20 examples (ch20-python-assets.tgz)</a></li>
 </ul>
 <p class="rubric">Chapter Queue</p>
 <p>The chapter queue is the chapters we are working on. They might be almost ready or in an infant state. Give it a try if you like.</p>
@@ -387,7 +400,7 @@ While the company is slowly forming, Jürgen is available for freelancing, ideal
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Jul 18, 2020.<br/>
+      Last updated on Sep 16, 2020.<br/>
     </p>
   </div>
 </footer>
