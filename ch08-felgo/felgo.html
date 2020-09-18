@@ -221,13 +221,14 @@
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch08-felgo/felgo.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch08-felgo/felgo.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch08&body=back-link%3A+ch08-felgo%2Ffelgo.html%23felgo" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch08&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: September 16, 2020 at 19:44 CET</p>
+<p>Last Build: September 18, 2020 at 19:28 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
 <div class="figure">
 <a class="reference internal image-reference" href="../_images/felgo-logo.png"><img alt="../_images/felgo-logo.png" src="../_images/felgo-logo.png" style="width: 210.0px; height: 42.0px;" /></a>
 </div>
-<p>Felgo is a cross-platform application development solution, based on the Qt framework and greatly extending it. Felgo offers unique Qt/QML tooling, cloud services, and the Felgo SDK that adds more than 200 APIs extending Qt with capabilities such as:</p>
+<p>Felgo is a cross-platform application development solution, based on the Qt framework and greatly extending it. Felgo applications run natively on many platforms, such as Android, iOS, Desktop (all three major OSs), Web (WebAssembly) and Embedded systems.</p>
+<p>Felgo offers unique Qt/QML tooling, cloud services, and the Felgo SDK that adds more than 200 APIs extending Qt with capabilities such as:</p>
 <ul class="simple">
 <li>Advanced controls and native navigation</li>
 <li>Theming and style</li>
@@ -442,7 +443,7 @@ This last component is a <code class="docutils literal notranslate"><span class=
 <div class="figure">
 <a class="reference internal image-reference" href="../_images/messaging-stage-3.png"><img alt="../_images/messaging-stage-3.png" src="../_images/messaging-stage-3.png" style="width: 264.0px; height: 473.5px;" /></a>
 </div>
-<p>The text is shown using the <a class="reference external" href="https://felgo.com/doc/felgo-apptext/">AppText</a> element, that ensures that the size of the text is device independent. The <code class="docutils literal notranslate"><span class="pre">AppText</span></code> relies on the application’s <a class="reference external" href="https://felgo.com/doc/felgo-theme/">Theme</a>. Each Felgo application has a theme, and inside the <code class="docutils literal notranslate"><span class="pre">Theme</span></code> object, the global styling styling options for the application are found. In the code above we use <code class="docutils literal notranslate"><span class="pre">Theme.tintColor</span></code> for the primary color and <code class="docutils literal notranslate"><span class="pre">Theme.contentPadding</span></code> for the system dependent padding size. By default, the <code class="docutils literal notranslate"><span class="pre">Theme</span></code> ensures a native look and feel across platforms.</p>
+<p>The text is shown using the <a class="reference external" href="https://felgo.com/doc/felgo-apptext/">AppText</a> element, that ensures that the size of the text is device independent. The <code class="docutils literal notranslate"><span class="pre">AppText</span></code> relies on the application’s <a class="reference external" href="https://felgo.com/doc/felgo-theme/">Theme</a>. Each Felgo application has a theme, and inside the <code class="docutils literal notranslate"><span class="pre">Theme</span></code> object, the global styling options for the application are found. In the code above we use <code class="docutils literal notranslate"><span class="pre">Theme.tintColor</span></code> for the primary color and <code class="docutils literal notranslate"><span class="pre">Theme.contentPadding</span></code> for the system dependent padding size. By default, the <code class="docutils literal notranslate"><span class="pre">Theme</span></code> ensures a native look and feel across platforms.</p>
 </div>
 <div class="section" id="sending-messages">
 <h3>8.4.3. Sending Messages<a class="headerlink" href="#sending-messages" title="Permalink to this headline">¶</a></h3>
@@ -484,7 +485,7 @@ This last component is a <code class="docutils literal notranslate"><span class=
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">AppTextField</span></code> let’s the user enter text, and provides the <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code> signal when the text is ready. Each time th user provides a new text, we update the model and clear the text field.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">AppTextField</span></code> let’s the user enter text, and provides the <code class="docutils literal notranslate"><span class="pre">onAccepted</span></code> signal when the text is ready. Each time the user provides a new text, we update the model and clear the text field.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../_images/messaging-stage-4.png"><img alt="../_images/messaging-stage-4.png" src="../_images/messaging-stage-4.png" style="width: 264.0px; height: 473.5px;" /></a>
 </div>
@@ -893,11 +894,14 @@ This last component is a <code class="docutils literal notranslate"><span class=
 </div>
 <div class="section" id="summary">
 <h2>8.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>In this chapter you learned what benefits the Felgo SDK brings.</p>
-<p>You have learned how to create a cross-platform application that looks native on Android, iOS and Desktop, while handling different screen sizes and densities.</p>
-<p>You learned how to leverage the <code class="docutils literal notranslate"><span class="pre">Navigation</span></code> components to guide the user in a hierarchy of different pages. Felgo controls and themes simplify the design of your QML applications.</p>
-<p>You also saw how to use platform specific features such as contacts or dialogs, to handle and store JSON data without using C++ or system dependent apis.</p>
-<p>All these features will help you save time and code, and if you want to dig deeper into the rich selection of plugins.</p>
+<p>The Felgo SDK brings a lot of benefits to Qt/QML development. It allows you to create cross-platform apps that look native on: Android, iOS, Desktop, Web (WebAssembly) and Embedded systems. Supporting all kinds of devices,  regardless of their different screen sizes and densities.</p>
+<p>Use the navigation components to build your main menu and implement hierarchies of pages. Compose your page content with Felgo controls, lists and models. Introduce logic for data handling, storage, networking or to access native APIs like the device camera, contacts or dialogs. For all these areas, you can save a lot of time with a big variety of carefully constructed QML components.</p>
+<p>Felgo provides you with all important tools for cross-platform app development with QML. Instead of worrying about pitfalls and issues that aren’t specific to your project, you can focus on the actual work for your application. The customization options of Felgo leverage the flexibility of QML and are perfect for custom UI and branded apps. You can control the look with app-wide theme settings and freely customize or mix-in your own QML if needed.</p>
+<p>This is just scratching the surface of what Felgo offers. You can see the <a class="reference external" href="https://felgo.com/doc/">full documentation</a>, which also includes a large selection of <a class="reference external" href="https://felgo.com/plugins">Felgo Plugins</a>. If you want to learn more about the Felgo SDK and application development with QML, explore free <a class="reference external" href="https://felgo.com/resources/white-papers-and-webinars">webinars</a> or join one of the scheduled <a class="reference external" href="https://felgo.com/training-offers">trainings</a>.</p>
+<p>If you enjoyed our messaging app, you can find more sample applications <a class="reference external" href="https://felgo.com/apps/">here</a>. Feel free to take a look at their full source-code or use them as starting point to build awesome new applications.</p>
+<div class="figure">
+<img alt="../_images/felgo-templates.jpg" src="../_images/felgo-templates.jpg" />
+</div>
 </div>
 </div>
 
@@ -915,7 +919,7 @@ This last component is a <code class="docutils literal notranslate"><span class=
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Sep 16, 2020.<br/>
+      Last updated on Sep 18, 2020.<br/>
     </p>
   </div>
 </footer>
