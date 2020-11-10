@@ -91,7 +91,45 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">19. Felgo Plugins and QML Hot Reloading</a></li>
+<li><a class="reference internal" href="#">19. Felgo Plugins and QML Hot Reloading</a><ul>
+<li><a class="reference internal" href="#tooling">19.1. Tooling</a><ul>
+<li><a class="reference internal" href="#felgo-live">19.1.1. Felgo Live</a><ul>
+<li><a class="reference internal" href="#felgo-live-client">19.1.1.1. Felgo Live Client</a></li>
+<li><a class="reference internal" href="#how-does-it-actually-work">19.1.1.2. How does it Actually Work?</a></li>
+<li><a class="reference internal" href="#custom-clients">19.1.1.3. Custom Clients</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloud-builds">19.1.2. Cloud Builds</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#felgo-plugins">19.2. Felgo Plugins</a><ul>
+<li><a class="reference internal" href="#configuration">19.2.1. Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#monetization-ads-and-in-app-purchases">19.3. Monetization, Ads and In-App Purchases</a><ul>
+<li><a class="reference internal" href="#ad-monetization">19.3.1. Ad Monetization</a></li>
+<li><a class="reference internal" href="#in-app-purchases">19.3.2. In-App Purchases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#notifications">19.4. Notifications</a><ul>
+<li><a class="reference internal" href="#local-notifications">19.4.1. Local Notifications</a></li>
+<li><a class="reference internal" href="#remote-push-notifications">19.4.2. Remote Push Notifications</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#analytics-and-crash-reporting">19.5. Analytics and Crash Reporting</a></li>
+<li><a class="reference internal" href="#firebase-authentication-databases-and-storage">19.6. Firebase: Authentication, Databases, and Storage</a><ul>
+<li><a class="reference internal" href="#authentication">19.6.1. Authentication</a></li>
+<li><a class="reference internal" href="#firebase-database">19.6.2. Firebase Database</a><ul>
+<li><a class="reference internal" href="#realtime-database">19.6.2.1. Realtime Database</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloud-storage-augmented-reality-and-more">19.7. Cloud Storage, Augmented Reality, and More</a></li>
+<li><a class="reference internal" href="#felgo-webassembly">19.8. Felgo &amp; WebAssembly</a></li>
+<li><a class="reference internal" href="#summary">19.9. Summary</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -135,7 +173,45 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">19. Felgo Plugins and QML Hot Reloading</a></li>
+<li><a class="reference internal" href="#">19. Felgo Plugins and QML Hot Reloading</a><ul>
+<li><a class="reference internal" href="#tooling">19.1. Tooling</a><ul>
+<li><a class="reference internal" href="#felgo-live">19.1.1. Felgo Live</a><ul>
+<li><a class="reference internal" href="#felgo-live-client">19.1.1.1. Felgo Live Client</a></li>
+<li><a class="reference internal" href="#how-does-it-actually-work">19.1.1.2. How does it Actually Work?</a></li>
+<li><a class="reference internal" href="#custom-clients">19.1.1.3. Custom Clients</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloud-builds">19.1.2. Cloud Builds</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#felgo-plugins">19.2. Felgo Plugins</a><ul>
+<li><a class="reference internal" href="#configuration">19.2.1. Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#monetization-ads-and-in-app-purchases">19.3. Monetization, Ads and In-App Purchases</a><ul>
+<li><a class="reference internal" href="#ad-monetization">19.3.1. Ad Monetization</a></li>
+<li><a class="reference internal" href="#in-app-purchases">19.3.2. In-App Purchases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#notifications">19.4. Notifications</a><ul>
+<li><a class="reference internal" href="#local-notifications">19.4.1. Local Notifications</a></li>
+<li><a class="reference internal" href="#remote-push-notifications">19.4.2. Remote Push Notifications</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#analytics-and-crash-reporting">19.5. Analytics and Crash Reporting</a></li>
+<li><a class="reference internal" href="#firebase-authentication-databases-and-storage">19.6. Firebase: Authentication, Databases, and Storage</a><ul>
+<li><a class="reference internal" href="#authentication">19.6.1. Authentication</a></li>
+<li><a class="reference internal" href="#firebase-database">19.6.2. Firebase Database</a><ul>
+<li><a class="reference internal" href="#realtime-database">19.6.2.1. Realtime Database</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloud-storage-augmented-reality-and-more">19.7. Cloud Storage, Augmented Reality, and More</a></li>
+<li><a class="reference internal" href="#felgo-webassembly">19.8. Felgo &amp; WebAssembly</a></li>
+<li><a class="reference internal" href="#summary">19.9. Summary</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -147,14 +223,562 @@
 <p><em>Section author: <a class="reference external" href="https://bitbucket.org/e8johan">e8johan</a></em></p>
 <p><div class="btn-group btn-group-justified" role="group"><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook/" target="_blank">Github</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//blob/master/docs/ch19-felgo-plugins/felgo-plugins.rst" target="_blank"><i class="glyphicon glyphicon-file"></i> View</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//edit/master/docs/ch19-felgo-plugins/felgo-plugins.rst" target="_blank"><i class="glyphicon glyphicon-pencil"></i> Edit</a><a class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues/new?labels=ch19&body=back-link%3A+ch19-felgo-plugins%2Ffelgo-plugins.html%23felgo-plugins-and-qml-hot-reloading" target="_blank"><i class="glyphicon glyphicon-plus"></i> Issue </a><a  class="btn btn-primary btn-xs" href="https://github.com/qmlbook/qmlbook//issues?labels=ch19&page=1&state=open" target="_blank"><i class="glyphicon glyphicon-search"></i> Issues</a></div></p><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Last Build: September 18, 2020 at 19:32 CET</p>
+<p>Last Build: November 10, 2020 at 08:01 CET</p>
 <p class="last">The source code for this chapter can be found in the <a class="reference external" href="../assets">assets folder</a>.</p>
 </div>
-<p>Placeholder for the more in-depth Felgo chapter covering:</p>
-<ul class="simple">
-<li>Third-party Plugins and Frameworks (infos about Felgo Plugins)</li>
-<li>QML Hot Reload with Felgo Live</li>
-</ul>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/felgo-logo1.png"><img alt="../_images/felgo-logo1.png" src="../_images/felgo-logo1.png" style="width: 210.0px; height: 42.0px;" /></a>
+</div>
+<p>We’ve already discussed how Felgo enhances Qt and simplifies the creation of applications. In this chapter, we will look a bit deeper at the tooling and the mobile plugins that Felgo provides.</p>
+<div class="section" id="tooling">
+<h2>19.1. Tooling<a class="headerlink" href="#tooling" title="Permalink to this headline">¶</a></h2>
+<p>Felgo comes with two main tools that simplify your life as a Qt developer. The Felgo Live that lets you apply your code changes in real-time, and Cloud Builds, that lets you automate the building and deployment of your apps for all platforms.</p>
+<div class="section" id="felgo-live">
+<h3>19.1.1. Felgo Live<a class="headerlink" href="#felgo-live" title="Permalink to this headline">¶</a></h3>
+<p>The Hot Reload and Felgo Live Clients lets you modify your code and see the changes live. All QML, JavaScript, and assets are updated on every connected device as soon as you save your files.</p>
+<div class="figure">
+<img alt="../_images/hot-reload.gif" src="../_images/hot-reload.gif" />
+</div>
+<p>Hot Reload is smart enough to only modify what you changed, preserving the state of your application. For instance, if you are updating a page containing a toggled switch, it will still be toggled after a reload.</p>
+<p>This shortens the roundtrip times dramatically when developing, as you no longer have to go through the complete save, compile, deploy, restart cycle.</p>
+<p>The Felgo Live tool is a standalone tool that comes with the Felgo SDK and can be used with any Qt/QML project. You do not have to develop your app with the Felgo SDK to enable QML Hot Reload for your project.</p>
+<p>In the Felgo SDK, you launch Felgo Live from the Live Play button in the Qt Creator sidebar, as shown below.</p>
+<div class="figure">
+<img alt="../_images/qtc-hit-live-run.png" src="../_images/qtc-hit-live-run.png" />
+</div>
+<p>Once started, the Felgo Live Server is running together with your application. Every time you save your source files, the changes are immediately shown in the running application. You can also see logs from all connected devices. It is also possible to start the live server from command line, passing your root QML file as an argument.</p>
+<div class="figure">
+<img alt="../_images/server-client.png" src="../_images/server-client.png" />
+</div>
+<p>Felgo Hot Reload can be used on every target platform - be it desktop or mobile. It even works for WebAssembly and Embedded systems. Felgo has more information on the topic at the <a class="reference external" href="https://felgo.com/doc/qml-hot-reload-felgo-live/">product page</a>.</p>
+<div class="section" id="felgo-live-client">
+<h4>19.1.1.1. Felgo Live Client<a class="headerlink" href="#felgo-live-client" title="Permalink to this headline">¶</a></h4>
+<p>When used locally on your computer, the Felgo Live Server talks to an instance of the Felgo Live Client. It is possible to connect more clients to each server. For instance, the Felgo Dev App integrates a Live client for Android and iOS devices. You can download it from <a class="reference external" href="https://play.google.com/store/apps/details?id=net.vplay.apps.QMLLive">Google Play</a> and <a class="reference external" href="https://apps.apple.com/us/app/qml-live-scripting-by-felgo/id1157319191">Apple AppStore</a> respectively. This application also provides a showcase of Felgo components and sample applications to give you an overview of what’s offered.</p>
+<p>After you install the application, make sure your device is on the same network as your PC and click on “Connect Desktop”. Your mobile device will show you the live view of your app right away. When you start changing your code you will see both the Desktop and Mobile versions updated instantaneously.</p>
+<div class="figure">
+<img alt="../_images/felgo-dev-app-mobile-desktop.png" src="../_images/felgo-dev-app-mobile-desktop.png" />
+</div>
+<p>When connecting multiple devices through live clients, you can test many different configurations of screen sizes, DPIs and styles at the same time. You can even deploy your application on an iOS device without having access to an Apple computer.</p>
+</div>
+<div class="section" id="how-does-it-actually-work">
+<h4>19.1.1.2. How does it Actually Work?<a class="headerlink" href="#how-does-it-actually-work" title="Permalink to this headline">¶</a></h4>
+<p>Most QML applications are layered. They have a QML and Javascript layer running in the QML engine, sitting on top of the Qt/C++ layer. The Felgo SDK adds the Felgo Live Module component and the Felgo Live Server, interacting with the module.</p>
+<div class="figure">
+<img alt="../_images/qml-app-architecture.png" src="../_images/qml-app-architecture.png" />
+</div>
+<p>The Live Server monitors your QML, JS and assets files. When they change, it sends the updated tree to the Felgo Live Module. The module takes care of comparing the current tree of QML components with the new one and updates the subtrees which have changed, preserving the state of every other property.</p>
+</div>
+<div class="section" id="custom-clients">
+<h4>19.1.1.3. Custom Clients<a class="headerlink" href="#custom-clients" title="Permalink to this headline">¶</a></h4>
+<p>The Felgo Live Server operates by transmitting changed QML, JS and asset files to the Live Client. However, C++ code always requires compilation which is why the Live Client cannot support custom C++ out of the box. All your native C++ classes need to be built into the application.</p>
+<p>The way to solve this with the Felgo SDK is to integrate the Felgo Live Module into your own project. This essentially turns your own app into a custom Live Client that supports QML Hot Reload. The code needed for this is trivial.</p>
+<p>First, you need to add the <code class="docutils literal notranslate"><span class="pre">felgo-live</span></code> module to your Qt <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code> in your project:</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">CONFIG</span> <span class="o">+=</span> <span class="nx">felgo</span><span class="o">-</span><span class="nx">live</span>
+</pre></div>
+</div>
+<p>The include <code class="docutils literal notranslate"><span class="pre">FelgoLiveClient</span></code> in your <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;FelgoLiveClient&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>And finally, instead of loading your QML root file, use the live client to configure the <code class="docutils literal notranslate"><span class="pre">QQmlEngine</span></code> instance by replacing:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">felgo</span><span class="p">.</span><span class="n">setMainQmlFileName</span><span class="p">(</span><span class="n">QStringLiteral</span><span class="p">(</span><span class="s">&quot;qml/Main.qml&quot;</span><span class="p">));</span>
+<span class="n">engine</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="n">felgo</span><span class="p">.</span><span class="n">mainQmlFileName</span><span class="p">()));</span>
+</pre></div>
+</div>
+<p>With:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">FelgoLiveClient</span> <span class="nf">liveClient</span><span class="p">(</span><span class="o">&amp;</span><span class="n">engine</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The line above creates a <code class="docutils literal notranslate"><span class="pre">FelgoLiveClient</span></code> instance, which handles loading the QML, but also updating of the QML inside the running engine when the code changes.</p>
+<p>Now build and run the application for any Qt platform and you have a custom Felgo Live Client that you can connect to your Felgo Live Server. The application includes all your C++ code while allowing you to use Hot Reload for the QML code.</p>
+<p>When you are ready for release just revert the <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code> file back the way and remove the Live Client Module. You can do this using a define that you use when calling <code class="docutils literal notranslate"><span class="pre">qmake</span></code>. That way you can use an <code class="docutils literal notranslate"><span class="pre">ifdef</span></code> to avoid having two different versions of <code class="docutils literal notranslate"><span class="pre">main.cpp</span></code>, but instead configure the build environment in Qt Creator to include or exclude the live client functionality.</p>
+</div>
+</div>
+<div class="section" id="cloud-builds">
+<h3>19.1.2. Cloud Builds<a class="headerlink" href="#cloud-builds" title="Permalink to this headline">¶</a></h3>
+<p>A large task, once your application has been developed, is building it for a variety of target platforms. You might want to build different versions such as, beta releases, production releases and even customer specific versions. You might also want to push builds to various app stores for publishing.</p>
+<p>This is a major undertaking. You need to set up and maintain a build environment for each platform. Application packages need to be signed for deployment to the app stores. As an application grows, you will end up building a lot of major or minor builds for testing or new releases. This is where DevOps or CI/CD comes into the picture.</p>
+<p>Felgo Cloud Builds is a CI/CD solution for automatic building and deploying of Qt apps. You set up your project and build configuration once and then use this to build apps. You can target iOS, Android, Desktop, or Embedded. Each new version only takes a few minutes to build.</p>
+<div class="figure">
+<img alt="../_images/CloudBuildsGraphic.jpg" src="../_images/CloudBuildsGraphic.jpg" />
+</div>
+<p>The Felgo Cloud Build is a centralized and stable build environment for every Qt target platform. This means that you, as a developer, do not need the toolchains for every platform on your machine. For example, you can create iOS apps from Windows, even though you cannot install the required tools for compiling iOS apps on your machine. This also removes potential problems that may arise from building the app with different systems and tooling environments. Every release is built with the same system configuration, Qt version and dependencies.</p>
+<p>In addition to building apps, you might also want to deploy your apps to Google Play or Apple AppStore. You can use the beta testing mechanisms in the stores to test new versions and then move them to production. This traditionally requires uploading the <code class="docutils literal notranslate"><span class="pre">apk</span></code> bundles or <code class="docutils literal notranslate"><span class="pre">ipa</span></code> packages on the respective store websites.</p>
+<p>Felgo Cloud Builds automates this as well. It takes your source code from your repository, builds your project for all platforms in parallel, and then uploads the packages to the stores for testing or publishing, depending on your settings.</p>
+<p>To use Felgo Cloud Builds, visit the <a class="reference external" href="https://felgo.com/cloud-builds">Cloud Builds page</a> to set up your project.</p>
+<div class="figure">
+<img alt="../_images/felgo-cloud-builds-config.png" src="../_images/felgo-cloud-builds-config.png" />
+</div>
+<p>The web site has step by step guides to create and configure your project. Starting from a Git repository, signing options, and optionally the integration with the stores. If you do not have a Google Play or App Store account yet, or have not setup your application in the app store, it is recommended to first set everything up and have a look at how to configure the store listing before integrating it into the Cloud Build infrastructure. Your store configuration and testing channels should be ready and working before you configure Cloud Builds for automatic deployment.</p>
+<p>Once everything is set up, you can trigger a build whenever you wish, resulting in a set of application packages. If you enable store deployment for the build, the packages will automatically appear in the respective channels, ready for your testers and users, before you can push the build to production.</p>
+<div class="admonition-building-on-premise admonition">
+<p class="first admonition-title">Building on-premise</p>
+<p class="last">Felgo Cloud Builds is hosted by Felgo, but is also available on-premise. It can be used for any Qt/QML application and custom toolchains or specific Qt versions are possible as well. If you need a specific setup, for example, to target a certain embedded platform, get in touch with Felgo.</p>
+</div>
+</div>
+</div>
+<div class="section" id="felgo-plugins">
+<h2>19.2. Felgo Plugins<a class="headerlink" href="#felgo-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Once you’ve created a new app, you can look at more advanced topics. Felgo provides extensions to Qt that help you with monetization, push notifications, and analytics, i.e. the study of how the user moves through the app.</p>
+<div class="figure">
+<img alt="../_images/felgo-plugins.png" src="../_images/felgo-plugins.png" />
+</div>
+<p>These functions usually required platform specific APIs. There are also third party services that provide such services through custom native frameworks. Supporting native SDKs for Android and iOS using Qt/QML is not an easy task. You need to provide a portable abstraction for the APIs, binding to Java/Kotlin for Android or Objective-C/Swift for iOS.</p>
+<p>To help with this, Felgo extends Qt with plugins integrating these services directly to QML.</p>
+<div class="section" id="configuration">
+<h3>19.2.1. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>The Felgo plugins extend Qt with bindings to external services. This means that you will have register with the third party services. You will also need a Felgo license key. All monetization plugins are available for free, while other plugins require that you purchase an <a class="reference external" href="https://felgo.com/pricing">Indie or Enterprise license</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the examples in this chapter require you to have a custom license key. They are not runnable out of the box.</p>
+</div>
+<p>To get started with the Felgo plugins, start Qt Creator from the Felgo SDK and create a new project. The project wizard presents you with a step that lets you select which plugins to use. Choose the ones that you want to use. This will add the relevant code to your project along with the needed build configurations.</p>
+<p>To retrieve a valid Felgo license key for your application, go to <a class="reference external" href="https://felgo.com/developers/license">https://felgo.com/developers/license</a> and select the plugins that you intend to use.</p>
+<div class="figure">
+<img alt="../_images/plugin-activation-license-1.jpg" src="../_images/plugin-activation-license-1.jpg" />
+</div>
+<p>At the bottom of the page, click the <em>Generate License Key</em> button. This lets you provide an app identifier and a version code.</p>
+<div class="figure">
+<img alt="../_images/plugin-activation-license-2.jpg" src="../_images/plugin-activation-license-2.jpg" />
+</div>
+<p>This will present you with your generated license key. This key is unique to your license and your app, so make sure to keep it secret.</p>
+<p>You can then paste the license key into your application.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="k">licenseKey:</span> <span class="s2">&quot;&lt;generate one from https://felgo.com/licenseKey&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also provide the license key through your project file. This integrates well with the Felgo Cloud Builds platform.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Optionally set a license key that is used instead of the license key from</span>
+<span class="c1"># main.qml file (App::licenseKey for your app or GameWindow::licenseKey for your game)</span>
+<span class="c1"># Only used for local builds and Felgo Cloud Builds (https://felgo.com/cloud-builds)</span>
+<span class="c1"># Not used if using Felgo Live</span>
+<span class="nv">PRODUCT_LICENSE_KEY</span> <span class="o">=</span> <span class="s2">&quot;0D923C63118F763ED834BF948AC670952AF36452B936123BC38784F755F8163F07CFD81DC2187BAC8EADE2622BB34BA127DD5C445D203E7FA92DD9457386A1F4A62C92494E02C8F207E29A1C8012EEA6891A52A4F03202963CBE4EE0C4379C6AA611CC61DE81AFBD40BB6D4E487C9DE1170C79DC6EF1098840730E2BE48129E58A031CCD13811774C3988207ECD877527C210238FAE10B7D8F3758EE0B7F0DB0832BB881B9A9C93B84D93A437C8B1F2201C2EBC226AF8724816EC2ACFEB1A00E17013C3AEADFEC6B1C8F669F9D101EB2347058F9141F4EAADC95C100C438F76EFEAABDEA7513D08B2F4FE42C42F5E51B7FF8E9AD10CD3A9EA13D073C73681A55BB6711F0AD408499C100B8EB3D424439C8472C56E637E0CF31C1FE1154D1A17E599FF81F44C8F53FEC526EA907C0460F&quot;</span>
+</pre></div>
+</div>
+<p>Once this is in place you can start using the plugins. If you use the paid versions of Felgo, the Felgo splash screen is also removed by specifying the license key.</p>
+</div>
+</div>
+<div class="section" id="monetization-ads-and-in-app-purchases">
+<h2>19.3. Monetization, Ads and In-App Purchases<a class="headerlink" href="#monetization-ads-and-in-app-purchases" title="Permalink to this headline">¶</a></h2>
+<p>A common business model in the mobile space is in-app purchases or advertising. Felgo offers APIs to enable both these use-cases powered using multiple alternative backends such as Google AdMob, Soomla, and Chartboost.</p>
+<div class="section" id="ad-monetization">
+<h3>19.3.1. Ad Monetization<a class="headerlink" href="#ad-monetization" title="Permalink to this headline">¶</a></h3>
+<p>In this example we will look at using AdMob. AdMob is an in-app mobile advertising platform run by Google.</p>
+<p>To get started, you need to register an AdMob account on the <a class="reference external" href="https://admob.google.com/home/get-started/">AdMob Sign-up Page</a>. Then add an <a class="reference external" href="https://felgo.com/doc/felgo-admobbanner/">AddMobBanner</a> to your app as shown below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="k">licenseKey:</span> <span class="s2">&quot;&lt;generate one from https://felgo.com/licenseKey&gt;&quot;</span>
+  
+  <span class="nx">NavigationStack</span> <span class="p">{</span>
+    <span class="nx">Page</span> <span class="p">{</span>
+      <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;AdMob Banner&quot;</span><span class="p">)</span>
+
+      <span class="nx">AdMobBanner</span> <span class="p">{</span>
+        <span class="kd">id: adMobBanner</span>
+        <span class="k">adUnitId:</span> <span class="s2">&quot;ca-app-pub-9155324456588158/9913032020&quot;</span>
+        <span class="k">banner:</span> <span class="nx">AdMobBanner</span><span class="p">.</span><span class="nx">Standard</span>
+
+        <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+        <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice that you specify your ad unit id from AdMob through the <code class="docutils literal notranslate"><span class="pre">adUnitId</span></code> property.</p>
+<p>This code results in a banner such as the one shown below.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/Screenshot_2020-09-22-14-56-47-722_net.vplay.apps.QMLLive.jpg"><img alt="../_images/Screenshot_2020-09-22-14-56-47-722_net.vplay.apps.QMLLive.jpg" src="../_images/Screenshot_2020-09-22-14-56-47-722_net.vplay.apps.QMLLive.jpg" style="width: 324.0px; height: 702.0px;" /></a>
+</div>
+<p>In addition to banners, you can use interstitial ads. These are full-screen interactive advertisements. From QML, it is just as simple to integrate such an ad using the <a class="reference external" href="https://felgo.com/doc/felgo-admobinterstitial/">AdMobInterstitial</a> element.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="k">licenseKey:</span> <span class="s2">&quot;&lt;generate one from https://felgo.com/licenseKey&gt;&quot;</span>
+
+  <span class="nx">NavigationStack</span> <span class="p">{</span>
+    <span class="nx">Page</span> <span class="p">{</span>
+      <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;AdMob Interstitial&quot;</span><span class="p">)</span>
+
+      <span class="nx">AppButton</span> <span class="p">{</span>
+        <span class="k">text:</span> <span class="s2">&quot;Show Interstitial&quot;</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">onClicked:</span> <span class="p">{</span>
+          <span class="nx">adInerstitial</span><span class="p">.</span><span class="nx">loadInterstitial</span><span class="p">()</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="nx">AdMobInterstitial</span> <span class="p">{</span>
+        <span class="kd">id: adInerstitial</span>
+        <span class="k">adUnitId:</span> <span class="s2">&quot;ca-app-pub-3940256099942544/1033173712&quot;</span> <span class="c1">// interstitial test ad by AdMob</span>
+
+        <span class="k">onInterstitialReceived:</span> <span class="p">{</span>
+          <span class="nx">showInterstitialIfLoaded</span><span class="p">()</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">loadInterstitial</span></code> function to start loading the ad in the background. As soon as you want to show the ad, call the <code class="docutils literal notranslate"><span class="pre">showInterstitialIfLoaded</span></code>. In the example above we call this on the <code class="docutils literal notranslate"><span class="pre">interstitialReceived</span></code> signal. It has a sister signal called <code class="docutils literal notranslate"><span class="pre">interstitialFailedToReceive</span></code> that is called if the interstitial cannot be loaded, for instance, due to network errors.</p>
+</div>
+<div class="section" id="in-app-purchases">
+<h3>19.3.2. In-App Purchases<a class="headerlink" href="#in-app-purchases" title="Permalink to this headline">¶</a></h3>
+<p>Felgo lets you integrate in-app purchases directly into QML. The Soomla plugin lets you use a cross platform API to integrate the Soomla purchasing services into your application.</p>
+<p>The API is built around a <a class="reference external" href="https://felgo.com/doc/felgo-store/">Store</a> with Good items. These can be things such as <a class="reference external" href="https://felgo.com/doc/felgo-lifetimegood/">LifetimeGood</a>, which is a purchase that lasts forever, or a <a class="reference external" href="https://felgo.com/doc/felgo-singleusegood/">SingleUseGood</a> which is a one time purchase that is used once and then has to be purchased again.</p>
+<p>To <a class="reference external" href="https://felgo.com/doc/felgo-storepurchase/">StorePurchase</a> defines how the item can be purchased. By calling the <code class="docutils literal notranslate"><span class="pre">store.buyItem(noadsGood.itemId)</span></code> the purchase is made. The <code class="docutils literal notranslate"><span class="pre">noadsGood.purchased</span></code> property can then be used to check if the purchase has been made or not.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="k">licenseKey:</span> <span class="s2">&quot;&lt;generate one from https://felgo.com/licenseKey&gt;&quot;</span>
+  <span class="nx">Store</span> <span class="p">{</span>
+    <span class="kd">id: store</span>
+
+    <span class="k">version:</span> <span class="mi">1</span>
+    <span class="k">secret:</span> <span class="s2">&quot;&lt;your-app-secret&gt;&quot;</span>
+    <span class="k">androidPublicKey:</span> <span class="s2">&quot;&lt;android-public-key&gt;&quot;</span>
+
+    <span class="k">goods:</span> <span class="p">[</span>
+      <span class="nx">LifetimeGood</span> <span class="p">{</span>
+        <span class="kd">id: noadsGood</span>
+        <span class="k">itemId:</span> <span class="s2">&quot;net.felgo.demos.PluginDemo.noads&quot;</span>
+        <span class="k">name:</span> <span class="s2">&quot;No Ads&quot;</span>
+        <span class="k">description:</span> <span class="s2">&quot;Buy this item to remove the app banner&quot;</span>
+        <span class="k">purchaseType:</span> <span class="nx">StorePurchase</span> <span class="p">{</span> <span class="kd">id: noAdPurchase</span><span class="p">;</span> <span class="k">productId:</span> <span class="nx">noadsGood</span><span class="p">.</span><span class="nx">itemId</span><span class="p">;</span> <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="nx">NavigationStack</span> <span class="p">{</span>
+    <span class="nx">Page</span> <span class="p">{</span>
+      <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;In app purchase&quot;</span><span class="p">)</span>
+
+      <span class="nx">AppButton</span> <span class="p">{</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">text:</span> <span class="s2">&quot;Remove Ad&quot;</span>
+        <span class="k">onClicked:</span> <span class="p">{</span>
+          <span class="nx">store</span><span class="p">.</span><span class="nx">buyItem</span><span class="p">(</span><span class="nx">noadsGood</span><span class="p">.</span><span class="nx">itemId</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+      <span class="nx">Rectangle</span> <span class="p">{</span>
+        <span class="kd">id: annoyingAd</span>
+        <span class="k">anchors.bottom:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">bottom</span>
+        <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
+        <span class="k">height:</span> <span class="nx">dp</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+        <span class="k">color:</span> <span class="s2">&quot;red&quot;</span>
+
+        <span class="c1">// Just one line for handling visiblity of the ad banner, you can use property binding for this!</span>
+        <span class="k">visible:</span> <span class="o">!</span><span class="nx">noadsGood</span><span class="p">.</span><span class="nx">purchased</span>
+
+        <span class="nx">AppText</span> <span class="p">{</span>
+          <span class="k">text:</span> <span class="s2">&quot;Annoying Ad&quot;</span>
+          <span class="k">color:</span> <span class="s2">&quot;white&quot;</span>
+          <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example shows the most basic use case. The Soomla APIs let you do much more. For instance, the <a class="reference external" href="https://felgo.com/doc/felgo-syncedstore/">SyncedStore</a> lets you sync purchases across user devices. You can also provide virtual, an in-app currency, sell packs of items, and much more. Check out the <a class="reference external" href="https://felgo.com/doc/plugin-soomla/">Soomal documentation</a> for more information.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/Screenshot_2020-09-22-14-58-22-283_net.vplay.apps.QMLLive.jpg"><img alt="../_images/Screenshot_2020-09-22-14-58-22-283_net.vplay.apps.QMLLive.jpg" src="../_images/Screenshot_2020-09-22-14-58-22-283_net.vplay.apps.QMLLive.jpg" style="width: 324.0px; height: 702.0px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="notifications">
+<h2>19.4. Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h2>
+<p>It is common that mobile apps use notifications to indicate to the user that an important event has happened or that an announcement is available. Notifications can either be local, for instance a timer is finished, or remote, such as a friend request. With Felgo, you can integrate both types of notification on iOS and Android.</p>
+<div class="section" id="local-notifications">
+<h3>19.4.1. Local Notifications<a class="headerlink" href="#local-notifications" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://felgo.com/doc/felgo-notificationmanager/">NotificationManager</a> is used to schedule local notifications. Notifications can be scheduled either relative to the current time, i.e. in 1 hour, or at a given time, e.g. 3pm on December 24.</p>
+<p>In the example below, a <a class="reference external" href="https://felgo.com/doc/felgo-notification/">Notification</a> is defined declaratively in QML. This is called a <em>static</em> notification. Then the <code class="docutils literal notranslate"><span class="pre">NotificationManager::scheduleNotification</span></code> is used to trigger the notification. The <code class="docutils literal notranslate"><span class="pre">Notification::timeInterval</span></code> is used to set a relative time, in this case, 5 seconds. For setting an absolute time, use the <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> property instead.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="k">licenseKey:</span> <span class="s2">&quot;&lt;generate one from https://felgo.com/licenseKey&gt;&quot;</span>
+
+  <span class="nx">NotificationManager</span> <span class="p">{</span>
+    <span class="kd">id: notificationManager</span>
+
+    <span class="k">onNotificationFired:</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;Notification with id &quot;</span> <span class="o">+</span> <span class="nx">notificationId</span> <span class="o">+</span> <span class="s2">&quot; fired&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">Notification</span> <span class="p">{</span>
+    <span class="kd">id: staticNotification</span>
+    <span class="k">notificationId:</span> <span class="s2">&quot;static_notification&quot;</span>
+    <span class="k">message:</span> <span class="s2">&quot;I&#39;m statically defined in the app&quot;</span>
+    <span class="c1">// Time in seconds when the notification should be fired</span>
+    <span class="k">timeInterval:</span> <span class="mi">5</span>
+  <span class="p">}</span>
+
+  <span class="nx">NavigationStack</span> <span class="p">{</span>
+    <span class="nx">Page</span> <span class="p">{</span>
+      <span class="kd">id: page</span>
+      <span class="k">title:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Local Notification&quot;</span><span class="p">)</span>
+
+      <span class="nx">AppButton</span> <span class="p">{</span>
+        <span class="k">text:</span> <span class="s2">&quot;Schedule Notification&quot;</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+        <span class="k">onClicked:</span> <span class="p">{</span>
+          <span class="c1">// Trigger notification in 5 seconds</span>
+          <span class="nx">notificationManager</span><span class="p">.</span><span class="nx">scheduleNotification</span><span class="p">(</span><span class="nx">staticNotification</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">notificationFired</span></code> signal is triggered when a notification is fired. This signal behaves differently if the app is active, or if it is running in the background. When the app is active, the signal is emitted immediately without a banner or sound being played. When the app is in the background, a notification sound is played and the message is shown in a notification banner. The signal is then emitted once the user taps the message to activate the app and bring it into the foreground.</p>
+<p>In some scenarios, a statically declared notification is not enough. For that use-case, it is also possible to provide a JavaScript object to the <code class="docutils literal notranslate"><span class="pre">scheduleNotification</span></code> method. This creates the notification dynamically, as shown below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span>        <span class="nx">AppButton</span> <span class="p">{</span>
+           <span class="k">text:</span> <span class="s2">&quot;Dynamic Notification (timestamp)&quot;</span>
+           <span class="k">onClicked:</span> <span class="p">{</span>
+             <span class="c1">// This time it&#39;s dynamically defined inline and with timestamp instead of interval</span>
+             <span class="kd">var</span> <span class="nx">unixTimestamp</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()).</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+             <span class="nx">notificationManager</span><span class="p">.</span><span class="nx">schedule</span><span class="p">({</span> <span class="k">notificationId:</span> <span class="s2">&quot;dynamic_notification&quot;</span><span class="p">,</span> <span class="k">message:</span> <span class="s2">&quot;I&#39;m dynamically defined in the app&quot;</span><span class="p">,</span> <span class="k">timestamp:</span> <span class="nx">unixTimestamp</span> <span class="o">+</span> <span class="mi">5</span><span class="p">})</span>
+           <span class="p">}</span>
+         <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="remote-push-notifications">
+<h3>19.4.2. Remote Push Notifications<a class="headerlink" href="#remote-push-notifications" title="Permalink to this headline">¶</a></h3>
+<p>Remote push notifications require a backend server of some sort. Felgo integrates Google Cloud Messaging and OneSignal to provide push notifications to both Android and iOS. Using these services, you can trigger notifications manually or automatically for every user, or targetted at groups of users.</p>
+<p>In the examples below, you will use OneSignal to send push notifications to your app. Before you can start with OneSignal, you need to register for an account. This is described in detail on the <a class="reference external" href="https://felgo.com/doc/plugin-onesignal/#onesignal-account">OneSignal plugin page</a>.</p>
+<p>You then create a <a class="reference external" href="https://felgo.com/doc/felgo-onesignal/">OneSignal</a> element and configure the <code class="docutils literal notranslate"><span class="pre">appId</span></code>. Each time a notification is received, the <code class="docutils literal notranslate"><span class="pre">onNotificationReceived</span></code> signal is emitted. This signal behaves just as the <code class="docutils literal notranslate"><span class="pre">notificationFired</span></code> signal discussed above, with respect to the app being active or in the background.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.1</span>
+<span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+
+ <span class="nx">OneSignal</span> <span class="p">{</span>
+   <span class="kd">id: onesignal</span>
+
+   <span class="k">appId:</span> <span class="s2">&quot;&lt;ONESIGNAL-APP-ID&gt;&quot;</span>
+   
+   <span class="k">onNotificationReceived:</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s2">&quot;Received notification with message:&quot;</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>You can use the excellent <a class="reference external" href="https://curl.haxx.se/">curl</a> tool to send a notification to all instances of your app.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --include <span class="se">\</span>
+      --request POST <span class="se">\</span>
+      --header <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+      --header <span class="s2">&quot;Authorization: Basic &lt;ONESIGNAL-REST-API-KEY&gt;&quot;</span> <span class="se">\</span>
+      --data-binary <span class="s1">&#39;{</span>
+<span class="s1">         &quot;app_id&quot;: &quot;&lt;ONESIGNAL-APP-ID&gt;&quot;,</span>
+<span class="s1">         &quot;contents&quot;: { &quot;en&quot;: &quot;Message&quot; }</span>
+<span class="s1">      }&#39;</span> <span class="se">\</span>
+      https://onesignal.com/api/v1/notifications
+</pre></div>
+</div>
+<p>If you want to send the notification to a selected set of users, you need to register a tag on the client side, i.e. in your QML code:</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">onesignal</span><span class="p">.</span><span class="nx">setTag</span><span class="p">(</span><span class="s2">&quot;my_key&quot;</span><span class="p">,</span> <span class="s2">&quot;my_value&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This tag can then be referenced when sending the notification.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl --include <span class="se">\</span>
+      --request POST <span class="se">\</span>
+      --header <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+      --header <span class="s2">&quot;Authorization: Basic &lt;ONESIGNAL-REST-API-KEY&gt;&quot;</span> <span class="se">\</span>
+      --data-binary <span class="s1">&#39;{</span>
+<span class="s1">         &quot;app_id&quot;: &quot;&lt;ONESIGNAL-APP-ID&gt;&quot;,</span>
+<span class="s1">         &quot;contents&quot;: { &quot;en&quot;: &quot;Message&quot; },</span>
+<span class="s1">         &quot;tags&quot;: [{&quot;key&quot;: &quot;my_key&quot;, &quot;relation&quot;: &quot;=&quot;, &quot;value&quot;: &quot;my_value&quot;}]</span>
+<span class="s1">      }&#39;</span> <span class="se">\</span>
+      https://onesignal.com/api/v1/notifications
+</pre></div>
+</div>
+<p>The tags are used to reach groups of users. To reference a specific user, use the <a class="reference external" href="https://felgo.com/doc/felgo-onesignal/#userId-prop">OneSignal::userId</a> property instead.</p>
+</div>
+</div>
+<div class="section" id="analytics-and-crash-reporting">
+<h2>19.5. Analytics and Crash Reporting<a class="headerlink" href="#analytics-and-crash-reporting" title="Permalink to this headline">¶</a></h2>
+<p>Analytics is used to understand how your users work with your app. This will let you understand if all features are used, or if there is a usability problem with the user interface. Felgo provides plugins for Amplitude, Google Analytics and Flurry. In the example below, we demonstrate how to integrate Amplitude.</p>
+<p>In order to use Amplitude you need to sign up for an account. You do that at the <a class="reference external" href="https://amplitude.com/signup">Amplitude website</a> .</p>
+<p>The code is built around the <a class="reference external" href="https://felgo.com/doc/felgo-amplitude/">Amplitude</a> element, which provides the <code class="docutils literal notranslate"><span class="pre">logEvent</span></code> method, as shown below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="nx">Amplitude</span> <span class="p">{</span>
+     <span class="kd">id: amplitude</span>
+
+     <span class="c1">// From Amplitude Settings</span>
+     <span class="k">apiKey:</span> <span class="s2">&quot;&lt;amplitude-api-key&gt;&quot;</span>
+
+     <span class="k">userProperties:</span> <span class="p">({</span>
+       <span class="k">age:</span> <span class="mi">17</span><span class="p">,</span>
+       <span class="k">weight:</span> <span class="mf">110.3</span><span class="p">,</span>
+       <span class="k">name:</span> <span class="s2">&quot;Gregor&quot;</span><span class="p">,</span>
+       <span class="k">achievements:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+     <span class="p">})</span>
+
+     <span class="k">onPluginLoaded:</span> <span class="p">{</span>
+       <span class="nx">amplitude</span><span class="p">.</span><span class="nx">logEvent</span><span class="p">(</span><span class="s2">&quot;App started&quot;</span><span class="p">);</span>
+     <span class="p">}</span>
+  <span class="p">}</span>
+
+
+  <span class="nx">NavigationStack</span> <span class="p">{</span>
+    <span class="nx">Page</span> <span class="p">{</span>
+      <span class="k">title:</span> <span class="s2">&quot;Amplitude&quot;</span>
+
+      <span class="nx">Column</span> <span class="p">{</span>
+        <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+
+        <span class="nx">AppButton</span> <span class="p">{</span>
+          <span class="k">text:</span> <span class="s2">&quot;Send Event&quot;</span>
+          <span class="k">onClicked:</span> <span class="nx">amplitude</span><span class="p">.</span><span class="nx">logEvent</span><span class="p">(</span><span class="s2">&quot;Button clicked&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each event should represent an action of the user, for instance, “picture deleted”, “user logged in”, and so on. In addition to the events, Amplitude can log revenues using the <code class="docutils literal notranslate"><span class="pre">logRevenue</span></code> method. This allows you to analyze what user flows leads to revenue streams, e.g. in-app purchases.</p>
+<p>To enable further analytics, you can provide a JavaScript object with key-value pairs that you can pass to Amplitude to help analyze the results better. In the example above, we provide an age, a weight, a name and what achievements the user has reached. This way, we can correlate this information with the logs using the Amplitude tools.</p>
+<p>The properties can also be things such as free space on the device, or time since the last photo shared, or other relevant data that will make understanding the results easier.</p>
+</div>
+<div class="section" id="firebase-authentication-databases-and-storage">
+<h2>19.6. Firebase: Authentication, Databases, and Storage<a class="headerlink" href="#firebase-authentication-databases-and-storage" title="Permalink to this headline">¶</a></h2>
+<p>The Google Firebase plugin provides three core feature sets: authentication, a database, and generic storage. In this section, we will look at the authentication and database features.</p>
+<p>Before you can get started with Firebase you have to register your applications and download the <code class="docutils literal notranslate"><span class="pre">google-services.json</span></code> file from the <a class="reference external" href="https://console.firebase.google.com/u/0/?pli=1">Firebase console</a>. Notice that using Firebase also requires a Google account.</p>
+<p>Using the information from the Firebase console, you can set up your <a class="reference external" href="https://felgo.com/doc/felgo-firebaseconfig/">FirebaseConfig</a> item as shown below.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+  <span class="nx">FirebaseConfig</span> <span class="p">{</span>
+    <span class="kd">id: fbConfig</span>
+
+    <span class="k">projectId:</span> <span class="s2">&quot;&lt;your project ID, from project_info | project_number, e.g., 82701038584&quot;</span>
+    <span class="k">databaseUrl:</span> <span class="s2">&quot;&lt;your database URL, from project_info | firebase_url&gt;&quot;</span>
+
+    <span class="k">apiKey:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">os</span> <span class="o">===</span> <span class="s2">&quot;android&quot;</span>
+          <span class="o">?</span> <span class="s2">&quot;&lt;your Android API key, from client | api_key | current_key&gt;&quot;</span>
+          <span class="o">:</span> <span class="s2">&quot;&lt;your iOS API key&gt;&quot;</span>
+
+    <span class="k">applicationId:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">platform</span><span class="p">.</span><span class="nx">os</span> <span class="o">===</span> <span class="s2">&quot;android&quot;</span>
+                 <span class="o">?</span> <span class="s2">&quot;&lt;your Android application ID, from client | client_info | mobilesdk_app_id&gt;&quot;</span>
+                 <span class="o">:</span> <span class="s2">&quot;&lt;your iOS application ID&gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>All the required information is found in the <code class="docutils literal notranslate"><span class="pre">google-services.json</span></code> file.</p>
+<div class="section" id="authentication">
+<h3>19.6.1. Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
+<p>In order to use Firebase for authentication, you need to enable the <em>Email/Password</em> sign-in method in your Google project. You then use the <a class="reference external" href="https://felgo.com/doc/felgo-firebaseauth/">FirebaseAuth</a> item to interact with the backend.</p>
+<p>The example below demonstrates how to sign up a new user using the <code class="docutils literal notranslate"><span class="pre">registerUser</span></code> method. Once the user is registered, the <code class="docutils literal notranslate"><span class="pre">userRegistered</span></code> is emitted, indicating either a success or failure in the registration process.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Felgo</span> <span class="mf">3.0</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.0</span>
+
+<span class="nx">App</span> <span class="p">{</span>
+
+  <span class="c1">//…</span>
+
+  <span class="nx">FirebaseAuth</span> <span class="p">{</span>
+    <span class="kd">id: auth</span>
+           <span class="k">config:</span> <span class="nx">fbConfig</span>
+  <span class="p">}</span>
+
+  <span class="nx">Page</span> <span class="p">{</span>
+    <span class="nx">Column</span> <span class="p">{</span>
+      <span class="k">spacing:</span> <span class="nx">Theme</span><span class="p">.</span><span class="nx">contentPadding</span>
+      <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+
+      <span class="nx">AppTextField</span> <span class="p">{</span>
+        <span class="kd">id: username</span>
+        <span class="k">width:</span> <span class="nx">dp</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+      <span class="p">}</span>
+
+      <span class="nx">AppTextField</span> <span class="p">{</span>
+        <span class="kd">id: password</span>
+        <span class="k">inputMode:</span> <span class="nx">inputModePassword</span>
+        <span class="k">width:</span> <span class="nx">dp</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+      <span class="p">}</span>
+
+      <span class="nx">AppButton</span> <span class="p">{</span>
+        <span class="k">text:</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">&quot;Sign-Up&quot;</span><span class="p">)</span>
+        <span class="k">anchors.horizontalCenter:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+        <span class="k">onClicked:</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">registerUser</span><span class="p">(</span><span class="nx">username</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span> <span class="nx">password</span><span class="p">.</span><span class="nx">text</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When a user has been registered, the <code class="docutils literal notranslate"><span class="pre">loginUser</span></code> is used to log in the user. This results in the <code class="docutils literal notranslate"><span class="pre">loggedIn</span></code> signal being emitted. <code class="docutils literal notranslate"><span class="pre">FirebaseAuth</span></code> also provides methods to <code class="docutils literal notranslate"><span class="pre">loginUserWithGoogle</span></code>, <code class="docutils literal notranslate"><span class="pre">loginUserWithToken</span></code>, and <code class="docutils literal notranslate"><span class="pre">loginUserAnonymously</span></code>.</p>
+<p>The tokens used when logging in are created by custom authentication servers as described in <a class="reference external" href="https://firebase.google.com/docs/auth/admin/create-custom-tokens">the Firebase documentation</a>.</p>
+<p>When logging in a user anonymously, a local, anonymous, account is created on the current device. If the <code class="docutils literal notranslate"><span class="pre">registerUser</span></code> is called from an anonymously logged in session, the anonymous account is associated with the new user, making it possible to migrate the user data across devices.</p>
+</div>
+<div class="section" id="firebase-database">
+<h3>19.6.2. Firebase Database<a class="headerlink" href="#firebase-database" title="Permalink to this headline">¶</a></h3>
+<p>The firebase realtime database can be viewed as a gigantic json file that contains all data for all users. This database is tightly coupled to the Firebase authentication functionality to ensure that all data is protected and secure.</p>
+<p>The <a class="reference external" href="https://felgo.com/doc/felgo-firebasedatabase/">FirebaseDatabase</a> QML component provides the interface to the database. The API provides functions such as <code class="docutils literal notranslate"><span class="pre">setUserValue</span></code> for storing data. Notice that the function tells you if the value was successfully stored or not - something that is important as the database is located in the Firebase cloud.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">setUserValue</span><span class="p">(</span><span class="s2">&quot;myObject&quot;</span><span class="p">,</span> <span class="p">{</span>
+   <span class="k">keyA:</span> <span class="mi">17</span><span class="p">,</span>
+   <span class="k">keyB:</span> <span class="s2">&quot;this is my DB object&quot;</span>
+ <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">success</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;successfully written user object to DB&quot;</span><span class="p">)</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;DB write error:&quot;</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span>
+   <span class="p">}</span>
+ <span class="p">})</span>
+</pre></div>
+</div>
+<p>To retrieve a stored value, the <code class="docutils literal notranslate"><span class="pre">getUserValue</span></code> method is used. It is possible to provide <em>queryParameters</em> to sort and filter. This is described in detail in the <a class="reference external" href="https://firebase.google.com/docs/database/admin/retrieve-data#section-queries">firebase query documentation</a>.</p>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">getUserValue</span><span class="p">(</span><span class="s2">&quot;myvalue&quot;</span><span class="p">,</span> <span class="nx">queryParameters</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">success</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+                   <span class="k">if</span><span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+                     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Read user value for key&quot;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="s2">&quot;from DB:&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+                   <span class="p">}</span>
+                 <span class="p">})</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">setUserValue</span></code> and <code class="docutils literal notranslate"><span class="pre">getUserValue</span></code> works on data for the currently logged in user. The <code class="docutils literal notranslate"><span class="pre">setValue</span></code> and <code class="docutils literal notranslate"><span class="pre">getValue</span></code> methods perform a similar task, but across all users. Use these with care.</p>
+<div class="section" id="realtime-database">
+<h4>19.6.2.1. Realtime Database<a class="headerlink" href="#realtime-database" title="Permalink to this headline">¶</a></h4>
+<p>The firebase database offers an interesting function in the shape of real-time updates of data changes.</p>
+<p>By registering a key in the <code class="docutils literal notranslate"><span class="pre">realtimeUserValueKeys</span></code> property, the <a class="reference external" href="https://felgo.com/doc/felgo-firebasedatabase/#realtimeUserValueChanged-signal">realtimeUserValueChanged</a> will signal real-time value changes <em>across devices</em>. This function has a user independent sibling in the shape of <code class="docutils literal notranslate"><span class="pre">realtimeValueChanged</span></code>, that acts on global values.</p>
+</div>
+</div>
+</div>
+<div class="section" id="cloud-storage-augmented-reality-and-more">
+<h2>19.7. Cloud Storage, Augmented Reality, and More<a class="headerlink" href="#cloud-storage-augmented-reality-and-more" title="Permalink to this headline">¶</a></h2>
+<p>The Felgo plugins provide more integration than we’ve covered here. As an alternative to Firebase, you can use Felgo Cloud. There is also an augmented reality plugin powered by Wikitude, the Felgo Gamification APIs for leaderboards and achievements and Felgo Multiplayer powered by Photon for real-time communication between users.</p>
+</div>
+<div class="section" id="felgo-webassembly">
+<h2>19.8. Felgo &amp; WebAssembly<a class="headerlink" href="#felgo-webassembly" title="Permalink to this headline">¶</a></h2>
+<p>In addition to these pure extensions of Qt, Felgo also offers an improved WebAssembly experience, fixing known shortcomings of the current Qt integration, as well as extending the Qt APIs for the WebAssembly environment.</p>
+<div class="figure">
+<img alt="../_images/felgo-webassembly-improvement-comparison-qt-2.png" src="../_images/felgo-webassembly-improvement-comparison-qt-2.png" />
+</div>
+</div>
+<div class="section" id="summary">
+<h2>19.9. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter, we have looked at some of the ways that Felgo extends Qt. This spans the entire range: tooling, build services, and integration of features. The strength of the Felgo extensions is that they enable access to advanced features directly from QML. This saves the effort needed to first integrate a feature into Qt/C++, and then exposing it to QML.</p>
+<p>Many of the integrated functions shown in this chapter require accounts at external services, as well as Felgo account. This means that you will have to modify the example snippets included with your keys, instead of running them straight out of the box. This is why we separated these contents into a distinct chapter.</p>
+<p>The functions demonstrated - advertisements, in-app purchases, push notifications, analytics, user accounts, and real-time databases are all integrated by many applications in one shape or form. By providing pre-made QML integrations, Felgo can save a considerable amount of development time. This is on top of the remote building capabilities of Cloud Builds, automating the building and deployment into app stores, and the Hot Reload feature, making it possible to try out changes live across a range of devices. All of this together can lead to great time savings.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/felgo-chart-time-sav.png"><img alt="../_images/felgo-chart-time-sav.png" src="../_images/felgo-chart-time-sav.png" style="width: 500.0px; height: 450.0px;" /></a>
+</div>
+</div>
 </div>
 
 
@@ -171,7 +795,7 @@
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Sep 18, 2020.<br/>
+      Last updated on Nov 10, 2020.<br/>
     </p>
   </div>
 </footer>
