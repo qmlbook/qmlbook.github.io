@@ -210,7 +210,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">HelloWord.qml</span></code> program is written in the QML language. We’ll discuss the QML language more in-depth in the next chapter. QML describes the user interface as a tree of hierarchical elements. In this case, a rectangle of 640 x 480 pixels, with a centered text that contains the words “Hello World”. To capture user input, a mouse area spans the whole rectangle. When the user interacts with it, the application quits.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">HelloWord.qml</span></code> program is written in the QML language. We’ll discuss the QML language more in-depth in the next chapter. QML describes the user interface as a tree of hierarchical elements.</p>
 <p>To run the application on your own, press the <img alt="creatorrun" src="../_images/qtcreator-run.png" /> <span class="guilabel">Run</span> tool on the left side, or select <span class="menuselection">Build &gt; Run</span> from the menu.</p>
 <p>In the background, Qt Creator runs <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> and passes your QML document as the first argument. The <code class="docutils literal notranslate"><span class="pre">qmlscene</span></code> application parses the document, and launches the user interface. You should see something like this:</p>
 <div class="figure">
@@ -494,7 +494,7 @@ Here is a short example. First the header file with the declaration of the view 
 <p>Up to now, we have mostly covered basic data types and how to use widgets and graphics views. In your applications, you will often need a larger amount of structured data, which may also need to be stored persistently. Finally, the data also needs to be displayed. For this, Qt uses models. A simple model is the string list model, which gets filled with strings and then attached to a list view.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">m_view</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QListView</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 <span class="n">m_model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QStringListModel</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-<span class="n">view</span><span class="o">-&gt;</span><span class="n">setModel</span><span class="p">(</span><span class="n">m_model</span><span class="p">);</span>
+<span class="n">m_view</span><span class="o">-&gt;</span><span class="n">setModel</span><span class="p">(</span><span class="n">m_model</span><span class="p">);</span>
 
 <span class="n">QList</span><span class="o">&lt;</span><span class="n">QString</span><span class="o">&gt;</span> <span class="n">cities</span><span class="p">;</span>
 <span class="n">cities</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Munich&quot;</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Paris&quot;</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;London&quot;</span><span class="p">;</span>
@@ -519,20 +519,20 @@ Here is a short example. First the header file with the declaration of the view 
     <span class="n">qFatal</span><span class="p">(</span><span class="s">&quot;unable to open database&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="n">m_model</span> <span class="o">=</span> <span class="n">QSqlTableModel</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="n">m_model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QSqlTableModel</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 <span class="n">m_model</span><span class="o">-&gt;</span><span class="n">setTable</span><span class="p">(</span><span class="s">&quot;city&quot;</span><span class="p">);</span>
 <span class="n">m_model</span><span class="o">-&gt;</span><span class="n">setHeaderData</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Qt</span><span class="o">::</span><span class="n">Horizontal</span><span class="p">,</span> <span class="s">&quot;City&quot;</span><span class="p">);</span>
 <span class="n">m_model</span><span class="o">-&gt;</span><span class="n">setHeaderData</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Qt</span><span class="o">::</span><span class="n">Horizontal</span><span class="p">,</span> <span class="s">&quot;Country&quot;</span><span class="p">);</span>
 
-<span class="n">view</span><span class="o">-&gt;</span><span class="n">setModel</span><span class="p">(</span><span class="n">m_model</span><span class="p">);</span>
+<span class="n">m_view</span><span class="o">-&gt;</span><span class="n">setModel</span><span class="p">(</span><span class="n">m_model</span><span class="p">);</span>
 <span class="n">m_model</span><span class="o">-&gt;</span><span class="n">select</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>For a higher level model operations, Qt provides a sorting file proxy model that allows you sort, filter, and transform models.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">QSortFilterProxyModel</span><span class="o">*</span> <span class="n">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QSortFilterProxyModel</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 <span class="n">proxy</span><span class="o">-&gt;</span><span class="n">setSourceModel</span><span class="p">(</span><span class="n">m_model</span><span class="p">);</span>
-<span class="n">view</span><span class="o">-&gt;</span><span class="n">setModel</span><span class="p">(</span><span class="n">proxy</span><span class="p">);</span>
-<span class="n">view</span><span class="o">-&gt;</span><span class="n">setSortingEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">m_view</span><span class="o">-&gt;</span><span class="n">setModel</span><span class="p">(</span><span class="n">proxy</span><span class="p">);</span>
+<span class="n">m_view</span><span class="o">-&gt;</span><span class="n">setSortingEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Filtering is done based on the column that is to be filters, and a string as filter argument.</p>
@@ -588,7 +588,7 @@ Here is a short example. First the header file with the declaration of the view 
 </pre></div>
 </div>
 <p>To enable the <code class="docutils literal notranslate"><span class="pre">cityModel</span></code>, we can mostly re-use our previous model, and add a context property to our root context. The root context is the other root-element in the main document.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">m_model</span> <span class="o">=</span> <span class="n">QSqlTableModel</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">m_model</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QSqlTableModel</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 <span class="p">...</span> <span class="c1">// some magic code</span>
 <span class="n">QHash</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">QByteArray</span><span class="o">&gt;</span> <span class="n">roles</span><span class="p">;</span>
 <span class="n">roles</span><span class="p">[</span><span class="n">Qt</span><span class="o">::</span><span class="n">UserRole</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;city&quot;</span><span class="p">;</span>
@@ -631,7 +631,7 @@ Here is a short example. First the header file with the declaration of the view 
     </p>
     <p>
         &copy; Copyright 2012-2018 Jürgen Bocklage-Ryannel and Johan Thelin. This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.<br/>
-      Last updated on Nov 10, 2020.<br/>
+      Last updated on Dec 07, 2020.<br/>
     </p>
   </div>
 </footer>
